@@ -1,0 +1,518 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Datasets &#8212; AI Search Algorithms for Smart Mobility</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="GettingStarted" href="GettingStarted.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/book.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">AI Search Algorithms for Smart Mobility</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="GettingStarted.html">
+   GettingStarted
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Datasets
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/Datasets.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Datasets
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#geospatial-datasets">
+     Geospatial Datasets
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#compile-your-dataset">
+       1. Compile your dataset
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#using-overpass-ql">
+       Using
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         OverPass
+        </span>
+        <span class="pre">
+         QL
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#using-overpass-turbo-s-wizard">
+       Using
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Overpass
+        </span>
+        <span class="pre">
+         turbo
+        </span>
+       </code>
+       ’s Wizard
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#avialable-open-datasets">
+     2. Avialable open datasets
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#commerically-available-datasets">
+     3. Commerically available datasets
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traffic-datasets">
+     Traffic Datasets
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#parking-tickets-datasets">
+     Parking Tickets Datasets
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#public-transport-networks-datasets">
+     Public Transport Networks Datasets
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#planned-events-road-work-and-other-temporary-changes-to-the-road-network">
+     Planned events, road work, and other temporary changes to the road network
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traffic-crashes-datasets">
+     Traffic Crashes Datasets
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#emission-datasets">
+     Emission Datasets
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#environment-datasets">
+     Environment Datasets
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mobility-aware-urban-design-active-transportation-modeling-and-access-analysis-for-amenities-and-public-transport">
+     Mobility-aware urban design, active transportation modeling and access analysis for amenities and public transport
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#accessibility">
+     Accessibility
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#open-source-projects">
+     Open Source Projects
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="datasets">
+<h1>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h1>
+<p>This repo contains information about how to obtain or compile a dataset for the coruse project problem.</p>
+<hr class="docutils" />
+<div class="section" id="geospatial-datasets">
+<h2>Geospatial Datasets<a class="headerlink" href="#geospatial-datasets" title="Permalink to this headline">¶</a></h2>
+<p>Geospatial datasets contain map locations of regions or points of interest.</p>
+<div class="section" id="compile-your-dataset">
+<h3>1. Compile your dataset<a class="headerlink" href="#compile-your-dataset" title="Permalink to this headline">¶</a></h3>
+<p>You can compile your own dataset using <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL">Overpass QL</a> language that runs on <a class="reference external" href="http://overpass-turbo.eu/">Overpass turbo</a>. You can use this query langauge to mine OpenStreetMaps data and filter it and get it ready to be used by <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> or any library that parses <code class="docutils literal notranslate"><span class="pre">.osm</span></code> files and then we would go through a quick review over <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Overpass_API">Overpass API</a>, which is the official API for reading data from OpenStreetMap servers and <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Routing/online_routers">all the online routing services and software use it</a> and usually along side with it we would have <a class="reference external" href="https://github.com/osm-search/Nominatim">Nominatim</a> to do geo[coding-decoding]; translating addresses to/from (latitude - longitude).</p>
+<p>Also be aware of the fact that most of the time if you are taking your dataset over a very big area in the map, the graph parsed from the data by <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> wouldn’t be complete even though there are physical feasible routes that could make the graph complete and connect all the nodes, but the deficiency usually is because of the incomplete <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Relation">relaions</a> and data of <code class="docutils literal notranslate"><span class="pre">osm</span></code> – don’t worry about that now.</p>
+<p>In that case, we will be using <a class="reference external" href="http://project-osrm.org/">OSRM</a> to fill these gaps when needed with the help of some utilities in <code class="docutils literal notranslate"><span class="pre">utilities/src/poi.py</span></code>, it will be used on case studies.</p>
+</div>
+<div class="section" id="using-overpass-ql">
+<h3>Using <code class="docutils literal notranslate"><span class="pre">OverPass</span> <span class="pre">QL</span></code><a class="headerlink" href="#using-overpass-ql" title="Permalink to this headline">¶</a></h3>
+<p>Fire up <a class="reference external" href="http://overpass-turbo.eu/">Overpass turbo</a> and run these scripts and export it as <code class="docutils literal notranslate"><span class="pre">.osm</span></code> files.</p>
+<ul class="simple">
+<li><p><strong>All hospitals around UofT</strong> <span class="xref myst">here</span></p></li>
+<li><p><strong>All Tim Hortons in Canada</strong>  <span class="xref myst">here</span></p></li>
+<li><p><strong>All fast food or restaurant places in London</strong> <span class="xref myst">here</span></p></li>
+</ul>
+<p>It is recurrent problem in writing <code class="docutils literal notranslate"><span class="pre">OverPass</span> <span class="pre">QL</span></code> to find the bounding box of an area, for that we use <a class="reference external" href="http://bboxfinder.com/">bbox finder</a> and don’t forget to change coordinate format to latitude/longitude at the right corner after drawing polygon around the area of interest.</p>
+</div>
+<div class="section" id="using-overpass-turbo-s-wizard">
+<h3>Using <code class="docutils literal notranslate"><span class="pre">Overpass</span> <span class="pre">turbo</span></code>’s Wizard<a class="headerlink" href="#using-overpass-turbo-s-wizard" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://overpass-turbo.eu/">Overpass turbo</a>’s Wizard provides an easy way to auto-generate Overpass QL queries. Wizard syntax is similar to a search engine. An example of Wizard syntax is <code class="docutils literal notranslate"><span class="pre">amenity=hospital</span></code> that generates an Overpass QL query to find all the hospitals in certain region of interest. Hospital locations will be visualized on the map and can downloaded/copied using “Export” button as GeoJSON, GPX, KML, raw OSM data, raw data directly from Overpass API. You can them us <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> to read <code class="docutils literal notranslate"><span class="pre">.osm</span></code> file with <a class="reference external" href="https://osmnx.readthedocs.io/en/stable/osmnx.html?highlight=from%20file#osmnx.graph.graph_from_xml"><code class="docutils literal notranslate"><span class="pre">osmnx.graph_from_xml</span></code></a>.</p>
+<p>The following <code class="docutils literal notranslate"><span class="pre">Overpass</span> <span class="pre">turbo</span></code>’s wizard synatx:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">amenity=restaurant</span> <span class="pre">in</span> <span class="pre">&quot;Toronto,</span> <span class="pre">Canada&quot;</span></code></strong> to find all resturants in City of Toronto.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">amenity=cafe</span> <span class="pre">and</span> <span class="pre">name=&quot;Tim</span> <span class="pre">Hortons&quot;</span></code></strong> to find all Tim Hortons coffee shops.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">(amenity=hospital</span> <span class="pre">or</span> <span class="pre">amenity=school)</span> <span class="pre">and</span> <span class="pre">(type:way)</span></code></strong> to find hospitals and schools with close ways mapped.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">amenity=hospital</span> <span class="pre">and</span> <span class="pre">name~&quot;General</span> <span class="pre">Hospital&quot;</span></code></strong> will find all hospitals with “General Hospital” part of their names.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h1><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p><strong>Contributing:</strong> You have something cool and you want to share it with us? If you got your data by downloading it directly from OpenStreetMaps and did some filtering with <code class="docutils literal notranslate"><span class="pre">osmfilter</span></code>, open a pull request with the details of the data and how you filter it. If you got your data with <a class="reference external" href="http://overpass-turbo.eu/">overpass turbo</a>, please attach your <code class="docutils literal notranslate"><span class="pre">Overpass</span> <span class="pre">QL</span></code> script with the data so we can replicate your results and maybe we can learn a thing or two from your script.</p>
+<hr class="docutils" />
+<div class="section" id="avialable-open-datasets">
+<h2>2. Avialable open datasets<a class="headerlink" href="#avialable-open-datasets" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://download.geofabrik.de/index.html">Geofabrik</a></p></li>
+<li><p><a class="reference external" href="http://www.poi-factory.com/">Factory POI</a></p></li>
+<li><p><a class="reference external" href="https://sedac.ciesin.columbia.edu/data/set/grump-v1-settlement-points">Global Rural-Urban Mapping Project (GRUMP)</a></p></li>
+<li><p><a class="reference external" href="https://www.geonames.org/export/">GeoNames Data</a></p></li>
+<li><p><a class="reference external" href="https://www.toronto.ca/city-government/data-research-maps/open-data/">City of Toronto</a></p></li>
+<li><p><a class="reference external" href="https://www.esri.com/en-us/arcgis/products/arcgis-hub/overview">ArcGIS Hub</a></p></li>
+<li><p><a class="reference external" href="https://geohub.brampton.ca/pages/data">GeoHub City of Brampton</a></p></li>
+<li><p><a class="reference external" href="https://data-markham.opendata.arcgis.com/">City of Markham</a></p></li>
+<li><p><a class="reference external" href="https://opendata.cityofnewyork.us/">New York City</a></p></li>
+<li><p><a class="reference external" href="https://extract.bbbike.org/">BBBike</a></p></li>
+<li><p><a class="reference external" href="https://github.com/tilezen/joerd/tree/master/docs">Mapzen</a></p></li>
+<li><p><a class="reference external" href="https://github.com/openterrain/openterrain/wiki/Terrain-Data">openterrain list</a></p></li>
+<li><p><a class="reference external" href="https://terrain.party/">terrain party</a></p></li>
+<li><p><a class="reference external" href="https://openmaptiles.org/">OpenMapTiles</a></p></li>
+<li><p><a class="reference external" href="https://mdl.library.utoronto.ca/">UofT MDL</a></p></li>
+<li><p><a class="reference external" href="https://gadm.org/index.html">GADM maps and data</a></p></li>
+<li><p><a class="reference external" href="https://www.opentopodata.org/">Elevation data</a></p></li>
+<li><p>…</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="commerically-available-datasets">
+<h2>3. Commerically available datasets<a class="headerlink" href="#commerically-available-datasets" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://planet.openstreetmap.org/">Planet.osm</a></p></li>
+<li><p><a class="reference external" href="https://www.maptiler.com/">MapTiler</a></p></li>
+<li><p><a class="reference external" href="https://www.factual.com/data-set/global-places/">Factual Global Places</a></p></li>
+<li><p><a class="reference external" href="https://docs.traveltime.com/api/overview/introduction">TravelTime API</a></p></li>
+<li><p><a class="reference external" href="https://www.precisely.com/">Precisely</a></p></li>
+<li><p><span class="xref myst">World Cities Database</span></p></li>
+<li><p><a class="reference external" href="https://www.safegraph.com/">SafeGraph</a></p></li>
+<li><p><a class="reference external" href="https://cloud.google.com/maps-platform/">Google Maps Platform</a></p></li>
+<li><p><a class="reference external" href="https://developer.here.com/products/here-sdk">Here Maps for Developers</a></p></li>
+<li><p><a class="reference external" href="https://www.ratio.city/">Ratio City</a></p></li>
+<li><p><a class="reference external" href="https://www.beans.ai/index">100 feet</a></p></li>
+<li><p><a class="reference external" href="https://www.mpac.ca/">MPAC Residential Property Assessments</a></p></li>
+<li><p>…</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="traffic-datasets">
+<h2>Traffic Datasets<a class="headerlink" href="#traffic-datasets" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/Project-OSRM/osrm-backend/wiki/Traffic">traffic per edge</a></p></li>
+<li><p><a class="reference external" href="https://www.toronto.ca/city-government/data-research-maps/open-data/">Toronto Open Data</a></p></li>
+<li><p><a class="reference external" href="https://github.com/opentraffic">Open Traffic</a></p></li>
+<li><p><a class="reference external" href="https://cloud.google.com/maps-platform/routes">Google Routes</a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="parking-tickets-datasets">
+<h2>Parking Tickets Datasets<a class="headerlink" href="#parking-tickets-datasets" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ckan0.cf.opendata.inter.prod-toronto.ca/tr/dataset/parking-tickets">City of Toronto Parking Tickets</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ian-whitestone/toronto-parking-tickets">Toronto Parking Tickets Visualziation</a></p></li>
+<li><p>…</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="public-transport-networks-datasets">
+<h2>Public Transport Networks Datasets<a class="headerlink" href="#public-transport-networks-datasets" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://developers.google.com/transit">Google Transit APIs</a></p></li>
+<li><p>…</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="planned-events-road-work-and-other-temporary-changes-to-the-road-network">
+<h2>Planned events, road work, and other temporary changes to the road network<a class="headerlink" href="#planned-events-road-work-and-other-temporary-changes-to-the-road-network" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://us.one.network/">one.network</a></p></li>
+<li><p>…</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="traffic-crashes-datasets">
+<h2>Traffic Crashes Datasets<a class="headerlink" href="#traffic-crashes-datasets" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.kaggle.com/sobhanmoosavi/us-accidents">A Countrywide Traffic Accident Dataset (2016 - 2020)</a></p></li>
+<li><p>…</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="emission-datasets">
+<h2>Emission Datasets<a class="headerlink" href="#emission-datasets" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.airqualityontario.com/science/data_sets.php">Ontario Air Quality Data Sets</a></p></li>
+<li><p>…</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="environment-datasets">
+<h2>Environment Datasets<a class="headerlink" href="#environment-datasets" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://canadiangis.com/data.php">Canadian Open Geospatial Data</a></p></li>
+<li><p><a class="reference external" href="https://open.canada.ca/data/en/dataset">Government of Canada Open Data Portal</a></p></li>
+<li><p>…</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="mobility-aware-urban-design-active-transportation-modeling-and-access-analysis-for-amenities-and-public-transport">
+<h2>Mobility-aware urban design, active transportation modeling and access analysis for amenities and public transport<a class="headerlink" href="#mobility-aware-urban-design-active-transportation-modeling-and-access-analysis-for-amenities-and-public-transport" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.urbano.io/">Urbano</a></p></li>
+<li><p>…</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="accessibility">
+<h2>Accessibility<a class="headerlink" href="#accessibility" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://wheelmap.org/">Wheelmap</a></p></li>
+<li><p>…</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="open-source-projects">
+<h2>Open Source Projects<a class="headerlink" href="#open-source-projects" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/GIScience">GIScience</a></p></li>
+<li><p>…</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="GettingStarted.html" title="previous page">GettingStarted</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

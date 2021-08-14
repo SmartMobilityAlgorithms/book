@@ -1,0 +1,5 @@
+# in _config.yml
+title: "AI Search Algorithms for Smart Mobility"
+logo: images/book.png
+execute:
+  execute_notebooks: "off"

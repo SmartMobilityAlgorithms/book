@@ -1,0 +1,5 @@
+format: jb-book
+root: index
+chapters:
+- file: content/GettingStarted
+- file: content/Datasets
