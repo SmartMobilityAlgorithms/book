@@ -1,4 +1,4 @@
-# Introduction
+# Getting Started
 
 This repository is meant to be the how and the what of everything.
 
