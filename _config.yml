@@ -1,10 +1,21 @@
 # in _config.yml
 title: "AI Search Algorithms for Smart Mobility"
 logo: images/book.png
+author: Alaa Khamis and Yinan Wang
 execute:
   execute_notebooks: "off"
 sphinx:
   config:
     bibtex_reference_style: label
+    html_theme: sphinx_book_theme
 bibtex_bibfiles:
 - references.bib
+html:
+  extra_footer: |
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
+    <img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a>
+    <span>This work is licensed under a 
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.</span>
+repository:
+  url:  https://github.com/SmartMobilityAlgorithms/book
+  branch: release/updated_content

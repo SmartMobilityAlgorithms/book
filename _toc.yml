@@ -9,5 +9,8 @@ chapters:
 - file: content/GeneticAlgorithms
 - file: content/ParticleSwarmOptimization
 - file: content/AntColonyOptimization
+- file: content/PeopleMobilityProblems
+- file: content/LogisticsProblems
+- file: content/InfrastructureProblems
 - file: content/ToolsAndPythonLibraries
 - file: content/Datasets
