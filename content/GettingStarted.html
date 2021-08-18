@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GettingStarted &#8212; AI Search Algorithms for Smart Mobility</title>
+    <title>Getting Started &#8212; AI Search Algorithms for Smart Mobility</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,14 +37,11 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -54,7 +51,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Datasets" href="Datasets.html" />
+    <link rel="next" title="Introduction to Geographic Data Science" href="IntroductionToGeospatialScience.html" />
     <link rel="prev" title="Introduction" href="../index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -95,7 +92,47 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   GettingStarted
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="IntroductionToGeospatialScience.html">
+   Introduction to Geographic Data Science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="GraphSearchAlgorithms.html">
+   Graph Search Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="TabuSearch.html">
+   Tabu Search
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="SimulatedAnnealing.html">
+   Simulated Annealing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="GeneticAlgorithms.html">
+   Genetic Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ParticleSwarmOptimization.html">
+   Particle Swarm Optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="AntColonyOptimization.html">
+   Ant Colony Optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ToolsAndPythonLibraries.html">
+   Tools and Python Libraries
   </a>
  </li>
  <li class="toctree-l1">
@@ -176,7 +213,7 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   GettingStarted
+   Getting Started
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
@@ -338,8 +375,8 @@
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#completness-of-the-data">
-     Completness of the data
+    <a class="reference internal nav-link" href="#completeness-of-the-data">
+     Completeness of the data
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
@@ -365,8 +402,8 @@
         
               <div>
                 
-  <div class="section" id="gettingstarted">
-<h1>GettingStarted<a class="headerlink" href="#gettingstarted" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <p>This repository is meant to be the how and the what of everything.</p>
 <p><a class="reference external" href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a> <a class="reference external" href="https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity"><img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" /></a> <a class="reference external" href="https://github.com/SmartMobilityAlgorithms/GettingStarted/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/Naereen/StrapDown.js.svg" /></a>
 <a class="reference external" href="https://github.com/SmartMobilityAlgorithms/GettingStarted/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/Naereen/StrapDown.js.svg" /></a>
@@ -408,11 +445,11 @@
 <div class="section" id="introduction-and-quick-overview">
 <h2>Introduction and Quick Overview<a class="headerlink" href="#introduction-and-quick-overview" title="Permalink to this headline">¶</a></h2>
 <p>This organization is meant to accompany ECE1724H S Bio-inspired Algorithms for Smart Mobility course being offered at University of Toronto. This project-based course provides a comprehensive introduction to bio-inspired search algorithms and highlights the power of these computational techniques in solving ill-structured problems in the context of smart mobility.</p>
-<p>The code in all of the notebooks is step-by-step guide for the implementation of the algorithms in the course using actual maps from OpenStreetMaps.</p>
+<p>The code in all of the notebooks a is step-by-step guide for the implementation of the algorithms in the course using actual maps from OpenStreetMaps.</p>
 <div class="section" id="language-choice">
 <h3>Language Choice<a class="headerlink" href="#language-choice" title="Permalink to this headline">¶</a></h3>
-<p>We have choosen <code class="docutils literal notranslate"><span class="pre">python</span></code> as the main and only language as it doesn’t have much jargon and the signal to noise ratio in code is very high; it is almost like pseudocode. <code class="docutils literal notranslate"><span class="pre">Python</span></code> is not the optimal language for scientific computing and especially with large graphs that we extract from maps. All the major routing and navigation engines usually use <code class="docutils literal notranslate"><span class="pre">C++</span></code> or <code class="docutils literal notranslate"><span class="pre">Java</span></code> and most of the authors of the seminal papers in the field usually provide <code class="docutils literal notranslate"><span class="pre">C++</span></code> implementation accompying their papers. What would be the perfect trade-off between <code class="docutils literal notranslate"><span class="pre">python</span></code> and <code class="docutils literal notranslate"><span class="pre">C++</span></code>? <code class="docutils literal notranslate"><span class="pre">Julia</span></code>; it was made with scientific computing in mind and it gives a comparable performance with <code class="docutils literal notranslate"><span class="pre">C++</span></code> and with almost the readability  of <code class="docutils literal notranslate"><span class="pre">python</span></code>.</p>
-<p>Surely, We would love to have <code class="docutils literal notranslate"><span class="pre">Julia</span></code> implementation for the algorithms in so if you want to do so, don’t hesitate to open PR with your <code class="docutils literal notranslate"><span class="pre">Julia</span></code> code and just change the code line by line from <code class="docutils literal notranslate"><span class="pre">Python</span></code> to <code class="docutils literal notranslate"><span class="pre">Julia</span></code>. For programming language benchmarking, see <a class="reference external" href="https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/julia-python3.html">Benchmarks Game</a>.</p>
+<p>We have choosen <code class="docutils literal notranslate"><span class="pre">python</span></code> as the main and only language for the course, as it doesn’t have much jargon and the signal-to-noise ratio in code is very high; it is almost like pseudocode. <code class="docutils literal notranslate"><span class="pre">Python</span></code> is not the optimal language for scientific computing, especially with large graphs that we extract from maps. All the major routing and navigation engines usually use <code class="docutils literal notranslate"><span class="pre">C++</span></code> or <code class="docutils literal notranslate"><span class="pre">Java</span></code> and most of the authors of the seminal papers in the field usually provide <code class="docutils literal notranslate"><span class="pre">C++</span></code> implementations accompanying their papers. What would be the perfect trade-off between <code class="docutils literal notranslate"><span class="pre">python</span></code> and <code class="docutils literal notranslate"><span class="pre">C++</span></code>? <code class="docutils literal notranslate"><span class="pre">Julia</span></code>; it was made with scientific computing in mind and it gives a comparable performance with <code class="docutils literal notranslate"><span class="pre">C++</span></code> and with almost the readability  of <code class="docutils literal notranslate"><span class="pre">python</span></code>.</p>
+<p>We would love to have <code class="docutils literal notranslate"><span class="pre">Julia</span></code> implementations for the algorithms in this course. If you want to do so, don’t hesitate to open a PR with your <code class="docutils literal notranslate"><span class="pre">Julia</span></code> code and just change the code line by line from <code class="docutils literal notranslate"><span class="pre">Python</span></code> to <code class="docutils literal notranslate"><span class="pre">Julia</span></code>. For programming language benchmarking, see <a class="reference external" href="https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/julia-python3.html">Benchmarks Game</a>.</p>
 </div>
 </div>
 <hr class="docutils" />
@@ -421,15 +458,15 @@
 <p>Each repository contains three sections:</p>
 <div class="section" id="algorithms-notebooks">
 <h3>1. Algorithms Notebooks<a class="headerlink" href="#algorithms-notebooks" title="Permalink to this headline">¶</a></h3>
-<p>Here we introduce the algorithms and how to implement them on a real world <code class="docutils literal notranslate"><span class="pre">.osm</span></code> data and we would provide the pseudocode to tune down the noise of programming languages quirks and what to consider and what you should be aware of when implementing these algorithms. These notebooks are complementary for the materials in the lectures.</p>
+<p>Here we introduce the algorithms and how to implement them on a real world <code class="docutils literal notranslate"><span class="pre">.osm</span></code> dataset. We also provide the pseudocode to tune down the noise of programming languages quirks, so be aware of language-specific limitations and conventions. These notebooks are complementary to the materials provided in the lectures.</p>
 </div>
 <div class="section" id="toy-problems-notebooks">
 <h3>2. Toy Problems Notebooks<a class="headerlink" href="#toy-problems-notebooks" title="Permalink to this headline">¶</a></h3>
-<p>These are more or less like the algorithm notebooks but with more focus on solving toy problems such as travelling salesman problem (TSP) or finding how to optimally pave a muddy city using minimum spanning tree (MST).</p>
+<p>These are more or less like the algorithm notebooks but with more focus on solving toy problems, such as the Travelling Salesman Problem (TSP), or finding how to optimally pave a muddy city using minimum spanning trees (MST).</p>
 </div>
 <div class="section" id="case-studies-notebooks">
 <h3>3. Case Studies Notebooks<a class="headerlink" href="#case-studies-notebooks" title="Permalink to this headline">¶</a></h3>
-<p>These are real world problems found in the literature and potential course projects. We usually need to exert some efforts to get the data and think about how to solve the problem.</p>
+<p>These are real world problems found in the literature, and can be potential course projects. We usually need to exert some efforts to get the data and think about how to solve these problem.</p>
 </div>
 </div>
 <hr class="docutils" />
@@ -437,47 +474,47 @@
 <h2>Libraries Used<a class="headerlink" href="#libraries-used" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="osmnx">
 <h3>osmnx<a class="headerlink" href="#osmnx" title="Permalink to this headline">¶</a></h3>
-<p>This library was developed by <a class="reference external" href="https://geoffboeing.com/">geoff boeing</a> from University of Southren California to ease the process of retrieving and manipulating the data from OpenStreetMap and make it easier to be interpolated into Python applications. It offeres the ability to download the data (filtered) from OSM and returns the network as networkx graph data structure. The library is really big to be explained entirely in a README file but you can check the official website from <a class="reference external" href="https://osmnx.readthedocs.io/en/stable/">here</a> and follow Professor Geoff Boeing website as he posts regularly on the recent updates and trends about osmnx and the field.</p>
+<p>This library was developed by <a class="reference external" href="https://geoffboeing.com/">Geoff Boeing</a> from the University of Southern California to ease the process of retrieving and manipulating the data from OpenStreetMap, and to make it easier to be interpolated into Python applications. It offers the ability to download the data (filtered) from OSM and returns the network as <code class="docutils literal notranslate"><span class="pre">networkx</span></code> graph data structure. The library is too complicated to be explained fully in a README file, but you can check the <a class="reference external" href="https://osmnx.readthedocs.io/en/stable/">official website</a> and follow Professor Boeing’s website as he posts regularly on recent updates and trends about osmnx and the field in general.</p>
 </div>
 <div class="section" id="networkx">
 <h3>networkx<a class="headerlink" href="#networkx" title="Permalink to this headline">¶</a></h3>
-<p>This is one of the pillars of Python programming and scientific computing besides numpy and scipy. Its main and only goal is supporting graphs data structures and the associated algorithms like shortest path and networks flow and optimization. <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> returns the map as <code class="docutils literal notranslate"><span class="pre">networkx</span></code> network so it is possible to use all the library’s functionalities on the maps obtained from OSM. Networkx has books written explaining its API’s and we wholeheartedly recommend <a class="reference external" href="https://www.amazon.com/Complex-Network-Analysis-Python-Recognize/dp/1680502697">Complex Network Analysis in Python: Recognize - Construct - Visualize - Analyze - Interpret</a> if you want to dive into it. Information about <code class="docutils literal notranslate"><span class="pre">networkx</span></code> is also available <a class="reference external" href="https://networkx.github.io/">here</a>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">networkx</span></code> has monopoly over the field of network analysis for many years now but sometimes scalability of networkx is not the answer to your problem. If your network has tens of millions of nodes, it gets really ugly because <code class="docutils literal notranslate"><span class="pre">networkx</span></code> is still just <code class="docutils literal notranslate"><span class="pre">python</span></code> library and <code class="docutils literal notranslate"><span class="pre">python</span></code> can’t handle these millions of nodes and would run out of memory and give you segmentation fault.</p>
-<p>You can optimize <code class="docutils literal notranslate"><span class="pre">python</span></code> by using <code class="docutils literal notranslate"><span class="pre">__slots__</span></code> instead of <code class="docutils literal notranslate"><span class="pre">__dict__</span></code>, discussed <a class="reference external" href="https://stackoverflow.com/questions/472000/usage-of-slots#:~:text=The%20proper%20use%20of%20__,one%20dict%20for%20every%20object.%5D">here</a> and you can use arrays and all of that, but still you would have problems.</p>
-<p>What to do now? we do <code class="docutils literal notranslate"><span class="pre">C++</span></code>, you can use <a class="reference external" href="https://graph-tool.skewed.de/">graph-tool</a> which was built over the <a class="reference external" href="https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/index.html">boost-graph</a> libraries or you can use <a class="reference external" href="https://github.com/igraph">igraph</a> which is written in C. But you got to write your own parser for OpenStreetMaps data and understand its file format, fortunately this is not complicated.</p>
+<p>This is one of the pillars of Python programming and scientific computing, besides <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">scipy</span></code>. Its main and only goal is supporting graph data structures and the associated algorithms like shortest path and networks flow and optimization. <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> returns the map as <code class="docutils literal notranslate"><span class="pre">networkx</span></code> network so it is possible to use all the library’s functions on the maps obtained from OSM. <code class="docutils literal notranslate"><span class="pre">networkx</span></code> has books written explaining its API’s and we wholeheartedly recommend <a class="reference external" href="https://www.amazon.com/Complex-Network-Analysis-Python-Recognize/dp/1680502697">Complex Network Analysis in Python: Recognize - Construct - Visualize - Analyze - Interpret</a> if you want to dive into it. Information about <code class="docutils literal notranslate"><span class="pre">networkx</span></code> is also available <a class="reference external" href="https://networkx.github.io/">here</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">networkx</span></code> has a monopoly over the field of network analysis for many years now, but the scalability of <code class="docutils literal notranslate"><span class="pre">networkx</span></code> may be an issue. If your network has tens of millions of nodes, it can get really ugly because <code class="docutils literal notranslate"><span class="pre">networkx</span></code> is still just a <code class="docutils literal notranslate"><span class="pre">python</span></code> library, and <code class="docutils literal notranslate"><span class="pre">python</span></code> can’t handle these millions of nodes and will run out of memory, and give you a segmentation fault.</p>
+<p>You can optimize <code class="docutils literal notranslate"><span class="pre">python</span></code> by using <code class="docutils literal notranslate"><span class="pre">__slots__</span></code> instead of <code class="docutils literal notranslate"><span class="pre">__dict__</span></code>, something which is discussed <a class="reference external" href="https://stackoverflow.com/questions/472000/usage-of-slots#:~:text=The%20proper%20use%20of%20__,one%20dict%20for%20every%20object.%5D">here</a>. You can also use arrays or something similar, but then other problems would arise.</p>
+<p>Are there any alternatives? In <code class="docutils literal notranslate"><span class="pre">C++</span></code>, you can use <a class="reference external" href="https://graph-tool.skewed.de/">graph-tool</a>, which was built over the <a class="reference external" href="https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/index.html">boost-graph</a> libraries, or you can use <a class="reference external" href="https://github.com/igraph">igraph</a> which is written in C. But for these you will need to write your own parser for OpenStreetMaps data and understand its file format. Fortunately, this is not too complicated.</p>
 </div>
 <div class="section" id="osrm">
 <h3>osrm<a class="headerlink" href="#osrm" title="Permalink to this headline">¶</a></h3>
-<p>Sometimes in a lot of problems, you are not concerned about finding the route between two places and want to have the routes as given. <a class="reference external" href="http://project-osrm.org/">OSRM</a> does exactly that; it is a routing engine with an API that you would feed with coordinates and gives you the fastest route between them. It has other useful capabilities like doing travelling salesman and solving all pairs shortest path.</p>
+<p>For some problems, determining the route between multiple points is not the main focus, and it is acceptable to use a pre-generated route. <a class="reference external" href="http://project-osrm.org/">OSRM</a> does exactly that; it is a routing engine with an API that you feed with coordinates, and in return it gives you the fastest route between them. It has other useful capabilities like doing Travelling Salesman and solving all pairs shortest path.</p>
 </div>
 <div class="section" id="geopandas">
 <h3>geopandas<a class="headerlink" href="#geopandas" title="Permalink to this headline">¶</a></h3>
-<p>It is an extension to pandas to handle geospatial data by extending the datatypes of pandas and be able to query and manipulate spatial data otherwise you would need to deal with <a class="reference external" href="https://en.wikipedia.org/wiki/Spatial_database">spatial databases</a> for these operations, like how to properly and efficiently represent polygons and curved lines and query them without much overhead (for database folks, the indexing of spatial data is different than normal data).</p>
+<p>It is an extension to pandas that handles geospatial data by extending the datatypes of pandas, and the ability to query and manipulate spatial data. Alternatively, you would need to deal with <a class="reference external" href="https://en.wikipedia.org/wiki/Spatial_database">spatial databases</a> for these operations, like how to properly and efficiently represent polygons and curved lines and query them without too much overhead (for database folks, the indexing of spatial data is different than normal data).</p>
 </div>
 <div class="section" id="shapely">
 <h3>shapely<a class="headerlink" href="#shapely" title="Permalink to this headline">¶</a></h3>
-<p>It provides us with datatypes to represent geometric objects that geopandas exploit to represent spatial data.</p>
+<p>It provides us with datatypes to represent geometric objects that geopandas exploits to represent spatial data.</p>
 </div>
 <div class="section" id="nominatim">
 <h3>nominatim<a class="headerlink" href="#nominatim" title="Permalink to this headline">¶</a></h3>
-<p>It is used to look up a location from a textual description (the official website description). This is called geocoding and decoding which is translating address of a location to its coordinates.</p>
+<p>It is used to look up a location from a textual description (the official website description). This is called geocoding and decoding, which is translating address of a location to its coordinates (and vice-versa).</p>
 </div>
 <div class="section" id="visualization-libraries">
 <h3>visualization libraries<a class="headerlink" href="#visualization-libraries" title="Permalink to this headline">¶</a></h3>
-<p>There are <b>many</b> libraries for visualization, but we are mainly using <a class="reference external" href="https://python-visualization.github.io/folium/">folium</a> and <a class="reference external" href="https://ipyleaflet.readthedocs.io/en/latest/">ipyleaflet</a> and both of them are just wrapper around <a class="reference external" href="https://github.com/Leaflet/Leaflet">leaflet.js</a> which is the go-to library for any kind of map visualization in almost all web and mobile applications.</p>
-<p>Each of <code class="docutils literal notranslate"><span class="pre">ipyleaflet</span></code> and <code class="docutils literal notranslate"><span class="pre">folium</span></code> were both created to serve the same purpose, and you don’t need to dwell so much on how to use them if you don’t want to as we have provided wrapper around them on  <code class="docutils literal notranslate"><span class="pre">utilities/utils/viz.py</span></code> that contains two functions: one for drawing a map with our graph overlaied on it and and the other function is for drawing a route between two places/nodes with markers marking the source and destination. But you need to know the difference between them, <code class="docutils literal notranslate"><span class="pre">folium</span></code> is much lightweight than <code class="docutils literal notranslate"><span class="pre">ipyleaflet</span></code> but on the other hand <code class="docutils literal notranslate"><span class="pre">ipyleaflet</span></code> has more options and very niche capabitilies but <code class="docutils literal notranslate"><span class="pre">ipyleaflet</span></code> doesn’t work on google colab unlike <code class="docutils literal notranslate"><span class="pre">folium</span></code>; see <a class="reference external" href="https://github.com/googlecolab/colabtools/issues/60">googlecolab/colabtools#60</a> for more details.</p>
+<p>There are <b>many</b> libraries for visualization, but we are mainly using <a class="reference external" href="https://python-visualization.github.io/folium/">folium</a> and <a class="reference external" href="https://ipyleaflet.readthedocs.io/en/latest/">ipyleaflet</a>. Both of them are just wrappers around <a class="reference external" href="https://github.com/Leaflet/Leaflet">leaflet.js</a>, which is the go-to library for any kind of map visualization in almost all web and mobile applications.</p>
+<p>Both of <code class="docutils literal notranslate"><span class="pre">ipyleaflet</span></code> and <code class="docutils literal notranslate"><span class="pre">folium</span></code> were created to serve the same purpose, and you don’t need to dwell so much on how to use them if you don’t want to, as we have provided wrappers around them in  <code class="docutils literal notranslate"><span class="pre">utilities/utils/viz.py</span></code>. This contains two functions: one for drawing a map with our graph overlaid on it, and and the other function is for drawing a route between two places/nodes with markers marking the source and destination. At the very least, you should be able to recognize the differences between the two wrappers. <code class="docutils literal notranslate"><span class="pre">folium</span></code> is much more lightweight than <code class="docutils literal notranslate"><span class="pre">ipyleaflet</span></code>, but on the other hand <code class="docutils literal notranslate"><span class="pre">ipyleaflet</span></code> has more options and very niche capabitilies. <code class="docutils literal notranslate"><span class="pre">ipyleaflet</span></code> doesn’t work on Google Colab, unlike <code class="docutils literal notranslate"><span class="pre">folium</span></code>; see <a class="reference external" href="https://github.com/googlecolab/colabtools/issues/60">googlecolab/colabtools#60</a> for more details.</p>
 <p>There are other visualization libraries that you should be aware of:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://hvplot.holoviz.org/user_guide/Geographic_Data.html">hvplot</a>, if you want to get going through your analysis with geopandas and dataframes and all that. There are no place for that but you need to be aware of the significance of working with vanilla <a class="reference external" href="https://geopandas.org/">GeoPandas</a>, and that <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> <a class="reference external" href="https://osmnx.readthedocs.io/en/stable/osmnx.html#module-osmnx.projection">supports that</a> and yields two dataframes: one for all your nodes and one for all the edges.</p></li>
-<li><p><a class="reference external" href="https://github.com/jwass/mplleaflet">mplleaflet</a>, which is another <code class="docutils literal notranslate"><span class="pre">leaflet</span></code> based library, but it plays really nice with <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.</p></li>
+<li><p><a class="reference external" href="https://hvplot.holoviz.org/user_guide/Geographic_Data.html">hvplot</a>, if you want to get going through your analysis with geopandas and dataframes and all that. You should be aware of the significance of working with vanilla <a class="reference external" href="https://geopandas.org/">GeoPandas</a>, and that <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> <a class="reference external" href="https://osmnx.readthedocs.io/en/stable/osmnx.html#module-osmnx.projection">supports that</a> and yields two dataframes: one for all your nodes and one for all the edges.</p></li>
+<li><p><a class="reference external" href="https://github.com/jwass/mplleaflet">mplleaflet</a>, which is another <code class="docutils literal notranslate"><span class="pre">leaflet</span></code>-based library, but it plays really nicely with <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.</p></li>
 </ul>
 </div>
 <div class="section" id="tqdm">
 <h3>tqdm<a class="headerlink" href="#tqdm" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://github.com/tqdm/tqdm">This</a> library would help us to see the progress of or algorithm on the runtime. We would use it in all of the other repositories to see how much the speed of the algorithm in traversing the given map and how many nodes are expanded per second. It works on any python iterable structure.</p>
+<p><a class="reference external" href="https://github.com/tqdm/tqdm">This library</a> helps us to see the progress of our algorithm while it is running. We use it in all of the other repositories to track the speed of the algorithm in traversing the given map, and how many nodes are expanded per second. It works on any python iterable structure.</p>
 <div class="section" id="note">
 <h4>Note<a class="headerlink" href="#note" title="Permalink to this headline">¶</a></h4>
-<p>Most of these libraries uses coordinates of a certain place to do its job, but please take into account that some of them accept the coordinates as (longtitude, latitude) and others as (latitude, longtitude).</p>
+<p>Most of these libraries use coordinates as input and/or output, but please take into account that some of them accept the coordinates as (longtitude, latitude) and others as (latitude, longtitude).</p>
 </div>
 </div>
 </div>
@@ -496,7 +533,7 @@ This is a very short introduction about the capabilities of <code class="docutil
 <li><p><strong>Osmnx/Geopandas/Shapely</strong></br>
 How to download data from <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> and see all the graph properties</p></li>
 <li><p><strong>Generation of Initial Population</strong></br>
-How to generate initial population for P-metaheruristics in continous nad combinatorial problems. In the generation of the initial population, the main criterion to deal with is diversification. If the initial population is not well diversified, a premature convergence can occur. For instance, this may happen if the initial population is generated using a greedy heuristic or a S-metaheuristic (e.g., local search, simulated annealing) for each solution of the population.</p></li>
+How to generate initial population for P-metaheruristics in continous and combinatorial problems. In the generation of the initial population, the main criterion to deal with is diversification. If the initial population is not well diversified, a premature convergence can occur. For instance, this may happen if the initial population is generated using a greedy heuristic or a S-metaheuristic (e.g., local search, simulated annealing) for each solution of the population.</p></li>
 </ol>
 <p>Use binder, its icon is at the top, to launch the repository and run the notebooks remotely.</p>
 </div>
@@ -507,100 +544,64 @@ How to generate initial population for P-metaheruristics in continous nad combin
 <hr class="docutils" />
 <div class="section" id="linux">
 <h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
-<p>You have two way either to use <code class="docutils literal notranslate"><span class="pre">conda</span></code> or <code class="docutils literal notranslate"><span class="pre">pip</span></code> to get everything working, but <code class="docutils literal notranslate"><span class="pre">conda</span></code> usually messes up the system dependencies on linux and complicate easy things and it is a bad idea to use it.</p>
+<p>You have two ways (either to use <code class="docutils literal notranslate"><span class="pre">conda</span></code> or <code class="docutils literal notranslate"><span class="pre">pip</span></code>) to get everything working, but <code class="docutils literal notranslate"><span class="pre">conda</span></code> usually messes up the system dependencies on Linux and complicates easy things, so we recommend using <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
 </br>
-<p>If you still want to use <code class="docutils literal notranslate"><span class="pre">conda</span></code>, you can just execute the following command.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install -c conda-forge osmnx
-</pre></div>
-</div>
+<p>If you still want to use <code class="docutils literal notranslate"><span class="pre">conda</span></code>, you can just execute the following command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">osmnx</span></code></p>
 <p>and that is it.</p>
 </br>
-<p>If else, you need to get <code class="docutils literal notranslate"><span class="pre">pip</span></code> package manager installed to use it to fetch the other libraries.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install python3-pip
-</pre></div>
-</div>
-<p>Unfortunately we just can’t “pip” our way through the dependencies because <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> depends on library called <code class="docutils literal notranslate"><span class="pre">Rtree</span></code> which needs to be <em>made</em> using this command</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ apt-get install libspatialindex-c4v5
-</pre></div>
-</div>
+<p>Otherwise, you will need to get <code class="docutils literal notranslate"><span class="pre">pip</span></code> package manager installed to use it to fetch the other libraries.</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">python3-pip</span></code></p>
+<p>Unfortunately we just can’t “pip” our way through the dependencies because <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> depends on a library called <code class="docutils literal notranslate"><span class="pre">Rtree</span></code>, which needs to be <em>made</em> using this command</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">libspatialindex-c4v5</span></code></p>
 <p>and then after that we can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to get osmnx</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip3 install osmnx
-</pre></div>
-</div>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">osmnx</span></code></p>
 <p>To test that everything is working, issue the following command</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -c &quot;import osmnx&quot;
-</pre></div>
-</div>
-<p>We do some animations every now and then with <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> which needs <code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code> to construct the video, so let’s install it</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install ffmpeg
-</pre></div>
-</div>
-<p>If there is any error in installation, the terminal will whine about missing module and whatnot. If so, open an issue and we will walk through the problem together.</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python3</span> <span class="pre">-c</span> <span class="pre">&quot;import</span> <span class="pre">osmnx&quot;</span></code></p>
+<p>We do some animations every now and then with <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, which needs <code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code> to construct the video. Install it using:</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">ffmpeg</span></code></p>
+<p>If there is any error in installation, the terminal will complain about missing modules and whatnot. If so, open an issue and we will walk through the problem together.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="macos">
 <h3>MacOS<a class="headerlink" href="#macos" title="Permalink to this headline">¶</a></h3>
-<p>That exact same steps as above but instead of using <code class="docutils literal notranslate"><span class="pre">apt</span></code>, you are going to use <code class="docutils literal notranslate"><span class="pre">brew</span></code> and that if you want to do the <code class="docutils literal notranslate"><span class="pre">pip</span></code> way. If you want to use <code class="docutils literal notranslate"><span class="pre">conda</span></code>, it would be the exact same command.</p>
-<p>EXCEPT in installing <code class="docutils literal notranslate"><span class="pre">libspatialindex-c4v5</span></code>, you will need to issue the following command instead</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ brew install spatialindex
-</pre></div>
-</div>
+<p>Follow the exact same steps as above, but instead of using <code class="docutils literal notranslate"><span class="pre">apt</span></code>, you are going to use <code class="docutils literal notranslate"><span class="pre">brew</span></code> (if you want to uses the <code class="docutils literal notranslate"><span class="pre">pip</span></code> method). If you want to use <code class="docutils literal notranslate"><span class="pre">conda</span></code>, it would be the exact same command as above,</p>
+<p><strong>EXCEPT</strong> when installing <code class="docutils literal notranslate"><span class="pre">libspatialindex-c4v5</span></code>, you will need to issue the following command instead:</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">brew</span> <span class="pre">install</span> <span class="pre">spatialindex</span></code></p>
 </div>
 <hr class="docutils" />
 <div class="section" id="windows">
 <h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
-<p>Create a conda environment</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="o">&gt;</span> <span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">uoft</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.7</span>
-</pre></div>
-</div>
-<p>Activate the environment</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="o">&gt;</span> <span class="n">conda</span> <span class="n">activate</span> <span class="n">uoft</span>
-</pre></div>
-</div>
-<p>Install the following packages</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="o">&gt;</span> <span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">rtree</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="o">&gt;</span> <span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">osmnx</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="o">&gt;</span> <span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">ipyleaflet</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="o">&gt;</span> <span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">folium</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="o">&gt;</span> <span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">tqdm</span>
-</pre></div>
-</div>
+<p>Create a conda environment:
+<code class="docutils literal notranslate"><span class="pre">\&gt;</span> <span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">uoft</span> <span class="pre">python=3.7</span></code></p>
+<p>Activate the environment:
+<code class="docutils literal notranslate"><span class="pre">\&gt;</span> <span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">uoft</span></code></p>
+<p>Install the following packages:</p>
+<p><code class="docutils literal notranslate"><span class="pre">\&gt;</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">rtree</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">\&gt;</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">osmnx</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">\&gt;</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">ipyleaflet</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">\&gt;</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">folium</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">\&gt;</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">tqdm</span></code></p>
 <p>and don’t forget to install ffmpeg from <a class="reference external" href="https://www.gyan.dev/ffmpeg/builds/">here</a></p>
 </div>
 <hr class="docutils" />
 <div class="section" id="jupyter-notebook">
 <h3>Jupyter Notebook<a class="headerlink" href="#jupyter-notebook" title="Permalink to this headline">¶</a></h3>
-<p>All the codes in the repositories are in jupyter notebooks so, we need to install that to launch the environment.</br>
-For <code class="docutils literal notranslate"><span class="pre">conda</span></code> users and such
+<p>All the code in the repositories are in Jupyter Notebooks , so we need to install that to launch the environment.</br>
+For <code class="docutils literal notranslate"><span class="pre">conda</span></code> users:
 </br></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">jupyterlab</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">notebook</span>
-</pre></div>
-</div>
+<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">jupyterlab</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">notebook</span></code></p>
 </br>
-<p>For <code class="docutils literal notranslate"><span class="pre">pip</span></code> people
+<p>For <code class="docutils literal notranslate"><span class="pre">pip</span></code> users:
 </br></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">jupyterlab</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">notebook</span>
-</pre></div>
-</div>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jupyterlab</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">notebook</span></code></p>
 <hr class="docutils" />
 <div class="section" id="id1">
 <h4>Note<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
-<p>Things can go wrong very easily when you install the libraries because of building <code class="docutils literal notranslate"><span class="pre">Rtree</span></code> and you can mess up your whole <code class="docutils literal notranslate"><span class="pre">python</span></code> environment if you played with <code class="docutils literal notranslate"><span class="pre">pip</span></code> and <code class="docutils literal notranslate"><span class="pre">conda</span></code> at the same time.</p>
-<p>Don’t hesitate to open an issue if any thing comes up with you.</p>
+<p>Things can go wrong very easily when you install the libraries because of building <code class="docutils literal notranslate"><span class="pre">Rtree</span></code>, and you can mess up your whole <code class="docutils literal notranslate"><span class="pre">python</span></code> environment if you played with <code class="docutils literal notranslate"><span class="pre">pip</span></code> and <code class="docutils literal notranslate"><span class="pre">conda</span></code> at the same time.</p>
+<p>Don’t hesitate to open an issue if any issues arise during the installation phase.</p>
 </div>
 </div>
 </div>
@@ -609,55 +610,57 @@ For <code class="docutils literal notranslate"><span class="pre">conda</span></c
 <h2>OpenStreetMaps Data Model<a class="headerlink" href="#openstreetmaps-data-model" title="Permalink to this headline">¶</a></h2>
 <p>The data model of OpenStreetMaps is surprisingly simple and consists only of three <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Elements">elements</a>: </br></p>
 <ol class="simple">
-<li><p>Node</br>
-represents a specific point on the earth’s surface defined by its latitude and longitude</p></li>
-<li><p>Way</br>
-is an ordered list of between 2 and 2,000 nodes that define a polyline. Ways are used to represent linear features such as rivers and roads</p></li>
-<li><p>Relation</br>
-A relation is a multi-purpose data structure that documents a relationship between two or more data elements (nodes, ways, and/or other relations). Examples include:</p></li>
-</ol>
+<li><p><code class="docutils literal notranslate"><span class="pre">Node</span></code> represents a specific point on the earth’s surface defined by its latitude and longitude</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Way</span></code> is an ordered list of between 2 and 2,000 nodes that define a polyline. Ways are used to represent linear features such as rivers and roads</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Relation</span></code> is a multi-purpose data structure that documents a relationship between two or more data elements (nodes, ways, and/or other relations). Examples include:</p>
 <ul class="simple">
 <li><p>A route relation, which lists the ways that form a major (numbered) highway, a cycle route, or a bus route.</p></li>
-<li><p>A turn restriction that says you can’t turn from one way into another way.</p></li>
+<li><p>A turn restriction that describes if a turn can be made from one way onto another.</p></li>
 <li><p>A multipolygon that describes an area (whose boundary is the ‘outer way’) with holes (the ‘inner ways’).</p></li>
 </ul>
+</li>
+</ol>
 </div>
 </div>
 <div class="section" id="id2">
 <h1><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
-<p>All the above can be found easily on the linked elements page, but there are things you should be aware of: All ID’s of the same element type are unique globally, but you can find ID of Way the same as the ID of Node and that is allowed.</br>Ways and Relations are made by listing and referring to the ID’s of the Nodes that constitute them.</p>
+<p>All of the above can be found easily on the linked elements page, but there are two things you should be aware of:</p>
+<ol class="simple">
+<li><p>All ID’s of the same element type are unique globally, but they are not unique across element types (you can find a <code class="docutils literal notranslate"><span class="pre">Way</span></code> with the same ID as a <code class="docutils literal notranslate"><span class="pre">Node</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Ways</span></code> and <code class="docutils literal notranslate"><span class="pre">Relations</span></code> are made by listing and referring to the ID’s of the <code class="docutils literal notranslate"><span class="pre">Nodes</span></code> that constitute them.</p></li>
+</ol>
 <hr class="docutils" />
 <div class="section" id="getting-the-data">
 <h2>Getting the data<a class="headerlink" href="#getting-the-data" title="Permalink to this headline">¶</a></h2>
-<p>There are many ways to get the data including using <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> directly and get your data in a very clean way, but in some situations you need to have more control over the data and need to tune it and alter it in ways that <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> can’t do. So we need to get down to get the data from the original source of OpenStreetMaps and download the data directly and after that we let <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> parse it.</br></p>
+<p>There are many ways to get the data, including using <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> directly to get your data in a very clean way, but in some situations you may need to have more control over the data, tuning it and altering it in ways that <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> does not support. For this we need to get the data from the original source of OpenStreetMaps and download the data directly, and let <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> parse it afterwards.</br></p>
 <p>Generally there are two ways of getting the data from OpenStreetMaps:</p>
 <ol class="simple">
-<li><p>Download the data in its vanilla form and structure straight out of OpenStreetMaps website and use tools like <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmfilter">osmfilter</a>(hard way and not widely used in practice) to tune it as you want and pass it to <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> in <code class="docutils literal notranslate"><span class="pre">python</span></code> code and that is it.</p></li>
-<li><p>Use OpenStreetMaps API which is called Overpass API and get your data and filter it on the fly and can be used from <code class="docutils literal notranslate"><span class="pre">Python</span></code> and <code class="docutils literal notranslate"><span class="pre">Javascript</span></code>.</p></li>
+<li><p>Download the data in its vanilla form and structure straight out of OpenStreetMaps’ website and use tools like <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmfilter">osmfilter</a> (hard way and not widely used in practice) to tune it as you want and pass it to <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> in <code class="docutils literal notranslate"><span class="pre">python</span></code> code.</p></li>
+<li><p>Use OpenStreetMaps API (<code class="docutils literal notranslate"><span class="pre">Overpass</span> <span class="pre">API</span></code>) and get your data and filter it on the fly. This can be used from <code class="docutils literal notranslate"><span class="pre">Python</span></code> and <code class="docutils literal notranslate"><span class="pre">Javascript</span></code>.</p></li>
 </ol>
 </div>
 </div>
 <div class="section" id="id3">
 <h1><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h1>
-<p>Check <a class="reference external" href="https://github.com/SmartMobilityAlgorithms/Datasets">Datasets</a> in which we discuss in enough details how to use Overpass API.</p>
+<p>Take a look at <a class="reference external" href="https://github.com/SmartMobilityAlgorithms/Datasets">Datasets</a>, in which we discuss in detail how to use Overpass API.</p>
 </div>
 <div class="section" id="id4">
 <h1><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="completness-of-the-data">
-<h2>Completness of the data<a class="headerlink" href="#completness-of-the-data" title="Permalink to this headline">¶</a></h2>
-<p>There are some things that you need to be aware of: the data from OpenStreetMaps are not complete, not in the sense that there are major uncharted areas of the earth but the nodes of the same area usually are not grouped properly so you can have two places with obvious and feasible route between them but the two nodes are not related in any way in the <code class="docutils literal notranslate"><span class="pre">.osm</span></code> file and there is no <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Way">way</a>/<a class="reference external" href="https://wiki.openstreetmap.org/wiki/Relation">relation</a> between these nodes, so <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> parser put them in different graph component at this point we would go to use <code class="docutils literal notranslate"><span class="pre">osrm</span></code> to find the route between these nodes and make the graph complete.</p>
+<div class="section" id="completeness-of-the-data">
+<h2>Completeness of the data<a class="headerlink" href="#completeness-of-the-data" title="Permalink to this headline">¶</a></h2>
+<p>The data from OpenStreetMaps is not “complete”, not in the sense that there are major uncharted areas of the earth, but that the nodes of the same area are usually not grouped correctly. You can have two places with obvious and feasible routes between them but the two nodes are not related in any way in the <code class="docutils literal notranslate"><span class="pre">.osm</span></code> file and there is no <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Way">way</a>/<a class="reference external" href="https://wiki.openstreetmap.org/wiki/Relation">relation</a> between these nodes, so <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> parser will place them in different graph components. For these instances, we can use <code class="docutils literal notranslate"><span class="pre">osrm</span></code> to find the route between these nodes and make the graph complete.</p>
 <p>You can read more about that completness of OpenStreetMaps data here:</p>
 <ol class="simple">
-<li><p><a class="reference external" href="https://wiki.openstreetmap.org/wiki/Completeness">Completness</a></p></li>
-<li><p><a class="reference external" href="https://wiki.openstreetmap.org/wiki/ONS_Completeness_Metrics">Completness Metrics</a></p></li>
+<li><p><a class="reference external" href="https://wiki.openstreetmap.org/wiki/Completeness">Completeness</a></p></li>
+<li><p><a class="reference external" href="https://wiki.openstreetmap.org/wiki/ONS_Completeness_Metrics">Completeness Metrics</a></p></li>
 </ol>
 </div>
 <hr class="docutils" />
 <div class="section" id="relevant-tools">
 <h2>Relevant Tools<a class="headerlink" href="#relevant-tools" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li><p>Developing web/mobile application and you want to get really fancy with your maps, you have <a class="reference external" href="https://openlayers.org/">Open layers</a> which is the industry standard for that.</p></li>
-<li><p>Traffic beyond just max speed and duration? <a class="reference external" href="https://github.com/Project-OSRM/osrm-backend/wiki/Traffic">traffic per edge</a> or <a class="reference external" href="https://github.com/opentraffic">Open traffic</a>.</p></li>
+<li><p>If you are developing a web/mobile application and you want to get really fancy with your maps, you have <a class="reference external" href="https://openlayers.org/">Open layers</a> which is the industry standard for webmaps.</p></li>
+<li><p>Do you want traffic data beyond just max speed and duration? Check out <a class="reference external" href="https://github.com/Project-OSRM/osrm-backend/wiki/Traffic">traffic per edge</a> or <a class="reference external" href="https://github.com/opentraffic">Open traffic</a>.</p></li>
 <li><p><a class="reference external" href="https://towardsdatascience.com/4-must-have-jupyterlab-extensions-for-geospatial-data-science-f3cf7822de4b">JupyterLab Extensions for Geospatial Data science</a>.</p></li>
 <li><p><a class="reference external" href="https://github.com/mocnik-science/osm-python-tools">OSMPythonTools</a> is a well-written package to query OSM services.</p></li>
 <li><p><a class="reference external" href="https://deck.gl/">deck.gl</a></p></li>
@@ -699,7 +702,7 @@ A relation is a multi-purpose data structure that documents a relationship betwe
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="../index.html" title="previous page">Introduction</a>
-    <a class='right-next' id="next-link" href="Datasets.html" title="next page">Datasets</a>
+    <a class='right-next' id="next-link" href="IntroductionToGeospatialScience.html" title="next page">Introduction to Geographic Data Science</a>
 
         </div>
         
