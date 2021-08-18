@@ -3,3 +3,8 @@ title: "AI Search Algorithms for Smart Mobility"
 logo: images/book.png
 execute:
   execute_notebooks: "off"
+sphinx:
+  config:
+    bibtex_reference_style: label
+bibtex_bibfiles:
+- references.bib
