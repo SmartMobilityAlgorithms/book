@@ -1,15 +1,6 @@
 # Getting Started
 
-This repository is meant to be the how and the what of everything.
-
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity) [![GitHub contributors](https://img.shields.io/github/contributors/Naereen/StrapDown.js.svg)](https://github.com/SmartMobilityAlgorithms/GettingStarted/graphs/contributors) 
-[![GitHub issues](https://img.shields.io/github/issues/Naereen/StrapDown.js.svg)](https://github.com/SmartMobilityAlgorithms/GettingStarted/issues) 
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/SmartMobilityAlgorithms/GettingStarted/pulls)
-[![Gitter](https://badges.gitter.im/SmartMobilityAlgorithms/community.svg)](https://gitter.im/SmartMobilityAlgorithms/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/SmartMobilityAlgorithms/GettingStarted/master)
-
-
-### Contents
+## Contents
 
 1.  [Introduction and Quick Overview](#introduction-and-quick-overview) 
 
@@ -43,16 +34,16 @@ This repository is meant to be the how and the what of everything.
 
 ## Introduction and Quick Overview
 
-This organization is meant to accompany ECE1724H S Bio-inspired Algorithms for Smart Mobility course being offered at University of Toronto. This project-based course provides a comprehensive introduction to bio-inspired search algorithms and highlights the power of these computational techniques in solving ill-structured problems in the context of smart mobility.
+This Jupyter Book is meant to accompany the "AI Search Algorithms for Smart Mobility" book by Dr. Alaa Khamis and Yinan Wang. The book provides a comprehensive introduction to bio-inspired search algorithms and highlights the power of these computational techniques in solving ill-structured problems in the context of smart mobility.
 
-The code in all of the notebooks a is step-by-step guide for the implementation of the algorithms in the course using actual maps from OpenStreetMaps. 
+The code in all of the notebooks a is step-by-step guide for the implementation of the algorithms in the book using actual maps from OpenStreetMaps. 
 
 
 ### Language Choice
 
-We have choosen `python` as the main and only language for the course, as it doesn't have much jargon and the signal-to-noise ratio in code is very high; it is almost like pseudocode. `Python` is not the optimal language for scientific computing, especially with large graphs that we extract from maps. All the major routing and navigation engines usually use `C++` or `Java` and most of the authors of the seminal papers in the field usually provide `C++` implementations accompanying their papers. What would be the perfect trade-off between `python` and `C++`? `Julia`; it was made with scientific computing in mind and it gives a comparable performance with `C++` and with almost the readability  of `python`.
+We have choosen `python` as the main language for the course, as it doesn't have too much jargon and the signal-to-noise ratio in code is very high; it is almost like pseudocode. `python` is not the optimal language for scientific computing, especially with large graphs that we extract from maps. All the major routing and navigation engines usually use `C++` or `Java`, and most of the authors of the seminal papers in the field usually provide `C++` implementations accompanying their papers. What would be the perfect trade-off between `python` and `C++`? `Julia`; it was made with scientific computing in mind and it gives a comparable performance with `C++` and with almost the readability  of `python`.
 
-We would love to have `Julia` implementations for the algorithms in this course. If you want to do so, don't hesitate to open a PR with your `Julia` code and just change the code line by line from `Python` to `Julia`. For programming language benchmarking, see [Benchmarks Game](https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/julia-python3.html).
+We may decide to provide a `Julia` version of the notebooks for this book in the future. In the meantime, we would love to have `Julia` implementations for the algorithms submitted by readers. If you want to do so, don't hesitate to open a PR with your `Julia` code and just change the code line by line from `Python` to `Julia`. For programming language benchmarking, see [Benchmarks Game](https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/julia-python3.html).
 
 ---
 
@@ -63,7 +54,7 @@ Each repository contains three sections:
 
 ### 1. Algorithms Notebooks
 
-Here we introduce the algorithms and how to implement them on a real world `.osm` dataset. We also provide the pseudocode to tune down the noise of programming languages quirks, so be aware of language-specific limitations and conventions. These notebooks are complementary to the materials provided in the lectures.
+Here we introduce the algorithms and how to implement them on a real world `.osm` dataset. We also provide the pseudocode to tune down the noise of programming language quirks, so be aware of language-specific limitations and conventions. These notebooks are complementary to the materials provided in the lectures.
 
 ### 2. Toy Problems Notebooks
 
