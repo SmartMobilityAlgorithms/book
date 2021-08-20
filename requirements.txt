@@ -1,3 +1,11 @@
+# Basic Operations
+osmnx
+networkx
+pandas
+scipy
+scikit-learn
+
+# Introduction to Geospatial Science
 jupyter-book
 matplotlib
 numpy

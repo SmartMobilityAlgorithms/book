@@ -12,6 +12,8 @@ sphinx:
   config:
     bibtex_reference_style: label
     html_theme: sphinx_book_theme
+  extra_extensions:
+  - sphinx_inline_tabs
 bibtex_bibfiles:
 - references.bib
 html:
