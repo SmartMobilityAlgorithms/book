@@ -226,6 +226,78 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#this-content-needs-to-be-reformatted">
+   This content needs to be reformatted:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#libraries-used">
+   Libraries Used
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#osmnx">
+     osmnx
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#networkx">
+     networkx
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#osrm">
+     osrm
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#geopandas">
+     geopandas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shapely">
+     shapely
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nominatim">
+     nominatim
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualization-libraries">
+     visualization libraries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tqdm">
+     tqdm
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#note">
+       Note
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#relevant-tools">
+   Relevant Tools
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -236,6 +308,72 @@
                 
   <div class="section" id="tools-and-python-libraries">
 <h1>Tools and Python Libraries<a class="headerlink" href="#tools-and-python-libraries" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="this-content-needs-to-be-reformatted">
+<h2>This content needs to be reformatted:<a class="headerlink" href="#this-content-needs-to-be-reformatted" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="libraries-used">
+<h2>Libraries Used<a class="headerlink" href="#libraries-used" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="osmnx">
+<h3>osmnx<a class="headerlink" href="#osmnx" title="Permalink to this headline">¶</a></h3>
+<p>This library was developed by <a class="reference external" href="https://geoffboeing.com/">Geoff Boeing</a> from the University of Southern California to ease the process of retrieving and manipulating the data from OpenStreetMap, and to make it easier to be interpolated into Python applications. It offers the ability to download the data (filtered) from OSM and returns the network as <code class="docutils literal notranslate"><span class="pre">networkx</span></code> graph data structure. The library is too complicated to be explained fully in a README file, but you can check the <a class="reference external" href="https://osmnx.readthedocs.io/en/stable/">official website</a> and follow Professor Boeing’s website as he posts regularly on recent updates and trends about osmnx and the field in general.</p>
+</div>
+<div class="section" id="networkx">
+<h3>networkx<a class="headerlink" href="#networkx" title="Permalink to this headline">¶</a></h3>
+<p>This is one of the pillars of Python programming and scientific computing, besides <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">scipy</span></code>. Its main and only goal is supporting graph data structures and the associated algorithms like shortest path and networks flow and optimization. <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> returns the map as <code class="docutils literal notranslate"><span class="pre">networkx</span></code> network so it is possible to use all the library’s functions on the maps obtained from OSM. <code class="docutils literal notranslate"><span class="pre">networkx</span></code> has books written explaining its API’s and we wholeheartedly recommend <a class="reference external" href="https://www.amazon.com/Complex-Network-Analysis-Python-Recognize/dp/1680502697">Complex Network Analysis in Python: Recognize - Construct - Visualize - Analyze - Interpret</a> if you want to dive into it. Information about <code class="docutils literal notranslate"><span class="pre">networkx</span></code> is also available <a class="reference external" href="https://networkx.github.io/">here</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">networkx</span></code> has a monopoly over the field of network analysis for many years now, but the scalability of <code class="docutils literal notranslate"><span class="pre">networkx</span></code> may be an issue. If your network has tens of millions of nodes, it can get really ugly because <code class="docutils literal notranslate"><span class="pre">networkx</span></code> is still just a <code class="docutils literal notranslate"><span class="pre">python</span></code> library, and <code class="docutils literal notranslate"><span class="pre">python</span></code> can’t handle these millions of nodes and will run out of memory, and give you a segmentation fault.</p>
+<p>You can optimize <code class="docutils literal notranslate"><span class="pre">python</span></code> by using <code class="docutils literal notranslate"><span class="pre">__slots__</span></code> instead of <code class="docutils literal notranslate"><span class="pre">__dict__</span></code>, something which is discussed <a class="reference external" href="https://stackoverflow.com/questions/472000/usage-of-slots#:~:text=The%20proper%20use%20of%20__,one%20dict%20for%20every%20object.%5D">here</a>. You can also use arrays or something similar, but then other problems would arise.</p>
+<p>Are there any alternatives? In <code class="docutils literal notranslate"><span class="pre">C++</span></code>, you can use <a class="reference external" href="https://graph-tool.skewed.de/">graph-tool</a>, which was built over the <a class="reference external" href="https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/index.html">boost-graph</a> libraries, or you can use <a class="reference external" href="https://github.com/igraph">igraph</a> which is written in C. But for these you will need to write your own parser for OpenStreetMaps data and understand its file format. Fortunately, this is not too complicated.</p>
+</div>
+<div class="section" id="osrm">
+<h3>osrm<a class="headerlink" href="#osrm" title="Permalink to this headline">¶</a></h3>
+<p>For some problems, determining the route between multiple points is not the main focus, and it is acceptable to use a pre-generated route. <a class="reference external" href="http://project-osrm.org/">OSRM</a> does exactly that; it is a routing engine with an API that you feed with coordinates, and in return it gives you the fastest route between them. It has other useful capabilities like doing Travelling Salesman and solving all pairs shortest path.</p>
+</div>
+<div class="section" id="geopandas">
+<h3>geopandas<a class="headerlink" href="#geopandas" title="Permalink to this headline">¶</a></h3>
+<p>It is an extension to pandas that handles geospatial data by extending the datatypes of pandas, and the ability to query and manipulate spatial data. Alternatively, you would need to deal with <a class="reference external" href="https://en.wikipedia.org/wiki/Spatial_database">spatial databases</a> for these operations, like how to properly and efficiently represent polygons and curved lines and query them without too much overhead (for database folks, the indexing of spatial data is different than normal data).</p>
+</div>
+<div class="section" id="shapely">
+<h3>shapely<a class="headerlink" href="#shapely" title="Permalink to this headline">¶</a></h3>
+<p>It provides us with datatypes to represent geometric objects that geopandas exploits to represent spatial data.</p>
+</div>
+<div class="section" id="nominatim">
+<h3>nominatim<a class="headerlink" href="#nominatim" title="Permalink to this headline">¶</a></h3>
+<p>It is used to look up a location from a textual description (the official website description). This is called geocoding and decoding, which is translating address of a location to its coordinates (and vice-versa).</p>
+</div>
+<div class="section" id="visualization-libraries">
+<h3>visualization libraries<a class="headerlink" href="#visualization-libraries" title="Permalink to this headline">¶</a></h3>
+<p>There are <b>many</b> libraries for visualization, but we are mainly using <a class="reference external" href="https://python-visualization.github.io/folium/">folium</a> and <a class="reference external" href="https://ipyleaflet.readthedocs.io/en/latest/">ipyleaflet</a>. Both of them are just wrappers around <a class="reference external" href="https://github.com/Leaflet/Leaflet">leaflet.js</a>, which is the go-to library for any kind of map visualization in almost all web and mobile applications.</p>
+<p>Both of <code class="docutils literal notranslate"><span class="pre">ipyleaflet</span></code> and <code class="docutils literal notranslate"><span class="pre">folium</span></code> were created to serve the same purpose, and you don’t need to dwell so much on how to use them if you don’t want to, as we have provided wrappers around them in  <code class="docutils literal notranslate"><span class="pre">utilities/utils/viz.py</span></code>. This contains two functions: one for drawing a map with our graph overlaid on it, and and the other function is for drawing a route between two places/nodes with markers marking the source and destination. At the very least, you should be able to recognize the differences between the two wrappers. <code class="docutils literal notranslate"><span class="pre">folium</span></code> is much more lightweight than <code class="docutils literal notranslate"><span class="pre">ipyleaflet</span></code>, but on the other hand <code class="docutils literal notranslate"><span class="pre">ipyleaflet</span></code> has more options and very niche capabitilies. <code class="docutils literal notranslate"><span class="pre">ipyleaflet</span></code> doesn’t work on Google Colab, unlike <code class="docutils literal notranslate"><span class="pre">folium</span></code>; see <a class="reference external" href="https://github.com/googlecolab/colabtools/issues/60">googlecolab/colabtools#60</a> for more details.</p>
+<p>There are other visualization libraries that you should be aware of:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://hvplot.holoviz.org/user_guide/Geographic_Data.html">hvplot</a>, if you want to get going through your analysis with geopandas and dataframes and all that. You should be aware of the significance of working with vanilla <a class="reference external" href="https://geopandas.org/">GeoPandas</a>, and that <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> <a class="reference external" href="https://osmnx.readthedocs.io/en/stable/osmnx.html#module-osmnx.projection">supports that</a> and yields two dataframes: one for all your nodes and one for all the edges.</p></li>
+<li><p><a class="reference external" href="https://github.com/jwass/mplleaflet">mplleaflet</a>, which is another <code class="docutils literal notranslate"><span class="pre">leaflet</span></code>-based library, but it plays really nicely with <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="tqdm">
+<h3>tqdm<a class="headerlink" href="#tqdm" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/tqdm/tqdm">This library</a> helps us to see the progress of our algorithm while it is running. We use it in all of the other repositories to track the speed of the algorithm in traversing the given map, and how many nodes are expanded per second. It works on any python iterable structure.</p>
+<div class="section" id="note">
+<h4>Note<a class="headerlink" href="#note" title="Permalink to this headline">¶</a></h4>
+<p>Most of these libraries use coordinates as input and/or output, but please take into account that some of them accept the coordinates as (longtitude, latitude) and others as (latitude, longtitude).</p>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="relevant-tools">
+<h2>Relevant Tools<a class="headerlink" href="#relevant-tools" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>If you are developing a web/mobile application and you want to get really fancy with your maps, you have <a class="reference external" href="https://openlayers.org/">Open layers</a> which is the industry standard for webmaps.</p></li>
+<li><p>Do you want traffic data beyond just max speed and duration? Check out <a class="reference external" href="https://github.com/Project-OSRM/osrm-backend/wiki/Traffic">traffic per edge</a> or <a class="reference external" href="https://github.com/opentraffic">Open traffic</a>.</p></li>
+<li><p><a class="reference external" href="https://towardsdatascience.com/4-must-have-jupyterlab-extensions-for-geospatial-data-science-f3cf7822de4b">JupyterLab Extensions for Geospatial Data science</a>.</p></li>
+<li><p><a class="reference external" href="https://github.com/mocnik-science/osm-python-tools">OSMPythonTools</a> is a well-written package to query OSM services.</p></li>
+<li><p><a class="reference external" href="https://deck.gl/">deck.gl</a></p></li>
+<li><p><a class="reference external" href="https://kepler.gl/">kepler.gl</a></p></li>
+<li><p><a class="reference external" href="https://datastudio.google.com/">Google Data Studio</a></p></li>
+<li><p><a class="reference external" href="https://qgis.org/en/site/">QGIS</a></p></li>
+<li><p><a class="reference external" href="https://www.paraview.org/">ParaView</a></p></li>
+</ol>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
