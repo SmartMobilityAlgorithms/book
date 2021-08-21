@@ -4,6 +4,10 @@ networkx
 pandas
 scipy
 scikit-learn
+ipyleaflet
+shapely
+plotly
+overpass
 
 # Introduction to Geospatial Science
 jupyter-book
