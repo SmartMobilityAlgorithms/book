@@ -46,7 +46,7 @@ m
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m/tmp/ipykernel_7733/392879013.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_4384/392879013.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      1[0m [0;31m# plotting map using ipyleaflet[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 2[0;31m [0;32mfrom[0m [0mipyleaflet[0m [0;32mimport[0m [0;34m*[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      3[0m [0mcenter[0m[0;34m=[0m[0;34m([0m[0;36m43.662643[0m[0;34m,[0m [0;34m-[0m[0;36m79.395689[0m[0;34m)[0m [0;31m# UofT main building[0m[0;34m[0m[0;34m[0m[0m
