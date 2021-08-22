@@ -1,15 +1,4 @@
 Traceback (most recent call last):
-  File "/home/yinan/book-env/lib/python3.8/site-packages/nbclient/client.py", line 622, in _async_poll_for_reply
-    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
-  File "/home/yinan/book-env/lib/python3.8/site-packages/nbclient/util.py", line 85, in ensure_async
-    result = await obj
-  File "/home/yinan/book-env/lib/python3.8/site-packages/jupyter_client/asynchronous/channels.py", line 48, in get_msg
-    raise Empty
-_queue.Empty
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
   File "/home/yinan/book-env/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
     executenb(
   File "/home/yinan/book-env/lib/python3.8/site-packages/nbclient/client.py", line 1112, in execute
@@ -22,17 +11,49 @@ Traceback (most recent call last):
     return future.result()
   File "/home/yinan/book-env/lib/python3.8/site-packages/nbclient/client.py", line 553, in async_execute
     await self.async_execute_cell(
-  File "/home/yinan/book-env/lib/python3.8/site-packages/nbclient/client.py", line 841, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-  File "/home/yinan/book-env/lib/python3.8/site-packages/nbclient/client.py", line 646, in _async_poll_for_reply
-    await self._async_handle_timeout(timeout, cell)
-  File "/home/yinan/book-env/lib/python3.8/site-packages/nbclient/client.py", line 696, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-graph = osmnx.graph_from_address(place_name, dist=500)
-osmnx.folium.plot_graph_folium(graph)
--------------------
+  File "/home/yinan/book-env/lib/python3.8/site-packages/nbclient/client.py", line 857, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/home/yinan/book-env/lib/python3.8/site-packages/nbclient/client.py", line 760, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import overpass
+
+api = overpass.API()
+
+# We're looking for restaurants within 1000m of a given point
+overpass_query = """
+(node["amenity"="restaurant"](around:1000,43.66, -79.39);
+ way["amenity"="restaurant"](around:1000,43.66, -79.39);
+ rel["amenity"="restaurant"](around:1000,43.66, -79.39);
+);
+out center;
+"""
+
+restaurants = api.get(overpass_query)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mMultipleRequestsError[0m                     Traceback (most recent call last)
+[0;32m/tmp/ipykernel_9816/1229431247.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     12[0m """
+[1;32m     13[0m [0;34m[0m[0m
+[0;32m---> 14[0;31m [0mrestaurants[0m [0;34m=[0m [0mapi[0m[0;34m.[0m[0mget[0m[0;34m([0m[0moverpass_query[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;32m~/book-env/lib/python3.8/site-packages/overpass/api.py[0m in [0;36mget[0;34m(self, query, responseformat, verbosity, build)[0m
+[1;32m     95[0m [0;34m[0m[0m
+[1;32m     96[0m         [0;31m# Get the response from Overpass[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 97[0;31m         [0mr[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0m_get_from_overpass[0m[0;34m([0m[0mfull_query[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     98[0m         [0mcontent_type[0m [0;34m=[0m [0mr[0m[0;34m.[0m[0mheaders[0m[0;34m.[0m[0mget[0m[0;34m([0m[0;34m"content-type"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     99[0m [0;34m[0m[0m
+
+[0;32m~/book-env/lib/python3.8/site-packages/overpass/api.py[0m in [0;36m_get_from_overpass[0;34m(self, query)[0m
+[1;32m    177[0m                 [0;32mraise[0m [0mOverpassSyntaxError[0m[0;34m([0m[0mquery[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    178[0m             [0;32melif[0m [0mself[0m[0;34m.[0m[0m_status[0m [0;34m==[0m [0;36m429[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 179[0;31m                 [0;32mraise[0m [0mMultipleRequestsError[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    180[0m             [0;32melif[0m [0mself[0m[0;34m.[0m[0m_status[0m [0;34m==[0m [0;36m504[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    181[0m                 [0;32mraise[0m [0mServerLoadError[0m[0;34m([0m[0mself[0m[0;34m.[0m[0m_timeout[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mMultipleRequestsError[0m: 
+MultipleRequestsError: 
 

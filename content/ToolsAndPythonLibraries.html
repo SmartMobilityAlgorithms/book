@@ -44,6 +44,8 @@
     <script src="../_static/tabs.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -85,14 +87,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../index.html">
-   Introduction
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="GettingStarted.html">
    Getting Started
@@ -230,6 +225,16 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#smart-mobility-utilities-python-package">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     smart_mobility_utilities
+    </span>
+   </code>
+   python package
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#this-content-needs-to-be-reformatted">
    This content needs to be reformatted:
   </a>
@@ -306,6 +311,22 @@
                 
   <div class="section" id="tools-and-python-libraries">
 <h1>Tools and Python Libraries<a class="headerlink" href="#tools-and-python-libraries" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="smart-mobility-utilities-python-package">
+<h2><code class="docutils literal notranslate"><span class="pre">smart_mobility_utilities</span></code> python package<a class="headerlink" href="#smart-mobility-utilities-python-package" title="Permalink to this headline">¶</a></h2>
+<p>Many of the operations in this book are long and burdensome to code from scratch. Oftentimes, they are highly standardized and can benefit from having a helper function take care of the various intricacies.</p>
+<p><code class="docutils literal notranslate"><span class="pre">smart_mobility_utilities</span></code> is a python package developed for this purpose. You can clone the repo to your local machine, and install it as follows:</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">pip3</label><div class="tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> smart_mobility_utilities
+$ pip install -e .
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">conda</label><div class="tab-content docutils">
+<p>The <code class="docutils literal notranslate"><span class="pre">conda</span></code> version of this package is still under development. In the meantime, you can import the files directly into your project’s file structure.</p>
+</div>
+</div>
+</div>
 <div class="section" id="this-content-needs-to-be-reformatted">
 <h2>This content needs to be reformatted:<a class="headerlink" href="#this-content-needs-to-be-reformatted" title="Permalink to this headline">¶</a></h2>
 </div>

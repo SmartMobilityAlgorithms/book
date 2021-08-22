@@ -1,5 +1,25 @@
 # Tools and Python Libraries
 
+## `smart_mobility_utilities` python package
+
+Many of the operations in this book are long and burdensome to code from scratch. Oftentimes, they are highly standardized and can benefit from having a helper function take care of the various intricacies.
+
+`smart_mobility_utilities` is a python package developed for this purpose. You can clone the repo to your local machine, and install it as follows:
+
+````{tab} pip3
+```bash
+$ cd smart_mobility_utilities
+$ pip install -e .
+```
+````
+````{tab} conda
+
+The `conda` version of this package is still under development. In the meantime, you can import the files directly into your project's file structure.
+````
+
+
+
+
 
 ## This content needs to be reformatted:
 
