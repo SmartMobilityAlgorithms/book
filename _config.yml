@@ -24,7 +24,8 @@ html:
     <img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a>
     <span>This work is licensed under a 
     <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.</span>
-
+  home_page_in_navbar: False
+  
 #Interactive Settings
 repository:
   url:  https://github.com/SmartMobilityAlgorithms/book

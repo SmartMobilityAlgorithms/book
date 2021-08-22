@@ -16,3 +16,7 @@ numpy
 geopandas
 contextily
 folium
+
+# Graph Search Algorithms
+tqdm
+smart_mobility_utilities
