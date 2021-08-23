@@ -6,6 +6,7 @@ author: Alaa Khamis and Yinan Wang
 #Jupyter Settings
 execute:
   execute_notebooks: "cache"
+  timeout: 120
 
 # HTML Settings
 sphinx:
