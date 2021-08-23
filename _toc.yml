@@ -2,5 +2,15 @@ format: jb-book
 root: index
 chapters:
 - file: content/GettingStarted
-- file: content/Geospatial
+- file: content/IntroductionToGeospatialScience
+- file: content/GraphSearchAlgorithms
+- file: content/TabuSearch
+- file: content/SimulatedAnnealing
+- file: content/GeneticAlgorithms
+- file: content/ParticleSwarmOptimization
+- file: content/AntColonyOptimization
+- file: content/PeopleMobilityProblems
+- file: content/LogisticsProblems
+- file: content/InfrastructureProblems
+- file: content/ToolsAndPythonLibraries
 - file: content/Datasets

@@ -1,3 +1,22 @@
+# Basic Operations
+osmnx
+networkx
+pandas
+scipy
+scikit-learn
+ipyleaflet
+shapely
+plotly
+overpass
+
+# Introduction to Geospatial Science
 jupyter-book
 matplotlib
 numpy
+geopandas
+contextily
+folium
+
+# Graph Search Algorithms
+tqdm
+smart_mobility_utilities
