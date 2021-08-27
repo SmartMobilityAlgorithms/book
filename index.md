@@ -1,5 +1,8 @@
 # Introduction
 
+
+# @TODO: Rework this entire page
+
 This is the site for the book “AI Search Algorithms for Smart Mobility” by Alaa Khamis and Yinan Wang.
 
 The book provides a comprehensive introduction to AI search algorithms and highlights the power of these computational techniques in solving ill-structured problems in the context of smart mobility. 

@@ -1,3 +1,5 @@
 _build/
-content/cache/
+
 *.html
+*.json
+*.pyc
