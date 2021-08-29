@@ -8,7 +8,14 @@ chapters:
   - file: content/IntroGeoScience/Projection
   - file: content/IntroGeoScience/Visualization
   - file: content/IntroGeoScience/Maven
-- file: content/GraphSearchAlgorithms
+- file: content/GraphSearchAlgorithms/index
+  sections:
+  - file: content/GraphSearchAlgorithms/RoadGraph
+  - file: content/GraphSearchAlgorithms/GraphSearch
+  - file: content/GraphSearchAlgorithms/BlindSearch
+  - file: content/GraphSearchAlgorithms/InformedSearch
+  - file: content/GraphSearchAlgorithms/HierarchicalApproaches
+  - file: content/GraphSearchAlgorithms/SearchComparison
 - file: content/TabuSearch
 - file: content/SimulatedAnnealing
 - file: content/GeneticAlgorithms
