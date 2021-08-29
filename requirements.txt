@@ -16,6 +16,7 @@ numpy
 geopandas
 contextily
 folium
+geoplot
 
 # Graph Search Algorithms
 tqdm

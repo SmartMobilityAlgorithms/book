@@ -6,7 +6,7 @@
 
 2.  [Projection](Projection.ipynb)
 
-3.  [Plotting](Plotting.ipynb)
+3.  [Visualization](Visualization.ipynb)
     
 4.  [Maven Car-Sharing Service](Maven.ipynb)
 

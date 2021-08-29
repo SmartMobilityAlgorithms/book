@@ -1,16 +1,12 @@
 format: jb-book
 root: index
 chapters:
-- file: content/GettingStarted/index
-  sections: 
-  - file: content/GettingStarted/SettingUp
-  - file: content/GettingStarted/GettingData
-  - file: content/GettingStarted/BasicOperations
+- file: content/GettingStarted
 - file: content/IntroGeoScience/index
   sections:
   - file: content/IntroGeoScience/SpatialData
   - file: content/IntroGeoScience/Projection
-  - file: content/IntroGeoScience/Plotting
+  - file: content/IntroGeoScience/Visualization
   - file: content/IntroGeoScience/Maven
 - file: content/GraphSearchAlgorithms
 - file: content/TabuSearch

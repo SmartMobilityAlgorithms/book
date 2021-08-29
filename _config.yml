@@ -5,7 +5,7 @@ author: Alaa Khamis and Yinan Wang
 
 #Jupyter Settings
 execute:
-  execute_notebooks: "auto"
+  execute_notebooks: "cache"
   timeout: 140
 
 # HTML Settings
