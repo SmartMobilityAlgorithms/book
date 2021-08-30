@@ -1,29 +1,29 @@
 format: jb-book
 root: index
 chapters:
-- file: content/GettingStarted
+- file: content/GettingStarted/index
 - file: content/IntroGeoScience/index
   sections:
   - file: content/IntroGeoScience/SpatialData
   - file: content/IntroGeoScience/Projection
   - file: content/IntroGeoScience/Visualization
-  - file: content/IntroGeoScience/Maven
 - file: content/GraphSearchAlgorithms/index
   sections:
   - file: content/GraphSearchAlgorithms/RoadGraph
   - file: content/GraphSearchAlgorithms/GraphSearch
   - file: content/GraphSearchAlgorithms/BlindSearch
   - file: content/GraphSearchAlgorithms/InformedSearch
-  - file: content/GraphSearchAlgorithms/HierarchicalApproaches
   - file: content/GraphSearchAlgorithms/SearchComparison
 - file: content/TabuSearch
 - file: content/SimulatedAnnealing
 - file: content/GeneticAlgorithms
 - file: content/ParticleSwarmOptimization
 - file: content/AntColonyOptimization
-- file: content/PeopleMobilityProblems
+- file: content/PeopleMobilityProblems/index
+  sections:
+    - file: content/PeopleMobilityProblems/Maven
 - file: content/LogisticsProblems
 - file: content/InfrastructureProblems
-- file: content/ToolsAndPythonLibraries
+- file: content/ToolsAndPythonLibraries/index.md
 - file: content/Datasets/index
 - file: References

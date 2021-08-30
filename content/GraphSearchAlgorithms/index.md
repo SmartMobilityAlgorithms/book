@@ -12,5 +12,9 @@
     - [Beam Search](InformedSearch.html#beam-search)
     - [A* Search](InformedSearch.html#a-search)
     - [Bi-directional Search](InformedSearch.html#bi-directional-search)
-5. [Hierarchical Approaches](HierarchicalApproaches.ipynb)
-6. [Search Algorithm Comparison](SearchComparison.ipynb)
+    - [Hierarchical Approaches](InformedSearch.html#hierarchical-approaches)
+5. [Search Algorithm Comparison](SearchComparison.ipynb)
+
+---
+
+This section covers various search algorithms and provides Python examples for each algorithm. A comparison of time and space complexities is also included at the end.

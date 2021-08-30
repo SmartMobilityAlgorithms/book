@@ -1,8 +1,6 @@
 # AI Search Algorithms for Smart Mobility
 
-Smart mobility is the promotion of sustainable mobility that guarantees seamless access to different modes of mobility, and enables people or cargo to get from one place to another in a way that is safe, clean, and most efficient (fast, convenient, comfort, productive and affordable){cite}`khamis2021smart`. 
-<br><br>
-This disruptive technology is built on five principles: safety, flexibility, efficiency, integration, and clean technology. There are several ill-structured optimization problems in smart mobility systems and services that cannot be solved using traditional search algorithms. These problems include, but are not limited to:
+Smart mobility is the promotion of sustainable mobility that guarantees seamless access to different modes of mobility, and enables people or cargo to get from one place to another in a way that is safe, clean, and most efficient (fast, convenient, comfort, productive and affordable){cite}`khamis2021smart`. This disruptive technology is built on five principles: safety, flexibility, efficiency, integration, and clean technology. There are several ill-structured optimization problems in smart mobility systems and services that cannot be solved using traditional search algorithms. These problems include, but are not limited to:<br><br>
 
 - multi-criteria optimal routing
 - emergency dispatch and routing for first response emergency vehicles
