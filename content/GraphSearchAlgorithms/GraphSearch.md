@@ -1,18 +1,7 @@
 
 # Graph Search
 
-`Searching` is the systematic examination of states to find a path from the start state to the goal state. Mathematically speaking, a graph can be represented by $G$, where 
-
-$G=(V,E)$
-<br><br>
-
-For a graph $G$, vertices are represented by $V$, and edges by $E$.
- 
-Each edge is a tuple $(v,w)$, where 
-
-$w$, $v \in V$
-
-Weight can be added as a third component to the edge tuple.<br><br>
+`Searching` is the systematic examination of states to find a path from the start state to the goal state. 
 
 Search algorithms can be broadly classified into `deterministic` algorithms and `stochastic` algorithms. 
 
