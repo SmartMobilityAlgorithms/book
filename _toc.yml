@@ -16,8 +16,8 @@ chapters:
   - file: content/GraphSearchAlgorithms/SearchComparison
 - file: content/TrajectoryAlgorithms/index
   sections:
-  - file: content/TrajectoryAlgorithms/TabuSearch
   - file: content/TrajectoryAlgorithms/SimulatedAnnealing
+  - file: content/TrajectoryAlgorithms/TabuSearch
 - file: content/EvolutionaryComputingAlgorithms/index
   sections:
   - file: content/EvolutionaryComputingAlgorithms/GeneticAlgorithms
