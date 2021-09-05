@@ -11,7 +11,7 @@ Smart mobility is the promotion of sustainable mobility that guarantees seamless
 - multi-modal transportation planning
 - last-mile delivery systems using droids/cargo-bikes
 - deadheading
-- platooning or flocking
+- platooning or flocking and
 - fleet management
 
 AI search algorithms have the power in dealing with complex discrete and continuous optimization problems in the smart mobility domain. Most of these techniques are nature-inspired, stochastic optimization methods that iteratively use random elements to transfer one candidate solution into a new, hopefully, better solution with regards to a given measure of quality. 
