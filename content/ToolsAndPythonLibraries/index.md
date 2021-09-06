@@ -110,6 +110,10 @@ There are other visualization libraries that you should be aware of:
 
 [photon](https://github.com/komoot/photon) is an open source geocoder built for OpenStreetMap data.
 
+### Other geocoders
+
+[Open Data and Open Source Geocoders](https://blog.batchgeo.com/open-data-open-source-geocoders/)
+
 
 ## Routing Libraries 
 
@@ -130,6 +134,6 @@ Most of these libraries use coordinates as input and/or output, but please take 
 
 ### tqdm
 
-[This library](https://github.com/tqdm/tqdm) helps us to see the progress of our algorithm while it is running. We use it in all of the other repositories to track the speed of the algorithm in traversing the given map, and how many nodes are expanded per second. It works on any python iterable structure.
+[tqdm](https://github.com/tqdm/tqdm) helps us to see the progress of our algorithm while it is running. We use it in all of the other repositories to track the speed of the algorithm in traversing the given map, and how many nodes are expanded per second. It works on any python iterable structure.
 
 ---
