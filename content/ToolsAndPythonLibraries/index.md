@@ -18,16 +18,21 @@ The `conda` version of this package is still under development. In the meantime,
 ````
 
 
-
-
-
-## This content needs to be reformatted:
-
-## Libraries Used
+## Mapping Libraries
 
 ### osmnx
 
 This library was developed by [Geoff Boeing](https://geoffboeing.com/) from the University of Southern California to ease the process of retrieving and manipulating the data from OpenStreetMap, and to make it easier to be interpolated into Python applications. It offers the ability to download the data (filtered) from OSM and returns the network as `networkx` graph data structure. The library is too complicated to be explained fully in a README file, but you can check the [official website](https://osmnx.readthedocs.io/en/stable/#) and follow Professor Boeing's website as he posts regularly on recent updates and trends about osmnx and the field in general.
+
+### OSMPythonTools
+
+[OSMPythonTools](https://github.com/mocnik-science/osm-python-tools) is a well-written package to query OSM services.
+
+### Open layers
+
+If you are developing a web/mobile application and you want to get really fancy with your maps, you have [Open layers](https://openlayers.org/) which is the industry standard for webmaps.
+
+## Graph Libraries
 
 ### networkx
 
@@ -39,23 +44,25 @@ You can optimize `python` by using `__slots__` instead of `__dict__`, something 
 
 Are there any alternatives? In `C++`, you can use [graph-tool](https://graph-tool.skewed.de/), which was built over the [boost-graph](https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/index.html) libraries, or you can use [igraph](https://github.com/igraph) which is written in C. But for these you will need to write your own parser for OpenStreetMaps data and understand its file format. Fortunately, this is not too complicated.
 
-### osrm
 
-For some problems, determining the route between multiple points is not the main focus, and it is acceptable to use a pre-generated route. [OSRM](http://project-osrm.org/) does exactly that; it is a routing engine with an API that you feed with coordinates, and in return it gives you the fastest route between them. It has other useful capabilities like doing Travelling Salesman and solving all pairs shortest path.
+## Geospatial Data Libraries
 
-### geopandas
+### GeoPandas
+[GeoPandas](https://geopandas.org/) is an extension to pandas that handles geospatial data by extending the datatypes of pandas, and the ability to query and manipulate spatial data. Alternatively, you would need to deal with [spatial databases](https://en.wikipedia.org/wiki/Spatial_database) for these operations, like how to properly and efficiently represent polygons and curved lines and query them without too much overhead (for database folks, the indexing of spatial data is different than normal data).
 
-It is an extension to pandas that handles geospatial data by extending the datatypes of pandas, and the ability to query and manipulate spatial data. Alternatively, you would need to deal with [spatial databases](https://en.wikipedia.org/wiki/Spatial_database) for these operations, like how to properly and efficiently represent polygons and curved lines and query them without too much overhead (for database folks, the indexing of spatial data is different than normal data).
 
-### shapely
+## Shapefile Creation and Map Editing
 
-It provides us with datatypes to represent geometric objects that geopandas exploits to represent spatial data.
+### QGIS
 
-### nominatim
+[QGIS](https://www.qgis.org/en/site/) is a free and open-source cross-platform desktop geographic information system application that supports viewing, editing, and analysis of geospatial data. 
 
-It is used to look up a location from a textual description (the official website description). This is called geocoding and decoding, which is translating address of a location to its coordinates (and vice-versa).
+### GeoJSON
 
-### visualization libraries
+[GeoJSON](https://geojson.io/) is a fast, simple tool to create, change, and publish maps.
+
+
+## Geospatial Data Visualization 
 
 There are <b>many</b> libraries for visualization, but we are mainly using [folium](https://python-visualization.github.io/folium/) and [ipyleaflet](https://ipyleaflet.readthedocs.io/en/latest/). Both of them are just wrappers around [leaflet.js](https://github.com/Leaflet/Leaflet), which is the go-to library for any kind of map visualization in almost all web and mobile applications.
 
@@ -67,26 +74,62 @@ There are other visualization libraries that you should be aware of:
 
 * [mplleaflet](https://github.com/jwass/mplleaflet), which is another `leaflet`-based library, but it plays really nicely with `matplotlib`.
 
-### tqdm
+* [deck.gl](https://deck.gl/)
 
-[This library](https://github.com/tqdm/tqdm) helps us to see the progress of our algorithm while it is running. We use it in all of the other repositories to track the speed of the algorithm in traversing the given map, and how many nodes are expanded per second. It works on any python iterable structure.
+* [kepler.gl](https://kepler.gl/)
+
+* [Google Data Studio](https://datastudio.google.com/)
+
+
+## Geospatial Data Analysis
+
+### shapely
+
+[Shapely](https://pypi.org/project/Shapely/) is a BSD-licensed Python package for manipulation and analysis of planar geometric objects. It provides us with datatypes to represent geometric objects that geopandas exploits to represent spatial data.
+
+### PySAL
+
+[PySAL](https://pysal.org/) or Python Spatial Analysis Library is an open source cross-platform library for geospatial data science with an emphasis on geospatial vector data written in Python. 
+
+### GeoDa
+
+[GeoDa](https://geodacenter.github.io/) is a free and open source software tool that serves as an introduction to spatial data science. It is designed to facilitate new insights from data analysis by exploring and modeling spatial patterns.
+
+## Geocoding
+
+### GeoPy
+
+[GeoPy](https://geopy.readthedocs.io/en/stable/#)  is a Python client for several popular geocoding web services.
+
+
+### nominatim
+
+[nominatim](https://geopy.readthedocs.io/en/stable/#nominatim) is used to look up a location from a textual description (the official website description). This is called geocoding and decoding, which is translating address of a location to its coordinates (and vice-versa).
+
+### Photon Geocoder
+
+[photon](https://github.com/komoot/photon) is an open source geocoder built for OpenStreetMap data.
+
+
+## Routing Libraries 
+
+### osrm
+
+For some problems, determining the route between multiple points is not the main focus, and it is acceptable to use a pre-generated route. [OSRM](http://project-osrm.org/) does exactly that; it is a routing engine with an API that you feed with coordinates, and in return it gives you the fastest route between them. It has other useful capabilities like doing Travelling Salesman and solving all pairs shortest path.
+
+### traffic per edge and Open traffic
+
+Do you want traffic data beyond just max speed and duration? Check out [traffic per edge](https://github.com/Project-OSRM/osrm-backend/wiki/Traffic) or [Open traffic](https://github.com/opentraffic).
+
 
 #### Note
 
 Most of these libraries use coordinates as input and/or output, but please take into account that some of them accept the coordinates as (longtitude, latitude) and others as (latitude, longtitude). 
 
+## Others 
+
+### tqdm
+
+[This library](https://github.com/tqdm/tqdm) helps us to see the progress of our algorithm while it is running. We use it in all of the other repositories to track the speed of the algorithm in traversing the given map, and how many nodes are expanded per second. It works on any python iterable structure.
+
 ---
-
-## Relevant Tools
-
-1. If you are developing a web/mobile application and you want to get really fancy with your maps, you have [Open layers](https://openlayers.org/) which is the industry standard for webmaps.
-
-2. Do you want traffic data beyond just max speed and duration? Check out [traffic per edge](https://github.com/Project-OSRM/osrm-backend/wiki/Traffic) or [Open traffic](https://github.com/opentraffic).
-
-3. [JupyterLab Extensions for Geospatial Data science](https://towardsdatascience.com/4-must-have-jupyterlab-extensions-for-geospatial-data-science-f3cf7822de4b).
-4. [OSMPythonTools](https://github.com/mocnik-science/osm-python-tools) is a well-written package to query OSM services.
-5. [deck.gl](https://deck.gl/)
-6. [kepler.gl](https://kepler.gl/)
-7. [Google Data Studio](https://datastudio.google.com/)
-8. [QGIS](https://qgis.org/en/site/)
-9. [ParaView](https://www.paraview.org/)
