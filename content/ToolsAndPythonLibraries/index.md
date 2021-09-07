@@ -136,4 +136,3 @@ Most of these libraries use coordinates as input and/or output, but please take 
 
 [tqdm](https://github.com/tqdm/tqdm) helps us to see the progress of our algorithm while it is running. We use it in all of the other repositories to track the speed of the algorithm in traversing the given map, and how many nodes are expanded per second. It works on any python iterable structure.
 
----
