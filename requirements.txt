@@ -20,5 +20,4 @@ geoplot>=0.4.3
 
 # Graph Search Algorithms
 tqdm>=4.62.1
-Cython>=0.29.24
 git+git://github.com/SmartMobilityAlgorithms/smart_mobility_utilities@master
