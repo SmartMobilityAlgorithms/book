@@ -21,3 +21,4 @@ geoplot
 # Graph Search Algorithms
 tqdm
 git+git://github.com/SmartMobilityAlgorithms/smart_mobility_utilities@master
+Cython
