@@ -24,6 +24,6 @@ bibtex_bibfiles:
 #Interactive Settings
 repository:
   url:  https://github.com/SmartMobilityAlgorithms/book
-  branch: release/updated_content
+  branch: main
 launch_buttons: 
   colab_url: "https://colab.research.google.com"
