@@ -27,11 +27,11 @@ jobs:
         python-version: 3.8
     - name: Setup Conda
       run: |
-        $CONDA/bin/conda env create --name base python=3.8
+        $CONDA/bin/conda env create --name book python=3.8
         
     - name: Install dependencies
       run: |
-        $CONDA/bin/conda env update --file environment.yml --name base
+        $CONDA/bin/conda env update --file environment.yml --name book
 
     # Build the book
     - name: Build the book
