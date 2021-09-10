@@ -1,398 +1,475 @@
-
 <!DOCTYPE html>
-
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Graph Search &#8212; AI Search Algorithms for Smart Mobility</title>
-    
-  <link href="../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
-
-    
-  <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
-    
-      
-
-    
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
-
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/tabs.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
-    <script >
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Graph Search — AI Search Algorithms for Smart Mobility</title>
+<link href="../../_static/css/theme.css" rel="stylesheet"/>
+<link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet"/>
+<link href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/togglebutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/mystnb.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-thebe.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/tabs.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" rel="stylesheet" type="text/css"/>
+<link as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js" rel="preload"/>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/togglebutton.js"></script>
+<script src="../../_static/clipboard.min.js"></script>
+<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/tabs.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+<script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+<script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+<script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-    
-  </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
+<script async="async" src="../../_static/sphinx-thebe.js"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</head>
+<body data-offset="80" data-spy="scroll" data-target="#bd-toc-nav">
+<div class="container-fluid" id="banner"></div>
+<div class="container-xl">
+<div class="row">
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
-      
-      <img src="../../_static/book.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">AI Search Algorithms for Smart Mobility</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../GettingStarted.html">
+<div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+<img alt="logo" class="logo" src="../../_static/sm.png"/>
+<h1 class="site-logo" id="site-title">AI Search Algorithms for Smart Mobility</h1>
+</a>
+</div><form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="icon fas fa-search"></i>
+<input aria-label="Search this book..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search this book..." type="search"/>
+</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item active">
+<ul class="nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../../index.html">
+   AI Search Algorithms for Smart Mobility
+  </a>
+</li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../GettingStarted/index.html">
    Getting Started
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../IntroductionToGeospatialScience.html">
-   Introduction to Geographic Data Science
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../IntroGeoScience/index.html">
+   Introduction to Geospatial Data Science
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../GraphSearchAlgorithms.html">
+<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+<label for="toctree-checkbox-1">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../IntroGeoScience/SpatialData.html">
+     Spatial Data
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../IntroGeoScience/Projection.html">
+     Projection
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../IntroGeoScience/Visualization.html">
+     Visualization
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../GraphSearchAlgorithms/index.html">
    Graph Search Algorithms
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../TabuSearch.html">
-   Tabu Search
+<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<label for="toctree-checkbox-2">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../GraphSearchAlgorithms/RoadGraph.html">
+     From Road Network to Graph
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../GraphSearchAlgorithms/GraphSearch.html">
+     Graph Search
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../GraphSearchAlgorithms/BlindSearch.html">
+     Blind Search Algorithms
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../GraphSearchAlgorithms/InformedSearch.html">
+     Informed Search Algorithms
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../GraphSearchAlgorithms/SearchComparison.html">
+     Search Algorithm Comparison
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../TrajectoryAlgorithms/index.html">
+   Trajectory-based Algorithms
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../SimulatedAnnealing.html">
-   Simulated Annealing
+<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+<label for="toctree-checkbox-3">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../TrajectoryAlgorithms/TabuSearch.html">
+     Tabu Search
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../TrajectoryAlgorithms/SimulatedAnnealing.html">
+     Simulated Annealing
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../EvolutionaryComputingAlgorithms/index.html">
+   Evolutionary Computing Algorithms
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../GeneticAlgorithms.html">
-   Genetic Algorithms
+<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+<label for="toctree-checkbox-4">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../EvolutionaryComputingAlgorithms/GeneticAlgorithms.html">
+     Genetic Algorithms
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../EvolutionaryComputingAlgorithms/DifferentialEvolution.html">
+     Differential Evolution
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../SwarmIntelligenceAlgorithms/index.html">
+   Swarm Intelligence Algorithms
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../ParticleSwarmOptimization.html">
-   Particle Swarm Optimization
+<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+<label for="toctree-checkbox-5">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../SwarmIntelligenceAlgorithms/ParticleSwarmOptimization.html">
+     Particle Swarm Optimization
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../SwarmIntelligenceAlgorithms/AntColonyOptimization.html">
+     Ant Colony Optimization
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../LearnToSearch/index.html">
+   Learn to Search
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../AntColonyOptimization.html">
-   Ant Colony Optimization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../PeopleMobilityProblems.html">
+<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+<label for="toctree-checkbox-6">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../LearnToSearch/GraphNeuralNetworks.html">
+     Graph Neural Networks (GNN)
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../LearnToSearch/ReinforcementLearning.html">
+     Reinforcement Learning
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../PeopleMobilityProblems/index.html">
    People Mobility Problems
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../LogisticsProblems.html">
+<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+<label for="toctree-checkbox-7">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../PeopleMobilityProblems/Maven.html">
+     Maven Car-Sharing Service
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../LogisticsProblems.html">
    Logistics Problems
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../InfrastructureProblems.html">
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../InfrastructureProblems.html">
    Infrastructure Problems
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../ToolsAndPythonLibraries.html">
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../ToolsAndPythonLibraries/index.html">
    Tools and Python Libraries
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Datasets.html">
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../Datasets/index.html">
    Datasets
   </a>
- </li>
+<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+<label for="toctree-checkbox-8">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../Datasets/Datasets.html">
+     Datasets
+    </a>
+</li>
 </ul>
-
-    </div>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../../References.html">
+   References
+  </a>
+</li>
+</ul>
+</div>
 </nav> <!-- To handle the deprecated key -->
-
 <div class="navbar_extra_footer">
   Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
 </div>
-
 </div>
-
-
-          
-
-
-          
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
+<div class="topbar container-xl fixed-top">
+<div class="topbar-contents row">
+<div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+<div class="col pl-md-4 topbar-main">
+<button aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" class="navbar-toggler ml-0" data-placement="bottom" data-target=".site-navigation" data-toggle="collapse" id="navbar-toggler" title="Toggle navigation" type="button">
+<i class="fas fa-bars"></i>
+<i class="fas fa-arrow-left"></i>
+<i class="fas fa-arrow-up"></i>
+</button>
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/content/test/graph_search_algorithms.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
+<button aria-label="Download this page" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-download"></i></button>
+<div class="dropdown-buttons">
+<!-- ipynb file if we had a myst markdown file -->
+<!-- Download raw file -->
+<a class="dropdown-buttons" href="../../_sources/content/test/graph_search_algorithms.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.ipynb</button></a>
+<!-- Download PDF via print -->
+<button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="window.print()" title="Print to PDF" type="button">.pdf</button>
 </div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
+</div>
+<!-- Source interaction buttons -->
+<!-- Full screen (wrap in <a> to have style consistency -->
+<a class="full-screen-button"><button aria-label="Fullscreen mode" class="btn btn-secondary topbarbtn" data-placement="bottom" data-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode" type="button"><i class="fas fa-expand"></i></button></a>
+<!-- Launch buttons -->
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/SmartMobilityAlgorithms/book/release/updated_content?urlpath=tree/content/test/graph_search_algorithms.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/SmartMobilityAlgorithms/book/blob/release/updated_content/content/test/graph_search_algorithms.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
+<button aria-label="Launch interactive content" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-rocket"></i></button>
+<div class="dropdown-buttons">
+<a class="binder-button" href="https://mybinder.org/v2/gh/SmartMobilityAlgorithms/book/main?urlpath=tree/content/test/graph_search_algorithms.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Launch Binder" type="button"><img alt="Interact on binder" class="binder-button-logo" src="../../_static/images/logo_binder.svg"/>Binder</button></a>
+<a class="colab-button" href="https://colab.research.google.com/github/SmartMobilityAlgorithms/book/blob/main/content/test/graph_search_algorithms.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Launch Colab" type="button"><img alt="Interact on Colab" class="colab-button-logo" src="../../_static/images/logo_colab.png"/>Colab</button></a>
 </div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+</div>
+</div>
+<!-- Table of contents -->
+<div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+<i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+<nav id="bd-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#">
    Graph Search
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#breadth-first-search-bfs">
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#breadth-first-search-bfs">
    Breadth-first Search (BFS)
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#depth-first-search-dfs">
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#depth-first-search-dfs">
    Depth-first Search (DFS)
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dijkstra-search">
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#dijkstra-search">
    Dijkstra Search
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hill-climbing">
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#hill-climbing">
    Hill Climbing
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#beam-search">
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#beam-search">
    Beam Search
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-search">
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#a-search">
    A* Search
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-heuristic">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#the-heuristic">
      The Heuristic
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bi-directional-search">
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#bi-directional-search">
    Bi-directional Search
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hierarchical-approaches">
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#hierarchical-approaches">
    Hierarchical Approaches
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#highway-hierarchies">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#highway-hierarchies">
      Highway Hierarchies
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#contraction-hierarchies">
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#contraction-hierarchies">
      Contraction Hierarchies
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#contraction">
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#contraction">
        Contraction
       </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h4 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#what-order-of-contraction-to-the-nodes-should-i-follow">
+<ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#what-order-of-contraction-to-the-nodes-should-i-follow">
          What order of contraction to the nodes should I follow?
         </a>
-       </li>
-      </ul>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#dijkstra">
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#dijkstra">
        Dijkstra
       </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-to-choose-the-order-of-contraction">
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#how-to-choose-the-order-of-contraction">
      How to choose the order of contraction
     </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#calculating-ed">
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#calculating-ed">
    Calculating ED
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dijkstra-from-source">
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#dijkstra-from-source">
    Dijkstra From Source
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dijkstra-from-target">
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#dijkstra-from-target">
    Dijkstra From Target
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-pruning">
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#the-pruning">
    The Pruning
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#notes-for-implementation">
+</li>
+<li class="toc-h1 nav-item toc-entry">
+<a class="reference internal nav-link" href="#notes-for-implementation">
    Notes for implementation
   </a>
- </li>
+</li>
 </ul>
-
-            </nav>
-        </div>
-    </div>
+</nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
-                
-  <div class="section" id="graph-search">
+</div>
+</div>
+<div class="row" id="main-content">
+<div class="col-12 col-md-9 pl-md-3 pr-md-0">
+<div>
+<div class="section" id="graph-search">
 <h1>Graph Search<a class="headerlink" href="#graph-search" title="Permalink to this headline">¶</a></h1>
 <p>A graph is a mathematical way to represent the road network. Graph consists of 3 sets: vertices/nodes, edges and a set representing relations between vertices and edges The graph nodes represent intersections, and the edges represent the roads. A route is a sequence of edges connecting the origin node to the destination node. Search is the systematic examination of states to find a path from the start state to the goal state. Mathematically speaking, a graph can be represented by <span class="math notranslate nohighlight">\(G\)</span> where <span class="math notranslate nohighlight">\(G=(V,E)\)</span>. For the graph <span class="math notranslate nohighlight">\(G\)</span>, <span class="math notranslate nohighlight">\(V\)</span> represents a set of vertices and <span class="math notranslate nohighlight">\(E\)</span> represents a set of edges. Each edge is a tuple <span class="math notranslate nohighlight">\((v,w)\)</span> where <span class="math notranslate nohighlight">\(w\)</span>, <span class="math notranslate nohighlight">\(v \in V\)</span>. Weight can be added as a third component to the edge tuple.</p>
 <p>Search algorithms can be broadly classified into deterministic algorithms and stochastic algorithms. In the former, the search algorithm follows a rigorous procedure and its path and values of both design variables and the functions are repeatable. For the same starting point, the algorithm will follow the same path whether you run the program today or tomorrow. In the latter, the algorithm always has some randomness and the solution is not exactly repeatable. Based on the availability of information about the search space (e.g., the distance from the current state to the goal), deterministic search algorithms can be broadly classified into blink/uninformed and informed search.</p>
-<img src="images/GraphSearch.png" alt="Search Algorithms" style="float: left; margin-right: 10px;" />
+<img alt="Search Algorithms" src="images/GraphSearch.png" style="float: left; margin-right: 10px;"/>
 </div>
 <div class="section" id="breadth-first-search-bfs">
 <h1>Breadth-first Search (BFS)<a class="headerlink" href="#breadth-first-search-bfs" title="Permalink to this headline">¶</a></h1>
 <p>Graph traversal refers to a process that traverses vertices of a graph following certain order (starting from user-input sources). BFS is a traversing algorithm where you should start traversing from a selected node (source or starting node) and traverse the graph layerwise thus exploring the neighbour nodes (nodes which are directly connected to source node). You must then move towards the next-level neighbour nodes.</p>
-<p><strong>BREADTH-FIRST-SEARCH</strong> ( <em>source</em> , <em>destination</em> ) <strong>return</strong> a route<br />
- <em>frontier</em> ← a <strong>FIFO</strong> initialized with <em>source</em> node<br />
- <em>explored</em> ← <em>empty</em><br />
- <em>found</em> ← <em>False</em><br />
- <strong>while</strong>  <em>frontier</em> <strong>is not</strong> <em>empty</em> <strong>and</strong> <em>found</em> <strong>is</strong> <em>False</em> <strong>do</strong><br />
-   <em>node</em> ← <em>frontier</em>.pop()<br />
-   <strong>add</strong> <em>node</em> <strong>to</strong> <em>explored</em><br />
-   <strong>for</strong> <em>child</em> <strong>in</strong> <em>node</em>.expand() <strong>do</strong><br />
-     <strong>if</strong> <em>child</em> <strong>is not in</strong> <em>explored</em> <strong>and</strong> <em>child</em> <strong>is not in</strong> <em>frontier</em>   <strong>then</strong><br />
-        <strong>if</strong> <em>child</em> <strong>is</strong> <em>destination</em> <strong>then</strong><br />
-          <em>route</em> ← <em>child</em>.route()<br />
-          <em>found</em> ← <em>True</em><br />
-       <strong>add</strong> <em>child</em> <strong>to</strong> <em>frontier</em><br />
- <strong>return</strong>  <em>route</em></p>
+<p><strong>BREADTH-FIRST-SEARCH</strong> ( <em>source</em> , <em>destination</em> ) <strong>return</strong> a route<br/>
+ <em>frontier</em> ← a <strong>FIFO</strong> initialized with <em>source</em> node<br/>
+ <em>explored</em> ← <em>empty</em><br/>
+ <em>found</em> ← <em>False</em><br/>
+ <strong>while</strong> <em>frontier</em> <strong>is not</strong> <em>empty</em> <strong>and</strong> <em>found</em> <strong>is</strong> <em>False</em> <strong>do</strong><br/>
+   <em>node</em> ← <em>frontier</em>.pop()<br/>
+   <strong>add</strong> <em>node</em> <strong>to</strong> <em>explored</em><br/>
+   <strong>for</strong> <em>child</em> <strong>in</strong> <em>node</em>.expand() <strong>do</strong><br/>
+     <strong>if</strong> <em>child</em> <strong>is not in</strong> <em>explored</em> <strong>and</strong> <em>child</em> <strong>is not in</strong> <em>frontier</em> <strong>then</strong><br/>
+        <strong>if</strong> <em>child</em> <strong>is</strong> <em>destination</em> <strong>then</strong><br/>
+          <em>route</em> ← <em>child</em>.route()<br/>
+          <em>found</em> ← <em>True</em><br/>
+       <strong>add</strong> <em>child</em> <strong>to</strong> <em>frontier</em><br/>
+ <strong>return</strong> <em>route</em></p>
 <p>We will be trying to find and visualize the path between Equestrian Statue of Edward VII and Bahen Center of Technology around Toronto University campus using breadth first search</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -423,14 +500,14 @@
 
 <span class="c1"># marking both the source and destination node</span>
 
-<span class="n">nc</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span> <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">highlighted</span> <span class="k">else</span> <span class="s1">&#39;#336699&#39;</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()]</span>
+<span class="n">nc</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'r'</span> <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">highlighted</span> <span class="k">else</span> <span class="s1">'#336699'</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()]</span>
 <span class="n">ns</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span> <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">highlighted</span> <span class="k">else</span> <span class="mi">8</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()]</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">plot_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="n">ns</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">nc</span><span class="p">,</span> <span class="n">node_zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/graph_search_algorithms_9_0.png" src="../../_images/graph_search_algorithms_9_0.png" />
+<img alt="../../_images/graph_search_algorithms_9_0.png" src="../../_images/graph_search_algorithms_9_0.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -453,18 +530,16 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
+<div class="output text_html"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
 <!--
 generated by Pygments <https://pygments.org/>
 Copyright 2006-2019 by the Pygments team.
 Licensed under the BSD license, see LICENSE for details.
 -->
-<html>
-<head>
-  <title></title>
-  <meta http-equiv="content-type" content="text/html; charset=None">
-  <style type="text/css">
+<title></title>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<style type="text/css">
 /*
 generated by Pygments <https://pygments.org/>
 Copyright 2006-2019 by the Pygments team.
@@ -544,13 +619,10 @@ body .vm { color: #19177C } /* Name.Variable.Magic */
 body .il { color: #666666 } /* Literal.Number.Integer.Long */
 
   </style>
-</head>
-<body>
 <h2></h2>
-
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
     <span class="c1"># using __slots__ for optimization</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;node&#39;</span><span class="p">,</span> <span class="s1">&#39;distance&#39;</span><span class="p">,</span> <span class="s1">&#39;parent&#39;</span><span class="p">,</span> <span class="s1">&#39;osmid&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">]</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'node'</span><span class="p">,</span> <span class="s1">'distance'</span><span class="p">,</span> <span class="s1">'parent'</span><span class="p">,</span> <span class="s1">'osmid'</span><span class="p">,</span> <span class="s1">'G'</span><span class="p">]</span>
     <span class="c1"># constructor for each node</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span> <span class="p">,</span><span class="n">graph</span> <span class="p">,</span> <span class="n">osmid</span><span class="p">,</span> <span class="n">distance</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="c1"># the dictionary of each node as in networkx graph --- still needed for internal usage</span>
@@ -562,7 +634,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
         <span class="c1"># the parent node</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span>
 
-        <span class="c1"># unique identifier for each node so we don&#39;t use the dictionary returned from osmnx</span>
+        <span class="c1"># unique identifier for each node so we don't use the dictionary returned from osmnx</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">osmid</span> <span class="o">=</span> <span class="n">osmid</span>
 
         <span class="c1"># the graph</span>
@@ -570,7 +642,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 
     <span class="c1"># returning all the nodes adjacent to the node</span>
     <span class="k">def</span> <span class="nf">expand</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">Node</span><span class="p">(</span><span class="n">graph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="p">,</span> <span class="n">osmid</span> <span class="o">=</span> <span class="n">child</span><span class="p">,</span> <span class="n">distance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">child</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;length&#39;</span><span class="p">],</span> <span class="n">parent</span> <span class="o">=</span> <span class="bp">self</span><span class="p">)</span> \
+        <span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">Node</span><span class="p">(</span><span class="n">graph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="p">,</span> <span class="n">osmid</span> <span class="o">=</span> <span class="n">child</span><span class="p">,</span> <span class="n">distance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">child</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">'length'</span><span class="p">],</span> <span class="n">parent</span> <span class="o">=</span> <span class="bp">self</span><span class="p">)</span> \
                         <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">children</span>
 
@@ -595,8 +667,6 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
     <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">osmid</span><span class="p">)</span>
 </pre></div>
-</body>
-</html>
 </div></div>
 </div>
 <div class="cell docutils container">
@@ -625,7 +695,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="n">frontier</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([</span><span class="n">origin</span><span class="p">])</span>
 
 <span class="c1"># this is a directed multigraph so we need to have memory</span>
-<span class="c1"># so we don&#39;t get stuck in a loop</span>
+<span class="c1"># so we don't get stuck in a loop</span>
 <span class="n">explored</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
 <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
@@ -643,7 +713,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
             <span class="n">frontier</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
 
 <span class="n">bar</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The route is </span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">route</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">its cost is</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"The route is </span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span><span class="n">route</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n\n</span><span class="s2">its cost is</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -673,7 +743,7 @@ Wall time: 14.4 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/graph_search_algorithms_15_0.png" src="../../_images/graph_search_algorithms_15_0.png" />
+<img alt="../../_images/graph_search_algorithms_15_0.png" src="../../_images/graph_search_algorithms_15_0.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -692,20 +762,20 @@ Wall time: 14.4 s
 <div class="section" id="depth-first-search-dfs">
 <h1>Depth-first Search (DFS)<a class="headerlink" href="#depth-first-search-dfs" title="Permalink to this headline">¶</a></h1>
 <p>The DFS algorithm is a recursive algorithm that uses the idea of backtracking. It involves exhaustive searches of all the nodes by going ahead, if possible, else by backtracking.</p>
-<p><strong>DEPTH-FIRST-SEARCH</strong> ( <em>source</em> , <em>destination</em> ) <strong>return</strong> a route<br />
- <em>frontier</em> ← a <strong>LIFO</strong> initialized with <em>source</em> node<br />
- <em>explored</em> ← <em>empty</em><br />
- <em>found</em> ← <em>False</em><br />
- <strong>while</strong>  <em>frontier</em> <strong>is not</strong> <em>empty</em> <strong>and</strong> <em>found</em> <strong>is</strong> <em>False</em> <strong>do</strong><br />
-   <em>node</em> ← <em>frontier</em>.pop()<br />
-   <strong>add</strong> <em>node</em> <strong>to</strong> <em>explored</em><br />
-   <strong>for</strong> <em>child</em> <strong>in</strong> <em>node</em>.expand() <strong>do</strong><br />
-     <strong>if</strong> <em>child</em> <strong>is not in</strong> <em>explored</em> <strong>and</strong> <em>child</em> <strong>is not in</strong> <em>frontier</em>   <strong>then</strong><br />
-        <strong>if</strong> <em>child</em> <strong>is</strong> <em>destination</em> <strong>then</strong><br />
-          <em>route</em> ← <em>child</em>.route()<br />
-          <em>found</em> ← <em>True</em><br />
-       <strong>add</strong> <em>child</em> <strong>to</strong> <em>frontier</em><br />
- <strong>return</strong>  <em>route</em></p>
+<p><strong>DEPTH-FIRST-SEARCH</strong> ( <em>source</em> , <em>destination</em> ) <strong>return</strong> a route<br/>
+ <em>frontier</em> ← a <strong>LIFO</strong> initialized with <em>source</em> node<br/>
+ <em>explored</em> ← <em>empty</em><br/>
+ <em>found</em> ← <em>False</em><br/>
+ <strong>while</strong> <em>frontier</em> <strong>is not</strong> <em>empty</em> <strong>and</strong> <em>found</em> <strong>is</strong> <em>False</em> <strong>do</strong><br/>
+   <em>node</em> ← <em>frontier</em>.pop()<br/>
+   <strong>add</strong> <em>node</em> <strong>to</strong> <em>explored</em><br/>
+   <strong>for</strong> <em>child</em> <strong>in</strong> <em>node</em>.expand() <strong>do</strong><br/>
+     <strong>if</strong> <em>child</em> <strong>is not in</strong> <em>explored</em> <strong>and</strong> <em>child</em> <strong>is not in</strong> <em>frontier</em> <strong>then</strong><br/>
+        <strong>if</strong> <em>child</em> <strong>is</strong> <em>destination</em> <strong>then</strong><br/>
+          <em>route</em> ← <em>child</em>.route()<br/>
+          <em>found</em> ← <em>True</em><br/>
+       <strong>add</strong> <em>child</em> <strong>to</strong> <em>frontier</em><br/>
+ <strong>return</strong> <em>route</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The Algorithm</span>
@@ -728,7 +798,7 @@ Wall time: 14.4 s
             <span class="n">frontier</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
 
 <span class="n">bar</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The route is </span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">route</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">its cost is</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"The route is </span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span><span class="n">route</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n\n</span><span class="s2">its cost is</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -765,38 +835,38 @@ its cost is
 <div class="section" id="dijkstra-search">
 <h1>Dijkstra Search<a class="headerlink" href="#dijkstra-search" title="Permalink to this headline">¶</a></h1>
 <p>Dijkstra’s algorithm allows us to find the shortest path between any two vertices of a graph. The algorithm creates a tree of shortest paths from the starting vertex, the source, to all other points in the graph.  Dijkstra’s algorithm , published in 1959 and named after its creator Dutch computer scientist Edsger Dijkstra, is the base of several other graph search algorithms commonly used to solve routing problems in the navigation apps.</p>
-<img src="images/Dijkstra.png" alt="Dijkstra Algorithms" style="float: left; margin-right: 10px;" />
-<p>// this is modified version from the standard Dijkstra because<br />
-// graphs from generated from maps have self-loops and parallel edges<br />
-// which breaks dijkstra because self-loop edge could get choosen in the<br />
+<img alt="Dijkstra Algorithms" src="images/Dijkstra.png" style="float: left; margin-right: 10px;"/>
+<p>// this is modified version from the standard Dijkstra because<br/>
+// graphs from generated from maps have self-loops and parallel edges<br/>
+// which breaks dijkstra because self-loop edge could get choosen in the<br/>
 // priority queue step and mess the order of relaxation of the nodes
-// this may not very obvious at first but trace the algorithm and you would<br />
+// this may not very obvious at first but trace the algorithm and you would<br/>
 // see what we meant</p>
-<p>// when a node get removed from <em>unrelaxed_nodes</em> list, then this node value<br />
+<p>// when a node get removed from <em>unrelaxed_nodes</em> list, then this node value<br/>
 // in <em>shortest_dist</em> is the shortest path between the origin and that node – it became relaxed</p>
-<p><strong>DIJKSTRA-SEARCH</strong>( <em>source</em> , <em>destination</em> ) <strong>returns</strong> a route<br />
- <em>shortest_dist</em> ← empty<br />
- <em>unrelaxed_nodes</em> ← empty<br />
+<p><strong>DIJKSTRA-SEARCH</strong>( <em>source</em> , <em>destination</em> ) <strong>returns</strong> a route<br/>
+ <em>shortest_dist</em> ← empty<br/>
+ <em>unrelaxed_nodes</em> ← empty<br/>
  <em>seen</em> ← empty</p>
-<p> //initializing the lists<br />
- <strong>for</strong> <em>node</em> <strong>in</strong> <em>graph</em><br />
-   <em>shortest_dist</em> [ <em>node</em> ] = <em>Infinity</em><br />
+<p> //initializing the lists<br/>
+ <strong>for</strong> <em>node</em> <strong>in</strong> <em>graph</em><br/>
+   <em>shortest_dist</em> [ <em>node</em> ] = <em>Infinity</em><br/>
    <strong>add</strong> <em>node</em> <strong>to</strong> <em>unrelaxed_nodes</em></p>
-<p>  <em>shortest_dist</em> [ <em>source</em> ] ← 0<br />
+<p>  <em>shortest_dist</em> [ <em>source</em> ] ← 0<br/>
   <em>found</em> ← <em>False</em></p>
-<p>  <strong>while</strong> <em>unrelaxed_nodes</em> <strong>is not</strong> empty <strong>and</strong> <em>found</em> <strong>is</strong> <em>False</em> <strong>do</strong><br />
-   <em>node</em> ← <em>unrelaxed_nodes</em>.pop()  // this will return the node with the smallest value in <em>shortest_dist</em> list<br />
-   <strong>add</strong> <em>node</em> <strong>to</strong> <em>seen</em><br />
-   <strong>if</strong> <em>node</em> <strong>is</strong> <em>destination</em> <strong>then</strong><br />
-    <em>route</em> ← <em>node</em>.route()<br />
-    <em>found</em> ← <em>True</em><br />
-   <strong>for</strong> <em>child</em> <strong>in</strong> <em>node</em>.expand() <strong>do</strong><br />
-    <strong>if</strong> <em>child</em> <strong>in</strong> <em>seen</em> : <strong>skip</strong><br />
-    <em>distance</em> ← <em>shortest_dist</em> [ <em>node</em> ] + length of edge to <em>child</em><br />
-    <strong>if</strong> <em>distance</em> &lt; <em>shortest_dist</em> [ <em>child</em> ] :   //relax this edge<br />
-     <em>shortest_dist</em> [ <em>child</em> ] ← <em>distance</em><br />
-     <em>child</em>.partent ← <em>node</em><br />
- <strong>return</strong>  <em>route</em></p>
+<p>  <strong>while</strong> <em>unrelaxed_nodes</em> <strong>is not</strong> empty <strong>and</strong> <em>found</em> <strong>is</strong> <em>False</em> <strong>do</strong><br/>
+   <em>node</em> ← <em>unrelaxed_nodes</em>.pop()  // this will return the node with the smallest value in <em>shortest_dist</em> list<br/>
+   <strong>add</strong> <em>node</em> <strong>to</strong> <em>seen</em><br/>
+   <strong>if</strong> <em>node</em> <strong>is</strong> <em>destination</em> <strong>then</strong><br/>
+    <em>route</em> ← <em>node</em>.route()<br/>
+    <em>found</em> ← <em>True</em><br/>
+   <strong>for</strong> <em>child</em> <strong>in</strong> <em>node</em>.expand() <strong>do</strong><br/>
+    <strong>if</strong> <em>child</em> <strong>in</strong> <em>seen</em> : <strong>skip</strong><br/>
+    <em>distance</em> ← <em>shortest_dist</em> [ <em>node</em> ] + length of edge to <em>child</em><br/>
+    <strong>if</strong> <em>distance</em> &lt; <em>shortest_dist</em> [ <em>child</em> ] :   //relax this edge<br/>
+     <em>shortest_dist</em> [ <em>child</em> ] ← <em>distance</em><br/>
+     <em>child</em>.partent ← <em>node</em><br/>
+ <strong>return</strong> <em>route</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
@@ -819,7 +889,7 @@ its cost is
     
     <span class="n">node</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">unrelaxed_nodes</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">node</span> <span class="p">:</span> <span class="n">shortest_dist</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">osmid</span><span class="p">])</span>
     
-    <span class="c1"># relaxing the node, so this node&#39;s value in shortest_dist</span>
+    <span class="c1"># relaxing the node, so this node's value in shortest_dist</span>
     <span class="c1"># is the shortest distance between the origin and destination</span>
     <span class="n">unrelaxed_nodes</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
     <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">osmid</span><span class="p">)</span>
@@ -832,12 +902,12 @@ its cost is
         <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">continue</span>
     
-    <span class="c1"># otherwise, let&#39;s relax edges of its neighbours</span>
+    <span class="c1"># otherwise, let's relax edges of its neighbours</span>
     <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">expand</span><span class="p">():</span>
         <span class="c1"># skip self-loops</span>
         <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">osmid</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span> <span class="k">continue</span>
         
-        <span class="c1"># this doesn&#39;t look pretty because Node is just an object</span>
+        <span class="c1"># this doesn't look pretty because Node is just an object</span>
         <span class="c1"># so retrieving it is a bit verbose -- if you have nicer </span>
         <span class="c1"># way to do that, please open an issue</span>
         <span class="n">child_obj</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">node</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">unrelaxed_nodes</span> <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">osmid</span> <span class="o">==</span> <span class="n">child</span><span class="o">.</span><span class="n">osmid</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
@@ -849,7 +919,7 @@ its cost is
             <span class="n">child_obj</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">node</span>
             
 <span class="n">bar</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The route is </span><span class="se">\n\n</span><span class="si">{</span><span class="n">route</span><span class="si">}</span><span class="s2"> </span><span class="se">\n\n</span><span class="s2">its cost is</span><span class="se">\n\n</span><span class="si">{</span><span class="n">cost</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The route is </span><span class="se">\n\n</span><span class="si">{</span><span class="n">route</span><span class="si">}</span><span class="s2"> </span><span class="se">\n\n</span><span class="s2">its cost is</span><span class="se">\n\n</span><span class="si">{</span><span class="n">cost</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -888,14 +958,14 @@ Wall time: 23.7 s
 <h1>Hill Climbing<a class="headerlink" href="#hill-climbing" title="Permalink to this headline">¶</a></h1>
 <p>The idea of the algorithm is simple; if you have a value of objective function that you want to optimize, you check the neighbours of that value and choose the neighbour that has more optimal value. If there is not such neighbour, terminate the search and return the current value.</p>
 <p>With that, you can get easily stuck at local optimal points, and flat areas in the objective function where there is no progress.</p>
-<p><strong>HILL-CLIMBING</strong>( <em>source</em> , <em>destination</em> ) <strong>returns</strong> a route<br />
-  <em>current</em> ← random route from <em>source</em> , <em>destination</em><br />
-  <em>neighbours</em> ← children of <em>current</em><br />
-  <strong>while</strong> min <em>neighbours</em> &lt; <em>current</em> <strong>do</strong><br />
-   <em>current</em> ← min <em>neighbours</em><br />
-   <em>neighbours</em> ← children of <em>current</em><br />
+<p><strong>HILL-CLIMBING</strong>( <em>source</em> , <em>destination</em> ) <strong>returns</strong> a route<br/>
+  <em>current</em> ← random route from <em>source</em> , <em>destination</em><br/>
+  <em>neighbours</em> ← children of <em>current</em><br/>
+  <strong>while</strong> min <em>neighbours</em> &lt; <em>current</em> <strong>do</strong><br/>
+   <em>current</em> ← min <em>neighbours</em><br/>
+   <em>neighbours</em> ← children of <em>current</em><br/>
   <strong>return</strong> <em>current</em></p>
-<hr class="docutils" />
+<hr class="docutils"/>
 <p>This is the first time to use the idea of generating children of a route and treating the route between two specific nodes as a function with a value which is the distance between these two nodes.</p>
 <p>Let’s talk about that again (the first time is <a class="reference external" href="https://github.com/SmartMobilityAlgorithms/GettingStarted/blob/master/utils.ipynb">here</a>), we needed a function defined to be optimized in the first place; a function over all the possible routes between two specific nodes that we are trying to find the shortest path between them. We could have generated random permutations between these two nodes and took the permutations that are actual and feasible routes between them and optimize our “function” over these random, sparse permutations. But with that we can’t say we are stuck at local optimum value or that we reproduce the same output every run because these are just random permutations.</p>
 <p>What we did is that we have made a determinstic policy that generates number of routes between two nodes by successively failing nodes between source and destination and have a gap in the route which will be stitched with the shortest path between the node before the failure and the node after the failure.</p>
@@ -917,7 +987,7 @@ Wall time: 23.7 s
     <span class="n">neighbours</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">islice</span><span class="p">(</span><span class="n">children_route</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">current</span><span class="p">),</span> <span class="mi">25</span><span class="p">)]</span>
     <span class="n">shortest</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">neighbours</span> <span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">route</span> <span class="p">:</span> <span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">))</span>
     
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The cost of the path now is </span><span class="se">\n\n</span><span class="si">{</span><span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">current</span><span class="p">)</span><span class="si">}</span><span class="s2"> and the best child is </span><span class="se">\n\n</span><span class="si">{</span><span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">shortest</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The cost of the path now is </span><span class="se">\n\n</span><span class="si">{</span><span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">current</span><span class="p">)</span><span class="si">}</span><span class="s2"> and the best child is </span><span class="se">\n\n</span><span class="si">{</span><span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">shortest</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -928,7 +998,7 @@ Wall time: 23.7 s
 
 <span class="nn">&lt;timed exec&gt;</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(route)</span>
 
-<span class="ne">TypeError</span>: &#39;float&#39; object is not callable
+<span class="ne">TypeError</span>: 'float' object is not callable
 </pre></div>
 </div>
 </div>
@@ -950,17 +1020,17 @@ Wall time: 23.7 s
 <div class="section" id="beam-search">
 <h1>Beam Search<a class="headerlink" href="#beam-search" title="Permalink to this headline">¶</a></h1>
 <p>Instead of keeping one state/route in the memory that persists through all the iterations like in hill climbing, we will keep <span class="math notranslate nohighlight">\(k\)</span> states in our memory/beam and at each iteration we generate the neighbours of each of the <span class="math notranslate nohighlight">\(k\)</span> state/route and put them in a pool with also the <span class="math notranslate nohighlight">\(k\)</span> routes in the original beam and then select the best <span class="math notranslate nohighlight">\(k\)</span> routes from the pool to be our next <em>beam</em> that would go into the next iteration of generation and selection. We terminate the algorithm when the beam of the current iteration is the same as the beam from the last iteration, this is a local search after all and we can get stuck at local minima.</p>
-<p><strong>BEAM-SEARCH</strong>( <em>source</em> , <em>destination</em> , <em>k</em> ) <strong>returns</strong> a route<br />
-  <em>seen</em> ← nil   // so we don’t have one sinlge short route generated from multiple parent dominates <em>beam</em><br />
-  <em>beam</em> ← random <span class="math notranslate nohighlight">\(k\)</span> routes from <em>source</em> , <em>destination</em><br />
-  add <em>beam</em> to <em>seen</em><br />
-  <em>pool</em> ← children of routes in the <em>beam</em> with consideration of <em>seen</em> + <em>beam</em><br />
-  <em>last_beam</em> ← nil<br />
-  <strong>while</strong> <em>beam</em> <strong>is not</strong> <em>last_beam</em> <strong>do</strong><br />
-   <em>last_beam</em> ← <em>beam</em><br />
-   <em>beam</em> ← the best <span class="math notranslate nohighlight">\(k\)</span> routes from <em>pool</em><br />
-   add <em>beam</em> to <em>seen</em><br />
-   <em>pool</em> ← children of routes in the <em>beam</em> with consideration of <em>seen</em> + <em>beam</em><br />
+<p><strong>BEAM-SEARCH</strong>( <em>source</em> , <em>destination</em> , <em>k</em> ) <strong>returns</strong> a route<br/>
+  <em>seen</em> ← nil   // so we don’t have one sinlge short route generated from multiple parent dominates <em>beam</em><br/>
+  <em>beam</em> ← random <span class="math notranslate nohighlight">\(k\)</span> routes from <em>source</em> , <em>destination</em><br/>
+  add <em>beam</em> to <em>seen</em><br/>
+  <em>pool</em> ← children of routes in the <em>beam</em> with consideration of <em>seen</em> + <em>beam</em><br/>
+  <em>last_beam</em> ← nil<br/>
+  <strong>while</strong> <em>beam</em> <strong>is not</strong> <em>last_beam</em> <strong>do</strong><br/>
+   <em>last_beam</em> ← <em>beam</em><br/>
+   <em>beam</em> ← the best <span class="math notranslate nohighlight">\(k\)</span> routes from <em>pool</em><br/>
+   add <em>beam</em> to <em>seen</em><br/>
+   <em>pool</em> ← children of routes in the <em>beam</em> with consideration of <em>seen</em> + <em>beam</em><br/>
   <strong>return</strong> optimal route in <em>beam</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -976,7 +1046,7 @@ Wall time: 23.7 s
 <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 <span class="n">beam</span> <span class="o">=</span> <span class="p">[</span><span class="n">randomized_search</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">osmid</span><span class="p">,</span> <span class="n">destination</span><span class="o">.</span><span class="n">osmid</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">)]</span>
 
-<span class="c1"># we needed to &quot;tuple&quot; route as a list to make it hashable </span>
+<span class="c1"># we needed to "tuple" route as a list to make it hashable </span>
 <span class="c1"># so we can add it inside a python set data structure</span>
 <span class="k">for</span> <span class="n">route</span> <span class="ow">in</span> <span class="n">beam</span><span class="p">:</span> <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">route</span><span class="p">))</span>
 
@@ -1003,11 +1073,11 @@ Wall time: 23.7 s
             <span class="k">else</span><span class="p">:</span> <span class="n">pool</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">);</span> <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">child</span><span class="p">))</span>
     <span class="n">pool</span> <span class="o">+=</span> <span class="n">beam</span>
             
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The cost of the routes in the beam are </span><span class="si">{</span><span class="p">[</span><span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">)</span> <span class="k">for</span> <span class="n">route</span> <span class="ow">in</span> <span class="n">beam</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The cost of the routes in the beam are </span><span class="si">{</span><span class="p">[</span><span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">)</span> <span class="k">for</span> <span class="n">route</span> <span class="ow">in</span> <span class="n">beam</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="n">route</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">beam</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">route</span> <span class="p">:</span> <span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">))</span> 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The route is </span><span class="se">\n\n</span><span class="si">{</span><span class="n">route</span><span class="si">}</span><span class="s2"> </span><span class="se">\n\n</span><span class="s2">its cost is</span><span class="se">\n\n</span><span class="si">{</span><span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The route is </span><span class="se">\n\n</span><span class="si">{</span><span class="n">route</span><span class="si">}</span><span class="s2"> </span><span class="se">\n\n</span><span class="s2">its cost is</span><span class="se">\n\n</span><span class="si">{</span><span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1032,7 +1102,7 @@ Wall time: 23.7 s
 
 <span class="nn">&lt;timed exec&gt;</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(route)</span>
 
-<span class="ne">TypeError</span>: &#39;float&#39; object is not callable
+<span class="ne">TypeError</span>: 'float' object is not callable
 </pre></div>
 </div>
 </div>
@@ -1052,22 +1122,22 @@ Wall time: 23.7 s
 <div class="section" id="a-search">
 <h1>A* Search<a class="headerlink" href="#a-search" title="Permalink to this headline">¶</a></h1>
 <p>A* is an informed search algorithm widely used in pathfinding and graph traversal.</p>
-<p><strong>PQ</strong> ← min heap according to <strong>A-star heuristic</strong><br />
+<p><strong>PQ</strong> ← min heap according to <strong>A-star heuristic</strong><br/>
 <strong>A-star heuristic</strong> ← sum of straight-line distance between the node to <em>goal</em> and the node to <em>destination</em></p>
-<p><strong>A*-SEARCH</strong> ( <em>source</em> , <em>destination</em> ) <strong>return</strong> a route<br />
- <em>frontier</em> ← a <strong>PQ</strong> initialized with <em>source</em> node<br />
- <em>explored</em> ← empty<br />
- <em>found</em> ← False<br />
- <strong>while</strong>  <em>frontier</em> <strong>is not</strong> empty <strong>and</strong> <em>found</em> <strong>is</strong> <em>False</em>  <strong>do</strong><br />
-   <em>node</em> ← <em>frontier</em>.pop()<br />
-   <strong>add</strong> <em>node</em> <strong>to</strong> <em>explored</em><br />
-   <strong>for</strong> <em>child</em> <strong>in</strong> <em>node</em>.expand() <strong>do</strong><br />
-     <strong>if</strong> <em>child</em> <strong>is not in</strong> <em>explored</em> <strong>and</strong> <em>child</em> <strong>is not in</strong> <em>frontier</em>   <strong>then</strong><br />
-        <strong>if</strong> <em>child</em> <strong>is</strong> <em>destination</em> <strong>then</strong><br />
-          <em>route</em> ← <em>child</em>.route()<br />
-          <em>found</em> ← <em>True</em><br />
-       <strong>add</strong> <em>child</em> <strong>to</strong> <em>frontier</em><br />
- <strong>return</strong>  <em>route</em></p>
+<p><strong>A*-SEARCH</strong> ( <em>source</em> , <em>destination</em> ) <strong>return</strong> a route<br/>
+ <em>frontier</em> ← a <strong>PQ</strong> initialized with <em>source</em> node<br/>
+ <em>explored</em> ← empty<br/>
+ <em>found</em> ← False<br/>
+ <strong>while</strong> <em>frontier</em> <strong>is not</strong> empty <strong>and</strong> <em>found</em> <strong>is</strong> <em>False</em> <strong>do</strong><br/>
+   <em>node</em> ← <em>frontier</em>.pop()<br/>
+   <strong>add</strong> <em>node</em> <strong>to</strong> <em>explored</em><br/>
+   <strong>for</strong> <em>child</em> <strong>in</strong> <em>node</em>.expand() <strong>do</strong><br/>
+     <strong>if</strong> <em>child</em> <strong>is not in</strong> <em>explored</em> <strong>and</strong> <em>child</em> <strong>is not in</strong> <em>frontier</em> <strong>then</strong><br/>
+        <strong>if</strong> <em>child</em> <strong>is</strong> <em>destination</em> <strong>then</strong><br/>
+          <em>route</em> ← <em>child</em>.route()<br/>
+          <em>found</em> ← <em>True</em><br/>
+       <strong>add</strong> <em>child</em> <strong>to</strong> <em>frontier</em><br/>
+ <strong>return</strong> <em>route</em></p>
 <div class="section" id="the-heuristic">
 <h2>The Heuristic<a class="headerlink" href="#the-heuristic" title="Permalink to this headline">¶</a></h2>
 <p>What drives node expansion in A* algorithm is determining is choosing a node with the lowest heuristic value which is computer by summing the straight line distance between the node and the origin and the straight line distance between the node and the source so what we need here is a function that returns a data structure that pre-computes this value for each node.</p>
@@ -1079,18 +1149,16 @@ Wall time: 23.7 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
+<div class="output text_html"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
 <!--
 generated by Pygments <https://pygments.org/>
 Copyright 2006-2019 by the Pygments team.
 Licensed under the BSD license, see LICENSE for details.
 -->
-<html>
-<head>
-  <title></title>
-  <meta http-equiv="content-type" content="text/html; charset=None">
-  <style type="text/css">
+<title></title>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<style type="text/css">
 /*
 generated by Pygments <https://pygments.org/>
 Copyright 2006-2019 by the Pygments team.
@@ -1170,23 +1238,20 @@ body .vm { color: #19177C } /* Name.Variable.Magic */
 body .il { color: #666666 } /* Literal.Number.Integer.Long */
 
   </style>
-</head>
-<body>
 <h2></h2>
-
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">astar_heuristic</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">measuring_dist</span> <span class="o">=</span> <span class="n">straight_line</span><span class="p">):</span>
     <span class="n">distanceGoal</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
     <span class="n">distanceOrigin</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 
-    <span class="n">originX</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">origin</span><span class="p">][</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
-    <span class="n">originY</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">origin</span><span class="p">][</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+    <span class="n">originX</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">origin</span><span class="p">][</span><span class="s1">'x'</span><span class="p">]</span>
+    <span class="n">originY</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">origin</span><span class="p">][</span><span class="s1">'y'</span><span class="p">]</span>
 
-    <span class="n">destX</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">destination</span><span class="p">][</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
-    <span class="n">destY</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">destination</span><span class="p">][</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+    <span class="n">destX</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">destination</span><span class="p">][</span><span class="s1">'x'</span><span class="p">]</span>
+    <span class="n">destY</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">destination</span><span class="p">][</span><span class="s1">'y'</span><span class="p">]</span>
 
     <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-        <span class="n">pointX</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
-        <span class="n">pointY</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+        <span class="n">pointX</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">'x'</span><span class="p">]</span>
+        <span class="n">pointY</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">'y'</span><span class="p">]</span>
 
         <span class="n">originDist</span> <span class="o">=</span> <span class="n">measuring_dist</span><span class="p">(</span><span class="n">originX</span><span class="p">,</span> <span class="n">originY</span><span class="p">,</span> <span class="n">pointX</span><span class="p">,</span> <span class="n">pointY</span><span class="p">)</span>
         <span class="n">destDist</span> <span class="o">=</span> <span class="n">measuring_dist</span><span class="p">(</span><span class="n">pointX</span><span class="p">,</span> <span class="n">pointY</span><span class="p">,</span> <span class="n">destX</span><span class="p">,</span> <span class="n">destY</span><span class="p">)</span>
@@ -1196,8 +1261,6 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 
     <span class="k">return</span> <span class="n">distanceGoal</span><span class="p">,</span> <span class="n">distanceOrigin</span>
 </pre></div>
-</body>
-</html>
 </div></div>
 </div>
 <p>In this implementation we assume that earth is flat which is acceptable approximation if our map is small but if we want to get it exactly right, we will need to compute <a class="reference external" href="https://en.wikipedia.org/wiki/Haversine_formula">haversine formula</a>.</p>
@@ -1239,7 +1302,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
             <span class="n">frontier</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
 
 <span class="n">bar</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The route is </span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">route</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">its cost is</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"The route is </span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span><span class="n">route</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n\n</span><span class="s2">its cost is</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1251,7 +1314,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="o">&lt;</span><span class="n">timed</span> <span class="n">exec</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 
-<span class="ne">TypeError</span>: &#39;float&#39; object is not callable
+<span class="ne">TypeError</span>: 'float' object is not callable
 </pre></div>
 </div>
 </div>
@@ -1274,38 +1337,38 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <p>The point of bidirectional search is to run two simultaneous, not parallel, search from the origin and destination node hoping that they would meet in the middle.  Imagine that you are doing BFS in a graph with a constant branching factor <span class="math notranslate nohighlight">\(b\)</span> and depth <span class="math notranslate nohighlight">\(d\)</span> so the complexity would be <span class="math notranslate nohighlight">\(O({d}^b)\)</span> but what if we split that depth <span class="math notranslate nohighlight">\(d\)</span> in half (that usually doesn’t happen) so the total complexity would be <span class="math notranslate nohighlight">\(O({(d/2)}^b) + O({(d/2)}^b)\)</span> which is in total much lower than <span class="math notranslate nohighlight">\(O({d}^b)\)</span>.</p>
 <p><strong>Bi_DIRECTIONAL_SEARCH</strong> ( <em>source</em> , <em>destination</em> ) <strong>returns</strong> a route</p>
 <p>  // f stands for source/front expansion and b stands for destination/back expansion</p>
-<p>  <em>frontier_f</em> ← initialized with <em>source</em><br />
-  <em>frontier_b</em> ← initialized with <em>destination</em><br />
-  <em>explored_f</em> ← empty<br />
-  <em>explored_b</em> ← empty<br />
-  <em>collide</em> ← <em>False</em>    // if front expansion overlapped with back expansion<br />
-  <em>found</em> ← <em>False</em>    // if we found the destination from a single expansion which if you think about it, will never happen<br />
+<p>  <em>frontier_f</em> ← initialized with <em>source</em><br/>
+  <em>frontier_b</em> ← initialized with <em>destination</em><br/>
+  <em>explored_f</em> ← empty<br/>
+  <em>explored_b</em> ← empty<br/>
+  <em>collide</em> ← <em>False</em>    // if front expansion overlapped with back expansion<br/>
+  <em>found</em> ← <em>False</em>    // if we found the destination from a single expansion which if you think about it, will never happen<br/>
   <em>altr_expand</em> ← <em>False</em>    // To alternate between expansion from front and back</p>
-<p>  <strong>while</strong> <em>frontier_f</em> <strong>is not</strong> empty <strong>and</strong> <em>frontier_b</em> <strong>is not</strong> empty <strong>and</strong> <strong>not</strong> <em>collide</em> <strong>and</strong> <strong>not</strong> <em>found</em> <strong>do</strong><br />
-   <strong>if</strong> <em>altr_expand</em> <strong>then</strong><br />
-    <em>node</em> ← <em>frontier_f</em>.pop()<br />
-    <strong>add</strong> <em>node</em> <strong>to</strong> <em>explored_f</em><br />
-    <strong>for</strong> <em>child</em> <strong>in</strong> <em>node</em>.expand() <strong>do</strong><br />
-     <strong>if</strong> <em>child</em> <strong>in</strong> <em>explored_f</em> <strong>then</strong> continue<br />
-     <strong>if</strong> <em>child</em> <strong>is</strong> <em>destination</em> <strong>then</strong><br />
-      <em>route</em> ← <em>child</em>.route()<br />
-      <em>found</em> ← <em>True</em><br />
-     <strong>if</strong> <em>child</em> <strong>is in</strong> <em>explored_b</em> <strong>then</strong>  //overlapping – met in the middle<br />
-      <em>route</em> ← <em>child</em>.route() + reverse( <em>overlapped</em>.route() )<br />
-      <em>collid</em> ← <em>True</em><br />
-     <strong>add</strong> <em>child</em> <strong>to</strong> <em>frontier_f</em><br />
-   <strong>else</strong><br />
-    <em>node</em> ←  <em>frontier_b</em>.pop()<br />
-    <strong>add</strong> <em>node</em> <strong>to</strong> <em>explored_b</em><br />
-    <strong>for</strong> <em>child</em> <strong>in</strong> <em>node</em>.expand() <strong>do</strong><br />
-     <strong>if</strong> <em>child</em> <strong>in</strong> <em>explored_b</em> <strong>then</strong> continue<br />
-     <strong>if</strong> <em>child</em> <strong>is</strong> <em>destination</em> <strong>then</strong><br />
-      <em>route</em> ← <em>child</em>.route()<br />
-      <em>found</em> ← <em>True</em><br />
-     <strong>if</strong> <em>child</em> <strong>is in</strong> <em>explored_f</em> <strong>then</strong>  //overlapping – met in the middle<br />
-      <em>route</em> ← reverse( <em>child</em>.route() ) + <em>overlapped</em>.route()<br />
-      <em>collid</em> ← <em>True</em><br />
-     <strong>add</strong> <em>child</em> <strong>to</strong> <em>frontier_b</em><br />
+<p>  <strong>while</strong> <em>frontier_f</em> <strong>is not</strong> empty <strong>and</strong> <em>frontier_b</em> <strong>is not</strong> empty <strong>and</strong> <strong>not</strong> <em>collide</em> <strong>and</strong> <strong>not</strong> <em>found</em> <strong>do</strong><br/>
+   <strong>if</strong> <em>altr_expand</em> <strong>then</strong><br/>
+    <em>node</em> ← <em>frontier_f</em>.pop()<br/>
+    <strong>add</strong> <em>node</em> <strong>to</strong> <em>explored_f</em><br/>
+    <strong>for</strong> <em>child</em> <strong>in</strong> <em>node</em>.expand() <strong>do</strong><br/>
+     <strong>if</strong> <em>child</em> <strong>in</strong> <em>explored_f</em> <strong>then</strong> continue<br/>
+     <strong>if</strong> <em>child</em> <strong>is</strong> <em>destination</em> <strong>then</strong><br/>
+      <em>route</em> ← <em>child</em>.route()<br/>
+      <em>found</em> ← <em>True</em><br/>
+     <strong>if</strong> <em>child</em> <strong>is in</strong> <em>explored_b</em> <strong>then</strong>  //overlapping – met in the middle<br/>
+      <em>route</em> ← <em>child</em>.route() + reverse( <em>overlapped</em>.route() )<br/>
+      <em>collid</em> ← <em>True</em><br/>
+     <strong>add</strong> <em>child</em> <strong>to</strong> <em>frontier_f</em><br/>
+   <strong>else</strong><br/>
+    <em>node</em> ←  <em>frontier_b</em>.pop()<br/>
+    <strong>add</strong> <em>node</em> <strong>to</strong> <em>explored_b</em><br/>
+    <strong>for</strong> <em>child</em> <strong>in</strong> <em>node</em>.expand() <strong>do</strong><br/>
+     <strong>if</strong> <em>child</em> <strong>in</strong> <em>explored_b</em> <strong>then</strong> continue<br/>
+     <strong>if</strong> <em>child</em> <strong>is</strong> <em>destination</em> <strong>then</strong><br/>
+      <em>route</em> ← <em>child</em>.route()<br/>
+      <em>found</em> ← <em>True</em><br/>
+     <strong>if</strong> <em>child</em> <strong>is in</strong> <em>explored_f</em> <strong>then</strong>  //overlapping – met in the middle<br/>
+      <em>route</em> ← reverse( <em>child</em>.route() ) + <em>overlapped</em>.route()<br/>
+      <em>collid</em> ← <em>True</em><br/>
+     <strong>add</strong> <em>child</em> <strong>to</strong> <em>frontier_b</em><br/>
   <strong>return</strong> <em>route</em></p>
 <p>Le’s implement A* based bi-directional search algorithm, so our criteria of expansion, either from source frontier or destination destination frontier is the A* heuristic.</p>
 <p>Please note the following:</p>
@@ -1377,7 +1440,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
             <span class="c1"># checking for collusion with the target expansion</span>
             <span class="k">if</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">explored_b</span><span class="p">:</span>
                 <span class="n">overlapped</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">node</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">explored_b</span> <span class="k">if</span> <span class="n">node</span> <span class="o">==</span> <span class="n">child</span><span class="p">))</span>
-                <span class="c1"># we don&#39;t take the overlapped node twice</span>
+                <span class="c1"># we don't take the overlapped node twice</span>
                 <span class="n">route</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">path</span><span class="p">()[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">overlapped</span><span class="o">.</span><span class="n">path</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
                 <span class="n">collide</span> <span class="o">=</span> <span class="kc">True</span>
                 <span class="k">break</span>
@@ -1408,7 +1471,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 
 
 <span class="n">bar</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The route is </span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">route</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"The route is </span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span><span class="n">route</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1450,7 +1513,7 @@ Wall time: 3.43 s
 <p>We compute hierarchy level for each <strong>arc</strong>/road in the graph to distinguish residential roads and national roads and highways and with some data about the arcs like the max speed and # of turns in the road would affect this distinction. After computing the heuristic function we run bi-directional Dijkstra/(or any type of search method) and as we run the algorithm we consider the level/heuristic value of the arcs when we expand a certain node like if we are very far away from our destination we only consider highways and if we are closer we look at national roads and if we are really close we traverse residential roads.</p>
 <p>That is the pruning we talked about at the beginning, and the algorithm makes sense because if you are living at the side of the highway and want to go some place close to your place on the same side of where your at, you won’t take the highway and would prefer going through resdential roads, despite the fact that the highway is <em>faster</em>.</p>
 </div>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="contraction-hierarchies">
 <h2>Contraction Hierarchies<a class="headerlink" href="#contraction-hierarchies" title="Permalink to this headline">¶</a></h2>
 <p>As you saw that the highway hierarchies algorithm gives us back 3 level/hierarchies (residential roads/ national roads/ highways) and that is how it prunes the search space and abstracts it into 3 choices. Contraction hierarchies introduced at <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-540-68552-4_24">Contraction Hierarchies: Faster and Simpler Hierarchical Routing in Road Networks</a> gives us more levels of hierarchies (depends on the size of the graph) for each node based on when the node was <em>contracted</em>. The level of the node is its order of contraction relative to other nodes in the graph, and all the nodes in the graph are to be contracted eventually. Accordingly, the number of levels/hierarchies that the heuristic generates is equal to the number of nodes in the graph which is a good thing because the more hierarchies we have, the more we are pruning the search space.</p>
@@ -1517,32 +1580,32 @@ Wall time: 3.43 s
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">edges</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">7</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">6</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">13</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">12</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">13</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">1</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">}),</span>
-    <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">13</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">1</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">4</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">5</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">2</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">2</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">2</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">1</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">1</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">5</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">7</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">4</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">3</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">3</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">3</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">1</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">6</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">3</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">13</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">5</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">12</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">1</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">3</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">4</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">3</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">13</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">4</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">2</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">1</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">3</span><span class="p">}),</span>
+    <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">13</span><span class="p">,{</span><span class="s1">'weight'</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -1556,7 +1619,7 @@ Wall time: 3.43 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/graph_search_algorithms_51_0.png" src="../../_images/graph_search_algorithms_51_0.png" />
+<img alt="../../_images/graph_search_algorithms_51_0.png" src="../../_images/graph_search_algorithms_51_0.png"/>
 </div>
 </div>
 <p>This is the normal dijkstra search to compute the shortest path between node <code class="docutils literal notranslate"><span class="pre">source</span></code> and <code class="docutils literal notranslate"><span class="pre">destination</span></code> if <code class="docutils literal notranslate"><span class="pre">contracted</span></code> flag is turned off.</p>
@@ -1565,13 +1628,13 @@ Wall time: 3.43 s
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dijkstra_with_contraction</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">contracted</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    <span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="p">{</span><span class="n">contracted</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s1">&#39;contracted&#39;</span><span class="p">)</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="p">{</span><span class="n">contracted</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s1">'contracted'</span><span class="p">)</span>
         
     <span class="n">shortest_path</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
     <span class="n">heap</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
     
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;contracted&#39;</span><span class="p">)[</span><span class="n">i</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">'contracted'</span><span class="p">)[</span><span class="n">i</span><span class="p">]:</span>
             <span class="n">shortest_path</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span>
             <span class="n">heap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
     <span class="n">shortest_path</span><span class="p">[</span><span class="n">source</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1580,20 +1643,20 @@ Wall time: 3.43 s
         
         <span class="n">q</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">node</span> <span class="p">:</span> <span class="n">shortest_path</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
         <span class="k">if</span> <span class="n">q</span> <span class="o">==</span> <span class="n">destination</span><span class="p">:</span>
-            <span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="p">{</span><span class="n">contracted</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span> <span class="s1">&#39;contracted&#39;</span><span class="p">)</span>
+            <span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="p">{</span><span class="n">contracted</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span> <span class="s1">'contracted'</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">shortest_path</span><span class="p">[</span><span class="n">q</span><span class="p">]</span>
         <span class="n">heap</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
         
         <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">q</span><span class="p">]:</span>
             <span class="c1"># if the node is contracted we skip it</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;contracted&#39;</span><span class="p">)[</span><span class="n">v</span><span class="p">]:</span>
-                <span class="n">distance</span> <span class="o">=</span> <span class="n">shortest_path</span><span class="p">[</span><span class="n">q</span><span class="p">]</span> <span class="o">+</span> <span class="n">G</span><span class="p">[</span><span class="n">q</span><span class="p">][</span><span class="n">v</span><span class="p">][</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">'contracted'</span><span class="p">)[</span><span class="n">v</span><span class="p">]:</span>
+                <span class="n">distance</span> <span class="o">=</span> <span class="n">shortest_path</span><span class="p">[</span><span class="n">q</span><span class="p">]</span> <span class="o">+</span> <span class="n">G</span><span class="p">[</span><span class="n">q</span><span class="p">][</span><span class="n">v</span><span class="p">][</span><span class="s1">'weight'</span><span class="p">]</span>
                 <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">shortest_path</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
                     <span class="n">shortest_path</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance</span>
                     
-    <span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="p">{</span><span class="n">contracted</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span> <span class="s1">&#39;contracted&#39;</span><span class="p">)</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="p">{</span><span class="n">contracted</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span> <span class="s1">'contracted'</span><span class="p">)</span>
     
-    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span> <span class="c1"># if we can&#39;t reach the destination</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span> <span class="c1"># if we can't reach the destination</span>
 </pre></div>
 </div>
 </div>
@@ -1854,7 +1917,7 @@ Wall time: 3.43 s
         <span class="n">new_graph</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()]</span> 
         <span class="n">new_graph</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
         
-        <span class="c1"># let&#39;s compute the new shortest paths between</span>
+        <span class="c1"># let's compute the new shortest paths between</span>
         <span class="c1"># the nodes of the graph without the contracted</span>
         <span class="c1"># node so we can see the changes and add arcs </span>
         <span class="c1"># to the graph accordingly but that is in</span>
@@ -1864,7 +1927,7 @@ Wall time: 3.43 s
         <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">new_graph</span><span class="p">:</span>
             <span class="n">new_shortest_paths</span><span class="p">[</span><span class="n">source</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">destination</span> <span class="ow">in</span> <span class="n">new_graph</span><span class="p">:</span>
-                <span class="c1"># path the contracted node &quot;i&quot; to compute new shortest paths accordingly</span>
+                <span class="c1"># path the contracted node "i" to compute new shortest paths accordingly</span>
                 <span class="n">new_shortest_paths</span><span class="p">[</span><span class="n">source</span><span class="p">][</span><span class="n">destination</span><span class="p">]</span> <span class="o">=</span> <span class="n">dijkstra_with_contraction</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> \
                                                                                     <span class="n">source</span><span class="p">,</span> \
                                                                                     <span class="n">destination</span><span class="p">,</span> \
@@ -1877,7 +1940,7 @@ Wall time: 3.43 s
             <span class="n">SP_contracted</span> <span class="o">=</span> <span class="n">new_shortest_paths</span><span class="p">[</span><span class="n">source</span><span class="p">]</span>
             <span class="n">SP_original</span> <span class="o">=</span> <span class="n">shortest_paths</span><span class="p">[</span><span class="n">source</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">destination</span> <span class="ow">in</span> <span class="n">SP_contracted</span><span class="p">:</span>
-                <span class="c1"># this is statement so we don&#39;t add 2 arcs</span>
+                <span class="c1"># this is statement so we don't add 2 arcs</span>
                 <span class="c1"># for the same pair of nodes </span>
                 <span class="k">if</span> <span class="p">[</span><span class="n">source</span><span class="p">,</span> <span class="n">destination</span><span class="p">]</span> <span class="ow">in</span> <span class="n">seenBefore</span><span class="p">:</span> <span class="k">continue</span>
                 <span class="n">seenBefore</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sorted</span><span class="p">((</span><span class="n">source</span><span class="p">,</span><span class="n">destination</span><span class="p">)))</span>
@@ -1887,7 +1950,7 @@ Wall time: 3.43 s
                 <span class="k">if</span> <span class="n">SP_contracted</span><span class="p">[</span><span class="n">destination</span><span class="p">]</span> <span class="o">!=</span> <span class="n">SP_original</span><span class="p">[</span><span class="n">destination</span><span class="p">]:</span>
                     <span class="n">shortcuts</span> <span class="o">+=</span> <span class="mi">1</span>
         
-        <span class="c1"># let&#39;s leave the dictionary as we took it </span>
+        <span class="c1"># let's leave the dictionary as we took it </span>
         <span class="c1"># from the last iteration</span>
         <span class="n">shortest_paths</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">contracted_node_paths</span>
         
@@ -1939,7 +2002,7 @@ Wall time: 3.43 s
 <p>We have now computed the ED value for each node when it is the only node contracted in the graph, but in the algorithm itself we contract the nodes successively so these values we have generated won’t be valid and reflecting the then current state of the graph possibly after the first iteration of the algorithm.</p>
 <p>But as you remember from the introduction, that any arbitrary order of nodes contraction is valid and will lead to the correct answer eventually.</p>
 <p>We could update the edge difference list at each iteration, which would be expensive for large graphs or select some nodes to update their ED value like the adjacent nodes of the current contracted node. After re-ordering the list of the node we continue our algorithm. There is a number of heuristics that update the order of contraction in the paper introducing the algorithm.</p>
-<hr class="docutils" />
+<hr class="docutils"/>
 <p>We will contract nodes according to the order of edge_difference list which would give us good enough preformance for the current problem.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1960,7 +2023,7 @@ Wall time: 3.43 s
     <span class="n">node</span> <span class="o">=</span> <span class="n">node_ED</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     
     <span class="c1"># now we will contract the given node through all iterations</span>
-    <span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s1">&#39;contracted&#39;</span><span class="p">)</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="s1">'contracted'</span><span class="p">)</span>
     
     <span class="c1"># we have already contracted the node</span>
     <span class="c1"># so there is no need </span>
@@ -1980,11 +2043,11 @@ Wall time: 3.43 s
         <span class="k">for</span> <span class="n">destination</span> <span class="ow">in</span> <span class="n">SP_contracted</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">source</span> <span class="o">==</span> <span class="n">destination</span><span class="p">:</span> <span class="k">continue</span>
             <span class="k">if</span> <span class="n">SP_contracted</span><span class="p">[</span><span class="n">destination</span><span class="p">]</span> <span class="o">!=</span> <span class="n">SP_original</span><span class="p">[</span><span class="n">destination</span><span class="p">]:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;we have added edge between &quot;</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span><span class="s2">&quot; after contracting&quot;</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">"we have added edge between "</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span><span class="s2">" after contracting"</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
                 
                 <span class="c1"># it seems like we add two edges instead of one, but this is simple graph</span>
                 <span class="c1"># so adding edge from a to b and then adding edge from b to a are the same</span>
-                <span class="c1"># doesn&#39;t add a thing, we didn&#39;t include condition for that because it will</span>
+                <span class="c1"># doesn't add a thing, we didn't include condition for that because it will</span>
                 <span class="c1"># complicate the algorithm</span>
                 
                 <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">SP_original</span><span class="p">[</span><span class="n">destination</span><span class="p">])</span>
@@ -2015,8 +2078,8 @@ we have added edge between  4 1  after contracting 2
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;# edges before&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">edges_before</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;# edges after&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">edges_after</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"# edges before"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">edges_before</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"# edges after"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">edges_after</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -2043,21 +2106,21 @@ we have added edge between  4 1  after contracting 2
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># let&#39;s color these edges and draw the graph again</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span> <span class="k">if</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">added_edges</span> <span class="k">else</span> <span class="s1">&#39;k&#39;</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">()]</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># let's color these edges and draw the graph again</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'r'</span> <span class="k">if</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">added_edges</span> <span class="k">else</span> <span class="s1">'k'</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">()]</span> 
 <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/graph_search_algorithms_70_0.png" src="../../_images/graph_search_algorithms_70_0.png" />
+<img alt="../../_images/graph_search_algorithms_70_0.png" src="../../_images/graph_search_algorithms_70_0.png"/>
 </div>
 </div>
 <p>After we have added the new edges we need to do dijkstra from source and dijkstra from destination, according to the <strong>upward</strong> and <strong>downward</strong> graph policy we talked about in the introduction.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># which is the same as edge_difference</span>
-<span class="c1"># list because we didn&#39;t use any update heuristic</span>
+<span class="c1"># list because we didn't use any update heuristic</span>
 <span class="n">hierarchical_order</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">order</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">edge_difference</span><span class="p">):</span>
     <span class="n">hierarchical_order</span><span class="p">[</span><span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">order</span>
@@ -2127,7 +2190,7 @@ we have added edge between  4 1  after contracting 2
     <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">node</span><span class="p">]:</span>
         <span class="c1"># skip unqualified edges</span>
         <span class="k">if</span> <span class="n">hierarchical_order</span><span class="p">[</span><span class="n">child</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">hierarchical_order</span><span class="p">[</span><span class="n">node</span><span class="p">]:</span> <span class="k">continue</span>
-        <span class="n">distance</span> <span class="o">=</span> <span class="n">SP_s</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">+</span> <span class="n">G</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="n">child</span><span class="p">][</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span>
+        <span class="n">distance</span> <span class="o">=</span> <span class="n">SP_s</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">+</span> <span class="n">G</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="n">child</span><span class="p">][</span><span class="s1">'weight'</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">SP_s</span><span class="p">[</span><span class="n">child</span><span class="p">]:</span>
             <span class="n">SP_s</span><span class="p">[</span><span class="n">child</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance</span>
             <span class="n">parent_s</span><span class="p">[</span><span class="n">child</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
@@ -2185,7 +2248,7 @@ we have added edge between  4 1  after contracting 2
     <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">node</span><span class="p">]:</span>
         <span class="c1"># skip unqualified edges</span>
         <span class="k">if</span> <span class="n">hierarchical_order</span><span class="p">[</span><span class="n">child</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">hierarchical_order</span><span class="p">[</span><span class="n">node</span><span class="p">]:</span> <span class="k">continue</span>
-        <span class="n">distance</span> <span class="o">=</span> <span class="n">SP_t</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">+</span> <span class="n">G</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="n">child</span><span class="p">][</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span>
+        <span class="n">distance</span> <span class="o">=</span> <span class="n">SP_t</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">+</span> <span class="n">G</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="n">child</span><span class="p">][</span><span class="s1">'weight'</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">SP_t</span><span class="p">[</span><span class="n">child</span><span class="p">]:</span>
             <span class="n">SP_t</span><span class="p">[</span><span class="n">child</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance</span>
             <span class="n">parent_t</span><span class="p">[</span><span class="n">child</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
@@ -2393,8 +2456,8 @@ we have added edge between  4 1  after contracting 2
     <span class="k">for</span> <span class="n">t_node</span><span class="p">,</span> <span class="n">t_dist</span> <span class="ow">in</span> <span class="n">SP_t</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">s_node</span> <span class="o">==</span> <span class="n">t_node</span> <span class="ow">and</span> <span class="n">s_dist</span> <span class="o">==</span> <span class="n">t_dist</span> <span class="o">==</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span><span class="p">:</span>
             <span class="n">unvisited</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;we have skipped </span><span class="si">{</span><span class="n">unvisited</span><span class="si">}</span><span class="s2"> nodes from a graph with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span>
-<span class="s2">so we have skipped </span><span class="si">{</span><span class="n">unvisited</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">}</span><span class="s2">% of the nodes in our search space.&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""we have skipped </span><span class="si">{</span><span class="n">unvisited</span><span class="si">}</span><span class="s2"> nodes from a graph with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span>
+<span class="s2">so we have skipped </span><span class="si">{</span><span class="n">unvisited</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">}</span><span class="s2">% of the nodes in our search space."""</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2413,8 +2476,7 @@ so we have skipped 50.0% of the nodes in our search space.
 <li><p>Sometimes the path returned by merging both dijkstra would contain an edge that was added in the contraction phase, in that case you just replace that edge with the next shortest path from nodes incident to that edge.</p></li>
 </ol>
 </div>
-
-    <script type="text/x-thebe-config">
+<script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
@@ -2432,43 +2494,25 @@ so we have skipped 50.0% of the nodes in our search space.
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
-
-              </div>
-              
-        
-        <div class='prev-next-bottom'>
-            
-
-        </div>
-        
-        </div>
-    </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
+<script>kernelName = 'python3'</script>
+</div>
+<div class="prev-next-bottom">
+</div>
+</div>
+</div>
+<footer class="footer mt-5 mt-md-0">
+<div class="container">
+<p>
         
           By Alaa Khamis and Yinan Wang<br/>
         
-            &copy; Copyright 2021.<br/>
-          <div class="extra_footer">
-            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
-<img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a>
-<span>This work is licensed under a 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.</span>
-
-          </div>
-      </p>
-    </div>
-  </footer>
+            © Copyright 2021, Alaa Khamis and Yinan Wang.<br/>
+</p>
+</div>
+</footer>
 </main>
-
-
-      </div>
-    </div>
-  
-  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  
-  </body>
+</div>
+</div>
+<script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+</body>
 </html>

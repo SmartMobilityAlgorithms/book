@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tools and Python Libraries — AI Search Algorithms for Smart Mobility</title>
+<link href="../../_static/css/theme.css" rel="stylesheet"/>
+<link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet"/>
+<link href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/togglebutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/mystnb.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-thebe.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/tabs.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" rel="stylesheet" type="text/css"/>
+<link as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js" rel="preload"/>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/togglebutton.js"></script>
+<script src="../../_static/clipboard.min.js"></script>
+<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/tabs.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+<script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+<script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+<script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+<script async="async" src="../../_static/sphinx-thebe.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="../Datasets/index.html" rel="next" title="Datasets"/>
+<link href="../InfrastructureProblems.html" rel="prev" title="Infrastructure Problems"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</head>
+<body data-offset="80" data-spy="scroll" data-target="#bd-toc-nav">
+<div class="container-fluid" id="banner"></div>
+<div class="container-xl">
+<div class="row">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+<div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+<img alt="logo" class="logo" src="../../_static/sm.png"/>
+<h1 class="site-logo" id="site-title">AI Search Algorithms for Smart Mobility</h1>
+</a>
+</div><form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="icon fas fa-search"></i>
+<input aria-label="Search this book..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search this book..." type="search"/>
+</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item active">
+<ul class="nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../../index.html">
+   AI Search Algorithms for Smart Mobility
+  </a>
+</li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../GettingStarted/index.html">
+   Getting Started
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../IntroGeoScience/index.html">
+   Introduction to Geospatial Data Science
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+<label for="toctree-checkbox-1">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../IntroGeoScience/SpatialData.html">
+     Spatial Data
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../IntroGeoScience/Projection.html">
+     Projection
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../IntroGeoScience/Visualization.html">
+     Visualization
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../GraphSearchAlgorithms/index.html">
+   Graph Search Algorithms
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<label for="toctree-checkbox-2">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../GraphSearchAlgorithms/RoadGraph.html">
+     From Road Network to Graph
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../GraphSearchAlgorithms/GraphSearch.html">
+     Graph Search
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../GraphSearchAlgorithms/BlindSearch.html">
+     Blind Search Algorithms
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../GraphSearchAlgorithms/InformedSearch.html">
+     Informed Search Algorithms
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../GraphSearchAlgorithms/SearchComparison.html">
+     Search Algorithm Comparison
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../TrajectoryAlgorithms/index.html">
+   Trajectory-based Algorithms
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+<label for="toctree-checkbox-3">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../TrajectoryAlgorithms/TabuSearch.html">
+     Tabu Search
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../TrajectoryAlgorithms/SimulatedAnnealing.html">
+     Simulated Annealing
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../EvolutionaryComputingAlgorithms/index.html">
+   Evolutionary Computing Algorithms
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+<label for="toctree-checkbox-4">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../EvolutionaryComputingAlgorithms/GeneticAlgorithms.html">
+     Genetic Algorithms
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../EvolutionaryComputingAlgorithms/DifferentialEvolution.html">
+     Differential Evolution
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../SwarmIntelligenceAlgorithms/index.html">
+   Swarm Intelligence Algorithms
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+<label for="toctree-checkbox-5">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../SwarmIntelligenceAlgorithms/ParticleSwarmOptimization.html">
+     Particle Swarm Optimization
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../SwarmIntelligenceAlgorithms/AntColonyOptimization.html">
+     Ant Colony Optimization
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../LearnToSearch/index.html">
+   Learn to Search
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+<label for="toctree-checkbox-6">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../LearnToSearch/GraphNeuralNetworks.html">
+     Graph Neural Networks (GNN)
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../LearnToSearch/ReinforcementLearning.html">
+     Reinforcement Learning
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../PeopleMobilityProblems/index.html">
+   People Mobility Problems
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+<label for="toctree-checkbox-7">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../PeopleMobilityProblems/Maven.html">
+     Maven Car-Sharing Service
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../LogisticsProblems.html">
+   Logistics Problems
+  </a>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../InfrastructureProblems.html">
+   Infrastructure Problems
+  </a>
+</li>
+<li class="toctree-l1 current active">
+<a class="current reference internal" href="#">
+   Tools and Python Libraries
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../Datasets/index.html">
+   Datasets
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+<label for="toctree-checkbox-8">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../Datasets/Datasets.html">
+     Datasets
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../../References.html">
+   References
+  </a>
+</li>
+</ul>
+</div>
+</nav> <!-- To handle the deprecated key -->
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+</div>
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+<div class="topbar container-xl fixed-top">
+<div class="topbar-contents row">
+<div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+<div class="col pl-md-4 topbar-main">
+<button aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" class="navbar-toggler ml-0" data-placement="bottom" data-target=".site-navigation" data-toggle="collapse" id="navbar-toggler" title="Toggle navigation" type="button">
+<i class="fas fa-bars"></i>
+<i class="fas fa-arrow-left"></i>
+<i class="fas fa-arrow-up"></i>
+</button>
+<div class="dropdown-buttons-trigger">
+<button aria-label="Download this page" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-download"></i></button>
+<div class="dropdown-buttons">
+<!-- ipynb file if we had a myst markdown file -->
+<!-- Download raw file -->
+<a class="dropdown-buttons" href="../../_sources/content/ToolsAndPythonLibraries/index.md"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.md</button></a>
+<!-- Download PDF via print -->
+<button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="window.print()" title="Print to PDF" type="button">.pdf</button>
+</div>
+</div>
+<!-- Source interaction buttons -->
+<!-- Full screen (wrap in <a> to have style consistency -->
+<a class="full-screen-button"><button aria-label="Fullscreen mode" class="btn btn-secondary topbarbtn" data-placement="bottom" data-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode" type="button"><i class="fas fa-expand"></i></button></a>
+<!-- Launch buttons -->
+</div>
+<!-- Table of contents -->
+<div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+<i class="fas fa-list"></i> Contents
+            </div>
+<nav id="bd-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#smart-mobility-utilities-python-package">
+<code class="docutils literal notranslate">
+<span class="pre">
+     smart_mobility_utilities
+    </span>
+</code>
+   python package
+  </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#mapping-libraries">
+   Mapping Libraries
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#osmnx">
+     osmnx
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#osmpythontools">
+     OSMPythonTools
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#open-layers">
+     Open layers
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#graph-libraries">
+   Graph Libraries
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#networkx">
+     networkx
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#geospatial-data-libraries">
+   Geospatial Data Libraries
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#geopandas">
+     GeoPandas
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#shapefile-creation-and-map-editing">
+   Shapefile Creation and Map Editing
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#qgis">
+     QGIS
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#geojson">
+     GeoJSON
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#geospatial-data-visualization">
+   Geospatial Data Visualization
+  </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#geospatial-data-analysis">
+   Geospatial Data Analysis
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#shapely">
+     shapely
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#pysal">
+     PySAL
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#geoda">
+     GeoDa
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#geocoding">
+   Geocoding
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#geopy">
+     GeoPy
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#nominatim">
+     nominatim
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#photon-geocoder">
+     Photon Geocoder
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#other-geocoders">
+     Other geocoders
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#routing-libraries">
+   Routing Libraries
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#osrm">
+     osrm
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#traffic-per-edge-and-open-traffic">
+     traffic per edge and Open traffic
+    </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#note">
+       Note
+      </a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#others">
+   Others
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#tqdm">
+     tqdm
+    </a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="row" id="main-content">
+<div class="col-12 col-md-9 pl-md-3 pr-md-0">
+<div>
+<div class="section" id="tools-and-python-libraries">
+<h1>Tools and Python Libraries<a class="headerlink" href="#tools-and-python-libraries" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="smart-mobility-utilities-python-package">
+<h2><code class="docutils literal notranslate"><span class="pre">smart_mobility_utilities</span></code> python package<a class="headerlink" href="#smart-mobility-utilities-python-package" title="Permalink to this headline">¶</a></h2>
+<p>Many of the operations in this book are long and burdensome to code from scratch. Oftentimes, they are highly standardized and can benefit from having a helper function take care of the various intricacies.</p>
+<p><code class="docutils literal notranslate"><span class="pre">smart_mobility_utilities</span></code> is a python package developed for this purpose. You can clone the repo to your local machine, and install it as follows:</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"/><label class="tab-label" for="tab-set--0-input--1">pip3</label><div class="tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> smart_mobility_utilities
+$ pip install -e .
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"/><label class="tab-label" for="tab-set--0-input--2">conda</label><div class="tab-content docutils">
+<p>The <code class="docutils literal notranslate"><span class="pre">conda</span></code> version of this package is still under development. In the meantime, you can import the files directly into your project’s file structure.</p>
+</div>
+</div>
+</div>
+<div class="section" id="mapping-libraries">
+<h2>Mapping Libraries<a class="headerlink" href="#mapping-libraries" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="osmnx">
+<h3>osmnx<a class="headerlink" href="#osmnx" title="Permalink to this headline">¶</a></h3>
+<p>This library was developed by <a class="reference external" href="https://geoffboeing.com/">Geoff Boeing</a> from the University of Southern California to ease the process of retrieving and manipulating the data from OpenStreetMap, and to make it easier to be interpolated into Python applications. It offers the ability to download the data (filtered) from OSM and returns the network as <code class="docutils literal notranslate"><span class="pre">networkx</span></code> graph data structure. The library is too complicated to be explained fully in a README file, but you can check the <a class="reference external" href="https://osmnx.readthedocs.io/en/stable/">official website</a> and follow Professor Boeing’s website as he posts regularly on recent updates and trends about osmnx and the field in general.</p>
+</div>
+<div class="section" id="osmpythontools">
+<h3>OSMPythonTools<a class="headerlink" href="#osmpythontools" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/mocnik-science/osm-python-tools">OSMPythonTools</a> is a well-written package to query OSM services.</p>
+</div>
+<div class="section" id="open-layers">
+<h3>Open layers<a class="headerlink" href="#open-layers" title="Permalink to this headline">¶</a></h3>
+<p>If you are developing a web/mobile application and you want to get really fancy with your maps, you have <a class="reference external" href="https://openlayers.org/">Open layers</a> which is the industry standard for webmaps.</p>
+</div>
+</div>
+<div class="section" id="graph-libraries">
+<h2>Graph Libraries<a class="headerlink" href="#graph-libraries" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="networkx">
+<h3>networkx<a class="headerlink" href="#networkx" title="Permalink to this headline">¶</a></h3>
+<p>This is one of the pillars of Python programming and scientific computing, besides <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">scipy</span></code>. Its main and only goal is supporting graph data structures and the associated algorithms like shortest path and networks flow and optimization. <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> returns the map as <code class="docutils literal notranslate"><span class="pre">networkx</span></code> network so it is possible to use all the library’s functions on the maps obtained from OSM. <code class="docutils literal notranslate"><span class="pre">networkx</span></code> has books written explaining its API’s and we wholeheartedly recommend <a class="reference external" href="https://www.amazon.com/Complex-Network-Analysis-Python-Recognize/dp/1680502697">Complex Network Analysis in Python: Recognize - Construct - Visualize - Analyze - Interpret</a> if you want to dive into it. Information about <code class="docutils literal notranslate"><span class="pre">networkx</span></code> is also available <a class="reference external" href="https://networkx.github.io/">here</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">networkx</span></code> has a monopoly over the field of network analysis for many years now, but the scalability of <code class="docutils literal notranslate"><span class="pre">networkx</span></code> may be an issue. If your network has tens of millions of nodes, it can get really ugly because <code class="docutils literal notranslate"><span class="pre">networkx</span></code> is still just a <code class="docutils literal notranslate"><span class="pre">python</span></code> library, and <code class="docutils literal notranslate"><span class="pre">python</span></code> can’t handle these millions of nodes and will run out of memory, and give you a segmentation fault.</p>
+<p>You can optimize <code class="docutils literal notranslate"><span class="pre">python</span></code> by using <code class="docutils literal notranslate"><span class="pre">__slots__</span></code> instead of <code class="docutils literal notranslate"><span class="pre">__dict__</span></code>, something which is discussed <a class="reference external" href="https://stackoverflow.com/questions/472000/usage-of-slots#:~:text=The%20proper%20use%20of%20__,one%20dict%20for%20every%20object.%5D">here</a>. You can also use arrays or something similar, but then other problems would arise.</p>
+<p>Are there any alternatives? In <code class="docutils literal notranslate"><span class="pre">C++</span></code>, you can use <a class="reference external" href="https://graph-tool.skewed.de/">graph-tool</a>, which was built over the <a class="reference external" href="https://www.boost.org/doc/libs/1_64_0/libs/graph/doc/index.html">boost-graph</a> libraries, or you can use <a class="reference external" href="https://github.com/igraph">igraph</a> which is written in C. But for these you will need to write your own parser for OpenStreetMaps data and understand its file format. Fortunately, this is not too complicated.</p>
+</div>
+</div>
+<div class="section" id="geospatial-data-libraries">
+<h2>Geospatial Data Libraries<a class="headerlink" href="#geospatial-data-libraries" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="geopandas">
+<h3>GeoPandas<a class="headerlink" href="#geopandas" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://geopandas.org/">GeoPandas</a> is an extension to pandas that handles geospatial data by extending the datatypes of pandas, and the ability to query and manipulate spatial data. Alternatively, you would need to deal with <a class="reference external" href="https://en.wikipedia.org/wiki/Spatial_database">spatial databases</a> for these operations, like how to properly and efficiently represent polygons and curved lines and query them without too much overhead (for database folks, the indexing of spatial data is different than normal data).</p>
+</div>
+</div>
+<div class="section" id="shapefile-creation-and-map-editing">
+<h2>Shapefile Creation and Map Editing<a class="headerlink" href="#shapefile-creation-and-map-editing" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="qgis">
+<h3>QGIS<a class="headerlink" href="#qgis" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.qgis.org/en/site/">QGIS</a> is a free and open-source cross-platform desktop geographic information system application that supports viewing, editing, and analysis of geospatial data.</p>
+</div>
+<div class="section" id="geojson">
+<h3>GeoJSON<a class="headerlink" href="#geojson" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://geojson.io/">GeoJSON</a> is a fast, simple tool to create, change, and publish maps.</p>
+</div>
+</div>
+<div class="section" id="geospatial-data-visualization">
+<h2>Geospatial Data Visualization<a class="headerlink" href="#geospatial-data-visualization" title="Permalink to this headline">¶</a></h2>
+<p>There are <b>many</b> libraries for visualization, but we are mainly using <a class="reference external" href="https://python-visualization.github.io/folium/">folium</a> and <a class="reference external" href="https://ipyleaflet.readthedocs.io/en/latest/">ipyleaflet</a>. Both of them are just wrappers around <a class="reference external" href="https://github.com/Leaflet/Leaflet">leaflet.js</a>, which is the go-to library for any kind of map visualization in almost all web and mobile applications.</p>
+<p>Both of <code class="docutils literal notranslate"><span class="pre">ipyleaflet</span></code> and <code class="docutils literal notranslate"><span class="pre">folium</span></code> were created to serve the same purpose, and you don’t need to dwell so much on how to use them if you don’t want to, as we have provided wrappers around them in  <code class="docutils literal notranslate"><span class="pre">utilities/utils/viz.py</span></code>. This contains two functions: one for drawing a map with our graph overlaid on it, and and the other function is for drawing a route between two places/nodes with markers marking the source and destination. At the very least, you should be able to recognize the differences between the two wrappers. <code class="docutils literal notranslate"><span class="pre">folium</span></code> is much more lightweight than <code class="docutils literal notranslate"><span class="pre">ipyleaflet</span></code>, but on the other hand <code class="docutils literal notranslate"><span class="pre">ipyleaflet</span></code> has more options and very niche capabitilies. <code class="docutils literal notranslate"><span class="pre">ipyleaflet</span></code> doesn’t work on Google Colab, unlike <code class="docutils literal notranslate"><span class="pre">folium</span></code>; see <a class="reference external" href="https://github.com/googlecolab/colabtools/issues/60">googlecolab/colabtools#60</a> for more details.</p>
+<p>There are other visualization libraries that you should be aware of:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://hvplot.holoviz.org/user_guide/Geographic_Data.html">hvplot</a>, if you want to get going through your analysis with geopandas and dataframes and all that. You should be aware of the significance of working with vanilla <a class="reference external" href="https://geopandas.org/">GeoPandas</a>, and that <code class="docutils literal notranslate"><span class="pre">osmnx</span></code> <a class="reference external" href="https://osmnx.readthedocs.io/en/stable/osmnx.html#module-osmnx.projection">supports that</a> and yields two dataframes: one for all your nodes and one for all the edges.</p></li>
+<li><p><a class="reference external" href="https://github.com/jwass/mplleaflet">mplleaflet</a>, which is another <code class="docutils literal notranslate"><span class="pre">leaflet</span></code>-based library, but it plays really nicely with <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.</p></li>
+<li><p><a class="reference external" href="https://deck.gl/">deck.gl</a></p></li>
+<li><p><a class="reference external" href="https://kepler.gl/">kepler.gl</a></p></li>
+<li><p><a class="reference external" href="https://datastudio.google.com/">Google Data Studio</a></p></li>
+</ul>
+</div>
+<div class="section" id="geospatial-data-analysis">
+<h2>Geospatial Data Analysis<a class="headerlink" href="#geospatial-data-analysis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="shapely">
+<h3>shapely<a class="headerlink" href="#shapely" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://pypi.org/project/Shapely/">Shapely</a> is a BSD-licensed Python package for manipulation and analysis of planar geometric objects. It provides us with datatypes to represent geometric objects that geopandas exploits to represent spatial data.</p>
+</div>
+<div class="section" id="pysal">
+<h3>PySAL<a class="headerlink" href="#pysal" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://pysal.org/">PySAL</a> or Python Spatial Analysis Library is an open source cross-platform library for geospatial data science with an emphasis on geospatial vector data written in Python.</p>
+</div>
+<div class="section" id="geoda">
+<h3>GeoDa<a class="headerlink" href="#geoda" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://geodacenter.github.io/">GeoDa</a> is a free and open source software tool that serves as an introduction to spatial data science. It is designed to facilitate new insights from data analysis by exploring and modeling spatial patterns.</p>
+</div>
+</div>
+<div class="section" id="geocoding">
+<h2>Geocoding<a class="headerlink" href="#geocoding" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="geopy">
+<h3>GeoPy<a class="headerlink" href="#geopy" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://geopy.readthedocs.io/en/stable/">GeoPy</a>  is a Python client for several popular geocoding web services.</p>
+</div>
+<div class="section" id="nominatim">
+<h3>nominatim<a class="headerlink" href="#nominatim" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://geopy.readthedocs.io/en/stable/#nominatim">nominatim</a> is used to look up a location from a textual description (the official website description). This is called geocoding and decoding, which is translating address of a location to its coordinates (and vice-versa).</p>
+</div>
+<div class="section" id="photon-geocoder">
+<h3>Photon Geocoder<a class="headerlink" href="#photon-geocoder" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/komoot/photon">photon</a> is an open source geocoder built for OpenStreetMap data.</p>
+</div>
+<div class="section" id="other-geocoders">
+<h3>Other geocoders<a class="headerlink" href="#other-geocoders" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://blog.batchgeo.com/open-data-open-source-geocoders/">Open Data and Open Source Geocoders</a></p>
+</div>
+</div>
+<div class="section" id="routing-libraries">
+<h2>Routing Libraries<a class="headerlink" href="#routing-libraries" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="osrm">
+<h3>osrm<a class="headerlink" href="#osrm" title="Permalink to this headline">¶</a></h3>
+<p>For some problems, determining the route between multiple points is not the main focus, and it is acceptable to use a pre-generated route. <a class="reference external" href="http://project-osrm.org/">OSRM</a> does exactly that; it is a routing engine with an API that you feed with coordinates, and in return it gives you the fastest route between them. It has other useful capabilities like doing Travelling Salesman and solving all pairs shortest path.</p>
+</div>
+<div class="section" id="traffic-per-edge-and-open-traffic">
+<h3>traffic per edge and Open traffic<a class="headerlink" href="#traffic-per-edge-and-open-traffic" title="Permalink to this headline">¶</a></h3>
+<p>Do you want traffic data beyond just max speed and duration? Check out <a class="reference external" href="https://github.com/Project-OSRM/osrm-backend/wiki/Traffic">traffic per edge</a> or <a class="reference external" href="https://github.com/opentraffic">Open traffic</a>.</p>
+<div class="section" id="note">
+<h4>Note<a class="headerlink" href="#note" title="Permalink to this headline">¶</a></h4>
+<p>Most of these libraries use coordinates as input and/or output, but please take into account that some of them accept the coordinates as (longtitude, latitude) and others as (latitude, longtitude).</p>
+</div>
+</div>
+</div>
+<div class="section" id="others">
+<h2>Others<a class="headerlink" href="#others" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="tqdm">
+<h3>tqdm<a class="headerlink" href="#tqdm" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/tqdm/tqdm">tqdm</a> helps us to see the progress of our algorithm while it is running. We use it in all of the other repositories to track the speed of the algorithm in traversing the given map, and how many nodes are expanded per second. It works on any python iterable structure.</p>
+</div>
+</div>
+</div>
+<script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/ToolsAndPythonLibraries"
+        },
+        predefinedOutput: true
+    }
+    </script>
+<script>kernelName = 'python3'</script>
+</div>
+<div class="prev-next-bottom">
+<a class="left-prev" href="../InfrastructureProblems.html" id="prev-link" title="previous page">Infrastructure Problems</a>
+<a class="right-next" href="../Datasets/index.html" id="next-link" title="next page">Datasets</a>
+</div>
+</div>
+</div>
+<footer class="footer mt-5 mt-md-0">
+<div class="container">
+<p>
+        
+          By Alaa Khamis and Yinan Wang<br/>
+        
+            © Copyright 2021, Alaa Khamis and Yinan Wang.<br/>
+</p>
+</div>
+</footer>
+</main>
+</div>
+</div>
+<script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+</body>
+</html>
