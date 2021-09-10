@@ -479,19 +479,19 @@
 <td><p>No</p></td>
 </tr>
 <tr class="row-even"><td><p>Dijkstra</p></td>
-<td><p><span class="math notranslate nohighlight">\(O(\|E\|+\|V\|log\|V\|)\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(O(b^d)\)</span></p></td>
-<td><p>Yes</p></td>
-<td><p>Yes</p></td>
+<td><p>$O(</p></td>
+<td><p>E</p></td>
+<td><p>+</p></td>
+<td><p>V</p></td>
 </tr>
 <tr class="row-odd"><td><p>Hill Climbing</p></td>
-<td><p><span class="math notranslate nohighlight">\(O(\infty)\)</span>✝</p></td>
+<td><p><span class="math notranslate nohighlight">\(O(\infty)\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(O(b)\)</span></p></td>
 <td><p>No</p></td>
 <td><p>No</p></td>
 </tr>
 <tr class="row-even"><td><p>Beam Search</p></td>
-<td><p><span class="math notranslate nohighlight">\(O(\infty)\)</span>✝</p></td>
+<td><p><span class="math notranslate nohighlight">\(O(\infty)\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(O(kb)\)</span></p></td>
 <td><p>No</p></td>
 <td><p>No</p></td>
@@ -500,28 +500,33 @@
 <td><p><span class="math notranslate nohighlight">\(O(b^d)\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(O(b^d)\)</span></p></td>
 <td><p>Yes</p></td>
-<td><p>No*</p></td>
+<td><p>No</p></td>
 </tr>
 <tr class="row-even"><td><p>Bidirectional A*</p></td>
 <td><p><span class="math notranslate nohighlight">\(O(b^d)\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(O(b^d/2)\)</span></p></td>
 <td><p>Yes</p></td>
-<td><p>No*</p></td>
+<td><p>No</p></td>
 </tr>
 <tr class="row-odd"><td><p>Bidirectional Dijkstra with contraction</p></td>
-<td><p>**</p></td>
-<td><p>**</p></td>
+<td><p>@TODO</p></td>
+<td><p>@TODO</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 </tr>
 </tbody>
 </table>
-<p>* An A* Heuristic search can be “optimally efficient”, depending on the heuristic used. <br/>
-✝ As both Hill Climbing and Beam Search can get stuck at local maxima, they are incomplete. <br/>
-** Contraction-based bidirectional searches perform at the same time complexity as a normal bidirectional Dijkstra, at the expense of drastically increased preprocessing time.<br/>
-<br/></p>
-<p>At first glance, it may seem thata Bidirectional Dijkstra is the “best” search algorithm, as it is both complete and optimal, as well as more space efficient than a normal Dijkstra search. However, when dealing with large datasets, space complexity is often a bigger hurdle than actual performance or guaranteeing an optimal solution.</p>
-<p>When comparing search algorithms, it is important to be aware of the constraints for any given problem, and select an algorithm based on those constraints. For example, certain implementations of hill climbing may result in rapid exit conditions. If the goal is to maximize number of problems solved (and local maxima are an acceptable result), Hill Climbing algorithms result in quick solutions that have some degree of “optimality”.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notes</p>
+<ul class="simple">
+<li><p>An A* Heuristic search can be “optimally efficient”, depending on the heuristic used.</p></li>
+<li><p>As both Hill Climbing and Beam Search can get stuck at local maxima, they are considered to be incomplete.</p></li>
+<li><p>Contraction-based bidirectional searches perform at the same time complexity as a normal bidirectional Dijkstra, at the expense of drastically increased preprocessing time.</p></li>
+</ul>
+</div>
+<p>At first glance, it may seem that a Bidirectional Dijkstra is the “best” search algorithm, as it is both complete and optimal, as well as more space efficient than a normal Dijkstra search. However, when dealing with large datasets, space complexity is often a bigger hurdle than actual performance or guaranteeing an optimal solution.<br/><br/></p>
+<p>When comparing search algorithms, it is important to be aware of the constraints for any given problem, and select an algorithm based on those constraints. For example, certain implementations of hill climbing may result in rapid exit conditions. If the goal is to maximize number of problems solved (and local maxima are an acceptable result), Hill Climbing algorithms result in quick solutions that have some degree of “optimality”.<br/><br/></p>
 <p>On the other hand, preprocessing-heavy algorithms like contraction hierarchies offer incredibly low space costs (even more so when implemented with a bidirectional search), as well as rapid searches for guaranteed optimal solutions (if using Dijkstra). For high-volume usage implementations where preprocessing is not a concern (i.e. Uber), contraction hierarchies are a good choice. In fact, the <code class="docutils literal notranslate"><span class="pre">osrm</span></code> package that is used in this book is primarily based on an implementation of contraction hierarchies.</p>
 </div>
 </div>
