@@ -29,6 +29,8 @@
 <script src="../../_static/tabs.js"></script>
 <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
 <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
 <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
 <script>
         const thebe_selector = ".thebe"
@@ -258,22 +260,10 @@
    Tools and Python Libraries
   </a>
 </li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../Datasets/index.html">
+<li class="toctree-l1">
+<a class="reference internal" href="../Datasets.html">
    Datasets
   </a>
-<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-<label for="toctree-checkbox-8">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../Datasets/Datasets.html">
-     Datasets
-    </a>
-</li>
-</ul>
 </li>
 <li class="toctree-l1">
 <a class="reference internal" href="../../References.html">
@@ -308,6 +298,12 @@
 </div>
 </div>
 <!-- Source interaction buttons -->
+<div class="dropdown-buttons-trigger">
+<button aria-label="Connect with source repository" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fab fa-github"></i></button>
+<div class="dropdown-buttons sourcebuttons">
+<a class="repository-button" href="https://github.com/SmartMobilityAlgorithms/book"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Source repository" type="button"><i class="fab fa-github"></i>repository</button></a>
+</div>
+</div>
 <!-- Full screen (wrap in <a> to have style consistency -->
 <a class="full-screen-button"><button aria-label="Fullscreen mode" class="btn btn-secondary topbarbtn" data-placement="bottom" data-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode" type="button"><i class="fas fa-expand"></i></button></a>
 <!-- Launch buttons -->
@@ -315,7 +311,6 @@
 <button aria-label="Launch interactive content" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-rocket"></i></button>
 <div class="dropdown-buttons">
 <a class="binder-button" href="https://mybinder.org/v2/gh/SmartMobilityAlgorithms/book/main?urlpath=tree/content/GraphSearchAlgorithms/SearchComparison.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Launch Binder" type="button"><img alt="Interact on binder" class="binder-button-logo" src="../../_static/images/logo_binder.svg"/>Binder</button></a>
-<a class="colab-button" href="https://colab.research.google.com/github/SmartMobilityAlgorithms/book/blob/main/content/GraphSearchAlgorithms/SearchComparison.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Launch Colab" type="button"><img alt="Interact on Colab" class="colab-button-logo" src="../../_static/images/logo_colab.png"/>Colab</button></a>
 </div>
 </div>
 </div>
@@ -401,43 +396,43 @@
 <tr>
 <th>0</th>
 <td>BFS</td>
-<td>0.010368</td>
+<td>0.009741</td>
 <td>1385.116</td>
 </tr>
 <tr>
 <th>1</th>
 <td>DFS</td>
-<td>0.024231</td>
+<td>0.022267</td>
 <td>6092.076</td>
 </tr>
 <tr>
 <th>2</th>
 <td>dijkstra</td>
-<td>0.129896</td>
+<td>0.129487</td>
 <td>1029.481</td>
 </tr>
 <tr>
 <th>3</th>
 <td>hill_climbing</td>
-<td>14.621711</td>
-<td>1071.913</td>
+<td>14.068806</td>
+<td>1033.314</td>
 </tr>
 <tr>
 <th>4</th>
 <td>beam</td>
-<td>101.76863</td>
-<td>1092.023</td>
+<td>93.60185</td>
+<td>1038.005</td>
 </tr>
 <tr>
 <th>5</th>
 <td>astar</td>
-<td>0.006749</td>
+<td>0.00653</td>
 <td>1137.69</td>
 </tr>
 <tr>
 <th>6</th>
 <td>bidirectional_astar</td>
-<td>0.012494</td>
+<td>0.011964</td>
 <td>1137.69</td>
 </tr>
 <tr>
