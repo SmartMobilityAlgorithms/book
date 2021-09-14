@@ -1,2 +1,11 @@
 # book
-This is the site for the book “AI Search Algorithms for Smart Mobility”: https://smartmobilityalgorithms.github.io/book/index.html
+This is the GitHub repo of the book “AI Search Algorithms for Smart Mobility”: https://smartmobilityalgorithms.github.io/book/index.html
+
+If you use this software, please cite it as below
+@book{Khamis2022,
+  author = {Alaa Khamis and Yinan Wang},
+  title = { AI Search Algorithms for Smart Mobility},
+  year = {2022},
+  publisher = {Apress (Springer Nature)},
+  howpublished = {\url{https://smartmobilityalgorithms.github.io/book/index.html}}
+}
