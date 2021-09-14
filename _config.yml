@@ -7,7 +7,7 @@ copyright: "2021, Alaa Khamis and Yinan Wang"
 #Jupyter Settings
 execute:
   execute_notebooks: "cache"
-  timeout: 140
+  timeout: 300
 
 # HTML Settings
 sphinx:
@@ -25,5 +25,6 @@ bibtex_bibfiles:
 repository:
   url:  https://github.com/SmartMobilityAlgorithms/book
   branch: main
-launch_buttons: 
-  colab_url: "https://colab.research.google.com"
+
+html:
+  use_repository_button: true

@@ -35,8 +35,6 @@ chapters:
     - file: content/PeopleMobilityProblems/Maven
 - file: content/LogisticsProblems
 - file: content/InfrastructureProblems
-- file: content/ToolsAndPythonLibraries/index.md
-- file: content/Datasets/index
-  sections:
-  - file: content/Datasets/Datasets
+- file: content/ToolsAndPythonLibraries/index
+- file: content/Datasets
 - file: References
