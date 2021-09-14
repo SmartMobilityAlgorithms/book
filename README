@@ -2,7 +2,7 @@
 This is the GitHub repo of the book “AI Search Algorithms for Smart Mobility”: https://smartmobilityalgorithms.github.io/book/index.html
 
 If you use this software, please cite it as below
-@book{Khamis2022,
+@book{Khamis-Wang2022,
   author = {Alaa Khamis and Yinan Wang},
   title = { AI Search Algorithms for Smart Mobility},
   year = {2022},
