@@ -4,6 +4,7 @@ This section includes a non-exhaustive list of datasets that may be of interest 
 
 
 ## 1. Available open datasets
+* [Administrative Boundaries (54 MB)](data/administrative_boundaries.zip)
 * [Geofabrik](https://download.geofabrik.de/index.html)
 * [Factory POI](http://www.poi-factory.com/)
 * [Global Rural-Urban Mapping Project (GRUMP)](https://sedac.ciesin.columbia.edu/data/set/grump-v1-settlement-points)
