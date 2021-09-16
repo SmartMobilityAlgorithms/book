@@ -4,6 +4,7 @@ This section includes a non-exhaustive list of datasets that may be of interest 
 
 
 ## 1. Available open datasets
+* [Administrative Boundaries (54 MB)](https://github.com/SmartMobilityAlgorithms/book/blob/main/data/administrative_boundaries.zip?raw=true)
 * [Geofabrik](https://download.geofabrik.de/index.html)
 * [Factory POI](http://www.poi-factory.com/)
 * [Global Rural-Urban Mapping Project (GRUMP)](https://sedac.ciesin.columbia.edu/data/set/grump-v1-settlement-points)
@@ -33,7 +34,7 @@ This section includes a non-exhaustive list of datasets that may be of interest 
 * [Factual Global Places](https://www.factual.com/data-set/global-places/)
 * [TravelTime API](https://docs.traveltime.com/api/overview/introduction)
 * [Precisely](https://www.precisely.com/)
-* [World Cities Database](www.worldcitiesdatabase.com )
+* [World Cities Database](https://www.worldcitiesdatabase.com )
 * [SafeGraph](https://www.safegraph.com/)
 * [Google Maps Platform](https://cloud.google.com/maps-platform/)
 * [Here Maps for Developers](https://developer.here.com/products/here-sdk)
