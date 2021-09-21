@@ -8,6 +8,7 @@
     - [Depth-first Search \(DFS\)](BlindSearch.html#depth-first-search-dfs)
     - [Dijkstra Search](BlindSearch.html#dijkstra-search)
 4. [Informed Search Algorithms](InformedSearch.ipynb)
+    - [Minimum Spanning Tree](InformedSearch.html#minimum-spanning-tree)
     - [Hill Climbing](InformedSearch.html#hill-climbing)
     - [Beam Search](InformedSearch.html#beam-search)
     - [A* Search](InformedSearch.html#a-search)

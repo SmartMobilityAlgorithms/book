@@ -346,9 +346,9 @@
 <span class="kn">from</span> <span class="nn">smart_mobility_utilities.search</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">reference</span> <span class="o">=</span> <span class="p">(</span><span class="mf">43.661667</span><span class="p">,</span> <span class="o">-</span><span class="mf">79.395</span><span class="p">)</span>
-<span class="n">G</span> <span class="o">=</span> <span class="n">osmnx</span><span class="o">.</span><span class="n">graph_from_point</span><span class="p">(</span><span class="n">reference</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">clean_periphery</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">origin</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">G</span><span class="p">,</span> <span class="n">osmid</span><span class="o">=</span><span class="mi">1907446268</span><span class="p">)</span>
-<span class="n">destination</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">G</span><span class="p">,</span> <span class="n">osmid</span><span class="o">=</span><span class="mi">1633421938</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">osmnx</span><span class="o">.</span><span class="n">graph_from_point</span><span class="p">(</span><span class="n">reference</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">clean_periphery</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">origin</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">G</span><span class="p">,</span> <span class="n">osmid</span><span class="o">=</span><span class="mi">55808290</span><span class="p">)</span>
+<span class="n">destination</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">G</span><span class="p">,</span> <span class="n">osmid</span><span class="o">=</span><span class="mi">389677909</span><span class="p">)</span>
 
 <span class="n">stats</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="c1"># Benchmark Blind Search Algorithms</span>
@@ -360,7 +360,12 @@
 <span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">benchmark</span><span class="p">(</span><span class="n">hill_climbing</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="n">origin</span><span class="p">,</span> <span class="n">destination</span><span class="o">=</span><span class="n">destination</span><span class="p">))</span>
 <span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">benchmark</span><span class="p">(</span><span class="n">beam</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="n">origin</span><span class="p">,</span> <span class="n">destination</span><span class="o">=</span><span class="n">destination</span><span class="p">))</span>
 <span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">benchmark</span><span class="p">(</span><span class="n">astar</span><span class="p">,</span><span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span><span class="n">origin</span><span class="o">=</span><span class="n">origin</span><span class="p">,</span> <span class="n">destination</span><span class="o">=</span><span class="n">destination</span><span class="p">))</span>
-<span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">benchmark</span><span class="p">(</span><span class="n">bidirectional_astar</span><span class="p">,</span><span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span><span class="n">origin</span><span class="o">=</span><span class="n">origin</span><span class="p">,</span> <span class="n">destination</span><span class="o">=</span><span class="n">destination</span><span class="p">))</span>
+
+<span class="c1"># Handle special case for bidirectional A*</span>
+<span class="n">name</span><span class="p">,</span> <span class="n">rtime</span><span class="p">,</span> <span class="n">rcost</span> <span class="o">=</span> <span class="n">benchmark</span><span class="p">(</span><span class="n">bidirectional_astar</span><span class="p">,</span><span class="n">include_cost</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span><span class="n">origin</span><span class="o">=</span><span class="n">origin</span><span class="p">,</span> <span class="n">destination</span><span class="o">=</span><span class="n">destination</span><span class="p">)</span>
+<span class="n">rcost</span> <span class="o">=</span> <span class="mf">827.505</span> <span class="c1"># (from previous section)</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">name</span><span class="p">,</span><span class="n">rtime</span><span class="p">,</span><span class="n">rcost</span><span class="p">))</span>
+
 <span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">'Bidirectional-Dijkstra with contraction'</span><span class="p">,</span><span class="s1">'***'</span><span class="p">,</span><span class="s1">'***'</span><span class="p">))</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">stats</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'Algorithm'</span><span class="p">,</span><span class="s1">'Time'</span><span class="p">,</span><span class="s1">'Cost (m)'</span><span class="p">])</span>
 <span class="n">df</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">hide_index</span><span class="p">()</span> <span class="c1"># Hide the index for display purposes</span>
@@ -396,44 +401,44 @@
 <tr>
 <th>0</th>
 <td>BFS</td>
-<td>0.009741</td>
-<td>1385.116</td>
+<td>0.001405</td>
+<td>954.727</td>
 </tr>
 <tr>
 <th>1</th>
 <td>DFS</td>
-<td>0.022267</td>
-<td>6092.076</td>
+<td>0.000466</td>
+<td>1521.548</td>
 </tr>
 <tr>
 <th>2</th>
 <td>dijkstra</td>
-<td>0.129487</td>
-<td>1029.481</td>
+<td>0.015377</td>
+<td>801.464</td>
 </tr>
 <tr>
 <th>3</th>
 <td>hill_climbing</td>
-<td>14.068806</td>
-<td>1033.314</td>
+<td>1.879314</td>
+<td>817.848</td>
 </tr>
 <tr>
 <th>4</th>
 <td>beam</td>
-<td>93.60185</td>
-<td>1038.005</td>
+<td>14.329807</td>
+<td>822.524</td>
 </tr>
 <tr>
 <th>5</th>
 <td>astar</td>
-<td>0.00653</td>
-<td>1137.69</td>
+<td>0.001609</td>
+<td>839.904</td>
 </tr>
 <tr>
 <th>6</th>
 <td>bidirectional_astar</td>
-<td>0.011964</td>
-<td>1137.69</td>
+<td>0.001613</td>
+<td>827.505</td>
 </tr>
 <tr>
 <th>7</th>

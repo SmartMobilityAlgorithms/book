@@ -1,0 +1,123 @@
+Traceback (most recent call last):
+  File "/home/yinan/book-env/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/home/yinan/book-env/lib/python3.8/site-packages/nbclient/client.py", line 1112, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/yinan/book-env/lib/python3.8/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/yinan/book-env/lib/python3.8/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/home/yinan/book-env/lib/python3.8/site-packages/nbclient/client.py", line 553, in async_execute
+    await self.async_execute_cell(
+  File "/home/yinan/book-env/lib/python3.8/site-packages/nbclient/client.py", line 857, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/home/yinan/book-env/lib/python3.8/site-packages/nbclient/client.py", line 760, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Using A* as search heuristic and algorithm
+
+# define destination and origin for the backwards expansion
+destination_b = origin
+origin_b = destination
+
+# get A*
+toOrigin_f, toDestination_f = astar_heuristic(G, origin.osmid, destination.osmid)
+toOrigin_b, toDestination_b = astar_heuristic(G, origin_b.osmid, destination_b.osmid)
+
+route = []
+
+f_value = lambda node: toOrigin_f[node.osmid] + toDestination_f[node.osmid]
+b_value = lambda node: toOrigin_b[node.osmid] + toDestination_b[node.osmid]
+
+frontier_f = list()
+frontier_b = list()
+
+frontier_f.append(origin)
+frontier_b.append(origin_b)
+
+explored_f = list()
+explored_b = list()
+
+collide = False
+found = False
+altr_expand = False # to alternate between front and back
+
+while frontier_f and frontier_b and not collide and not found:
+   
+    if altr_expand:
+        # remove node_f from frontier_f to expand it
+        node = min(frontier_f, key = lambda node : f_value(node))
+        frontier_f.remove(node)
+        explored_f.append(node)
+        
+        for child in node.expand():
+            if child in explored_f: continue
+            
+            if child == destination:
+                route = child.path()
+                found = True
+                break
+
+            # checking for collusion with the target expansion
+            if child in explored_b:
+                overlapped = next((node for node in explored_b if node == child))
+                # we don't take the overlapped node twice
+                route = child.path()[:-1] + overlapped.path()[::-1]
+                collide = True
+                break
+
+            frontier_f.append(child)
+        altr_expand = False
+    else:
+        # remove node_b from frontier_b to expand it
+        node = min(frontier_b, key = lambda node : b_value(node))
+        frontier_b.remove(node)
+        explored_b.append(node)
+        
+        for child in node.expand():
+            if child in explored_b: continue
+            if child == destination_b:
+                route = child.path()[::-1] # we reverse the list because we expand from the back
+                found = True
+                break
+
+            if child in explored_f:
+                overlapped = next((node for node in explored_f if node == child), None)
+                route = overlapped.path()[:-1] + child.path()[::-1]
+                collide = True
+                break
+
+            frontier_b.append(child)
+        altr_expand = True
+
+print("The route is \n\n",route)
+print("Cost of the route:",cost(G,route))
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mKeyError[0m                                  Traceback (most recent call last)
+[0;32m/tmp/ipykernel_15160/2143057713.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     76[0m [0;34m[0m[0m
+[1;32m     77[0m [0mprint[0m[0;34m([0m[0;34m"The route is \n\n"[0m[0;34m,[0m[0mroute[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 78[0;31m [0mprint[0m[0;34m([0m[0;34m"Cost of the route:"[0m[0;34m,[0m[0mcost[0m[0;34m([0m[0mG[0m[0;34m,[0m[0mroute[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;32m~/book-env/smart_mobility_utilities/smart_mobility_utilities/common.py[0m in [0;36mcost[0;34m(G, route)[0m
+[1;32m     71[0m     [0mweight[0m [0;34m=[0m [0;36m0[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     72[0m     [0;32mfor[0m [0mu[0m[0;34m,[0m [0mv[0m [0;32min[0m [0mzip[0m[0;34m([0m[0mroute[0m[0;34m,[0m [0mroute[0m[0;34m[[0m[0;36m1[0m[0;34m:[0m[0;34m][0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 73[0;31m         [0mweight[0m [0;34m+=[0m [0mG[0m[0;34m[[0m[0mu[0m[0;34m][0m[0;34m[[0m[0mv[0m[0;34m][0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m[[0m[0;34m'length'[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     74[0m     [0;32mreturn[0m [0mround[0m[0;34m([0m[0mweight[0m[0;34m,[0m[0;36m4[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     75[0m [0;34m[0m[0m
+
+[0;32m~/book-env/lib/python3.8/site-packages/networkx/classes/coreviews.py[0m in [0;36m__getitem__[0;34m(self, name)[0m
+[1;32m     80[0m [0;34m[0m[0m
+[1;32m     81[0m     [0;32mdef[0m [0m__getitem__[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mname[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 82[0;31m         [0;32mreturn[0m [0mAtlasView[0m[0;34m([0m[0mself[0m[0;34m.[0m[0m_atlas[0m[0;34m[[0m[0mname[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     83[0m [0;34m[0m[0m
+[1;32m     84[0m     [0;32mdef[0m [0mcopy[0m[0;34m([0m[0mself[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mKeyError[0m: 3707407641
+KeyError: 3707407641
+
