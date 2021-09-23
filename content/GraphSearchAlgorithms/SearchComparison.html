@@ -401,43 +401,43 @@
 <tr>
 <th>0</th>
 <td>BFS</td>
-<td>0.001405</td>
+<td>0.001447</td>
 <td>954.727</td>
 </tr>
 <tr>
 <th>1</th>
 <td>DFS</td>
-<td>0.000466</td>
+<td>0.000427</td>
 <td>1521.548</td>
 </tr>
 <tr>
 <th>2</th>
 <td>dijkstra</td>
-<td>0.015377</td>
+<td>0.014886</td>
 <td>801.464</td>
 </tr>
 <tr>
 <th>3</th>
 <td>hill_climbing</td>
-<td>1.879314</td>
-<td>817.848</td>
+<td>1.394021</td>
+<td>918.812</td>
 </tr>
 <tr>
 <th>4</th>
 <td>beam</td>
-<td>14.329807</td>
-<td>822.524</td>
+<td>22.906811</td>
+<td>857.184</td>
 </tr>
 <tr>
 <th>5</th>
 <td>astar</td>
-<td>0.001609</td>
+<td>0.001676</td>
 <td>839.904</td>
 </tr>
 <tr>
 <th>6</th>
 <td>bidirectional_astar</td>
-<td>0.001613</td>
+<td>0.001644</td>
 <td>827.505</td>
 </tr>
 <tr>
@@ -449,10 +449,6 @@
 </tbody>
 </table>
 </div></div></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The runtime for <code class="docutils literal notranslate"><span class="pre">Bidirectional-Dijkstra</span> <span class="pre">with</span> <span class="pre">contraction</span></code> represents the final search time only. The amount of time spent preprocessing the data used for this search (approximately 1,100 nodes) exceeded 39 hours on a single CPU.</p>
 </div>
 <div class="section" id="comparison-of-time-and-space-complexities">
 <h2>Comparison of Time and Space Complexities<a class="headerlink" href="#comparison-of-time-and-space-complexities" title="Permalink to this headline">¶</a></h2>
@@ -509,8 +505,8 @@
 <td><p>No</p></td>
 </tr>
 <tr class="row-odd"><td><p>Bidirectional Dijkstra with contraction</p></td>
-<td><p>@TODO</p></td>
-<td><p>@TODO</p></td>
+<td><p><span class="math notranslate nohighlight">\(O(\|E\|+\|V\|log\|V\|)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(O(b^d/2)\)</span></p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 </tr>
