@@ -345,12 +345,13 @@
 <span class="kn">from</span> <span class="nn">smart_mobility_utilities.common</span> <span class="kn">import</span> <span class="n">Node</span>
 <span class="kn">from</span> <span class="nn">smart_mobility_utilities.search</span> <span class="kn">import</span> <span class="o">*</span>
 
+<span class="n">stats</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">reference</span> <span class="o">=</span> <span class="p">(</span><span class="mf">43.661667</span><span class="p">,</span> <span class="o">-</span><span class="mf">79.395</span><span class="p">)</span>
 <span class="n">G</span> <span class="o">=</span> <span class="n">osmnx</span><span class="o">.</span><span class="n">graph_from_point</span><span class="p">(</span><span class="n">reference</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">clean_periphery</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">origin</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">G</span><span class="p">,</span> <span class="n">osmid</span><span class="o">=</span><span class="mi">55808290</span><span class="p">)</span>
 <span class="n">destination</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">G</span><span class="p">,</span> <span class="n">osmid</span><span class="o">=</span><span class="mi">389677909</span><span class="p">)</span>
 
-<span class="n">stats</span> <span class="o">=</span> <span class="p">[]</span>
+
 <span class="c1"># Benchmark Blind Search Algorithms</span>
 <span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">benchmark</span><span class="p">(</span><span class="n">BFS</span><span class="p">,</span><span class="n">use_G</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span><span class="n">origin</span><span class="o">=</span><span class="n">origin</span><span class="p">,</span> <span class="n">destination</span><span class="o">=</span><span class="n">destination</span><span class="p">))</span> <span class="c1"># BFS</span>
 <span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">benchmark</span><span class="p">(</span><span class="n">DFS</span><span class="p">,</span><span class="n">use_G</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="p">,</span><span class="n">origin</span><span class="o">=</span><span class="n">origin</span><span class="p">,</span> <span class="n">destination</span><span class="o">=</span><span class="n">destination</span><span class="p">))</span> <span class="c1"># DFS</span>
@@ -366,7 +367,19 @@
 <span class="n">rcost</span> <span class="o">=</span> <span class="mf">827.505</span> <span class="c1"># (from previous section)</span>
 <span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">name</span><span class="p">,</span><span class="n">rtime</span><span class="p">,</span><span class="n">rcost</span><span class="p">))</span>
 
-<span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">'Bidirectional-Dijkstra with contraction'</span><span class="p">,</span><span class="s1">'***'</span><span class="p">,</span><span class="s1">'***'</span><span class="p">))</span>
+<span class="c1"># Benchmark both the contraction generation as well as the search</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">osmnx</span><span class="o">.</span><span class="n">graph_from_point</span><span class="p">(</span><span class="n">reference</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">clean_periphery</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">network_type</span><span class="o">=</span><span class="s1">'drive_service'</span><span class="p">)</span>
+<span class="n">start</span> <span class="o">=</span> <span class="mi">36603405</span>
+<span class="n">end</span> <span class="o">=</span> <span class="mi">24959560</span>
+<span class="n">c_gen</span> <span class="o">=</span> <span class="n">process_time</span><span class="p">()</span>
+<span class="n">G</span><span class="p">,</span> <span class="n">hierarchy</span> <span class="o">=</span> <span class="n">contraction_hierarchy_generate</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">c_gen</span> <span class="o">=</span> <span class="n">process_time</span><span class="p">()</span> <span class="o">-</span> <span class="n">c_gen</span>
+<span class="n">ch_time</span> <span class="o">=</span> <span class="n">process_time</span><span class="p">()</span>
+<span class="n">route</span><span class="p">,</span> <span class="n">ch_cost</span> <span class="o">=</span> <span class="n">bidirectional_dijkstra_with_contraction</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">,</span><span class="n">hierarchy</span><span class="p">,</span> <span class="n">cost</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ch_time</span> <span class="o">=</span> <span class="n">process_time</span><span class="p">()</span> <span class="o">-</span> <span class="n">ch_time</span>
+
+<span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">'Contraction generation'</span><span class="p">,</span><span class="n">c_gen</span><span class="p">,</span><span class="s1">''</span><span class="p">))</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">'Bidirectional-Dijkstra with contraction'</span><span class="p">,</span><span class="n">ch_time</span><span class="p">,</span><span class="n">ch_cost</span><span class="p">))</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">stats</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'Algorithm'</span><span class="p">,</span><span class="s1">'Time'</span><span class="p">,</span><span class="s1">'Cost (m)'</span><span class="p">])</span>
 <span class="n">df</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">hide_index</span><span class="p">()</span> <span class="c1"># Hide the index for display purposes</span>
 <span class="n">df</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -401,55 +414,62 @@
 <tr>
 <th>0</th>
 <td>BFS</td>
-<td>0.001447</td>
+<td>0.001</td>
 <td>954.727</td>
 </tr>
 <tr>
 <th>1</th>
 <td>DFS</td>
-<td>0.000427</td>
+<td>0.000</td>
 <td>1521.548</td>
 </tr>
 <tr>
 <th>2</th>
 <td>dijkstra</td>
-<td>0.014886</td>
+<td>0.015</td>
 <td>801.464</td>
 </tr>
 <tr>
 <th>3</th>
 <td>hill_climbing</td>
-<td>1.394021</td>
-<td>918.812</td>
+<td>1.830</td>
+<td>822.118</td>
 </tr>
 <tr>
 <th>4</th>
 <td>beam</td>
-<td>22.906811</td>
-<td>857.184</td>
+<td>16.146</td>
+<td>822.118</td>
 </tr>
 <tr>
 <th>5</th>
 <td>astar</td>
-<td>0.001676</td>
+<td>0.002</td>
 <td>839.904</td>
 </tr>
 <tr>
 <th>6</th>
 <td>bidirectional_astar</td>
-<td>0.001644</td>
+<td>0.002</td>
 <td>827.505</td>
 </tr>
 <tr>
 <th>7</th>
+<td>Contraction generation</td>
+<td>0.219</td>
+<td></td>
+</tr>
+<tr>
+<th>8</th>
 <td>Bidirectional-Dijkstra with contraction</td>
-<td>***</td>
-<td>***</td>
+<td>0.001</td>
+<td>848.715</td>
 </tr>
 </tbody>
 </table>
 </div></div></div>
 </div>
+<p><em>Note that cost and time for Bidirectional-Dijkstra with contraction used a simplified version of the road network, which will generate a different shortest path, as well as reduce overall search time.</em></p>
 <div class="section" id="comparison-of-time-and-space-complexities">
 <h2>Comparison of Time and Space Complexities<a class="headerlink" href="#comparison-of-time-and-space-complexities" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table">
