@@ -20,6 +20,7 @@ chapters:
   - file: content/TrajectoryAlgorithms/SimulatedAnnealing
 - file: content/EvolutionaryComputingAlgorithms/index
   sections:
+  - file: content/EvolutionaryComputingAlgorithms/GeneratingInitialPopulations
   - file: content/EvolutionaryComputingAlgorithms/GeneticAlgorithms
   - file: content/EvolutionaryComputingAlgorithms/DifferentialEvolution
 - file: content/SwarmIntelligenceAlgorithms/index

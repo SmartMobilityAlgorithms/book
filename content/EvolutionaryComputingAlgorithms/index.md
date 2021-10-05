@@ -1,8 +1,9 @@
 # Evolutionary Computing Algorithms
 
 ## Table of Contents
-1. [Genetic Algorithms](GeneticAlgorithms.md)
-2. [Differential Evolution](DifferentialEvolution.md)
+1. [Generating Initial Populations](GeneratingInitialPopulations.ipynb)
+2. [Genetic Algorithms](GeneticAlgorithms.ipynb)
+3. [Differential Evolution](DifferentialEvolution.md)
 
 
 Evolutionary Computation (EC) is a sub-field of computational intelligence that deals with several computational techniques which are based to some degree on the evolution of biological life in the natural world. These computational techniques use computational models of evolutionary processes, such as: natural selection, survival of the fittest and reproduction, as the fundamental components of such computational systems. Evolutionary techniques mostly involve metaheuristic optimization algorithms such as evolutionary algorithms (comprising genetic algorithms, evolutionary programming, evolution strategy, genetic programming and learning classifier systems) and swarm intelligence (comprising ant colony optimization and particle swarm optimization). 
