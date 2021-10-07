@@ -12,6 +12,6 @@ The most widely used form of evolutionary computation are Genetic Algorithms (GA
 
 GAs handle a population of individuals (solutions). The probability of selecting a bad solution is reduced by handling multiple good solutions.  The population evolves from one iteration to the next according to selection and the search operators (genetic operators).
 
-SGA can be thought of as GA where the population size is only one. The current solution is the only individual in the population. 
-As there is only one individual, there is no crossover, but only mutation. As a matter of fact this is the primal difference between SGA and GA. 
-SGA produces a new solution by changing only one solution with a local move, while GA produces solutions by fusing two different solutions.
+SA can be thought of as GA where the population size is only one. The current solution is the only individual in the population. 
+As there is only one individual, there is no crossover, but only mutation. As a matter of fact this is the primal difference between SA and GA. 
+SA produces a new solution by changing only one solution with a local move, while GA produces solutions by fusing two different solutions.
