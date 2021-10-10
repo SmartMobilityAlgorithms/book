@@ -34,6 +34,7 @@ chapters:
 - file: content/PeopleMobilityProblems/index
   sections:
     - file: content/PeopleMobilityProblems/Maven
+    - file: content/PeopleMobilityProblems/ridesharing_GA
 - file: content/LogisticsProblems
 - file: content/InfrastructureProblems
 - file: content/ToolsAndPythonLibraries/index
