@@ -25,3 +25,4 @@ dependencies:
 - sobol_seq>=0.2.0
 - pydoe>=0.3.8
 - ypstruct>=0.0.2
+- polyline>=1.4.0
