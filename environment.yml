@@ -1,7 +1,7 @@
 dependencies:
 - python=3.8
 - pip:
-  - smart_mobility_utilities>=0.0.7
+  - smart_mobility_utilities>=0.0.9
   - overpass>=0.7
   - folium>=0.12.1
 - Cython>=0.29.24
