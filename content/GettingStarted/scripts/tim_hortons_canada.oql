@@ -1,4 +1,0 @@
-[bbox:42.553080,-141.328125,69.960439,-51.679688];
-node["amenity"="cafe"]({{bbox}});
-node["name"="Tim Hortons"]({{bbox}});
-out center;

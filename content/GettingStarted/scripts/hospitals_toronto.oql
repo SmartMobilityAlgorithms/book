@@ -1,7 +1,0 @@
-[bbox:43.611968,-79.464798,43.695183,-79.297256];
-node["amenity"="hosptial"]({{bbox}});
-out;
-way["amenity"="hospital"]({{bbox}});
-out center;
-relation["amenity"="hospital"]({{bbox}});
-out center;
