@@ -29,8 +29,6 @@
 <script src="../../_static/tabs.js"></script>
 <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
 <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
 <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
 <script>
         const thebe_selector = ".thebe"
@@ -207,6 +205,11 @@
      Ant Colony Optimization
     </a>
 </li>
+<li class="toctree-l2">
+<a class="reference internal" href="FireflyAlgorithm.html">
+     Firefly Algorithm
+    </a>
+</li>
 </ul>
 </li>
 <li class="toctree-l1 has-children">
@@ -325,6 +328,23 @@
 </div>
 <!-- Table of contents -->
 <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+<i class="fas fa-list"></i> Contents
+            </div>
+<nav id="bd-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#contents">
+   Contents
+  </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#examples-of-swarm-intelligence-algorithms">
+   Examples of Swarm Intelligence Algorithms
+  </a>
+</li>
+</ul>
+</nav>
 </div>
 </div>
 </div>
@@ -333,6 +353,52 @@
 <div>
 <div class="section" id="swarm-intelligence-algorithms">
 <h1>Swarm Intelligence Algorithms<a class="headerlink" href="#swarm-intelligence-algorithms" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><a class="reference internal" href="ParticleSwarmOptimization.html"><span class="doc std std-doc">Particle Swarm Optimization (PSO)</span></a></p></li>
+<li><p><a class="reference internal" href="AntColonyOptimization.html"><span class="doc std std-doc">Ant Colony Optimization (ACO)</span></a></p></li>
+<li><p>Artificial Bee Colony (ABC)</p></li>
+<li><p><a class="reference internal" href="FireflyAlgorithm.html"><span class="doc std std-doc">Firefly Algorithm (FA)</span></a></p></li>
+</ol>
+<p>The social insect societies as decentralized organizations are based on the cooperation of separate, simple, and somewhat random units, distributed in the environment, who work without supervision, having only access to local information <span id="id1">[<a class="reference internal" href="../../References.html#id16">8</a>]</span>. In such systems, problems are collectively solved. The theory of self-organization in animal societies shows that very simple, but numerous, interactions taking place between individuals may ensure complex performances and produce Collective Intelligence (CI) at the level of the group <span id="id2">[<a class="reference internal" href="../../References.html#id17">9</a>]</span>.
+<br/>
+Swarm intelligence (SI) or collective intelligence refers to the phenomenon of a system of spatially distributed individuals coordinating their actions in a decentralized and self-organized manner so as to exhibit complex collective behavior. Swarm Intelligence systems are typically made up of a population of simple agents interacting locally with one another and with their environment. This interaction often leads to the emergence of global behavior.</p>
+<p>Key elements of SI include:</p>
+<ul class="simple">
+<li><p>A large number of “simple” processing elements work without supervision</p></li>
+<li><p>Neighbourhood communication</p></li>
+<li><p>Though convergence is guaranteed, the time to convergence is uncertain</p></li>
+</ul>
+<p>A typical SI-based Algorithm adopts a pattern as follows:</p>
+<ol class="simple">
+<li><p>Initialize parameters.</p></li>
+<li><p>Initialize population.</p></li>
+<li><p>While an end condition has not yet been reached:</p>
+<ul class="simple">
+<li><p>Find best so far</p></li>
+<li><p>Find best neighbour</p></li>
+<li><p>Update each individual</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="examples-of-swarm-intelligence-algorithms">
+<h2>Examples of Swarm Intelligence Algorithms<a class="headerlink" href="#examples-of-swarm-intelligence-algorithms" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Particle Swarm Optimization (PSO)</p></li>
+<li><p>Ant Colony Optimization (ACO)</p></li>
+<li><p>Artificial Bee Colony (ABC)</p></li>
+<li><p>Firefly Algorithm (FA)</p></li>
+<li><p>Bat Algorithm (BA)</p></li>
+<li><p>Grey wolf optimizer</p></li>
+<li><p>Ant lion optimizer</p></li>
+<li><p>Artifical algae algorithm</p></li>
+<li><p>Chicken swarm optimization</p></li>
+<li><p>Artifical fish-swarm algorithm</p></li>
+<li><p>Alliance Algorithm (AA)</p></li>
+</ul>
+</div>
 <div class="toctree-wrapper compound">
 </div>
 </div>
