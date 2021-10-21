@@ -3,7 +3,7 @@
 ## Contents
 1. [Particle Swarm Optimization (PSO)](ParticleSwarmOptimization.ipynb)
 2. [Ant Colony Optimization (ACO)](AntColonyOptimization.ipynb)
-3. Artificial Bee Colony (ABC)
+3. [Artificial Bee Colony (ABC)](ArtificialBeeColony.ipynb)
 4. [Firefly Algorithm (FA)](FireflyAlgorithm.ipynb)
 
 The social insect societies as decentralized organizations are based on the cooperation of separate, simple, and somewhat random units, distributed in the environment, who work without supervision, having only access to local information {cite}`khamis_kamel_salichs_2006`. In such systems, problems are collectively solved. The theory of self-organization in animal societies shows that very simple, but numerous, interactions taking place between individuals may ensure complex performances and produce Collective Intelligence (CI) at the level of the group {cite}`bonabeau_dorigo_theraulaz_1999`.
