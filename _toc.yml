@@ -27,6 +27,7 @@ chapters:
   sections:
   - file: content/SwarmIntelligenceAlgorithms/ParticleSwarmOptimization
   - file: content/SwarmIntelligenceAlgorithms/AntColonyOptimization
+  - file: content/SwarmIntelligenceAlgorithms/ArtificialBeeColony
   - file: content/SwarmIntelligenceAlgorithms/FireflyAlgorithm
 - file: content/LearnToSearch/index
   sections:
