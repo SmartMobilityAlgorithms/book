@@ -11,10 +11,10 @@ Ill-structured problems (ISPs) are complex discrete/continuous problems without 
 
 In the context of smart mobility, ISPs can be categorized into people mobility problems, logistics problems, and infrastructure problems. 
 
-![](../../images/PeopleProblems.png)
+![](../../images/Problems.png)
 
 This section will cover examples of the following ill-structured people mobility problems.
-- Maven Car-Sharing service
+- Car-Sharing service
 - Ride-hailing
 - Last-first Mile Transportation
 - Motion Planning
