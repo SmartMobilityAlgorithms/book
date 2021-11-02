@@ -32,14 +32,18 @@ chapters:
 - file: content/LearnToSearch/index
   sections:
   - file: content/LearnToSearch/GraphNeuralNetworks
+  - file: content/LearnToSearch/AttentionMechanisms
   - file: content/LearnToSearch/ReinforcementLearning
 - file: content/PeopleMobilityProblems/index
   sections:
-    - file: content/PeopleMobilityProblems/Maven
+    - file: content/PeopleMobilityProblems/CarSharing
+    - file: content/PeopleMobilityProblems/RideHailing
 - file: content/LogisticsProblems/index
   sections:
     - file: content/LogisticsProblems/delivery_GA
-- file: content/InfrastructureProblems
+- file: content/InfrastructureProblems/index
+  sections:
+    - file: content/InfrastructureProblems/SensorDeployment
 - file: content/ToolsAndPythonLibraries/index
 - file: content/Datasets
 - file: References

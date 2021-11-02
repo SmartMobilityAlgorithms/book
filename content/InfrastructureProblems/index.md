@@ -2,7 +2,7 @@
 
 As mentioned previously, in the context of smart mobility, ISPs can be categorized into people mobility problems, logistics problems, and infrastructure problems. 
 
-![](../images/Problems.png)
+![](../../images/Problems.png)
 
 Just as the arrival of the first automobiles fundamentally changed our society in the early 1900s, smart mobility systems will trigger evolutionary and revolutionary changes in city planning. Infrastructure problems are planning problems that aim at optimizing the placement, allocation, distribution or the usage of physical or digital assets such as 
 - traffic monitoring sensors
