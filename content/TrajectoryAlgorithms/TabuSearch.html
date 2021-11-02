@@ -29,6 +29,8 @@
 <script src="../../_static/tabs.js"></script>
 <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
 <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
 <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
 <script>
         const thebe_selector = ".thebe"
@@ -233,6 +235,11 @@
     </a>
 </li>
 <li class="toctree-l2">
+<a class="reference internal" href="../LearnToSearch/AttentionMechanisms.html">
+     Attention Mechanisms
+    </a>
+</li>
+<li class="toctree-l2">
 <a class="reference internal" href="../LearnToSearch/ReinforcementLearning.html">
      Reinforcement Learning
     </a>
@@ -252,6 +259,11 @@
 <li class="toctree-l2">
 <a class="reference internal" href="../PeopleMobilityProblems/CarSharing.html">
      Car-Sharing Service
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../PeopleMobilityProblems/RideHailing.html">
+     Ride-Hailing
     </a>
 </li>
 </ul>
@@ -342,9 +354,32 @@
 <!-- Full screen (wrap in <a> to have style consistency -->
 <a class="full-screen-button"><button aria-label="Fullscreen mode" class="btn btn-secondary topbarbtn" data-placement="bottom" data-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode" type="button"><i class="fas fa-expand"></i></button></a>
 <!-- Launch buttons -->
+<div class="dropdown-buttons-trigger">
+<button aria-label="Launch interactive content" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-rocket"></i></button>
+<div class="dropdown-buttons">
+<a class="binder-button" href="https://mybinder.org/v2/gh/SmartMobilityAlgorithms/book/main?urlpath=tree/content/TrajectoryAlgorithms/TabuSearch.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Launch Binder" type="button"><img alt="Interact on binder" class="binder-button-logo" src="../../_static/images/logo_binder.svg"/>Binder</button></a>
+</div>
+</div>
 </div>
 <!-- Table of contents -->
 <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+<i class="fas fa-list"></i> Contents
+            </div>
+<nav id="bd-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#example-tabu-search-for-tsp">
+   Example: Tabu Search for TSP
+  </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#example-tabu-search-for-routing-problem">
+   Example: Tabu Search for Routing Problem
+  </a>
+</li>
+</ul>
+</nav>
 </div>
 </div>
 </div>
@@ -355,7 +390,267 @@
 <h1>Tabu Search<a class="headerlink" href="#tabu-search" title="Permalink to this headline">¶</a></h1>
 <p>Tabu search (TS) is an iterative neighborhood search algorithm, where the neighborhood changes dynamically. TS enhances local search by actively avoiding points in the search space already visited. By avoiding already visited points, loops in search trajectories are avoided and local optima can be escaped. TS can be considered as the combination of local search (LS) and memory structures. The main feature of TS is the use of an explicit memory. Uses of memory have two goals: to prevent the search from revisiting previously visited solutions and to explore the unvisited areas of the solution space.</p>
 <p>TBD…</p>
+<div class="section" id="example-tabu-search-for-tsp">
+<h2>Example: Tabu Search for TSP<a class="headerlink" href="#example-tabu-search-for-tsp" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize the graph</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">complete_graph</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">():</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">][</span><span class="s1">'weight'</span><span class="p">]</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">25</span><span class="p">))</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/TabuSearch_2_0.png" src="../../_images/TabuSearch_2_0.png"/>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a function to calculate the tour cost</span>
+<span class="k">def</span> <span class="nf">cost_of_tour</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">tour</span><span class="p">):</span>
+    <span class="n">cost</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">u</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">tour</span><span class="p">,</span> <span class="n">tour</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+        <span class="n">cost</span> <span class="o">+=</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">][</span><span class="s1">'weight'</span><span class="p">]</span>
+    <span class="n">cost</span> <span class="o">+=</span> <span class="n">G</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">tour</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">'weight'</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">cost</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize a random solution, and its cost</span>
+<span class="n">initial_solution</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()]</span>
+<span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">initial_solution</span><span class="p">)</span>
+<span class="n">initial_cost</span> <span class="o">=</span> <span class="n">cost_of_tour</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">initial_solution</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">initial_solution</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">initial_cost</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[14, 9, 16, 5, 1, 13, 18, 3, 0, 15, 23, 20, 7, 24, 19, 17, 12, 10, 11, 22, 4, 21, 2, 8, 6]
+99
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_best_neighbour</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">tour</span><span class="p">,</span> <span class="n">tabu_history</span><span class="p">,</span> <span class="n">tabu_limit</span><span class="p">,</span> <span class="n">aspiration</span><span class="p">):</span>
+    <span class="n">best_neighbour</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">best_neighbour_cost</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span>
+    <span class="c1"># generate a list of all possible neighbours</span>
+    <span class="c1"># a neighbour is just swapping the position of two nodes within the tour</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">j</span><span class="p">:</span> <span class="k">continue</span>
+
+            <span class="c1"># Swap the ith and jth nodes</span>
+            <span class="n">tmp_route</span> <span class="o">=</span> <span class="n">tour</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp_route</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">tmp_route</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp_route</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="n">tmp_route</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
+            <span class="n">tmp_cost</span> <span class="o">=</span> <span class="n">cost_of_tour</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">tmp_route</span><span class="p">)</span>
+
+            <span class="c1"># This route is tabu, check aspiration</span>
+            <span class="k">if</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">tmp_route</span><span class="p">)</span> <span class="ow">in</span> <span class="n">tabu_history</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">tabu_history</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">tmp_route</span><span class="p">)]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">tabu_history</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">tmp_route</span><span class="p">)]</span> <span class="o">&gt;</span> <span class="n">aspiration</span><span class="p">:</span>
+                        <span class="k">continue</span>
+
+            
+            <span class="k">if</span> <span class="n">tmp_cost</span> <span class="o">&lt;</span> <span class="n">best_neighbour_cost</span><span class="p">:</span>
+                <span class="n">best_neighbour_cost</span> <span class="o">=</span> <span class="n">tmp_cost</span>
+                <span class="n">best_neighbour</span> <span class="o">=</span> <span class="n">tmp_route</span>
+                <span class="n">tabu_history</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">best_neighbour</span><span class="p">)]</span> <span class="o">=</span> <span class="n">tabu_limit</span>
+        
+    <span class="k">return</span> <span class="n">best_neighbour</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tabu_search</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">initial_solution</span><span class="p">,</span> <span class="n">num_iter</span><span class="p">,</span> <span class="n">tabu_history</span><span class="p">,</span> <span class="n">tabu_limit</span><span class="p">,</span> <span class="n">aspiration</span><span class="p">):</span>
+    <span class="n">best_solution</span> <span class="o">=</span> <span class="n">initial_solution</span>
+    <span class="n">best_cost</span> <span class="o">=</span> <span class="n">cost_of_tour</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">best_solution</span><span class="p">)</span>
+    <span class="n">states</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_iter</span><span class="p">):</span>
+
+        <span class="c1"># Reduce counter for all tabu</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tabu_history</span><span class="p">:</span>
+            <span class="n">tabu_history</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">tabu_history</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">best_solution</span> <span class="o">=</span> <span class="n">get_best_neighbour</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">best_solution</span><span class="p">,</span> <span class="n">tabu_history</span><span class="p">,</span> <span class="n">tabu_limit</span><span class="p">,</span> <span class="n">aspiration</span><span class="p">)</span>
+        <span class="n">best_cost</span> <span class="o">=</span> <span class="n">cost_of_tour</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">best_solution</span><span class="p">)</span>
+        <span class="n">states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">best_cost</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">best_solution</span><span class="p">,</span> <span class="n">best_cost</span><span class="p">,</span> <span class="n">states</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize some parameters</span>
+<span class="n">aspiration</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">tabu_history</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">num_iterations</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">tabu_limit</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">best_solution</span><span class="p">,</span> <span class="n">best_cost</span><span class="p">,</span> <span class="n">states</span> <span class="o">=</span> <span class="n">tabu_search</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">initial_solution</span><span class="p">,</span> <span class="n">num_iterations</span><span class="p">,</span> <span class="n">tabu_history</span><span class="p">,</span> <span class="n">tabu_limit</span><span class="p">,</span> <span class="n">aspiration</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">best_solution</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">best_cost</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"# Iterations"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Cost"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">states</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 5, 11, 2, 15, 4, 18, 19, 14, 0, 7, 6, 13, 24, 3, 17, 23, 16, 9, 22, 21, 8, 12, 20, 10]
+16
+</pre></div>
+</div>
+<img alt="../../_images/TabuSearch_7_1.png" src="../../_images/TabuSearch_7_1.png"/>
+</div>
+</div>
+</div>
+<div class="section" id="example-tabu-search-for-routing-problem">
+<h2>Example: Tabu Search for Routing Problem<a class="headerlink" href="#example-tabu-search-for-routing-problem" title="Permalink to this headline">¶</a></h2>
+<p>We can also use Tabu Search for our University of Toronto routing problem, however we will need to define some new functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Setup the Graph, origin, and destination</span>
+<span class="kn">import</span> <span class="nn">osmnx</span>
+<span class="kn">from</span> <span class="nn">smart_mobility_utilities.common</span> <span class="kn">import</span> <span class="n">Node</span><span class="p">,</span> <span class="n">randomized_search</span><span class="p">,</span> <span class="n">cost</span>
+<span class="kn">from</span> <span class="nn">smart_mobility_utilities.viz</span> <span class="kn">import</span> <span class="n">draw_route</span>
+
+<span class="n">reference</span> <span class="o">=</span> <span class="p">(</span><span class="mf">43.661667</span><span class="p">,</span> <span class="o">-</span><span class="mf">79.395</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">osmnx</span><span class="o">.</span><span class="n">graph_from_point</span><span class="p">(</span><span class="n">reference</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">clean_periphery</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">origin</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">G</span><span class="p">,</span> <span class="n">osmid</span><span class="o">=</span><span class="mi">55808290</span><span class="p">)</span>
+<span class="n">destination</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">G</span><span class="p">,</span> <span class="n">osmid</span><span class="o">=</span><span class="mi">389677909</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize a random solution, and its cost</span>
+<span class="n">initial_solution</span> <span class="o">=</span> <span class="n">randomized_search</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">osmid</span><span class="p">,</span> <span class="n">destination</span><span class="o">.</span><span class="n">osmid</span><span class="p">)</span>
+<span class="n">initial_cost</span> <span class="o">=</span> <span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">initial_solution</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Initial Solution:"</span><span class="p">,</span><span class="n">initial_solution</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Initial cost:"</span><span class="p">,</span><span class="n">initial_cost</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Initial Solution: [55808290, 304891685, 55808284, 1721866234, 389678268, 4953810915, 4953810914, 55808233, 299625330, 389677953, 2143488335, 389677947, 2143489692, 2143506365, 2143491963, 2143488528, 389678140, 389678139, 389678138, 3707407638, 730029011, 730029006, 4376693531, 4376693530, 123347786, 389678133, 389677909]
+Initial cost: 1072.452
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">smart_mobility_utilities.children</span> <span class="kn">import</span> <span class="n">get_children</span>
+<span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span> 
+
+<span class="k">def</span> <span class="nf">get_best_neighbour_route</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="n">neighbour_limit</span><span class="p">,</span> <span class="n">tabu_history</span><span class="p">,</span> <span class="n">tabu_limit</span><span class="p">,</span> <span class="n">aspiration</span><span class="p">):</span>
+    <span class="n">best_neighbour</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">best_neighbour_cost</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span>
+    <span class="c1"># generate a list of neighbours, limited to neighbour_limit</span>
+    <span class="n">neighbours</span> <span class="o">=</span> <span class="n">get_children</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="n">neighbour_limit</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">neighbours</span><span class="p">:</span>
+        <span class="n">child_cost</span> <span class="o">=</span> <span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">child</span><span class="p">)</span>
+        <span class="c1"># This route is tabu, check aspiration</span>
+        <span class="k">if</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">child</span><span class="p">)</span> <span class="ow">in</span> <span class="n">tabu_history</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">tabu_history</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">child</span><span class="p">)]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">tabu_history</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">child</span><span class="p">)]</span> <span class="o">&gt;</span> <span class="n">aspiration</span><span class="p">:</span>
+                    <span class="k">continue</span>
+
+        
+        <span class="k">if</span> <span class="n">child_cost</span> <span class="o">&lt;</span> <span class="n">best_neighbour_cost</span><span class="p">:</span>
+            <span class="n">best_neighbour_cost</span> <span class="o">=</span> <span class="n">child_cost</span>
+            <span class="n">best_neighbour</span> <span class="o">=</span> <span class="n">child</span>
+            <span class="n">tabu_history</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">best_neighbour</span><span class="p">)]</span> <span class="o">=</span> <span class="n">tabu_limit</span>
+        
+    <span class="k">return</span> <span class="n">best_neighbour</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tabu_search_route</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">initial_solution</span><span class="p">,</span> <span class="n">num_iter</span><span class="p">,</span> <span class="n">neighbour_limit</span><span class="p">,</span> <span class="n">tabu_history</span><span class="p">,</span> <span class="n">tabu_limit</span><span class="p">,</span> <span class="n">aspiration</span><span class="p">):</span>
+    <span class="n">best_solution</span> <span class="o">=</span> <span class="n">initial_solution</span>
+    <span class="n">best_cost</span> <span class="o">=</span> <span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">best_solution</span><span class="p">)</span>
+    <span class="n">states</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">num_iter</span><span class="p">)):</span>
+        <span class="c1"># Reduce counter for all tabu</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tabu_history</span><span class="p">:</span>
+            <span class="n">tabu_history</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">tabu_history</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            
+        <span class="n">best_solution</span> <span class="o">=</span> <span class="n">get_best_neighbour_route</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">best_solution</span><span class="p">,</span> <span class="n">neighbour_limit</span><span class="p">,</span> <span class="n">tabu_history</span><span class="p">,</span> <span class="n">tabu_limit</span><span class="p">,</span> <span class="n">aspiration</span><span class="p">)</span>
+        <span class="n">best_cost</span> <span class="o">=</span> <span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">best_solution</span><span class="p">)</span>
+        <span class="n">states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">best_cost</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">best_solution</span><span class="p">,</span> <span class="n">best_cost</span><span class="p">,</span> <span class="n">states</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize some parameters</span>
+<span class="n">aspiration</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">tabu_history</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">num_iterations</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">tabu_limit</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">neighbour_limit</span> <span class="o">=</span> <span class="mi">50</span> <span class="c1"># Because we can generate a very large number of neighbours, we need to set a limit</span>
+
+<span class="n">best_solution</span><span class="p">,</span> <span class="n">best_cost</span><span class="p">,</span> <span class="n">states</span> <span class="o">=</span> <span class="n">tabu_search_route</span><span class="p">(</span>
+    <span class="n">G</span><span class="p">,</span>
+    <span class="n">initial_solution</span><span class="p">,</span>
+    <span class="n">num_iterations</span><span class="p">,</span>
+    <span class="n">neighbour_limit</span><span class="p">,</span>
+    <span class="n">tabu_history</span><span class="p">,</span>
+    <span class="n">tabu_limit</span><span class="p">,</span>
+    <span class="n">aspiration</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">best_solution</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">best_cost</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"# Iterations"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Cost"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">states</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "12a99c68d91547dc97d91c2ddc647400", "version_major": 2, "version_minor": 0}
+</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[55808290, 304891685, 55808284, 1252869817, 55808239, 389678268, 4953810915, 389678267, 390547782, 389678107, 389678111, 389678112, 389678113, 389678146, 2143434862, 2143434860, 7311083158, 1258707987, 389678121, 50885147, 389678122, 1258707990, 7153999189, 389678124, 6028562355, 7311057937, 6028562356, 854322047, 389677908, 749952029, 389677909]
+830.458
+</pre></div>
+</div>
+<img alt="../../_images/TabuSearch_13_2.png" src="../../_images/TabuSearch_13_2.png"/>
+</div>
+</div>
+</div>
+</div>
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"12a99c68d91547dc97d91c2ddc647400": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_dbeda86f8c4849f684a8c56ea3a242a1", "IPY_MODEL_b2a79c96494f4509a1910d3108207249", "IPY_MODEL_5fc3769e3cac43459cd3e1a9a5b26528"], "layout": "IPY_MODEL_d653bc8d3348434e91ed73cad9530e75"}}, "2b2e3b61e84e4964b5da982485cca5c8": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "5fc3769e3cac43459cd3e1a9a5b26528": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_6e61bd8360274bd98a6686c9598c0ba9", "placeholder": "\u200b", "style": "IPY_MODEL_c1a67df81e7a4f7195b91dbd17d682dc", "value": " 50/50 [01:39&lt;00:00,  1.98s/it]"}}, "6e61bd8360274bd98a6686c9598c0ba9": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b2a79c96494f4509a1910d3108207249": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "success", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_b2aeffed810e4c8ba1e2449824395ba1", "max": 50.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_ef65aaf1c50c467992f40de860cbdcef", "value": 50.0}}, "b2aeffed810e4c8ba1e2449824395ba1": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c1a67df81e7a4f7195b91dbd17d682dc": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "d653bc8d3348434e91ed73cad9530e75": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "dbeda86f8c4849f684a8c56ea3a242a1": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_e7f4af7895844ae9a2b7e147e8c9e0bb", "placeholder": "\u200b", "style": "IPY_MODEL_2b2e3b61e84e4964b5da982485cca5c8", "value": "100%"}}, "e7f4af7895844ae9a2b7e147e8c9e0bb": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ef65aaf1c50c467992f40de860cbdcef": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}}, "version_major": 2, "version_minor": 0}
+</script>
 <script type="text/x-thebe-config">
     {
         requestKernel: true,
