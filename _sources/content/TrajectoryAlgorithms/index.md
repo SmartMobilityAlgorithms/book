@@ -5,3 +5,7 @@ Metaheuristic algorithms can be classified into trajectory-based and population-
 ![](../../images/Metaheuristics.png)
 
 A trajectory-based metaheuristic algorithm such as simulated annealing use a single agent or solution which moves through the design space or search space in a piecewise style. A better move or solution is always accepted, while a not-so-good move can be accepted with certain probability. The steps or moves trace a trajectory in the search space, with a non-zero probability that this trajectory can reach the global optimum.
+
+Two algorithms are covered in this section:
+1. [Simulated Annealing](SimulatedAnnealing.ipynb)
+2. [Tabu Search](TabuSearch.ipynb)

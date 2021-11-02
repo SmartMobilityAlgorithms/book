@@ -29,8 +29,6 @@
 <script src="../../_static/tabs.js"></script>
 <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
 <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
 <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
 <script>
         const thebe_selector = ".thebe"
@@ -252,8 +250,8 @@
 </label>
 <ul>
 <li class="toctree-l2">
-<a class="reference internal" href="../PeopleMobilityProblems/Maven.html">
-     Maven Car-Sharing Service
+<a class="reference internal" href="../PeopleMobilityProblems/CarSharing.html">
+     Car-Sharing Service
     </a>
 </li>
 </ul>
@@ -275,10 +273,22 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1">
-<a class="reference internal" href="../InfrastructureProblems.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../InfrastructureProblems/index.html">
    Infrastructure Problems
   </a>
+<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+<label for="toctree-checkbox-9">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../InfrastructureProblems/SensorDeployment.html">
+     Sensor Deployment
+    </a>
+</li>
+</ul>
 </li>
 <li class="toctree-l1">
 <a class="reference internal" href="../ToolsAndPythonLibraries/index.html">
@@ -317,7 +327,7 @@
 <div class="dropdown-buttons">
 <!-- ipynb file if we had a myst markdown file -->
 <!-- Download raw file -->
-<a class="dropdown-buttons" href="../../_sources/content/TrajectoryAlgorithms/TabuSearch.md"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.md</button></a>
+<a class="dropdown-buttons" href="../../_sources/content/TrajectoryAlgorithms/TabuSearch.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.ipynb</button></a>
 <!-- Download PDF via print -->
 <button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="window.print()" title="Print to PDF" type="button">.pdf</button>
 </div>
@@ -343,6 +353,8 @@
 <div>
 <div class="section" id="tabu-search">
 <h1>Tabu Search<a class="headerlink" href="#tabu-search" title="Permalink to this headline">¶</a></h1>
+<p>Tabu search (TS) is an iterative neighborhood search algorithm, where the neighborhood changes dynamically. TS enhances local search by actively avoiding points in the search space already visited. By avoiding already visited points, loops in search trajectories are avoided and local optima can be escaped. TS can be considered as the combination of local search (LS) and memory structures. The main feature of TS is the use of an explicit memory. Uses of memory have two goals: to prevent the search from revisiting previously visited solutions and to explore the unvisited areas of the solution space.</p>
+<p>TBD…</p>
 </div>
 <script type="text/x-thebe-config">
     {

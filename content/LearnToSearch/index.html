@@ -29,8 +29,6 @@
 <script src="../../_static/tabs.js"></script>
 <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
 <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
 <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
 <script>
         const thebe_selector = ".thebe"
@@ -235,6 +233,11 @@
     </a>
 </li>
 <li class="toctree-l2">
+<a class="reference internal" href="AttentionMechanisms.html">
+     Attention Mechanisms
+    </a>
+</li>
+<li class="toctree-l2">
 <a class="reference internal" href="ReinforcementLearning.html">
      Reinforcement Learning
     </a>
@@ -252,8 +255,13 @@
 </label>
 <ul>
 <li class="toctree-l2">
-<a class="reference internal" href="../PeopleMobilityProblems/Maven.html">
-     Maven Car-Sharing Service
+<a class="reference internal" href="../PeopleMobilityProblems/CarSharing.html">
+     Car-Sharing Service
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../PeopleMobilityProblems/RideHailing.html">
+     Ride-Hailing
     </a>
 </li>
 </ul>
@@ -275,10 +283,22 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1">
-<a class="reference internal" href="../InfrastructureProblems.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../InfrastructureProblems/index.html">
    Infrastructure Problems
   </a>
+<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+<label for="toctree-checkbox-9">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../InfrastructureProblems/SensorDeployment.html">
+     Sensor Deployment
+    </a>
+</li>
+</ul>
 </li>
 <li class="toctree-l1">
 <a class="reference internal" href="../ToolsAndPythonLibraries/index.html">
@@ -343,6 +363,13 @@
 <div>
 <div class="section" id="learn-to-search">
 <h1>Learn to Search<a class="headerlink" href="#learn-to-search" title="Permalink to this headline">¶</a></h1>
+<p>Machine learning (ML) is a subfield of AI that endows an artificial system/process with the ability to learn from experience and from observation without being explicitly programmed. ML algorithms are traditionally categorized into supervised, unsupervised, and reinforcement learning algorithms. First, supervised learning uses inductive inference to approximate mapping functions between data and labels/classes. This mapping is learned using already labeled training data. Second, unsupervised learning deals with unlabeled data through techniques like clustering and data association. The third category of ML algorithms is reinforcement learning (RL), which is a weakly supervised learning technique that learns from interactions through a feedback loop or by trial and error. RL learns what to do (i.e., how to map a situation to actions) to maximize a numerical reward function. Deep learning (DL) is a subfield of machine learning concerned with learning of underlying features in data using deep neural networks enabling artificial systems to build complex concepts out of simpler concepts.</p>
+<p>ML techniques can be used to search space and to solve combinatorial optimization problems on graphs. The following approaches are discussed:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="GraphNeuralNetworks.html"><span class="doc std std-doc">Graph Neural Networks (GNN)</span></a></p></li>
+<li><p><a class="reference internal" href="AttentionMechanisms.html"><span class="doc std std-doc">Attention Mechanisms</span></a></p></li>
+<li><p><a class="reference internal" href="ReinforcementLearning.html"><span class="doc std std-doc">Reinforcement Learning</span></a></p></li>
+</ul>
 <div class="toctree-wrapper compound">
 </div>
 </div>

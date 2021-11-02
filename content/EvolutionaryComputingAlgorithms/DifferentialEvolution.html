@@ -29,8 +29,6 @@
 <script src="../../_static/tabs.js"></script>
 <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
 <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
 <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
 <script>
         const thebe_selector = ".thebe"
@@ -235,6 +233,11 @@
     </a>
 </li>
 <li class="toctree-l2">
+<a class="reference internal" href="../LearnToSearch/AttentionMechanisms.html">
+     Attention Mechanisms
+    </a>
+</li>
+<li class="toctree-l2">
 <a class="reference internal" href="../LearnToSearch/ReinforcementLearning.html">
      Reinforcement Learning
     </a>
@@ -252,8 +255,13 @@
 </label>
 <ul>
 <li class="toctree-l2">
-<a class="reference internal" href="../PeopleMobilityProblems/Maven.html">
-     Maven Car-Sharing Service
+<a class="reference internal" href="../PeopleMobilityProblems/CarSharing.html">
+     Car-Sharing Service
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../PeopleMobilityProblems/RideHailing.html">
+     Ride-Hailing
     </a>
 </li>
 </ul>
@@ -275,10 +283,22 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1">
-<a class="reference internal" href="../InfrastructureProblems.html">
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../InfrastructureProblems/index.html">
    Infrastructure Problems
   </a>
+<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+<label for="toctree-checkbox-9">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../InfrastructureProblems/SensorDeployment.html">
+     Sensor Deployment
+    </a>
+</li>
+</ul>
 </li>
 <li class="toctree-l1">
 <a class="reference internal" href="../ToolsAndPythonLibraries/index.html">
@@ -343,6 +363,17 @@
 <div>
 <div class="section" id="differential-evolution">
 <h1>Differential Evolution<a class="headerlink" href="#differential-evolution" title="Permalink to this headline">¶</a></h1>
+<p>Differential evolution (DE) is a population-based metaheuristic used to solve global optimization problems. It approximates the actual global optimum by iteratively mutating and improving the candidate solutions from the initial ones.<br/>
+The DE method cannot guarantee the global optimum is found. The best solution returns depending on the choice of the DE settings as well as the problem itself.</p>
+<p>The differential evolution solver has the following input solutions:</p>
+<ul class="simple">
+<li><p><strong>Population size</strong>:  is the number of sets of candidate solutions that the solver calculates at each loop iteration in the search process. This size also indicates the number of objective function calls at each loop iteration in the optimization process. A larger population size usually results in better optimization results and a longer execution time.</p></li>
+<li><p><strong>Scale factor</strong>: is the diversity factor that the solver uses to generate mutant solutions. Larger values of scale factor result in more diverse mutant solutions.</p></li>
+<li><p><strong>Crossover probability</strong>: is the probability that the solver inherits the trial solutions from the mutant solutions. A larger value of crossover probability results in a higher probability that the solver accepts the mutant solutions.</p></li>
+<li><p><strong>Bounds</strong>: contains the upper and lower numeric limits for the solutions being optimized.</p></li>
+<li><p><strong>Objective function definitions</strong>: Contain the implementation of the objective functions that the solver will run to minimize, by optimizing over the decision variables affecting those objective functions.</p></li>
+</ul>
+<p>TBD…</p>
 </div>
 <script type="text/x-thebe-config">
     {

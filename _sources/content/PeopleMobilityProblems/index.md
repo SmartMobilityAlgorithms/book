@@ -15,7 +15,7 @@ In the context of smart mobility, ISPs can be categorized into people mobility p
 
 This section will cover examples of the following ill-structured people mobility problems.
 - [Car-Sharing service](CarSharing.ipynb)
-- Ride-hailing
+- [Ride-Hailing](RideHailing.ipynb)
 - Last-first Mile Transportation
 - Motion Planning
 - Trip Planning
