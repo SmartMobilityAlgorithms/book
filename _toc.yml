@@ -42,8 +42,6 @@ chapters:
   sections:
     - file: content/LogisticsProblems/delivery_GA
 - file: content/InfrastructureProblems/index
-  sections:
-    - file: content/InfrastructureProblems/SensorDeployment
 - file: content/ToolsAndPythonLibraries/index
 - file: content/Datasets
 - file: References
