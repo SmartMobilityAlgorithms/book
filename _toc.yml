@@ -31,6 +31,7 @@ chapters:
   - file: content/SwarmIntelligenceAlgorithms/FireflyAlgorithm
 - file: content/LearnToSearch/index
   sections:
+  - file: content/LearnToSearch/GeometricDeepLearning
   - file: content/LearnToSearch/GraphNeuralNetworks
   - file: content/LearnToSearch/AttentionMechanisms
   - file: content/LearnToSearch/ReinforcementLearning
