@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Attention Mechanisms — AI Search Algorithms for Smart Mobility</title>
+<title>Geometric Deep Learning — AI Search Algorithms for Smart Mobility</title>
 <link href="../../_static/css/theme.css" rel="stylesheet"/>
 <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet"/>
 <link href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
@@ -36,13 +36,11 @@
         const thebe_selector_output = ".output"
     </script>
 <script async="async" src="../../_static/sphinx-thebe.js"></script>
-<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
-<link href="ReinforcementLearning.html" rel="next" title="Reinforcement Learning"/>
-<link href="GraphNeuralNetworks.html" rel="prev" title="Graph Neural Networks (GNN)"/>
+<link href="GraphNeuralNetworks.html" rel="next" title="Graph Neural Networks (GNN)"/>
+<link href="index.html" rel="prev" title="Learn to Search"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="en" name="docsearch:language"/>
 </head>
@@ -229,13 +227,18 @@
 </i>
 </label>
 <ul class="current">
+<li class="toctree-l2 current active">
+<a class="current reference internal" href="#">
+     Geometric Deep Learning
+    </a>
+</li>
 <li class="toctree-l2">
 <a class="reference internal" href="GraphNeuralNetworks.html">
      Graph Neural Networks (GNN)
     </a>
 </li>
-<li class="toctree-l2 current active">
-<a class="current reference internal" href="#">
+<li class="toctree-l2">
+<a class="reference internal" href="AttentionMechanisms.html">
      Attention Mechanisms
     </a>
 </li>
@@ -327,7 +330,7 @@
 <div class="dropdown-buttons">
 <!-- ipynb file if we had a myst markdown file -->
 <!-- Download raw file -->
-<a class="dropdown-buttons" href="../../_sources/content/LearnToSearch/AttentionMechanisms.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.ipynb</button></a>
+<a class="dropdown-buttons" href="../../_sources/content/LearnToSearch/GeometricDeepLearning.md"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.md</button></a>
 <!-- Download PDF via print -->
 <button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="window.print()" title="Print to PDF" type="button">.pdf</button>
 </div>
@@ -342,71 +345,73 @@
 <!-- Full screen (wrap in <a> to have style consistency -->
 <a class="full-screen-button"><button aria-label="Fullscreen mode" class="btn btn-secondary topbarbtn" data-placement="bottom" data-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode" type="button"><i class="fas fa-expand"></i></button></a>
 <!-- Launch buttons -->
-<div class="dropdown-buttons-trigger">
-<button aria-label="Launch interactive content" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-rocket"></i></button>
-<div class="dropdown-buttons">
-<a class="binder-button" href="https://mybinder.org/v2/gh/SmartMobilityAlgorithms/book/main?urlpath=tree/content/LearnToSearch/AttentionMechanisms.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Launch Binder" type="button"><img alt="Interact on binder" class="binder-button-logo" src="../../_static/images/logo_binder.svg"/>Binder</button></a>
-</div>
-</div>
 </div>
 <!-- Table of contents -->
 <div class="d-none d-md-block col-md-2 bd-toc show">
-<div class="tocsection onthispage pt-5 pb-3">
-<i class="fas fa-list"></i> Contents
-            </div>
-<nav id="bd-toc-nav">
-<ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry">
-<a class="reference internal nav-link" href="#resources">
-   Resources
-  </a>
-</li>
-</ul>
-</nav>
 </div>
 </div>
 </div>
 <div class="row" id="main-content">
 <div class="col-12 col-md-9 pl-md-3 pr-md-0">
 <div>
-<div class="section" id="attention-mechanisms">
-<h1>Attention Mechanisms<a class="headerlink" href="#attention-mechanisms" title="Permalink to this headline">¶</a></h1>
-<p>Combinatorial problems are class of problems in which the decision variables are discrete -i.e. where the solution is a set (combination), or a sequence (permutation), of integers or other discrete objects <span id="id1">[<a class="reference internal" href="../../References.html#id25">13</a>]</span>. In the context of smart mobility, many problems have solutions in forms of permutation such as vehicle routing, dispatching, scheduling and trip planning to name just a few. For example, in a discrete combinatorial optimization problem like travelling salesman, both input and output are sequential data. In these problems, sequence-to-sequence (Seq2Seq) modelling can be applied. A Seq2Seq model is a model that takes a sequence of items (candidate solution for cities to be visited in a TSP problem for example) and outputs another sequence of items (sequence of cities to be visited to get the shortest/fastest route). Recurrent Neural Networks and long short-term memory (LSTM) have been established as state-of-the-art approaches in sequence-to-sequence modelling. However, if the sequence is very long (e.g., large number of cities to be visited), RNN and LSTM may suffer from forgetting problem where initial context can be lost by the end of the sequence. To deal with this problem, attention mechanisms have been introduced <span id="id2">[<a class="reference internal" href="../../References.html#id26">14</a>]</span>. Attention allows the model to focus on different parts of the input sequence at every stage of the output sequence allowing the context to be preserved from beginning to end. In attention mechanisms, a vector of importance weights is used in order to estimate how strongly an element in the sequence is correlated with (or “attends to”) other elements. The sum of the elements’ values is taken weighted by the attention vector as the approximation of the target as illustrated below.</p>
-<p><img alt="" src="../../_images/Attention.png"/></p>
-<p><span class="math notranslate nohighlight">\(\alpha_i\)</span> represents the weight vector that is function of query and key. Every value has an associate key. If the key is the value itself, it’s called self-attention. For example, the following function can be used to calculate the weights:<br/><br/>
-<span class="math notranslate nohighlight">\(\{\alpha_i\}^N_{i=1} = \text{softmax}(\{tanh(q^Tk_i)\}^N_{i=1})\)</span></p>
-<p>Unfortunately, discrete combinatorial optimization problems cannot be easily solved by classic seq-2-seq models, given that the discrete categories of output elements are not determined in advance, but depends on the variable input size (e.g., output dictionary depends on the input length). For example, in vector maps, convex hull is commonly used to find the smallest polygon containing all the points. The following code can be used to generate the polygon/convex hull of UofT Mississauga Campus.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">genfromtxt</span>
-<span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">ConvexHull</span><span class="p">,</span> <span class="n">convex_hull_plot_2d</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
-
-<span class="c1"># Mississauga campus</span>
-<span class="n">points</span> <span class="o">=</span> <span class="n">genfromtxt</span><span class="p">(</span><span class="s1">'../../data/convex_hull/points.csv'</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">','</span><span class="p">)</span>
-<span class="n">hull</span> <span class="o">=</span> <span class="n">ConvexHull</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
-
-<span class="c1"># plot pointx and convex hull</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">points</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">points</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">'o'</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">simplex</span> <span class="ow">in</span> <span class="n">hull</span><span class="o">.</span><span class="n">simplices</span><span class="p">:</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">simplex</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">points</span><span class="p">[</span><span class="n">simplex</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">'k-'</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/AttentionMechanisms_4_0.png" src="../../_images/AttentionMechanisms_4_0.png"/>
-</div>
-</div>
-<p>In this problem, the output elements (i.e., points to be included in the polygon) are not determined in advance, but depends on the variable input size. Pointer Network (Ptr-Net) uses attention as a pointer to select a member of the input sequence as the output and allows us to generalize to variable size output dictionaries <span id="id3">[<a class="reference internal" href="../../References.html#id27">15</a>]</span>. Ptr-Net takes a sequence of input vectors as input, encodes and decodes hidden states using RNNs and finally produces a sequence of integer indices as output. The Ptr-Net applies additive attention between states and then normalizes it by softmax to model the output conditional probability.</p>
-<div class="section" id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/jojonki/Pointer-Networks">Pointer Networks</a></p></li>
-<li><p><a class="reference external" href="https://github.com/ikostrikov/TensorFlow-Pointer-Networks">TensorFlow-Pointer-Networks</a></p></li>
-<li><p><a class="reference external" href="https://github.com/qiang-ma/graph-pointer-network">TSP using Pointer Networks and RL</a></p></li>
-</ul>
-</div>
+<div class="section" id="geometric-deep-learning">
+<h1>Geometric Deep Learning<a class="headerlink" href="#geometric-deep-learning" title="Permalink to this headline">¶</a></h1>
+<p>As mentioned previously, a graph is a structured data type that consists of 3 sets, namely, vertices/ nodes (entities that hold information), edges (connections between nodes that can also hold information) and a set representing relations between vertices and edges. Graph deep learning (GDL) is a subfield of machine learning that combines both graph theory and deep learning.</p>
+<p><strong>GDL = Graph Theory + Deep Learning</strong></p>
+<p>The objective of GDL is to build neural networks that can learn from non-Euclidean data or graphs. The following table summarizes the differences between Euclidean and Non-Euclidean data:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspects</p></th>
+<th class="head"><p>Euclidean Data</p></th>
+<th class="head"><p>Non-Euclidean Graph Data</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Dimensionality</p></td>
+<td><p>1d data: numbers, text, speech 2d data: images or videos</p></td>
+<td><p>large dimensionality</p></td>
+</tr>
+<tr class="row-odd"><td><p>Data modality</p></td>
+<td><p>Unimodal</p></td>
+<td><p>Multimodal</p></td>
+</tr>
+<tr class="row-even"><td><p>Structure</p></td>
+<td><p>Structured data</p></td>
+<td><p>Arbitrary structure</p></td>
+</tr>
+<tr class="row-odd"><td><p>Spatial locality</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p>shift-invariance</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p>ordinality or hierarchy</p></td>
+<td><p>yes</p></td>
+<td><p>No fixed node ordering or reference point</p></td>
+</tr>
+<tr class="row-even"><td><p>the shortest path between 2 points</p></td>
+<td><p>a straight line</p></td>
+<td><p>is not necessarily a straight line</p></td>
+</tr>
+<tr class="row-odd"><td><p>Basic operations like dot products, norms &amp; convolution</p></td>
+<td><p>Well-defined</p></td>
+<td><p>Not well defined</p></td>
+</tr>
+<tr class="row-even"><td><p>Data storage</p></td>
+<td><p>Can be stored as a tensor</p></td>
+<td><p>cannot be easily stored as a tensor</p></td>
+</tr>
+</tbody>
+</table>
+<p>Convolutional Neural Networks (CNNs) can only operate on regular Euclidean data like image (2D grid) and text (1D sequence) and cannot deal with non-Euclidean data. In order to deal with this problem, graph structure needs to be encoded where nodes are encoded as low-dimensional vectors in latent space. The geometric relations in this latent space correspond to interactions (e.g. edges) in the original graph. Data-driven approaches are used to learn the node embeddings. These representation learning approaches consist of the following three main steps <span id="id1">[<a class="reference internal" href="../../References.html#id21">11</a>]</span>:</p>
+<ol class="simple">
+<li><p>Collect neighbors</p></li>
+<li><p>Aggregate feature information from neighbors</p></li>
+<li><p>Decode graph context and/or label using aggregated information</p></li>
+</ol>
+<p><a class="reference external" href="https://github.com/phanein/deepwalk">DeepWalk</a> and <a class="reference external" href="https://snap.stanford.edu/node2vec/">node2vec</a> are random walk-based methods for graph embedding based on representation learning. Graph Neural Network (GNN) <span id="id2">[<a class="reference internal" href="../../References.html#id22">12</a>]</span> is commonly used to adapt existing machine learning technologies to directly process non-Euclidean structured data as input, so that this (possibly useful) information is not lost in transforming the data into a Euclidean input as required by existing techniques <span id="id3">[<a class="reference internal" href="../../References.html#id23">13</a>]</span>.</p>
 </div>
 <script type="text/x-thebe-config">
     {
@@ -429,8 +434,8 @@
 <script>kernelName = 'python3'</script>
 </div>
 <div class="prev-next-bottom">
-<a class="left-prev" href="GraphNeuralNetworks.html" id="prev-link" title="previous page">Graph Neural Networks (GNN)</a>
-<a class="right-next" href="ReinforcementLearning.html" id="next-link" title="next page">Reinforcement Learning</a>
+<a class="left-prev" href="index.html" id="prev-link" title="previous page">Learn to Search</a>
+<a class="right-next" href="GraphNeuralNetworks.html" id="next-link" title="next page">Graph Neural Networks (GNN)</a>
 </div>
 </div>
 </div>

@@ -39,7 +39,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
-<link href="GraphNeuralNetworks.html" rel="next" title="Graph Neural Networks (GNN)"/>
+<link href="GeometricDeepLearning.html" rel="next" title="Geometric Deep Learning"/>
 <link href="../SwarmIntelligenceAlgorithms/FireflyAlgorithm.html" rel="prev" title="Firefly Algorithm"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="en" name="docsearch:language"/>
@@ -228,6 +228,11 @@
 </label>
 <ul>
 <li class="toctree-l2">
+<a class="reference internal" href="GeometricDeepLearning.html">
+     Geometric Deep Learning
+    </a>
+</li>
+<li class="toctree-l2">
 <a class="reference internal" href="GraphNeuralNetworks.html">
      Graph Neural Networks (GNN)
     </a>
@@ -283,22 +288,10 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children">
+<li class="toctree-l1">
 <a class="reference internal" href="../InfrastructureProblems/index.html">
    Infrastructure Problems
   </a>
-<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-<label for="toctree-checkbox-9">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../InfrastructureProblems/SensorDeployment.html">
-     Sensor Deployment
-    </a>
-</li>
-</ul>
 </li>
 <li class="toctree-l1">
 <a class="reference internal" href="../ToolsAndPythonLibraries/index.html">
@@ -363,12 +356,18 @@
 <div>
 <div class="section" id="learn-to-search">
 <h1>Learn to Search<a class="headerlink" href="#learn-to-search" title="Permalink to this headline">¶</a></h1>
-<p>Machine learning (ML) is a subfield of AI that endows an artificial system/process with the ability to learn from experience and from observation without being explicitly programmed. ML algorithms are traditionally categorized into supervised, unsupervised, and reinforcement learning algorithms. First, supervised learning uses inductive inference to approximate mapping functions between data and labels/classes. This mapping is learned using already labeled training data. Second, unsupervised learning deals with unlabeled data through techniques like clustering and data association. The third category of ML algorithms is reinforcement learning (RL), which is a weakly supervised learning technique that learns from interactions through a feedback loop or by trial and error. RL learns what to do (i.e., how to map a situation to actions) to maximize a numerical reward function. Deep learning (DL) is a subfield of machine learning concerned with learning of underlying features in data using deep neural networks enabling artificial systems to build complex concepts out of simpler concepts.</p>
-<p>ML techniques can be used to search space and to solve combinatorial optimization problems on graphs. The following approaches are discussed:</p>
+<p>Machine learning (ML) is a subfield of AI that endows an artificial system/process with the ability to learn from experience and from observation without being explicitly programmed. ML algorithms are traditionally categorized into supervised, unsupervised, and reinforcement learning algorithms. First, supervised learning uses inductive inference to approximate mapping functions between data and labels/classes. This mapping is learned using already labeled training data. Second, unsupervised learning deals with unlabeled data through techniques like clustering and data association. The third category of ML algorithms is reinforcement learning (RL), which is a weakly supervised learning technique that learns from interactions through a feedback loop or by trial and error. RL learns what to do (i.e., how to map a situation to actions) to maximize a numerical reward function. As illustrated in the figure below, Deep learning (DL) is a subfield of machine learning concerned with learning of underlying features in data using deep neural networks enabling artificial systems to learn at different levels of abstractions and to build complex concepts out of simpler concepts.
+<img alt="" src="../../_images/AI.png"/></p>
+<p>ML techniques can be used to search space and to solve combinatorial optimization problems on graphs using end to end learning approaches (whether from imitation/demonstration or experience). ML techniques can also be combined with metaheuristics search techniques to form multi-stage/sequential or parallel hybrid metaheuristics. For example, deep learning assisted heuristic tree search (DLTS) consists of a heuristic tree search in which decisions about which branches to explore and how to bound nodes are made by deep neural networks (DNNs) <span id="id1">[<a class="reference internal" href="../../References.html#id20">10</a>]</span>. ML techniques can be applied to configure or auto-tune the parameters of the search algorithms. Examples include, but are not limited to, learning rate/step size in gradient descent methods; finding initial temperature or cooling schedule of simulated annealing, standard deviation of Gaussian mutation or selective crossover of genetic algorithm, inertia weight or cognitive and social acceleration coefficients of PSO or to tune the rate of evaporation, influence of pheromone deposited or influence of desirability of state transition in ACO.
+We will focus here on the end-to-end learning for solving combinatorial optimization problems. The end-to-end pipeline for combinatorial optimization or operation research problems are shown in the following figure.
+<img alt="" src="../../_images/ML.png"/></p>
+<p>Through graph embedding, we can adapt existing machine learning technologies to directly process non-Euclidean structured data as input, so that this (possibly useful) information is not lost in transforming the data into a Euclidean input as required by existing techniques. The following topics are covered:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="GraphNeuralNetworks.html"><span class="doc std std-doc">Graph Neural Networks (GNN)</span></a></p></li>
+<li><p><a class="reference internal" href="GeometricDeepLearning.html"><span class="doc std std-doc">Geometric Deep Learning</span></a></p></li>
+<li><p>DeepWalk</p></li>
+<li><p><a class="reference internal" href="GraphNeuralNetworks.html"><span class="doc std std-doc">Graph Neural Networks (GNNs)</span></a></p></li>
 <li><p><a class="reference internal" href="AttentionMechanisms.html"><span class="doc std std-doc">Attention Mechanisms</span></a></p></li>
-<li><p><a class="reference internal" href="ReinforcementLearning.html"><span class="doc std std-doc">Reinforcement Learning</span></a></p></li>
+<li><p><a class="reference internal" href="ReinforcementLearning.html"><span class="doc std std-doc">(Deep) Reinforcement Learning</span></a></p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -395,7 +394,7 @@
 </div>
 <div class="prev-next-bottom">
 <a class="left-prev" href="../SwarmIntelligenceAlgorithms/FireflyAlgorithm.html" id="prev-link" title="previous page">Firefly Algorithm</a>
-<a class="right-next" href="GraphNeuralNetworks.html" id="next-link" title="next page">Graph Neural Networks (GNN)</a>
+<a class="right-next" href="GeometricDeepLearning.html" id="next-link" title="next page">Geometric Deep Learning</a>
 </div>
 </div>
 </div>

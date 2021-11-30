@@ -40,7 +40,7 @@
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
 <link href="../PeopleMobilityProblems/index.html" rel="next" title="People Mobility Problems"/>
-<link href="GraphNeuralNetworks.html" rel="prev" title="Graph Neural Networks (GNN)"/>
+<link href="AttentionMechanisms.html" rel="prev" title="Attention Mechanisms"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="en" name="docsearch:language"/>
 </head>
@@ -228,8 +228,18 @@
 </label>
 <ul class="current">
 <li class="toctree-l2">
+<a class="reference internal" href="GeometricDeepLearning.html">
+     Geometric Deep Learning
+    </a>
+</li>
+<li class="toctree-l2">
 <a class="reference internal" href="GraphNeuralNetworks.html">
      Graph Neural Networks (GNN)
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="AttentionMechanisms.html">
+     Attention Mechanisms
     </a>
 </li>
 <li class="toctree-l2 current active">
@@ -254,6 +264,11 @@
      Car-Sharing Service
     </a>
 </li>
+<li class="toctree-l2">
+<a class="reference internal" href="../PeopleMobilityProblems/RideHailing.html">
+     Ride-Hailing
+    </a>
+</li>
 </ul>
 </li>
 <li class="toctree-l1 has-children">
@@ -273,22 +288,10 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children">
+<li class="toctree-l1">
 <a class="reference internal" href="../InfrastructureProblems/index.html">
    Infrastructure Problems
   </a>
-<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-<label for="toctree-checkbox-9">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../InfrastructureProblems/SensorDeployment.html">
-     Sensor Deployment
-    </a>
-</li>
-</ul>
 </li>
 <li class="toctree-l1">
 <a class="reference internal" href="../ToolsAndPythonLibraries/index.html">
@@ -353,8 +356,20 @@
 <div>
 <div class="section" id="reinforcement-learning">
 <h1>Reinforcement Learning<a class="headerlink" href="#reinforcement-learning" title="Permalink to this headline">¶</a></h1>
-<p>Reinforcement Learning (RL) is a unique ML technique. It’s distinguishable from the other techniques for not requiring any training data nor examples, as it simply involves learning by experience.  RL is not supervised and is not unsupervised. RL is weakly supervised or semi-supervised learning paradigm. RL is learning what to do –how to map situations to actions– so as to maximize a numerical reward signal. RL features an interactive intelligent agent with an explicit goal to achieve.</p>
-<p>TBD…</p>
+<p>Reinforcement Learning (RL) <span id="id1">[<a class="reference internal" href="../../References.html#id28">18</a>]</span> is a unique ML technique. It’s distinguishable from the other techniques for not requiring any training data nor examples, as it simply involves learning by experience. RL is not supervised and is not unsupervised. RL is weakly supervised or semi-supervised learning paradigm. RL is learning what to do –how to map situations to actions– so as to maximize a numerical reward signal. RL features an interactive intelligent agent with an explicit goal to achieve. As illustrated in the following figure, agent’s utility is defined by the reward function and the agent must (learn to) act so as to maximize expected rewards.</p>
+<p><img alt="" src="../../_images/RL_1.png"/></p>
+<p>Policy is the agent’s “plan of action” that is, how the agent reacts to different environment situations and how it translates the states to actions. Rewards are the numerical values given by the environment to the agent in response to a state-action pair. These rewards describe the immediate, intrinsic desirability of environmental states. Value Function is the long term version of a reward function, calculating discounted return starting from a specific state following a certain policy. The environment model is a representation of the environment behavior.</p>
+<p>Deep reinforcement learning (deep RL) is a subfield of machine learning that combines reinforcement learning (RL) and deep learning. The following diagrams shows different types of deep RL algorithms <span id="id2">[<a class="reference internal" href="../../References.html#id29">19</a>]</span>.</p>
+<p><img alt="" src="../../_images/RL_2.png"/></p>
+<p>The following projects are examples of RL application in solving combinatorial optimization problem related to smart mobility:</p>
+<ul class="simple">
+<li><p>Learning heuristics over large graph: Graph Convolutional Network is proposed to solve large instances of problems such as Minimum Vertex Cover (MVC) and Maximum Coverage Problem (MCP) <span id="id3">[<a class="reference internal" href="../../References.html#id30">20</a>]</span>. Example of a real-world applications of MVC and MCP include, but are not limited to <a class="reference external" href="https://github.com/Youlina3/Traffic-Camera-Installation-Based-on-Vertex-Cover-Optimization">Optimal placement of traffic security cameras using MVC</a> and <a class="reference external" href="https://github.com/Youlina3/Traffic-Camera-Installation-Based-on-Vertex-Cover-Optimization">Time-constrained maximal covering routing problem</a>.</p></li>
+<li><p>Travelling Salesman Problem (TSP) <span id="id4">[<a class="reference internal" href="../../References.html#id31">21</a>, <a class="reference internal" href="../../References.html#id32">22</a>]</span></p></li>
+<li><p>Vehicle Routing Problem (VRP) <span id="id5">[<a class="reference internal" href="../../References.html#id33">23</a>]</span> and Capacitated Vehicle Routing Problem (CVRP) <span id="id6">[<a class="reference internal" href="../../References.html#id34">24</a>]</span></p></li>
+<li><p><a class="reference external" href="https://github.com/Aidandos/deeppool">DeepPool</a>, a distributed model-free algorithm for ride-sharing using deep reinforcement learning <span id="id7">[<a class="reference internal" href="../../References.html#id35">25</a>]</span></p></li>
+<li><p><a class="reference external" href="https://github.com/hitsuji5/fleet-sim">MOVI</a>, a model-free approach for a large-scale taxi dispatch problem. To ensure scalability, a distributed DQN with streamlined training algorithm is used <span id="id8">[<a class="reference internal" href="../../References.html#id36">26</a>]</span></p></li>
+<li><p>DeepFreight, a model-free learning framework for the freight delivery problem. It decomposes the problem into two closely-collaborative components: truck-dispatch and package-matching <span id="id9">[<a class="reference internal" href="../../References.html#id37">27</a>]</span></p></li>
+</ul>
 </div>
 <script type="text/x-thebe-config">
     {
@@ -377,7 +392,7 @@
 <script>kernelName = 'python3'</script>
 </div>
 <div class="prev-next-bottom">
-<a class="left-prev" href="GraphNeuralNetworks.html" id="prev-link" title="previous page">Graph Neural Networks (GNN)</a>
+<a class="left-prev" href="AttentionMechanisms.html" id="prev-link" title="previous page">Attention Mechanisms</a>
 <a class="right-next" href="../PeopleMobilityProblems/index.html" id="next-link" title="next page">People Mobility Problems</a>
 </div>
 </div>
