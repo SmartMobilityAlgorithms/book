@@ -1,23 +1,35 @@
 # Graph Neural Networks (GNN)
 
-As mentioned previously, a graph is a structured data type that consists of 3 sets, namely, vertices/ nodes (entities that hold information), edges (connections between nodes that can also hold information) and a set representing relations between vertices and edges. Graph deep learning (GDL) is a subfield of machine learning that combines both graph theory and deep learning. Graph Neural Network is a type of Neural Network which directly operates on the Graph structure. Graph Neural Networks seek to adapt existing machine learning technologies to directly process non-Euclidean structured data as input, so that this (possibly useful) information is not lost in transforming the data into a Euclidean input as required by existing techniques {cite}`gnn_stanford`. 
+Graph Neural Network {cite}`scarselli_gori_tsoi_hagenbuchner_monfardini_2009` is a type of neural Network which directly operates on the graph structure. In GNN, graph nodes represent objects or concepts, and edges represent their relationships. Each concept is naturally defined by its features and the related concepts. Thus, we can attach a hidden **state** $x_n \in R^s$ to each node $n$ that is based on the information contained in the neighborhood of $n$. The following figure illustrated the embedding process of each node using local transition and local output functions.
 
-The following table shows the difference between Euclidean and Non-Euclidean data:
+![](../../images/Learn2Search/GNN_1.png)
 
-| Aspects                                                  | Euclidean Data                                           | Non-Euclidean Graph Data                  |
-|----------------------------------------------------------|----------------------------------------------------------|-------------------------------------------|
-| Dimensionality                                           | 1d data: numbers, text, speech 2d data: images or videos | large dimensionality                      |
-| Data modality                                            | Unimodal                                                 | Multimodal                                |
-| Structure                                                | Structured data                                          | Arbitrary structure                       |
-| Spatial locality                                         | yes                                                      | no                                        |
-| shift-invariance                                         | yes                                                      | no                                        |
-| ordinality or hierarchy                                  | yes                                                      | No fixed node ordering or reference point |
-| the shortest path between 2 points                       | a straight line                                          | is not necessarily a straight line        |
-| Basic operations like dot products, norms & convolution  | Well-defined                                             | Not well defined                          |
-| Data storage                                             | Can be stored as a tensor                                | cannot be easily stored as a tensor       |
+where $l_n,l_{co[n]},x_{ne[n]}$ and $l_{ne[n]}$ are the label of $n$, the labels of its edges, the states, and the labels of the nodes in the neighborhood of $n$, respectively.
+$x,o,l$ and $l_N$ are the vectors constructed by stacking all the states, all the outputs, all the labels, and all the node labels, respectively as illustrated below.
+
+![](../../images/Learn2Search/GNN_2.png)
+
+The following figure summarizes the GNN-based embedding process {cite}`DBLP:journals/corr/abs-1906-01227`.
+
+![](../../images/Learn2Search/GNN_3.png)
+
+GNN is used in several smart mobility applications. For example, the accuracy of real time ETAs was improved by up to 50% in places like Berlin, Jakarta, São Paulo, Sydney, Tokyo, and Washington D.C. by using advanced machine learning techniques including Graph Neural Networks, such as [DeepMind](https://deepmind.com/blog/article/traffic-prediction-with-advanced-graph-neural-networks).
+
+## Graph Convolutional Neural Network (GCNs)
+
+In a graph convolutional neural network, embedding can take the following form:<br><br>
+$h^k_v=f(W_k \sum\limits_{u \in N(j)} \frac{1}{|N(v)|} h^{k-1}_u + B_k h^{k-1}_v), \forall k \in \{1,...,K\}$ <br><br>
+where<br><br>
+$h_v^k$ is node $v$ embedding after $k$ layers of neighbourhood aggregation<br><br>
+$\sum\limits_{u \in N(j)} \frac{1}{|N(v)|} h^{k-1}_u$ are neighbors’ representations (average of neighbor’s previous layer embeddings)<br><br>
+$B_k h^{k-1}_v$ represent own representation of node $v$ in previous layer $k-1$<br><br>
+$f$ is a non-linearity function such as ReLU.
+
 
 
 ## Resources:
+- [Graph Convolutional Network Technique for the Travelling Salesman Problem](https://github.com/chaitjo/graph-convnet-tsp)
+- A library for graph neural networks in jax ([Jraph](https://github.com/deepmind/jraph))
 - Deep Graph Library ([DGL](https://github.com/dmlc/dgl))
 - Graph Nets Library ([Graph Nets](https://github.com/deepmind/graph_nets))
 - PyTorch Geometric Library ([PyTorch Geometric](https://pytorch-geometric.readthedocs.io/en/latest/))
