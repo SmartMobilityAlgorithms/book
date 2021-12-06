@@ -9,7 +9,6 @@ We will focus here on the end-to-end learning for solving combinatorial optimiza
 
 Through graph embedding, we can adapt existing machine learning technologies to directly process non-Euclidean structured data as input, so that this (possibly useful) information is not lost in transforming the data into a Euclidean input as required by existing techniques. The following topics are covered:
 - [Geometric Deep Learning](GeometricDeepLearning.md)
-- DeepWalk
 - [Graph Neural Networks (GNNs)](GraphNeuralNetworks.md)
 - [Attention Mechanisms](AttentionMechanisms.ipynb)
 - [(Deep) Reinforcement Learning](ReinforcementLearning.md)
