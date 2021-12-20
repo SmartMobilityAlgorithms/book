@@ -29,8 +29,6 @@
 <script src="../../_static/tabs.js"></script>
 <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
 <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
 <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
 <script>
         const thebe_selector = ".thebe"
@@ -334,7 +332,7 @@
 <div class="dropdown-buttons">
 <!-- ipynb file if we had a myst markdown file -->
 <!-- Download raw file -->
-<a class="dropdown-buttons" href="../../_sources/content/LearnToSearch/GraphNeuralNetworks.md"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.md</button></a>
+<a class="dropdown-buttons" href="../../_sources/content/LearnToSearch/GraphNeuralNetworks.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.ipynb</button></a>
 <!-- Download PDF via print -->
 <button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="window.print()" title="Print to PDF" type="button">.pdf</button>
 </div>
@@ -349,6 +347,12 @@
 <!-- Full screen (wrap in <a> to have style consistency -->
 <a class="full-screen-button"><button aria-label="Fullscreen mode" class="btn btn-secondary topbarbtn" data-placement="bottom" data-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode" type="button"><i class="fas fa-expand"></i></button></a>
 <!-- Launch buttons -->
+<div class="dropdown-buttons-trigger">
+<button aria-label="Launch interactive content" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-rocket"></i></button>
+<div class="dropdown-buttons">
+<a class="binder-button" href="https://mybinder.org/v2/gh/SmartMobilityAlgorithms/book/main?urlpath=tree/content/LearnToSearch/GraphNeuralNetworks.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Launch Binder" type="button"><img alt="Interact on binder" class="binder-button-logo" src="../../_static/images/logo_binder.svg"/>Binder</button></a>
+</div>
+</div>
 </div>
 <!-- Table of contents -->
 <div class="d-none d-md-block col-md-2 bd-toc show">
@@ -361,6 +365,60 @@
 <a class="reference internal nav-link" href="#graph-convolutional-neural-network-gcns">
    Graph Convolutional Neural Network (GCNs)
   </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#using-gcn-to-solve-tsp">
+   Using GCN to solve TSP
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#import-dependencies">
+     Import dependencies
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#enable-notebook-mode-for-jupyter-notebook">
+     Enable Notebook mode for Jupyter Notebook
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#load-tsp20-configuration-files">
+     Load TSP20 Configuration Files
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#setup-gpu-and-cuda">
+     Setup GPU and CUDA
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#setup-network-and-parameters">
+     Setup Network and parameters
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#load-previous-training-checkpoint">
+     Load Previous Training Checkpoint
+    </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#function-to-convert-metrics-to-text">
+       Function to convert metrics to text
+      </a>
+</li>
+<li class="toc-h4 nav-item toc-entry">
+<a class="reference internal nav-link" href="#function-to-run-test-data">
+       Function to run test data
+      </a>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#test-model-on-randomly-generated-graphs">
+     Test model on randomly generated graphs
+    </a>
+</li>
+</ul>
 </li>
 <li class="toc-h2 nav-item toc-entry">
 <a class="reference internal nav-link" href="#resources">
@@ -394,6 +452,402 @@ where<br/><br/>
 <span class="math notranslate nohighlight">\(\sum\limits_{u \in N(j)} \frac{1}{|N(v)|} h^{k-1}_u\)</span> are neighbors’ representations (average of neighbor’s previous layer embeddings)<br/><br/>
 <span class="math notranslate nohighlight">\(B_k h^{k-1}_v\)</span> represent own representation of node <span class="math notranslate nohighlight">\(v\)</span> in previous layer <span class="math notranslate nohighlight">\(k-1\)</span><br/><br/>
 <span class="math notranslate nohighlight">\(f\)</span> is a non-linearity function such as ReLU.</p>
+</div>
+<div class="section" id="using-gcn-to-solve-tsp">
+<h2>Using GCN to solve TSP<a class="headerlink" href="#using-gcn-to-solve-tsp" title="Permalink to this headline">¶</a></h2>
+<p>GCNs can also be used to predict “likely” edges that would appear in a solution to TSP. These likely edges can then be run through a beam search to look for near-optimal solutions.</p>
+<p>This example will use code adapted from <a class="reference external" href="https://arxiv.org/abs/1906.01227">this paper</a>.</p>
+<div class="section" id="import-dependencies">
+<h3>Import dependencies<a class="headerlink" href="#import-dependencies" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some initial setup</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch.autograd</span> <span class="kn">import</span> <span class="n">Variable</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">from</span> <span class="nn">sklearn.utils.class_weight</span> <span class="kn">import</span> <span class="n">compute_class_weight</span>
+
+<span class="kn">from</span> <span class="nn">tensorboardX</span> <span class="kn">import</span> <span class="n">SummaryWriter</span>
+<span class="kn">from</span> <span class="nn">fastprogress</span> <span class="kn">import</span> <span class="n">master_bar</span><span class="p">,</span> <span class="n">progress_bar</span>
+
+<span class="c1"># Remove warning</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">"ignore"</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">UserWarning</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">SparseEfficiencyWarning</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">,</span> <span class="n">SparseEfficiencyWarning</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">graph_convnet.config</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">graph_convnet.utils.graph_utils</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">graph_convnet.utils.google_tsp_reader</span> <span class="kn">import</span> <span class="n">GoogleTSPReader</span>
+<span class="kn">from</span> <span class="nn">graph_convnet.utils.plot_utils</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">graph_convnet.models.gcn_model</span> <span class="kn">import</span> <span class="n">ResidualGatedGCNModel</span>
+<span class="kn">from</span> <span class="nn">graph_convnet.utils.model_utils</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="enable-notebook-mode-for-jupyter-notebook">
+<h3>Enable Notebook mode for Jupyter Notebook<a class="headerlink" href="#enable-notebook-mode-for-jupyter-notebook" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">notebook_mode</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">viz_mode</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">if</span> <span class="n">notebook_mode</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="o">%</span><span class="k">load_ext</span> autoreload
+    <span class="o">%</span><span class="k">autoreload</span> 2
+    <span class="o">%</span><span class="k">matplotlib</span> inline
+    <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">set_matplotlib_formats</span>
+    <span class="n">set_matplotlib_formats</span><span class="p">(</span><span class="s1">'png'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_12636/2361144546.py:9: DeprecationWarning: `set_matplotlib_formats` is deprecated since IPython 7.23, directly use `matplotlib_inline.backend_inline.set_matplotlib_formats()`
+  set_matplotlib_formats('png')
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="load-tsp20-configuration-files">
+<h3>Load TSP20 Configuration Files<a class="headerlink" href="#load-tsp20-configuration-files" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">config_path</span> <span class="o">=</span> <span class="s2">"graph_convnet/configs/tsp20.json"</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">(</span><span class="n">config_path</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Loaded </span><span class="si">{}</span><span class="s2">:</span><span class="se">\n</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">config_path</span><span class="p">,</span> <span class="n">config</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded graph_convnet/configs/tsp20.json:
+{'expt_name': 'tsp20', 'gpu_id': '1', 'train_filepath': 'graph_convnet/data/tsp20_train_concorde.txt', 'val_filepath': 'graph_convnet/data/tsp20_val_concorde.txt', 'test_filepath': 'graph_convnet/data/tsp20_test_concorde.txt', 'num_nodes': 20, 'num_neighbors': -1, 'node_dim': 2, 'voc_nodes_in': 2, 'voc_nodes_out': 2, 'voc_edges_in': 3, 'voc_edges_out': 2, 'beam_size': 1280, 'hidden_dim': 300, 'num_layers': 30, 'mlp_layers': 3, 'aggregation': 'mean', 'max_epochs': 1500, 'val_every': 5, 'test_every': 100, 'batch_size': 20, 'batches_per_epoch': 500, 'accumulation_steps': 1, 'learning_rate': 0.001, 'decay_rate': 1.01}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="setup-gpu-and-cuda">
+<h3>Setup GPU and CUDA<a class="headerlink" href="#setup-gpu-and-cuda" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"CUDA_DEVICE_ORDER"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"PCI_BUS_ID"</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"CUDA_VISIBLE_DEVICES"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">gpu_id</span><span class="p">)</span>  
+
+<span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"CUDA available, using GPU ID </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">gpu_id</span><span class="p">))</span>
+    <span class="n">dtypeFloat</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">FloatTensor</span>
+    <span class="n">dtypeLong</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">LongTensor</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"CUDA not available"</span><span class="p">)</span>
+    <span class="n">dtypeFloat</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span>
+    <span class="n">dtypeLong</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CUDA not available
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="setup-network-and-parameters">
+<h3>Setup Network and parameters<a class="headerlink" href="#setup-network-and-parameters" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">notebook_mode</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># Instantiate the network</span>
+    <span class="n">net</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">DataParallel</span><span class="p">(</span><span class="n">ResidualGatedGCNModel</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">dtypeFloat</span><span class="p">,</span> <span class="n">dtypeLong</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+        <span class="n">net</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+
+    <span class="c1"># Compute number of network parameters</span>
+    <span class="n">nb_param</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+        <span class="n">nb_param</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">size</span><span class="p">()))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Number of parameters:'</span><span class="p">,</span> <span class="n">nb_param</span><span class="p">)</span>
+    
+    <span class="c1"># Define optimizer</span>
+    <span class="n">learning_rate</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">learning_rate</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">optimizer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of parameters: 11054402
+Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    eps: 1e-08
+    lr: 0.001
+    weight_decay: 0
+)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="load-previous-training-checkpoint">
+<h3>Load Previous Training Checkpoint<a class="headerlink" href="#load-previous-training-checkpoint" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">notebook_mode</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># Load checkpoint</span>
+    <span class="n">log_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"graph_convnet/logs/</span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">expt_name</span><span class="si">}</span><span class="s2">/"</span>
+    <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+        <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">log_dir</span><span class="o">+</span><span class="s2">"best_val_checkpoint.tar"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">log_dir</span><span class="o">+</span><span class="s2">"best_val_checkpoint.tar"</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="s1">'cpu'</span><span class="p">)</span>
+    <span class="c1"># Load network state</span>
+    <span class="n">net</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s1">'model_state_dict'</span><span class="p">])</span>
+    <span class="c1"># Load optimizer state</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s1">'optimizer_state_dict'</span><span class="p">])</span>
+    <span class="c1"># Load other training parameters</span>
+    <span class="n">epoch</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">[</span><span class="s1">'epoch'</span><span class="p">]</span>
+    <span class="n">train_loss</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">[</span><span class="s1">'train_loss'</span><span class="p">]</span>
+    <span class="n">val_loss</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">[</span><span class="s1">'val_loss'</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">param_group</span> <span class="ow">in</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">param_groups</span><span class="p">:</span>
+        <span class="n">learning_rate</span> <span class="o">=</span> <span class="n">param_group</span><span class="p">[</span><span class="s1">'lr'</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Loaded checkpoint from epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded checkpoint from epoch 1455
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="function-to-convert-metrics-to-text">
+<h4>Function to convert metrics to text<a class="headerlink" href="#function-to-convert-metrics-to-text" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">metrics_to_str</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">learning_rate</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">err_edges</span><span class="p">,</span> <span class="n">err_tour</span><span class="p">,</span> <span class="n">err_tsp</span><span class="p">,</span> <span class="n">pred_tour_len</span><span class="p">,</span> <span class="n">gt_tour_len</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">(</span> <span class="s1">'epoch:</span><span class="si">{epoch:0&gt;2d}</span><span class="se">\t</span><span class="s1">'</span>
+               <span class="s1">'time:</span><span class="si">{time:.1f}</span><span class="s1">h</span><span class="se">\t</span><span class="s1">'</span>
+               <span class="s1">'lr:</span><span class="si">{learning_rate:.2e}</span><span class="se">\t</span><span class="s1">'</span>
+               <span class="s1">'loss:</span><span class="si">{loss:.4f}</span><span class="se">\t</span><span class="s1">'</span>
+               <span class="c1"># 'err_edges:{err_edges:.2f}\t'</span>
+               <span class="c1"># 'err_tour:{err_tour:.2f}\t'</span>
+               <span class="c1"># 'err_tsp:{err_tsp:.2f}\t'</span>
+               <span class="s1">'pred_tour_len:</span><span class="si">{pred_tour_len:.3f}</span><span class="se">\t</span><span class="s1">'</span>
+               <span class="s1">'gt_tour_len:</span><span class="si">{gt_tour_len:.3f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                   <span class="n">epoch</span><span class="o">=</span><span class="n">epoch</span><span class="p">,</span>
+                   <span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="o">/</span><span class="mi">3600</span><span class="p">,</span>
+                   <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span>
+                   <span class="n">loss</span><span class="o">=</span><span class="n">loss</span><span class="p">,</span>
+                   <span class="c1"># err_edges=err_edges,</span>
+                   <span class="c1"># err_tour=err_tour,</span>
+                   <span class="c1"># err_tsp=err_tsp,</span>
+                   <span class="n">pred_tour_len</span><span class="o">=</span><span class="n">pred_tour_len</span><span class="p">,</span>
+                   <span class="n">gt_tour_len</span><span class="o">=</span><span class="n">gt_tour_len</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="function-to-run-test-data">
+<h4>Function to run test data<a class="headerlink" href="#function-to-run-test-data" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">master_bar</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'test'</span><span class="p">):</span>
+    <span class="c1"># Set evaluation mode</span>
+    <span class="n">net</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+    <span class="c1"># Assign parameters</span>
+    <span class="n">num_nodes</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">num_nodes</span>
+    <span class="n">num_neighbors</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">num_neighbors</span>
+    <span class="n">batch_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">batch_size</span>
+    <span class="n">batches_per_epoch</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">batches_per_epoch</span>
+    <span class="n">beam_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">beam_size</span>
+    <span class="n">val_filepath</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">val_filepath</span>
+    <span class="n">test_filepath</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">test_filepath</span>
+
+    <span class="c1"># Load TSP data</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">'val'</span><span class="p">:</span>
+        <span class="n">dataset</span> <span class="o">=</span> <span class="n">GoogleTSPReader</span><span class="p">(</span><span class="n">num_nodes</span><span class="p">,</span> <span class="n">num_neighbors</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">filepath</span><span class="o">=</span><span class="n">val_filepath</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">'test'</span><span class="p">:</span>
+        <span class="n">dataset</span> <span class="o">=</span> <span class="n">GoogleTSPReader</span><span class="p">(</span><span class="n">num_nodes</span><span class="p">,</span> <span class="n">num_neighbors</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">filepath</span><span class="o">=</span><span class="n">test_filepath</span><span class="p">)</span>
+    <span class="n">batches_per_epoch</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">max_iter</span>
+
+    <span class="c1"># Convert dataset to iterable</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+    
+    <span class="c1"># Initially set loss class weights as None</span>
+    <span class="n">edge_cw</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># Initialize running data</span>
+    <span class="n">running_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="c1"># running_err_edges = 0.0</span>
+    <span class="c1"># running_err_tour = 0.0</span>
+    <span class="c1"># running_err_tsp = 0.0</span>
+    <span class="n">running_pred_tour_len</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">running_gt_tour_len</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">running_nb_data</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">running_nb_batch</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">start_test</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">batch_num</span> <span class="ow">in</span> <span class="n">progress_bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">batches_per_epoch</span><span class="p">),</span> <span class="n">parent</span><span class="o">=</span><span class="n">master_bar</span><span class="p">):</span>
+            <span class="c1"># Generate a batch of TSPs</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="c1"># Convert batch to torch Variables</span>
+            <span class="n">x_edges</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">batch</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">dtypeLong</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">x_edges_values</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">batch</span><span class="o">.</span><span class="n">edges_values</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">dtypeFloat</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">x_nodes</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">batch</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">dtypeLong</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">x_nodes_coord</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">batch</span><span class="o">.</span><span class="n">nodes_coord</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">dtypeFloat</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">y_edges</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">batch</span><span class="o">.</span><span class="n">edges_target</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">dtypeLong</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">y_nodes</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">batch</span><span class="o">.</span><span class="n">nodes_target</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">dtypeLong</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            
+            <span class="c1"># Compute class weights (if uncomputed)</span>
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">edge_cw</span><span class="p">)</span> <span class="o">!=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+                <span class="n">edge_labels</span> <span class="o">=</span> <span class="n">y_edges</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+                <span class="n">edge_cw</span> <span class="o">=</span> <span class="n">compute_class_weight</span><span class="p">(</span><span class="s2">"balanced"</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">edge_labels</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="n">edge_labels</span><span class="p">)</span>
+
+            <span class="c1"># Forward pass</span>
+            <span class="n">y_preds</span><span class="p">,</span> <span class="n">loss</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x_edges</span><span class="p">,</span> <span class="n">x_edges_values</span><span class="p">,</span> <span class="n">x_nodes</span><span class="p">,</span> <span class="n">x_nodes_coord</span><span class="p">,</span> <span class="n">y_edges</span><span class="p">,</span> <span class="n">edge_cw</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">loss</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>  <span class="c1"># Take mean of loss across multiple GPUs</span>
+
+            <span class="c1"># Compute error metrics</span>
+            <span class="c1"># err_edges, err_tour, err_tsp, tour_err_idx, tsp_err_idx = edge_error(y_preds, y_edges, x_edges)</span>
+
+            <span class="c1"># Get batch beamsearch tour prediction</span>
+            <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">'val'</span><span class="p">:</span>  <span class="c1"># Validation: faster 'vanilla' beamsearch</span>
+                <span class="n">bs_nodes</span> <span class="o">=</span> <span class="n">beamsearch_tour_nodes</span><span class="p">(</span>
+                    <span class="n">y_preds</span><span class="p">,</span> <span class="n">beam_size</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">num_nodes</span><span class="p">,</span> <span class="n">dtypeFloat</span><span class="p">,</span> <span class="n">dtypeLong</span><span class="p">,</span> <span class="n">probs_type</span><span class="o">=</span><span class="s1">'logits'</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">'test'</span><span class="p">:</span>  <span class="c1"># Testing: beamsearch with shortest tour heuristic </span>
+                <span class="n">bs_nodes</span> <span class="o">=</span> <span class="n">beamsearch_tour_nodes_shortest</span><span class="p">(</span>
+                    <span class="n">y_preds</span><span class="p">,</span> <span class="n">x_edges_values</span><span class="p">,</span> <span class="n">beam_size</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">num_nodes</span><span class="p">,</span> <span class="n">dtypeFloat</span><span class="p">,</span> <span class="n">dtypeLong</span><span class="p">,</span> <span class="n">probs_type</span><span class="o">=</span><span class="s1">'logits'</span><span class="p">)</span>
+            
+            <span class="c1"># Compute mean tour length</span>
+            <span class="n">pred_tour_len</span> <span class="o">=</span> <span class="n">mean_tour_len_nodes</span><span class="p">(</span><span class="n">x_edges_values</span><span class="p">,</span> <span class="n">bs_nodes</span><span class="p">)</span>
+            <span class="n">gt_tour_len</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">batch</span><span class="o">.</span><span class="n">tour_len</span><span class="p">)</span>
+
+            <span class="c1"># Update running data</span>
+            <span class="n">running_nb_data</span> <span class="o">+=</span> <span class="n">batch_size</span>
+            <span class="n">running_loss</span> <span class="o">+=</span> <span class="n">batch_size</span><span class="o">*</span> <span class="n">loss</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+            <span class="c1"># running_err_edges += batch_size* err_edges</span>
+            <span class="c1"># running_err_tour += batch_size* err_tour</span>
+            <span class="c1"># running_err_tsp += batch_size* err_tsp</span>
+            <span class="n">running_pred_tour_len</span> <span class="o">+=</span> <span class="n">batch_size</span><span class="o">*</span> <span class="n">pred_tour_len</span>
+            <span class="n">running_gt_tour_len</span> <span class="o">+=</span> <span class="n">batch_size</span><span class="o">*</span> <span class="n">gt_tour_len</span>
+            <span class="n">running_nb_batch</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="c1"># Log intermediate statistics</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'loss:</span><span class="si">{loss:.4f}</span><span class="s1"> pred_tour_len:</span><span class="si">{pred_tour_len:.3f}</span><span class="s1"> gt_tour_len:</span><span class="si">{gt_tour_len:.3f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">loss</span><span class="o">=</span><span class="n">running_loss</span><span class="o">/</span><span class="n">running_nb_data</span><span class="p">,</span>
+                <span class="n">pred_tour_len</span><span class="o">=</span><span class="n">running_pred_tour_len</span><span class="o">/</span><span class="n">running_nb_data</span><span class="p">,</span>
+                <span class="n">gt_tour_len</span><span class="o">=</span><span class="n">running_gt_tour_len</span><span class="o">/</span><span class="n">running_nb_data</span><span class="p">))</span>
+            <span class="n">master_bar</span><span class="o">.</span><span class="n">child</span><span class="o">.</span><span class="n">comment</span> <span class="o">=</span> <span class="n">result</span>
+
+    <span class="c1"># Compute statistics for full epoch</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">running_loss</span><span class="o">/</span> <span class="n">running_nb_data</span>
+    <span class="n">err_edges</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># running_err_edges/ running_nb_data</span>
+    <span class="n">err_tour</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># running_err_tour/ running_nb_data</span>
+    <span class="n">err_tsp</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># running_err_tsp/ running_nb_data</span>
+    <span class="n">pred_tour_len</span> <span class="o">=</span> <span class="n">running_pred_tour_len</span><span class="o">/</span> <span class="n">running_nb_data</span>
+    <span class="n">gt_tour_len</span> <span class="o">=</span> <span class="n">running_gt_tour_len</span><span class="o">/</span> <span class="n">running_nb_data</span>
+
+    <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">start_test</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">err_edges</span><span class="p">,</span> <span class="n">err_tour</span><span class="p">,</span> <span class="n">err_tsp</span><span class="p">,</span> <span class="n">pred_tour_len</span><span class="p">,</span> <span class="n">gt_tour_len</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="test-model-on-randomly-generated-graphs">
+<h3>Test model on randomly generated graphs<a class="headerlink" href="#test-model-on-randomly-generated-graphs" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">notebook_mode</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># Set evaluation mode</span>
+    <span class="n">net</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    
+    <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">num_nodes</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">num_nodes</span>
+    <span class="n">num_neighbors</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">num_neighbors</span>
+    <span class="n">beam_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">beam_size</span>
+    <span class="n">test_filepath</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">test_filepath</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">GoogleTSPReader</span><span class="p">(</span><span class="n">num_nodes</span><span class="p">,</span> <span class="n">num_neighbors</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">test_filepath</span><span class="p">))</span>
+    <span class="n">batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="c1"># Convert batch to torch Variables</span>
+        <span class="n">x_edges</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">batch</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">dtypeLong</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">x_edges_values</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">batch</span><span class="o">.</span><span class="n">edges_values</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">dtypeFloat</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">x_nodes</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">batch</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">dtypeLong</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">x_nodes_coord</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">batch</span><span class="o">.</span><span class="n">nodes_coord</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">dtypeFloat</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">y_edges</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">batch</span><span class="o">.</span><span class="n">edges_target</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">dtypeLong</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">y_nodes</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">batch</span><span class="o">.</span><span class="n">nodes_target</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">dtypeLong</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        
+        <span class="c1"># Compute class weights</span>
+        <span class="n">edge_labels</span> <span class="o">=</span> <span class="n">y_edges</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+        <span class="n">edge_cw</span> <span class="o">=</span> <span class="n">compute_class_weight</span><span class="p">(</span><span class="s2">"balanced"</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">edge_labels</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="n">edge_labels</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Class weights: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">edge_cw</span><span class="p">))</span>
+        
+        <span class="c1"># Forward pass</span>
+        <span class="n">y_preds</span><span class="p">,</span> <span class="n">loss</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x_edges</span><span class="p">,</span> <span class="n">x_edges_values</span><span class="p">,</span> <span class="n">x_nodes</span><span class="p">,</span> <span class="n">x_nodes_coord</span><span class="p">,</span> <span class="n">y_edges</span><span class="p">,</span> <span class="n">edge_cw</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">loss</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        
+        <span class="c1"># Get batch beamsearch tour prediction</span>
+        <span class="n">bs_nodes</span> <span class="o">=</span> <span class="n">beamsearch_tour_nodes_shortest</span><span class="p">(</span>
+            <span class="n">y_preds</span><span class="p">,</span> <span class="n">x_edges_values</span><span class="p">,</span> <span class="n">beam_size</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">num_nodes</span><span class="p">,</span> <span class="n">dtypeFloat</span><span class="p">,</span> <span class="n">dtypeLong</span><span class="p">,</span> <span class="n">probs_type</span><span class="o">=</span><span class="s1">'logits'</span><span class="p">)</span>
+        <span class="c1">#bs_nodes = beamsearch_tour_nodes(</span>
+        <span class="c1">#    y_preds, beam_size, batch_size, num_nodes, dtypeFloat, dtypeLong, probs_type='logits')</span>
+
+        <span class="c1"># Compute mean tour length</span>
+        <span class="n">pred_tour_len</span> <span class="o">=</span> <span class="n">mean_tour_len_nodes</span><span class="p">(</span><span class="n">x_edges_values</span><span class="p">,</span> <span class="n">bs_nodes</span><span class="p">)</span>
+        <span class="n">gt_tour_len</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">batch</span><span class="o">.</span><span class="n">tour_len</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Predicted tour length: </span><span class="si">{:.3f}</span><span class="s2"> (mean)</span><span class="se">\n</span><span class="s2">Groundtruth tour length: </span><span class="si">{:.3f}</span><span class="s2"> (mean)"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pred_tour_len</span><span class="p">,</span> <span class="n">gt_tour_len</span><span class="p">))</span>
+
+        <span class="c1"># Sanity check</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">nodes</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bs_nodes</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">is_valid_tour</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">num_nodes</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="s2">" Invalid tour: "</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span>
+
+        <span class="c1"># Plot prediction visualizations</span>
+        <span class="n">plot_predictions_beamsearch</span><span class="p">(</span><span class="n">x_nodes_coord</span><span class="p">,</span> <span class="n">x_edges</span><span class="p">,</span> <span class="n">x_edges_values</span><span class="p">,</span> <span class="n">y_edges</span><span class="p">,</span> <span class="n">y_preds</span><span class="p">,</span> <span class="n">bs_nodes</span><span class="p">,</span> <span class="n">num_plots</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Class weights: [0.55555556 5.        ]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicted tour length: 4.273 (mean)
+Groundtruth tour length: 4.273 (mean)
+</pre></div>
+</div>
+<img alt="../../_images/GraphNeuralNetworks_20_2.png" src="../../_images/GraphNeuralNetworks_20_2.png"/>
+<img alt="../../_images/GraphNeuralNetworks_20_3.png" src="../../_images/GraphNeuralNetworks_20_3.png"/>
+<img alt="../../_images/GraphNeuralNetworks_20_4.png" src="../../_images/GraphNeuralNetworks_20_4.png"/>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="resources">
 <h2>Resources:<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>An Efficient Graph Convolutional Network Technique for the Travelling Salesman Problem — AI Search Algorithms for Smart Mobility</title>
+<link href="../../../_static/css/theme.css" rel="stylesheet"/>
+<link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet"/>
+<link href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/togglebutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/mystnb.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/sphinx-thebe.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/tabs.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" rel="stylesheet" type="text/css"/>
+<link as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js" rel="preload"/>
+<script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+<script src="../../../_static/jquery.js"></script>
+<script src="../../../_static/underscore.js"></script>
+<script src="../../../_static/doctools.js"></script>
+<script src="../../../_static/togglebutton.js"></script>
+<script src="../../../_static/clipboard.min.js"></script>
+<script src="../../../_static/copybutton.js"></script>
+<script src="../../../_static/tabs.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+<script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+<script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+<script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+<script async="async" src="../../../_static/sphinx-thebe.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<link href="../../../genindex.html" rel="index" title="Index"/>
+<link href="../../../search.html" rel="search" title="Search"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</head>
+<body data-offset="80" data-spy="scroll" data-target="#bd-toc-nav">
+<div class="container-fluid" id="banner"></div>
+<div class="container-xl">
+<div class="row">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+<div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+<img alt="logo" class="logo" src="../../../_static/sm.png"/>
+<h1 class="site-logo" id="site-title">AI Search Algorithms for Smart Mobility</h1>
+</a>
+</div><form action="../../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="icon fas fa-search"></i>
+<input aria-label="Search this book..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search this book..." type="search"/>
+</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item active">
+<ul class="nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../../../index.html">
+   AI Search Algorithms for Smart Mobility
+  </a>
+</li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1">
+<a class="reference internal" href="../../GettingStarted/index.html">
+   Getting Started
+  </a>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../IntroGeoScience/index.html">
+   Introduction to Geospatial Data Science
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+<label for="toctree-checkbox-1">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../IntroGeoScience/SpatialData.html">
+     Spatial Data
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../IntroGeoScience/Projection.html">
+     Projection
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../IntroGeoScience/Visualization.html">
+     Visualization
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../GraphSearchAlgorithms/index.html">
+   Graph Search Algorithms
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+<label for="toctree-checkbox-2">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../GraphSearchAlgorithms/RoadGraph.html">
+     From Road Network to Graph
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../GraphSearchAlgorithms/GraphSearch.html">
+     Graph Search
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../GraphSearchAlgorithms/BlindSearch.html">
+     Blind Search Algorithms
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../GraphSearchAlgorithms/InformedSearch.html">
+     Informed Search Algorithms
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../GraphSearchAlgorithms/SearchComparison.html">
+     Search Algorithm Comparison
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../TrajectoryAlgorithms/index.html">
+   Trajectory-based Algorithms
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+<label for="toctree-checkbox-3">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../TrajectoryAlgorithms/TabuSearch.html">
+     Tabu Search
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../TrajectoryAlgorithms/SimulatedAnnealing.html">
+     Simulated Annealing
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../EvolutionaryComputingAlgorithms/index.html">
+   Evolutionary Computing Algorithms
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+<label for="toctree-checkbox-4">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../EvolutionaryComputingAlgorithms/GeneratingInitialPopulations.html">
+     Generating Initial Populations
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../EvolutionaryComputingAlgorithms/GeneticAlgorithms.html">
+     Genetic Algorithms
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../EvolutionaryComputingAlgorithms/DifferentialEvolution.html">
+     Differential Evolution
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../SwarmIntelligenceAlgorithms/index.html">
+   Swarm Intelligence Algorithms
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+<label for="toctree-checkbox-5">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../SwarmIntelligenceAlgorithms/ParticleSwarmOptimization.html">
+     Particle Swarm Optimization
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../SwarmIntelligenceAlgorithms/AntColonyOptimization.html">
+     Ant Colony Optimization
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../SwarmIntelligenceAlgorithms/ArtificialBeeColony.html">
+     Artificial Bee Colony
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../SwarmIntelligenceAlgorithms/FireflyAlgorithm.html">
+     Firefly Algorithm
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../index.html">
+   Learn to Search
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+<label for="toctree-checkbox-6">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../GeometricDeepLearning.html">
+     Geometric Deep Learning
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../GraphNeuralNetworks.html">
+     Graph Neural Networks (GNN)
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../AttentionMechanisms.html">
+     Attention Mechanisms
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../ReinforcementLearning.html">
+     Reinforcement Learning
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../PeopleMobilityProblems/index.html">
+   People Mobility Problems
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+<label for="toctree-checkbox-7">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../PeopleMobilityProblems/CarSharing.html">
+     Car-Sharing Service
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../../PeopleMobilityProblems/RideHailing.html">
+     Ride-Hailing
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children">
+<a class="reference internal" href="../../LogisticsProblems/index.html">
+   Logistics Problems
+  </a>
+<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+<label for="toctree-checkbox-8">
+<i class="fas fa-chevron-down">
+</i>
+</label>
+<ul>
+<li class="toctree-l2">
+<a class="reference internal" href="../../LogisticsProblems/delivery_GA.html">
+     Delivery Vehicle Routing using Genetic Algorithms
+    </a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../../InfrastructureProblems/index.html">
+   Infrastructure Problems
+  </a>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../../ToolsAndPythonLibraries/index.html">
+   Tools and Python Libraries
+  </a>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../../Datasets.html">
+   Datasets
+  </a>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="../../../References.html">
+   References
+  </a>
+</li>
+</ul>
+</div>
+</nav> <!-- To handle the deprecated key -->
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+</div>
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+<div class="topbar container-xl fixed-top">
+<div class="topbar-contents row">
+<div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+<div class="col pl-md-4 topbar-main">
+<button aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" class="navbar-toggler ml-0" data-placement="bottom" data-target=".site-navigation" data-toggle="collapse" id="navbar-toggler" title="Toggle navigation" type="button">
+<i class="fas fa-bars"></i>
+<i class="fas fa-arrow-left"></i>
+<i class="fas fa-arrow-up"></i>
+</button>
+<div class="dropdown-buttons-trigger">
+<button aria-label="Download this page" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-download"></i></button>
+<div class="dropdown-buttons">
+<!-- ipynb file if we had a myst markdown file -->
+<!-- Download raw file -->
+<a class="dropdown-buttons" href="../../../_sources/content/LearnToSearch/graph_convnet/README.md"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.md</button></a>
+<!-- Download PDF via print -->
+<button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="window.print()" title="Print to PDF" type="button">.pdf</button>
+</div>
+</div>
+<!-- Source interaction buttons -->
+<div class="dropdown-buttons-trigger">
+<button aria-label="Connect with source repository" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fab fa-github"></i></button>
+<div class="dropdown-buttons sourcebuttons">
+<a class="repository-button" href="https://github.com/SmartMobilityAlgorithms/book"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Source repository" type="button"><i class="fab fa-github"></i>repository</button></a>
+</div>
+</div>
+<!-- Full screen (wrap in <a> to have style consistency -->
+<a class="full-screen-button"><button aria-label="Fullscreen mode" class="btn btn-secondary topbarbtn" data-placement="bottom" data-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode" type="button"><i class="fas fa-expand"></i></button></a>
+<!-- Launch buttons -->
+</div>
+<!-- Table of contents -->
+<div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+<i class="fas fa-list"></i> Contents
+            </div>
+<nav id="bd-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#pre-requisite-downloads">
+   Pre-requisite Downloads
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#tsp-datasets">
+     TSP Datasets
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#pre-trained-models">
+     Pre-trained Models
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#usage">
+   Usage
+  </a>
+<ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#installation">
+     Installation
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#running-in-notebook-visualization-mode">
+     Running in Notebook/Visualization Mode
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#running-in-script-mode">
+     Running in Script Mode
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#splitting-datasets-into-training-and-validation-sets">
+     Splitting datasets into Training and Validation sets
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#generating-new-data">
+     Generating new data
+    </a>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry">
+<a class="reference internal nav-link" href="#resources">
+   Resources
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="row" id="main-content">
+<div class="col-12 col-md-9 pl-md-3 pr-md-0">
+<div>
+<div class="section" id="an-efficient-graph-convolutional-network-technique-for-the-travelling-salesman-problem">
+<h1>An Efficient Graph Convolutional Network Technique for the Travelling Salesman Problem<a class="headerlink" href="#an-efficient-graph-convolutional-network-technique-for-the-travelling-salesman-problem" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p><strong>:rocket: Update:</strong> If you are interested in this work, you may be interested in <a class="reference external" href="https://arxiv.org/abs/2006.07054"><strong>our latest paper</strong></a> and <a class="reference external" href="https://github.com/chaitjo/learning-tsp"><strong>up-to-date codebase</strong></a> bringing together several architectures and learning paradigms for learning-driven TSP solvers under one pipeline.</p>
+</div></blockquote>
+<p>This repository contains code for the paper
+<a class="reference external" href="https://arxiv.org/abs/1906.01227"><strong>“An Efficient Graph Convolutional Network Technique for the Travelling Salesman Problem”</strong></a>
+by Chaitanya K. Joshi, Thomas Laurent and Xavier Bresson.</p>
+<p>We introduce a new learning-based approach for approximately solving the
+Travelling Salesman Problem on 2D Euclidean graphs.
+We use deep Graph Convolutional Networks to build efficient TSP graph representations
+and output tours in a non-autoregressive manner via highly parallelized beam search.
+Our approach outperforms all recently proposed autoregressive deep learning
+techniques in terms of solution quality, inference speed and sample efficiency
+for problem instances of fixed graph sizes.</p>
+<p><img alt="model-blocks" src="res/model-blocks.png"/></p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The notebook <code class="docutils literal notranslate"><span class="pre">main.ipynb</span></code> contains top-level methods to reproduce our experiments or train models for TSP from scratch.
+Several modes are provided:</p>
+<ul class="simple">
+<li><p><strong>Notebook Mode</strong>: For debugging as a Jupyter Notebook</p></li>
+<li><p><strong>Visualization Mode</strong>: For visualization and evaluation of saved model checkpoints (in a Jupyter Notebook)</p></li>
+<li><p><strong>Script Mode</strong>: For running full experiments as a python script</p></li>
+</ul>
+<p>Configuration parameters for notebooks and scripts are passed as <code class="docutils literal notranslate"><span class="pre">.json</span></code> files and are documented in <code class="docutils literal notranslate"><span class="pre">config.py</span></code>.</p>
+</div>
+<div class="section" id="pre-requisite-downloads">
+<h2>Pre-requisite Downloads<a class="headerlink" href="#pre-requisite-downloads" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="tsp-datasets">
+<h3>TSP Datasets<a class="headerlink" href="#tsp-datasets" title="Permalink to this headline">¶</a></h3>
+<p>Download TSP datasets from <a class="reference external" href="https://drive.google.com/open?id=1-5W-S5e7CKsJ9uY9uVXIyxgbcZZNYBrp">this link</a>:
+Extract the <code class="docutils literal notranslate"><span class="pre">.tar.gz</span></code> file and place each <code class="docutils literal notranslate"><span class="pre">.txt</span></code> file in the <code class="docutils literal notranslate"><span class="pre">/data</span></code> directory. (We provide TSP10, TSP20, TSP30, TSP50 and TSP100.)</p>
+</div>
+<div class="section" id="pre-trained-models">
+<h3>Pre-trained Models<a class="headerlink" href="#pre-trained-models" title="Permalink to this headline">¶</a></h3>
+<p>Download pre-trained model checkpoints from <a class="reference external" href="https://drive.google.com/open?id=1qmk1_5a8XT_hrOV_i3uHM9tMVnZBFEAF">this link</a>:
+Extract the <code class="docutils literal notranslate"><span class="pre">.tar.gz</span></code> file and place each directory in the <code class="docutils literal notranslate"><span class="pre">/logs</span></code> directory. (We provide TSP20, TSP50 and TSP100 models.)</p>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<p>We ran our code on Ubuntu 16.04, using Python 3.6.7, PyTorch 0.4.1 and CUDA 9.0.</p>
+<blockquote>
+<div><p><strong>Note:</strong> This codebase was developed for a rather outdated version of PyTorch. Attempting to run the code with PyTorch 1.x may need further modifications, e.g. see <a class="reference external" href="https://github.com/chaitjo/graph-convnet-tsp/issues/16">this issue</a>.</p>
+</div></blockquote>
+<p>Step-by-step guide for local installation using a Terminal (Mac/Linux) or Git Bash (Windows) via Anaconda:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install [Anaconda 3](https://www.anaconda.com/) for managing Python packages and environments.</span>
+curl -o ~/miniconda.sh -O https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+chmod +x ~/miniconda.sh
+./miniconda.sh
+<span class="nb">source</span> ~/.bashrc
+
+<span class="c1"># Clone the repository. </span>
+git clone https://github.com/chaitjo/graph-convnet-tsp.git
+<span class="nb">cd</span> graph-convnet-tsp
+
+<span class="c1"># Set up a new conda environment and activate it.</span>
+conda create -n gcn-tsp-env <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6.7
+<span class="nb">source</span> activate gcn-tsp-env
+
+<span class="c1"># Install all dependencies and Jupyter Lab (for using notebooks).</span>
+conda install <span class="nv">pytorch</span><span class="o">=</span><span class="m">0</span>.4.1 cuda90 -c pytorch
+conda install <span class="nv">numpy</span><span class="o">==</span><span class="m">1</span>.15.4 <span class="nv">scipy</span><span class="o">==</span><span class="m">1</span>.1.0 <span class="nv">matplotlib</span><span class="o">==</span><span class="m">3</span>.0.2 <span class="nv">seaborn</span><span class="o">==</span><span class="m">0</span>.9.0 <span class="nv">pandas</span><span class="o">==</span><span class="m">0</span>.24.2 <span class="nv">networkx</span><span class="o">==</span><span class="m">2</span>.2 scikit-learn<span class="o">==</span><span class="m">0</span>.20.2 tensorflow-gpu<span class="o">==</span><span class="m">1</span>.12.0 <span class="nv">tensorboard</span><span class="o">==</span><span class="m">1</span>.12.0 Cython
+pip3 install <span class="nv">tensorboardx</span><span class="o">==</span><span class="m">1</span>.5 <span class="nv">fastprogress</span><span class="o">==</span><span class="m">0</span>.1.18
+conda install -c conda-forge jupyterlab
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-in-notebook-visualization-mode">
+<h3>Running in Notebook/Visualization Mode<a class="headerlink" href="#running-in-notebook-visualization-mode" title="Permalink to this headline">¶</a></h3>
+<p>Launch Jupyter Lab and execute/modify <code class="docutils literal notranslate"><span class="pre">main.ipynb</span></code> cell-by-cell in Notebook Mode.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>jupyter lab
+</pre></div>
+</div>
+<p>Set <code class="docutils literal notranslate"><span class="pre">viz_mode</span> <span class="pre">=</span> <span class="pre">True</span></code> in the first cell of <code class="docutils literal notranslate"><span class="pre">main.ipynb</span></code> to toggle Visualization Mode.</p>
+</div>
+<div class="section" id="running-in-script-mode">
+<h3>Running in Script Mode<a class="headerlink" href="#running-in-script-mode" title="Permalink to this headline">¶</a></h3>
+<p>Set <code class="docutils literal notranslate"><span class="pre">notebook_mode</span> <span class="pre">=</span> <span class="pre">False</span></code> and <code class="docutils literal notranslate"><span class="pre">viz_mode</span> <span class="pre">=</span> <span class="pre">False</span></code> in the first cell of <code class="docutils literal notranslate"><span class="pre">main.ipynb</span></code>.
+Then convert the notebook from <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> to <code class="docutils literal notranslate"><span class="pre">.py</span></code> and run the script (pass path of config file as arguement):</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>jupyter nbconvert --to python main.ipynb 
+python main.py --config &lt;path-to-config.json&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="splitting-datasets-into-training-and-validation-sets">
+<h3>Splitting datasets into Training and Validation sets<a class="headerlink" href="#splitting-datasets-into-training-and-validation-sets" title="Permalink to this headline">¶</a></h3>
+<p>For TSP10, TSP20 and TSP30 datasets, everything is good to go once you download and extract the files.
+For TSP50 and TSP100, the 1M training set needs to be split into 10K validation samples and 999K training samples.
+Use the <code class="docutils literal notranslate"><span class="pre">split_train_val.py</span></code> script to do so.
+For consistency, the script uses the first 10K samples in the 1M file as the validation set and the remaining 999K as the training set.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> data
+python split_train_val.py --num_nodes &lt;num-nodes&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="generating-new-data">
+<h3>Generating new data<a class="headerlink" href="#generating-new-data" title="Permalink to this headline">¶</a></h3>
+<p>New TSP data can be generated using the <a class="reference external" href="https://github.com/jvkersch/pyconcorde">Concorde solver</a>.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install the pyConcorde library in the /data directory</span>
+<span class="nb">cd</span> data
+git clone https://github.com/jvkersch/pyconcorde
+<span class="nb">cd</span> pyconcorde
+pip install -e .
+<span class="nb">cd</span> ..
+
+<span class="c1"># Run the data generation script</span>
+python generate_tsp_concorde.py --num_samples &lt;num-sample&gt; --num_nodes &lt;num-nodes&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://drive.google.com/open?id=1-5W-S5e7CKsJ9uY9uVXIyxgbcZZNYBrp">Optimal TSP Datasets generated with Concorde</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1906.01227">Paper on arXiv</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1910.07210">Follow-up workshop paper</a></p></li>
+</ul>
+</div>
+</div>
+<script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/LearnToSearch/graph_convnet"
+        },
+        predefinedOutput: true
+    }
+    </script>
+<script>kernelName = 'python3'</script>
+</div>
+<div class="prev-next-bottom">
+</div>
+</div>
+</div>
+<footer class="footer mt-5 mt-md-0">
+<div class="container">
+<p>
+        
+          By Alaa Khamis and Yinan Wang<br/>
+        
+            © Copyright 2021, Alaa Khamis and Yinan Wang.<br/>
+</p>
+</div>
+</footer>
+</main>
+</div>
+</div>
+<script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+</body>
+</html>
