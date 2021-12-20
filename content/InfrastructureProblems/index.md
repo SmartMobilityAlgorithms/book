@@ -12,7 +12,7 @@ Just as the arrival of the first automobiles fundamentally changed our society i
 - road signage placement
 - micromobility station placement. 
 
-The following examples will be covered in this section to showcase some ill-structured people mobility problems:
+The following examples will be covered in this section to showcase some ill-structured infrastructure problems:
 - Sensor Placement
 - Optimal placement of EV charging stations
 - Smart Parking

@@ -26,3 +26,6 @@ dependencies:
 - pydoe>=0.3.8
 - ypstruct>=0.0.2
 - polyline>=1.4.0
+- torch>=1.10.1
+- tensorboardX>=2.4.1
+- fastprogress>=1.0.0
