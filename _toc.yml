@@ -38,8 +38,8 @@ chapters:
 - file: content/PeopleMobilityProblems/index
   sections:
     - file: content/PeopleMobilityProblems/carsharing/CarSharing
-    - file: content/PeopleMobilityProblems/RideHailing
     - file: content/PeopleMobilityProblems/trip_itinerary_planning/TIP
+    - file: content/PeopleMobilityProblems/multicriteriarouting/MultiCriteriaRouting
 - file: content/LogisticsProblems/index
   sections:
     - file: content/LogisticsProblems/delivery_GA
