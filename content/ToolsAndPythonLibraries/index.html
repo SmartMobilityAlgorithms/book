@@ -86,7 +86,7 @@
 <ul>
 <li class="toctree-l2">
 <a class="reference internal" href="../IntroGeoScience/SpatialData.html">
-     Spatial Data
+     Spatial Data and Geographic Information System (GIS)
     </a>
 </li>
 <li class="toctree-l2">
@@ -262,13 +262,18 @@
 </label>
 <ul>
 <li class="toctree-l2">
-<a class="reference internal" href="../PeopleMobilityProblems/CarSharing.html">
+<a class="reference internal" href="../PeopleMobilityProblems/carsharing/CarSharing.html">
      Car-Sharing Service
     </a>
 </li>
 <li class="toctree-l2">
-<a class="reference internal" href="../PeopleMobilityProblems/RideHailing.html">
-     Ride-Hailing
+<a class="reference internal" href="../PeopleMobilityProblems/trip_itinerary_planning/TIP.html">
+     Trip Itinerary Planning
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../PeopleMobilityProblems/multicriteriarouting/MultiCriteriaRouting.html">
+     Multi-Criteria Routing
     </a>
 </li>
 </ul>
@@ -493,6 +498,21 @@
     </a>
 </li>
 <li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#valhalla">
+     Valhalla
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#openrouteservice">
+     Openrouteservice
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
+<a class="reference internal nav-link" href="#routing">
+     Routing
+    </a>
+</li>
+<li class="toc-h3 nav-item toc-entry">
 <a class="reference internal nav-link" href="#traffic-per-edge-and-open-traffic">
      traffic per edge and Open traffic
     </a>
@@ -639,6 +659,18 @@ $ pip install -e .
 <div class="section" id="osrm">
 <h3>osrm<a class="headerlink" href="#osrm" title="Permalink to this headline">¶</a></h3>
 <p>For some problems, determining the route between multiple points is not the main focus, and it is acceptable to use a pre-generated route. <a class="reference external" href="http://project-osrm.org/">OSRM</a> does exactly that; it is a routing engine with an API that you feed with coordinates, and in return it gives you the fastest route between them. It has other useful capabilities like doing Travelling Salesman and solving all pairs shortest path.</p>
+</div>
+<div class="section" id="valhalla">
+<h3>Valhalla<a class="headerlink" href="#valhalla" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://valhalla.readthedocs.io/en/latest/">Valhalla</a>’s routing service (a.k.a. turn-by-turn), is an open-source routing service that lets you integrate routing and navigation into a web or mobile application.</p>
+</div>
+<div class="section" id="openrouteservice">
+<h3>Openrouteservice<a class="headerlink" href="#openrouteservice" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="https://openrouteservice.org/">openrouteservice - ORS</a> provides global spatial services by consuming user-generated and collaboratively collected free geographic data directly from OpenStreetMap. It is highly customizable, performant and written in Java.</p>
+</div>
+<div class="section" id="routing">
+<h3>Routing<a class="headerlink" href="#routing" title="Permalink to this headline">¶</a></h3>
+<p>Geofabrik operates a <a class="reference external" href="https://www.geofabrik.de/data/routing.html">routing service</a> based on <a class="reference external" href="http://project-osrm.org/">OSRM</a>. OSRM makes use of state-of-the-art routing algorithms and can compute routes across Europe within milliseconds. The engine supports the following features: via points, turn restrictions and turn maneuvers.</p>
 </div>
 <div class="section" id="traffic-per-edge-and-open-traffic">
 <h3>traffic per edge and Open traffic<a class="headerlink" href="#traffic-per-edge-and-open-traffic" title="Permalink to this headline">¶</a></h3>

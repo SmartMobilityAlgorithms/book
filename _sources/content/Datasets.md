@@ -24,6 +24,7 @@ This section includes a non-exhaustive list of datasets that may be of interest 
 * [Elevation data](https://www.opentopodata.org/)
 * [SRTM C-BAND DATA PRODUCTS](https://www2.jpl.nasa.gov/srtm/cbanddataproducts.html)
 * [CGIAR-CSI SRTM raster data](https://srtm.csi.cgiar.org/srtmdata/)
+* [Wikimapia](https://wikimapia.org/)
 * ...
 
 ---
@@ -41,6 +42,7 @@ This section includes a non-exhaustive list of datasets that may be of interest 
 * [Ratio City](https://www.ratio.city/)
 * [100 feet](https://www.beans.ai/index)
 * [MPAC Residential Property Assessments](https://www.mpac.ca/)
+* [Geodata Tufts](https://geodata.tufts.edu/)
 * ...
 
 ---

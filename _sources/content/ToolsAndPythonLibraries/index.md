@@ -121,6 +121,18 @@ There are other visualization libraries that you should be aware of:
 
 For some problems, determining the route between multiple points is not the main focus, and it is acceptable to use a pre-generated route. [OSRM](http://project-osrm.org/) does exactly that; it is a routing engine with an API that you feed with coordinates, and in return it gives you the fastest route between them. It has other useful capabilities like doing Travelling Salesman and solving all pairs shortest path.
 
+### Valhalla
+
+[Valhalla](https://valhalla.readthedocs.io/en/latest/)'s routing service (a.k.a. turn-by-turn), is an open-source routing service that lets you integrate routing and navigation into a web or mobile application.
+
+### Openrouteservice
+
+The [openrouteservice - ORS](https://openrouteservice.org/) provides global spatial services by consuming user-generated and collaboratively collected free geographic data directly from OpenStreetMap. It is highly customizable, performant and written in Java.
+
+### Routing
+
+Geofabrik operates a [routing service](https://www.geofabrik.de/data/routing.html) based on [OSRM](http://project-osrm.org/). OSRM makes use of state-of-the-art routing algorithms and can compute routes across Europe within milliseconds. The engine supports the following features: via points, turn restrictions and turn maneuvers.
+
 ### traffic per edge and Open traffic
 
 Do you want traffic data beyond just max speed and duration? Check out [traffic per edge](https://github.com/Project-OSRM/osrm-backend/wiki/Traffic) or [Open traffic](https://github.com/opentraffic).
