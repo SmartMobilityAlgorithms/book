@@ -47,61 +47,71 @@ This section includes a non-exhaustive list of datasets that may be of interest 
 
 ---
 
-## 3. Traffic Datasets
+## 3. Elevation Data
+* [Open Elevation API](https://open-elevation.com/)
+* [Open Topo Data API](https://www.opentopodata.org/#public-api)
+* [National Map API](https://nationalmap.gov/)
+* [Google Maps API](https://developers.google.com/maps/documentation/elevation/overview)
+
+---
+
+## 4. Traffic Datasets
 * [traffic per edge](https://github.com/Project-OSRM/osrm-backend/wiki/Traffic)
 * [Toronto Open Data](https://www.toronto.ca/city-government/data-research-maps/open-data/)
 * [Open Traffic](https://github.com/opentraffic)
 * [Google Routes](https://cloud.google.com/maps-platform/routes)
 
 ---
-## 4. Parking Tickets Datasets
+## 5. Parking Tickets Datasets
 * [City of Toronto Parking Tickets](https://ckan0.cf.opendata.inter.prod-toronto.ca/tr/dataset/parking-tickets)
 * [Toronto Parking Tickets Visualziation](https://github.com/ian-whitestone/toronto-parking-tickets)
-* ...
+* [Others](https://data.world/datasets/parking-ticket)
 
 ---
-## 5. Public Transport Networks Datasets
+## 6. Public Transport Networks Datasets
 * [Google Transit APIs](https://developers.google.com/transit)
 * ...
 
 ---
-## 6. Planned events, road work, and other temporary changes to the road network
+## 7. Planned events, road work, and other temporary changes to the road network and bridge, tunnel and ferry events
 * [one.network](https://us.one.network/)
-* ...
+* [ROAD dataset](https://github.com/gurkirt/road-dataset)
+* [Road Point Events](https://open.canada.ca/data/en/dataset/35e1d8d3-cb2f-434d-a20c-584ea5037fa0)
 
 ---
-## 7. Traffic Crashes Datasets
+## 8. Traffic Crashes Datasets
 * [A Countrywide Traffic Accident Dataset (2016 - 2020)](https://www.kaggle.com/sobhanmoosavi/us-accidents)
-* ...
+* [Others](https://data.world/datasets/crash)
 
 ---
-## 8. Emission Datasets
+## 9. Emission Datasets
+* [Open Climate Data](https://openclimatedata.net/)
 * [Ontario Air Quality Data Sets](http://www.airqualityontario.com/science/data_sets.php)
-* ...
+* [Others](https://data.world/datasets/co2)
 
 ---
-## 9. Environmental Datasets
+## 10. Environmental Datasets
 * [Canadian Open Geospatial Data](https://canadiangis.com/data.php)
 * [Government of Canada Open Data Portal](https://open.canada.ca/data/en/dataset)
 * ...
 
 ---
-## 10. Mobility-aware urban design, active transportation modeling and access analysis for amenities and public transport
+## 11. Mobility-aware urban design, active transportation modeling and access analysis for amenities and public transport
 * [Urbano](https://www.urbano.io/)
 * ...
 
 ---
-## 11. Accessibility
+## 12. Accessibility
 * [Wheelmap](https://wheelmap.org/)
-* ...
+* [accessibility.cloud](https://www.accessibility.cloud/)
 
 ---
-## 12. Crime map
+## 13. Crime map
 * [Crime map](https://www.crimemapping.com/map/agency/91)
-* ...
+* [Others](https://data.world/datasets/crime)
 
 ---
-## 13. Open Source Projects
+## 14. Open Source Projects
 * [GIScience](https://github.com/GIScience)
 * ...
 
