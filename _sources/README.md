@@ -10,7 +10,7 @@ If you use this software, please cite it as below
   author = {Alaa Khamis and Yinan Wang},
   title = {AI Search Algorithms for Smart Mobility},
   year = {2022},
-  publisher = {Apress (Springer Nature)},
+  publisher = {Manning Publications},
   howpublished = {\url{https://smartmobilityalgorithms.github.io/book/index.html}}
 }
 ```

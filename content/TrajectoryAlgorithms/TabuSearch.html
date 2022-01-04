@@ -290,7 +290,7 @@
 <ul>
 <li class="toctree-l2">
 <a class="reference internal" href="../LogisticsProblems/delivery_GA.html">
-     Delivery Vehicle Routing using Genetic Algorithms
+     Delivery Vehicle Routing
     </a>
 </li>
 </ul>
@@ -387,7 +387,50 @@
 <div class="section" id="tabu-search">
 <h1>Tabu Search<a class="headerlink" href="#tabu-search" title="Permalink to this headline">¶</a></h1>
 <p>Tabu search (TS) is an iterative neighborhood search algorithm, where the neighborhood changes dynamically. TS enhances local search by actively avoiding points in the search space already visited. By avoiding already visited points, loops in search trajectories are avoided and local optima can be escaped. TS can be considered as the combination of local search (LS) and memory structures. The main feature of TS is the use of an explicit memory. Uses of memory have two goals: to prevent the search from revisiting previously visited solutions and to explore the unvisited areas of the solution space.</p>
-<p>TBD…</p>
+<style>
+i {font-weight:normal}
+span {font-weight:normal}
+</style>
+<div style="background-color: rgba(0,0,0,0.0470588);padding:10px;font-family:monospace;">
+<b>TABU-SEARCH</b>(<i>graph</i>,<i>source</i>,<i>destination</i>) <b>return</b> a <i>route</i>
+<div style="padding-left:20px;">
+<i>best_solution</i> ← initial random solution<br/>
+<i>best_solution_cost</i> ← cost(<i>best_solution</i>)<br/>
+<br/>
+<i><font color="red">aspiration</font></i> ← aspiration limit<br/>
+<i><font color="purple">tabu_history</font></i> ← <i>best_solution</i><br/>
+<i><font color="orange">num_iterations</font><i> ← number of iterations <font color="#03A9F4">// this is required to terminate the algorithm</font><br/>
+<i><font color="blue">tabu_limit</font></i> ← number of iterations before a tabu entry is "forgotten"<br/>
+<i><font color="green">tabu_size</font></i> ← maximum length of <i><font color="purple">tabu_history</font></i><br/>
+<br/>
+        for <i>i</i> to <i><font color="orange">num_iterations</font><i> do<br/>
+<div style="padding-left:20px;">
+        reduce all entries in <i><font color="purple">tabu_history</font></i> by 1<br/>
+<i>candidates<i> ← neighbouring solutions of <i>best_solution</i><br/>
+        for <strong>candidate</strong> in <i>candidates</i> do<br/>
+<div style="padding-left:20px;">
+            if <strong>candidate</strong> in <i><font color="purple">tabu_history</font></i> and <font color="purple">tabu_history</font>[<strong>candidate</strong>] &gt; <i><font color="red">aspiration</font></i> then<br/>
+                remove <strong>candidate</strong> from <i>candidates</i>
+<div style="padding-left:20px;">
+</div>
+</div>
+<i>best_candidate</i> ← best solution in <i>candidates</i><br/>
+<i><font color="purple">tabu_history</font></i> ← <i>best_candidate</i><br/>
+        if <i><font color="purple">tabu_history</font></i>.size &gt; <i><font color="green">tabu_size</font></i> then<br/>
+<div style="padding-left:20px;">
+            trim <i><font color="purple">tabu_history</font> until within <i><font color="green">tabu_size</font></i>
+</i></div>
+        for <i>item</i> in <i><font color="purple">tabu_history</font></i> do<br/>
+<div style="padding-left:20px;">
+            if <i>item</i> &lt; <i><font color="blue">tabu_limit</font></i> then<br/>
+<div style="padding-left:20px;">
+<i><font color="purple">tabu_history</font></i>.pop(<i>item</i>)
+                </div>
+</div>
+</i></i></div>
+</i></i></i></i></div>
+</div>
+<br/><br/><p>Essentially, neighbouring solutions are found for the initial randomized solution. The best solution is selected, and is added to a tabu list. For future iterations, tabu items are disqualified as potential candidates, unless enough time has passed and they can be reconsidered. This prevents the tabu search from getting stuck at a local minimum. The aspiration criteria is used to prematurely “free up” a tabu item and renew it for consideration.</p>
 <div class="section" id="example-tabu-search-for-tsp">
 <h2>Example: Tabu Search for TSP<a class="headerlink" href="#example-tabu-search-for-tsp" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
@@ -409,7 +452,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/TabuSearch_2_0.png" src="../../_images/TabuSearch_2_0.png"/>
+<img alt="../../_images/TabuSearch_4_0.png" src="../../_images/TabuSearch_4_0.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -520,7 +563,7 @@
 32
 </pre></div>
 </div>
-<img alt="../../_images/TabuSearch_7_1.png" src="../../_images/TabuSearch_7_1.png"/>
+<img alt="../../_images/TabuSearch_9_1.png" src="../../_images/TabuSearch_9_1.png"/>
 </div>
 </div>
 </div>
@@ -550,7 +593,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/TabuSearch_9_0.png" src="../../_images/TabuSearch_9_0.png"/>
+<img alt="../../_images/TabuSearch_11_0.png" src="../../_images/TabuSearch_11_0.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -657,7 +700,7 @@ Initial cost: 1095.049
 814.001
 </pre></div>
 </div>
-<img alt="../../_images/TabuSearch_13_2.png" src="../../_images/TabuSearch_13_2.png"/>
+<img alt="../../_images/TabuSearch_15_2.png" src="../../_images/TabuSearch_15_2.png"/>
 </div>
 </div>
 <p>As you may notice, the results above show that the search algorithm was stuck in a cycle. This is because the neighbourhood space of the routes are limited, of which only a very small subset are solutions that would actually generate a “better” cost. To counteract this, we can keep track of the “historically” best solution, and choose this as the best solution at the end of the run.</p>
