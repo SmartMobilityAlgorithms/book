@@ -397,7 +397,6 @@ span {font-weight:normal}
 <i>best_solution</i> ← initial random solution<br/>
 <i>best_solution_cost</i> ← cost(<i>best_solution</i>)<br/>
 <br/>
-<i><font color="red">aspiration</font></i> ← aspiration limit<br/>
 <i><font color="purple">tabu_history</font></i> ← <i>best_solution</i><br/>
 <i><font color="orange">num_iterations</font><i> ← number of iterations <font color="#03A9F4">// this is required to terminate the algorithm</font><br/>
 <i><font color="blue">tabu_limit</font></i> ← number of iterations before a tabu entry is "forgotten"<br/>
@@ -409,7 +408,7 @@ span {font-weight:normal}
 <i>candidates<i> ← neighbouring solutions of <i>best_solution</i><br/>
         for <strong>candidate</strong> in <i>candidates</i> do<br/>
 <div style="padding-left:20px;">
-            if <strong>candidate</strong> in <i><font color="purple">tabu_history</font></i> and <font color="purple">tabu_history</font>[<strong>candidate</strong>] &gt; <i><font color="red">aspiration</font></i> then<br/>
+            if <strong>candidate</strong> in <i><font color="purple">tabu_history</font></i> then<br/>
                 remove <strong>candidate</strong> from <i>candidates</i>
 <div style="padding-left:20px;">
 </div>
@@ -430,7 +429,8 @@ span {font-weight:normal}
 </i></i></div>
 </i></i></i></i></div>
 </div>
-<br/><br/><p>Essentially, neighbouring solutions are found for the initial randomized solution. The best solution is selected, and is added to a tabu list. For future iterations, tabu items are disqualified as potential candidates, unless enough time has passed and they can be reconsidered. This prevents the tabu search from getting stuck at a local minimum. The aspiration criteria is used to prematurely “free up” a tabu item and renew it for consideration.</p>
+<br/><br/><p>Essentially, neighbouring solutions are found for the initial randomized solution. The best solution is selected, and is added to a tabu list. For future iterations, tabu items are disqualified as potential candidates, unless enough time has passed and they can be reconsidered. This prevents the tabu search from getting stuck at a local minimum.</p>
+<p>Additionally, an aspiration criteria can be used to prematurely “free up” a tabu item and renew it for consideration.</p>
 <div class="section" id="example-tabu-search-for-tsp">
 <h2>Example: Tabu Search for TSP<a class="headerlink" href="#example-tabu-search-for-tsp" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
