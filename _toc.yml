@@ -39,11 +39,12 @@ chapters:
   sections:
     - file: content/PeopleMobilityProblems/carsharing/CarSharing
     - file: content/PeopleMobilityProblems/trip_itinerary_planning/TIP
-    - file: content/PeopleMobilityProblems/multicriteriarouting/MultiCriteriaRouting
+    #- file: content/PeopleMobilityProblems/multicriteriarouting/MultiCriteriaRouting
     - file: content/PeopleMobilityProblems/deadheading/Deadheading
 - file: content/LogisticsProblems/index
   sections:
     - file: content/LogisticsProblems/delivery_GA
+    - file: content/LogisticsProblems/eco_routing
 - file: content/InfrastructureProblems/index
 - file: content/ToolsAndPythonLibraries/index
 - file: content/Datasets

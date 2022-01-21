@@ -31,3 +31,4 @@ dependencies:
 - fastprogress>=1.0.0
 - pymoo>=0.5.0
 - tabulate>=0.8.9
+- rasterio>=1.2.6
