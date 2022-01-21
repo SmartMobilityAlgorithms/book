@@ -17,3 +17,4 @@ This section will cover examples of the following ill-structured people mobility
 - [Car-Sharing service](carsharing/CarSharing.ipynb)
 - [Trip Itinerary Planning](trip_itinerary_planning/TIP.ipynb)
 - [Multi-Criteria Routing](multicriteriarouting/MultiCriteriaRouting.ipynb)
+- [Deadheading Problem for Ride-Sharing](deadheading/Deadheading.ipynb)

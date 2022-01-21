@@ -274,8 +274,8 @@
     </a>
 </li>
 <li class="toctree-l2">
-<a class="reference internal" href="../PeopleMobilityProblems/multicriteriarouting/MultiCriteriaRouting.html">
-     Multi-Criteria Routing
+<a class="reference internal" href="../PeopleMobilityProblems/deadheading/Deadheading.html">
+     Deadheading in Ride-Hailing
     </a>
 </li>
 </ul>
@@ -292,7 +292,12 @@
 <ul>
 <li class="toctree-l2">
 <a class="reference internal" href="../LogisticsProblems/delivery_GA.html">
-     Delivery Vehicle Routing using Genetic Algorithms
+     Delivery Vehicle Routing
+    </a>
+</li>
+<li class="toctree-l2">
+<a class="reference internal" href="../LogisticsProblems/eco_routing.html">
+     Eco-efficient Delivery
     </a>
 </li>
 </ul>
@@ -523,7 +528,7 @@ where<br/><br/>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_12636/2361144546.py:9: DeprecationWarning: `set_matplotlib_formats` is deprecated since IPython 7.23, directly use `matplotlib_inline.backend_inline.set_matplotlib_formats()`
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_47282/2361144546.py:9: DeprecationWarning: `set_matplotlib_formats` is deprecated since IPython 7.23, directly use `matplotlib_inline.backend_inline.set_matplotlib_formats()`
   set_matplotlib_formats('png')
 </pre></div>
 </div>
@@ -542,7 +547,7 @@ where<br/><br/>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded graph_convnet/configs/tsp20.json:
-{'expt_name': 'tsp20', 'gpu_id': '1', 'train_filepath': 'graph_convnet/data/tsp20_train_concorde.txt', 'val_filepath': 'graph_convnet/data/tsp20_val_concorde.txt', 'test_filepath': 'graph_convnet/data/tsp20_test_concorde.txt', 'num_nodes': 20, 'num_neighbors': -1, 'node_dim': 2, 'voc_nodes_in': 2, 'voc_nodes_out': 2, 'voc_edges_in': 3, 'voc_edges_out': 2, 'beam_size': 1280, 'hidden_dim': 300, 'num_layers': 30, 'mlp_layers': 3, 'aggregation': 'mean', 'max_epochs': 1500, 'val_every': 5, 'test_every': 100, 'batch_size': 20, 'batches_per_epoch': 500, 'accumulation_steps': 1, 'learning_rate': 0.001, 'decay_rate': 1.01}
+{'expt_name': 'tsp20', 'gpu_id': '1', 'train_filepath': 'graph_convnet/data/tsp20_test_concorde.txt', 'val_filepath': 'graph_convnet/data/tsp20_val_concorde.txt', 'test_filepath': 'graph_convnet/data/tsp20_test_concorde.txt', 'num_nodes': 20, 'num_neighbors': -1, 'node_dim': 2, 'voc_nodes_in': 2, 'voc_nodes_out': 2, 'voc_edges_in': 3, 'voc_edges_out': 2, 'beam_size': 1280, 'hidden_dim': 300, 'num_layers': 30, 'mlp_layers': 3, 'aggregation': 'mean', 'max_epochs': 1500, 'val_every': 5, 'test_every': 100, 'batch_size': 20, 'batches_per_epoch': 500, 'accumulation_steps': 1, 'learning_rate': 0.001, 'decay_rate': 1.01}
 </pre></div>
 </div>
 </div>
@@ -845,8 +850,8 @@ Parameter Group 0
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Class weights: [0.55555556 5.        ]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicted tour length: 4.273 (mean)
-Groundtruth tour length: 4.273 (mean)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicted tour length: 3.939 (mean)
+Groundtruth tour length: 3.940 (mean)
 </pre></div>
 </div>
 <img alt="../../_images/GraphNeuralNetworks_20_2.png" src="../../_images/GraphNeuralNetworks_20_2.png"/>
