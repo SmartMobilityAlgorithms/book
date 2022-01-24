@@ -39,7 +39,7 @@ chapters:
   sections:
     - file: content/PeopleMobilityProblems/carsharing/CarSharing
     - file: content/PeopleMobilityProblems/trip_itinerary_planning/TIP
-    #- file: content/PeopleMobilityProblems/multicriteriarouting/MultiCriteriaRouting
+    - file: content/PeopleMobilityProblems/multicriteriarouting/MultiCriteriaRouting
     - file: content/PeopleMobilityProblems/deadheading/Deadheading
 - file: content/LogisticsProblems/index
   sections:
