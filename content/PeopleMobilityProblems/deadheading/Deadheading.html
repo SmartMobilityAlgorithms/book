@@ -29,8 +29,6 @@
 <script src="../../../_static/tabs.js"></script>
 <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
 <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
 <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
 <script>
         const thebe_selector = ".thebe"
@@ -991,24 +989,29 @@ Samples contains the following:
 <li><p>Maximizing profit by serving higher priority customers before lower priority customers.</p></li>
 </ol>
 <p>The following is the multi-objective function that we wish to minimize:</p>
-<p>\begin{align*}
-f =&amp; \underbrace{\alpha_{dh}\sum_{j=1}^{|D|} \left(\sum_{i=1}^{|d_{j}|-1} dis(c_{i, dr}, c_{i+1, cl})) \right) + dis(d_{j,0}, c_{1, cl})}<em>{\text{Deadheading cost}}+ \
-&amp; \underbrace{\alpha</em>{d}\sqrt{\frac{\sum_{j=1}^{|D|} \left(\frac{Pr_j}{Dh_j} - \mu_{pd}\right)^2}{|D|}}}<em>{\text{Driver fairness}} +  \underbrace{\alpha_c\sqrt{\frac{ \sum</em>{i=1}^{|C|} \left(ds_i - \mu_{ds}\right)^2}{|C|}}}<em>{\text{Customer fairness}} -  \
-&amp;\underbrace{\alpha_p\sum</em>{j=1}^{|D|} \sum_{i=1}^{|d_{j}|} \frac{dis(c_{i, cl}, c_{i, dr}) * p_i}{ds_i}}_{\text{Priority}}
-\end{align*}</p>
-<p>Subject to:
-\begin{align*}
-\alpha_{dh} + \alpha_d + \alpha_c + \alpha_p = 1
-\end{align*}</p>
-<p>\begin{align*}
-\sum_{\substack{j=1 \ c_i \in d_j}}^{|D|} 1 = 1 \quad \forall c_i
-\end{align*}</p>
-<p>\begin{align*}
-\sum_{\substack{j=1}}^{|D|} |d_j| = |C|
-\end{align*}</p>
-<p>\begin{align*}
-ts_i \leq  T_{max} \quad \forall c_i
-\end{align*}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+    f =&amp; \underbrace{\alpha_{dh}\sum_{j=1}^{|D|} \left(\sum_{i=1}^{|d_{j}|-1} dis(c_{i, dr}, c_{i+1, cl})) \right) + dis(d_{j,0}, c_{1, cl})}_{\text{Deadheading cost}}+ \\
+       &amp; \underbrace{\alpha_{d}\sqrt{\frac{\sum_{j=1}^{|D|} \left(\frac{Pr_j}{Dh_j} - \mu_{pd}\right)^2}{|D|}}}_{\text{Driver fairness}} +  \underbrace{\alpha_c\sqrt{\frac{ \sum_{i=1}^{|C|} \left(ds_i - \mu_{ds}\right)^2}{|C|}}}_{\text{Customer fairness}} -  \\
+       &amp;\underbrace{\alpha_p\sum_{j=1}^{|D|} \sum_{i=1}^{|d_{j}|} \frac{dis(c_{i, cl}, c_{i, dr}) * p_i}{ds_i}}_{\text{Priority}} 
+\end{align*}\end{split}\]</div>
+<p>Subject to:</p>
+<div class="math notranslate nohighlight">
+\[
+     \alpha_{dh} + \alpha_d + \alpha_c + \alpha_p = 1
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \sum_{\substack{j=1 \\ c_i \in d_j}}^{|D|} 1 = 1 \quad \forall c_i
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+    \sum_{\substack{j=1}}^{|D|} |d_j| = |C|
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+    ts_i \leq  T_{max} \quad \forall c_i
+\]</div>
 <p>The first constraint shown in eq.2, ensures that the weights of each objective sums up to one. In eq.3 we ensure that every customer is assigned to only one driver and therefore also guarantees that all customers are matched, while in eq.4, we ensure that all customers are matched only once (i.e., no customer is matched to the same driver twice). Finally, the last constraint shown in eq.5 ensures that the wait time for any customer has to be less than or equal <span class="math notranslate nohighlight">\(T_{max}\)</span> otherwise the solution would not be feasible.</p>
 <p>The design variable in this problem is the list of lists defining the order of assignments of customers to drivers and is denoted by <span class="math notranslate nohighlight">\(D\)</span>.</p>
 <p>Variables:</p>
