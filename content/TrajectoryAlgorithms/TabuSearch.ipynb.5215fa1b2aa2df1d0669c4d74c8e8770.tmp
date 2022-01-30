@@ -1,0 +1,17 @@
+# Setup the Graph, origin, and destination
+import osmnx
+from smart_mobility_utilities.common import Node, randomized_search, cost
+from smart_mobility_utilities.viz import draw_route, draw_map
+
+reference = (43.661667, -79.395)
+G = osmnx.graph_from_point(reference, dist=300, clean_periphery=True, simplify=True)
+origin = Node(graph=G, osmid=389677909)
+destination = Node(graph=G, osmid=55808290)
+
+highlighted = [389677909, 55808290]
+
+# marking both the source and destination node
+
+nc = ['red' if node in highlighted else '#336699' for node in G.nodes()]
+ns = [50 if node in highlighted else 8 for node in G.nodes()]
+fig, ax = osmnx.plot_graph(G, node_size=ns, node_color=nc, node_zorder=2)
