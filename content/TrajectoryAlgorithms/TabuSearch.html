@@ -470,28 +470,10 @@ span {font-weight:normal}
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a function to calculate the tour cost</span>
 <span class="k">def</span> <span class="nf">cost_of_tour</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">tour</span><span class="p">):</span>
     <span class="n">cost</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">u</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">tour</span><span class="p">,</span> <span class="n">tour</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
-        <span class="n">cost</span> <span class="o">+=</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">][</span><span class="s1">'weight'</span><span class="p">]</span>
-    <span class="n">cost</span> <span class="o">+=</span> <span class="n">G</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">tour</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">'weight'</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">tour</span><span class="p">,</span> <span class="n">tour</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+        <span class="n">cost</span> <span class="o">+=</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">][</span><span class="s2">"weight"</span><span class="p">]</span>
+    <span class="n">cost</span> <span class="o">+=</span> <span class="n">G</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">tour</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">"weight"</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">cost</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize a random solution, and its cost</span>
-<span class="n">initial_solution</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()]</span>
-<span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">initial_solution</span><span class="p">)</span>
-<span class="n">initial_cost</span> <span class="o">=</span> <span class="n">cost_of_tour</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">initial_solution</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">initial_solution</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">initial_cost</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[23, 2, 14, 21, 7, 17, 3, 5, 0, 8, 13, 24, 16, 12, 15, 18, 19, 1, 11, 4, 6, 22, 10, 20, 9]
-124
 </pre></div>
 </div>
 </div>
@@ -505,14 +487,15 @@ span {font-weight:normal}
     <span class="c1"># a neighbour is just swapping the position of two nodes within the tour</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)):</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)):</span>
-            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">j</span><span class="p">:</span> <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">j</span><span class="p">:</span>
+                <span class="k">continue</span>
 
             <span class="c1"># Swap the ith and jth nodes</span>
             <span class="n">tmp_route</span> <span class="o">=</span> <span class="n">tour</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
             <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp_route</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
             <span class="n">tmp_route</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp_route</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
             <span class="n">tmp_route</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
-            <span class="n">tmp_cost</span> <span class="o">=</span> <span class="n">cost_of_tour</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">tmp_route</span><span class="p">)</span>
+            <span class="n">tmp_cost</span> <span class="o">=</span> <span class="n">cost_of_tour</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">tmp_route</span><span class="p">)</span>
 
             <span class="c1"># This route is tabu, check aspiration</span>
             <span class="k">if</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">tmp_route</span><span class="p">)</span> <span class="ow">in</span> <span class="n">tabu_history</span><span class="p">:</span>
@@ -520,12 +503,11 @@ span {font-weight:normal}
                     <span class="k">if</span> <span class="n">tabu_history</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">tmp_route</span><span class="p">)]</span> <span class="o">&gt;</span> <span class="n">aspiration</span><span class="p">:</span>
                         <span class="k">continue</span>
 
-            
             <span class="k">if</span> <span class="n">tmp_cost</span> <span class="o">&lt;</span> <span class="n">best_neighbour_cost</span><span class="p">:</span>
                 <span class="n">best_neighbour_cost</span> <span class="o">=</span> <span class="n">tmp_cost</span>
                 <span class="n">best_neighbour</span> <span class="o">=</span> <span class="n">tmp_route</span>
                 <span class="n">tabu_history</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">best_neighbour</span><span class="p">)]</span> <span class="o">=</span> <span class="n">tabu_limit</span>
-        
+
     <span class="k">return</span> <span class="n">best_neighbour</span>
 </pre></div>
 </div>
@@ -533,17 +515,39 @@ span {font-weight:normal}
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tabu_search</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">initial_solution</span><span class="p">,</span> <span class="n">num_iter</span><span class="p">,</span> <span class="n">tabu_history</span><span class="p">,</span> <span class="n">tabu_limit</span><span class="p">,</span> <span class="n">aspiration</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tabu_search</span><span class="p">(</span>
+    <span class="n">G</span><span class="p">,</span>
+    <span class="n">initial_solution</span><span class="p">,</span>
+    <span class="n">num_iter</span><span class="p">,</span>
+    <span class="n">tabu_history</span><span class="p">,</span>
+    <span class="n">tabu_limit</span><span class="p">,</span>
+    <span class="n">aspiration</span><span class="p">,</span>
+    <span class="n">cost_function</span><span class="p">,</span>
+    <span class="n">neighbour_function</span><span class="p">,</span>
+    <span class="n">use_historical_best</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">use_tqdm</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">):</span>
     <span class="n">best_solution</span> <span class="o">=</span> <span class="n">initial_solution</span>
-    <span class="n">best_cost</span> <span class="o">=</span> <span class="n">cost_of_tour</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">best_solution</span><span class="p">)</span>
-    <span class="n">states</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">historical_best</span> <span class="o">=</span> <span class="n">best_solution</span>
+    <span class="n">historical_best_cost</span> <span class="o">=</span> <span class="n">cost_function</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">historical_best</span><span class="p">)</span>
+    <span class="n">best_cost</span> <span class="o">=</span> <span class="n">cost_function</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">best_solution</span><span class="p">)</span>
+    <span class="n">states</span> <span class="o">=</span> <span class="p">[</span><span class="n">best_cost</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">use_tqdm</span><span class="p">:</span>
+        <span class="n">pbar</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="n">num_iter</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_iter</span><span class="p">):</span>
-
         <span class="c1"># Reduce counter for all tabu</span>
+        <span class="k">if</span> <span class="n">use_tqdm</span><span class="p">:</span> <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tabu_history</span><span class="p">:</span>
-            <span class="n">tabu_history</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">tabu_history</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">best_solution</span> <span class="o">=</span> <span class="n">get_best_neighbour</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">best_solution</span><span class="p">,</span> <span class="n">tabu_history</span><span class="p">,</span> <span class="n">tabu_limit</span><span class="p">,</span> <span class="n">aspiration</span><span class="p">)</span>
-        <span class="n">best_cost</span> <span class="o">=</span> <span class="n">cost_of_tour</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">best_solution</span><span class="p">)</span>
+            <span class="n">tabu_history</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">tabu_history</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">tabu_history</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tabu_history</span> <span class="k">if</span> <span class="n">tabu_history</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">}</span>
+
+        <span class="n">best_solution</span> <span class="o">=</span> <span class="n">neighbour_function</span><span class="p">(</span>
+            <span class="n">G</span><span class="p">,</span> <span class="n">best_solution</span><span class="p">,</span> <span class="n">tabu_history</span><span class="p">,</span> <span class="n">tabu_limit</span><span class="p">,</span> <span class="n">aspiration</span>
+        <span class="p">)</span>
+        <span class="n">best_cost</span> <span class="o">=</span> <span class="n">cost_function</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">best_solution</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">best_cost</span> <span class="o">&lt;=</span> <span class="n">historical_best_cost</span><span class="p">:</span> 
+            <span class="n">historical_best</span> <span class="o">=</span> <span class="n">best_solution</span>
+            <span class="n">historical_best_cost</span> <span class="o">=</span> <span class="n">best_cost</span>
         <span class="n">states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">best_cost</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">best_solution</span><span class="p">,</span> <span class="n">best_cost</span><span class="p">,</span> <span class="n">states</span>
 </pre></div>
@@ -558,9 +562,25 @@ span {font-weight:normal}
 <span class="n">num_iterations</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">tabu_limit</span> <span class="o">=</span> <span class="mi">5</span>
 
-<span class="n">best_solution</span><span class="p">,</span> <span class="n">best_cost</span><span class="p">,</span> <span class="n">states</span> <span class="o">=</span> <span class="n">tabu_search</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">initial_solution</span><span class="p">,</span> <span class="n">num_iterations</span><span class="p">,</span> <span class="n">tabu_history</span><span class="p">,</span> <span class="n">tabu_limit</span><span class="p">,</span> <span class="n">aspiration</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">best_solution</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">best_cost</span><span class="p">)</span>
+<span class="c1"># Initialize a random solution, and its cost</span>
+<span class="n">initial_solution</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()]</span>
+<span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">initial_solution</span><span class="p">)</span>
+<span class="n">initial_cost</span> <span class="o">=</span> <span class="n">cost_of_tour</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">initial_solution</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Initial solution: </span><span class="si">{</span><span class="n">initial_solution</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Initial cost: </span><span class="si">{</span><span class="n">initial_cost</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="n">best_solution</span><span class="p">,</span> <span class="n">best_cost</span><span class="p">,</span> <span class="n">states</span> <span class="o">=</span> <span class="n">tabu_search</span><span class="p">(</span>
+    <span class="n">G</span><span class="p">,</span>
+    <span class="n">initial_solution</span><span class="p">,</span>
+    <span class="n">num_iterations</span><span class="p">,</span>
+    <span class="n">tabu_history</span><span class="p">,</span>
+    <span class="n">tabu_limit</span><span class="p">,</span>
+    <span class="n">aspiration</span><span class="p">,</span>
+    <span class="n">cost_of_tour</span><span class="p">,</span>
+    <span class="n">get_best_neighbour</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Best Solution: </span><span class="si">{</span><span class="n">best_solution</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Best Cost: </span><span class="si">{</span><span class="n">best_cost</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"# Iterations"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Cost"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">states</span><span class="p">)</span>
@@ -569,11 +589,15 @@ span {font-weight:normal}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[14, 12, 11, 0, 7, 17, 24, 5, 9, 21, 13, 8, 10, 6, 3, 18, 19, 1, 16, 4, 22, 23, 2, 20, 15]
-27
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Initial solution: [3, 20, 23, 1, 8, 10, 18, 5, 15, 6, 24, 12, 21, 0, 22, 17, 13, 4, 11, 16, 2, 14, 7, 19, 9]
+Initial cost: 109
 </pre></div>
 </div>
-<img alt="../../_images/TabuSearch_9_1.png" src="../../_images/TabuSearch_9_1.png"/>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best Solution: [11, 20, 13, 9, 15, 10, 14, 5, 1, 6, 21, 0, 24, 16, 22, 17, 3, 4, 8, 18, 23, 2, 7, 19, 12]
+Best Cost: 25
+</pre></div>
+</div>
+<img alt="../../_images/TabuSearch_8_2.png" src="../../_images/TabuSearch_8_2.png"/>
 </div>
 </div>
 </div>
@@ -603,24 +627,7 @@ span {font-weight:normal}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/TabuSearch_11_0.png" src="../../_images/TabuSearch_11_0.png"/>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize a random solution, and its cost</span>
-<span class="n">initial_solution</span> <span class="o">=</span> <span class="n">randomized_search</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">osmid</span><span class="p">,</span> <span class="n">destination</span><span class="o">.</span><span class="n">osmid</span><span class="p">)</span>
-<span class="n">initial_cost</span> <span class="o">=</span> <span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">initial_solution</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Initial Solution:"</span><span class="p">,</span><span class="n">initial_solution</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Initial cost:"</span><span class="p">,</span><span class="n">initial_cost</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Initial Solution: [389677909, 389678133, 123347786, 2557539842, 730029007, 5098988924, 6028561924, 24960080, 3707407641, 249991437, 24960070, 389678145, 389678112, 389678111, 389678107, 390547782, 389678104, 9270977960, 389678267, 9270977966, 3179025274, 9270977970, 1721866234, 304891685, 55808290]
-Initial cost: 852.083
-</pre></div>
-</div>
+<img alt="../../_images/TabuSearch_10_0.png" src="../../_images/TabuSearch_10_0.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -631,8 +638,8 @@ Initial cost: 852.083
 <span class="k">def</span> <span class="nf">get_best_neighbour_route</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="n">tabu_history</span><span class="p">,</span> <span class="n">tabu_limit</span><span class="p">,</span> <span class="n">aspiration</span><span class="p">):</span>
     <span class="n">best_neighbour</span> <span class="o">=</span> <span class="n">route</span>
     <span class="n">best_neighbour_cost</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span>
-    <span class="c1"># generate a list of neighbours, limited to neighbour_limit</span>
-    <span class="n">neighbours</span> <span class="o">=</span> <span class="n">get_children</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># generate a list of neighbours, disable multiprocessing if unavailable</span>
+    <span class="n">neighbours</span> <span class="o">=</span> <span class="n">get_children</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span><span class="n">num_children</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">multiprocessing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">workers</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">neighbours</span><span class="p">:</span>
         <span class="n">child_cost</span> <span class="o">=</span> <span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">child</span><span class="p">)</span>
         <span class="c1"># This route is tabu, check aspiration</span>
@@ -652,50 +659,32 @@ Initial cost: 852.083
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tabu_search_route</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">initial_solution</span><span class="p">,</span> <span class="n">num_iter</span><span class="p">,</span> <span class="n">tabu_history</span><span class="p">,</span> <span class="n">tabu_limit</span><span class="p">,</span> <span class="n">aspiration</span><span class="p">):</span>
-    <span class="n">best_solution</span> <span class="o">=</span> <span class="n">initial_solution</span>
-    <span class="n">historical_best</span> <span class="o">=</span> <span class="n">best_solution</span>
-    <span class="n">best_cost</span> <span class="o">=</span> <span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">best_solution</span><span class="p">)</span>
-    <span class="n">states</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">num_iter</span><span class="p">)):</span>
-        <span class="c1"># Reduce counter for all tabu</span>
-        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tabu_history</span><span class="p">:</span>
-            <span class="n">tabu_history</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">-=</span><span class="mi">1</span>
-        <span class="n">tabu_history</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span><span class="n">tabu_history</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tabu_history</span> <span class="k">if</span> <span class="n">tabu_history</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">}</span>
-            
-        <span class="n">best_solution</span> <span class="o">=</span> <span class="n">get_best_neighbour_route</span><span class="p">(</span>
-            <span class="n">G</span><span class="p">,</span>
-            <span class="n">best_solution</span><span class="p">,</span>
-            <span class="n">tabu_history</span><span class="p">,</span> 
-            <span class="n">tabu_limit</span><span class="p">,</span> 
-            <span class="n">aspiration</span><span class="p">)</span>
-
-        <span class="n">best_cost</span> <span class="o">=</span> <span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">best_solution</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">best_cost</span> <span class="o">&lt;=</span> <span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">historical_best</span><span class="p">):</span> <span class="n">historical_best</span> <span class="o">=</span> <span class="n">best_solution</span>
-        <span class="n">states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">best_cost</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">historical_best</span><span class="p">,</span> <span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">historical_best</span><span class="p">),</span> <span class="n">states</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize some parameters</span>
 <span class="n">aspiration</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">tabu_history</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="n">num_iterations</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">tabu_limit</span> <span class="o">=</span> <span class="mi">10</span>
 
-<span class="n">best_solution</span><span class="p">,</span> <span class="n">best_cost</span><span class="p">,</span> <span class="n">states</span> <span class="o">=</span> <span class="n">tabu_search_route</span><span class="p">(</span>
+<span class="c1"># Initialize a random solution, and its cost</span>
+<span class="n">initial_solution</span> <span class="o">=</span> <span class="n">randomized_search</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">osmid</span><span class="p">,</span> <span class="n">destination</span><span class="o">.</span><span class="n">osmid</span><span class="p">)</span>
+<span class="n">initial_cost</span> <span class="o">=</span> <span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">initial_solution</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Initial Solution: </span><span class="si">{</span><span class="n">initial_solution</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Initial Cost: </span><span class="si">{</span><span class="n">initial_cost</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="n">best_solution</span><span class="p">,</span> <span class="n">best_cost</span><span class="p">,</span> <span class="n">states</span> <span class="o">=</span> <span class="n">tabu_search</span><span class="p">(</span>
     <span class="n">G</span><span class="p">,</span>
     <span class="n">initial_solution</span><span class="p">,</span>
     <span class="n">num_iterations</span><span class="p">,</span>
     <span class="n">tabu_history</span><span class="p">,</span>
     <span class="n">tabu_limit</span><span class="p">,</span>
-    <span class="n">aspiration</span>
+    <span class="n">aspiration</span><span class="p">,</span>
+    <span class="n">cost</span><span class="p">,</span>
+    <span class="n">get_best_neighbour_route</span><span class="p">,</span>
+    <span class="n">use_historical_best</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">use_tqdm</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">best_solution</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">best_cost</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Best Solution: </span><span class="si">{</span><span class="n">best_solution</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Best Cost: </span><span class="si">{</span><span class="n">best_cost</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"# Iterations"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Cost"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">states</span><span class="p">)</span>
@@ -704,13 +693,17 @@ Initial cost: 852.083
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "0cbf71c618b646f2a5b02a0525134eff", "version_major": 2, "version_minor": 0}
-</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[389677909, 749952029, 389677908, 854322047, 6028562356, 389678131, 5098988924, 6028561924, 24960080, 3707407641, 249991437, 24960070, 389678145, 1258698109, 24960068, 9270977978, 389678104, 9270977960, 389678267, 9270977966, 3179025274, 9270977970, 1721866234, 304891685, 55808290]
-816.492
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Initial Solution: [389677909, 389678133, 2557539841, 389678131, 6028561921, 6028561924, 3707407638, 3707407641, 249991437, 389678140, 2480712846, 2143489692, 389677947, 2143488335, 389677953, 299625330, 55808233, 4953810914, 6542457312, 55808301, 55808169, 55808177, 55808290]
+Initial Cost: 1048.908
 </pre></div>
 </div>
-<img alt="../../_images/TabuSearch_15_2.png" src="../../_images/TabuSearch_15_2.png"/>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "7467af6e3fd44a5c99600d54711ded83", "version_major": 2, "version_minor": 0}
+</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best Solution: [389677909, 749952029, 389677908, 854322047, 6028562356, 389678131, 5098988924, 6028561924, 24960080, 3707407641, 249991437, 24960070, 389678145, 1258698109, 24960068, 9270977978, 389678104, 9270977960, 389678267, 9270977966, 3179025274, 9270977970, 1721866234, 304891685, 55808290]
+Best Cost: 816.492
+</pre></div>
+</div>
+<img alt="../../_images/TabuSearch_12_3.png" src="../../_images/TabuSearch_12_3.png"/>
 </div>
 </div>
 <p>As you may notice, the results above show that the search algorithm was stuck in a cycle. This is because the neighbourhood space of the routes are limited, of which only a very small subset are solutions that would actually generate a “better” cost. To counteract this, we can keep track of the “historically” best solution, and choose this as the best solution at the end of the run.</p>
@@ -718,7 +711,7 @@ Initial cost: 852.083
 </div>
 </div>
 <script type="application/vnd.jupyter.widget-state+json">
-{"state": {"0c9ba8686ef7488a82d20d813b955259": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "0cbf71c618b646f2a5b02a0525134eff": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_75f7f73f92d444929ac4f289958b0c58", "IPY_MODEL_991995e78f1a43648a628f7b53e1ab7e", "IPY_MODEL_72a406f6c405498ca38c3b61d8a46520"], "layout": "IPY_MODEL_710ed10692c7469fb301d3013c288ed9"}}, "420828b966834d95ab7829187830a39a": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "51ce42399a56403ea31f334dfd161d1e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "6f83609c3ac24043b8deb38f8891186c": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "710ed10692c7469fb301d3013c288ed9": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "72a406f6c405498ca38c3b61d8a46520": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_c232b7e7b60c4f8081af9b0cd487dac8", "placeholder": "\u200b", "style": "IPY_MODEL_e96cd6f0827947de97510f71e8175ef4", "value": " 50/50 [08:42&lt;00:00, 10.87s/it]"}}, "75f7f73f92d444929ac4f289958b0c58": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_420828b966834d95ab7829187830a39a", "placeholder": "\u200b", "style": "IPY_MODEL_51ce42399a56403ea31f334dfd161d1e", "value": "100%"}}, "991995e78f1a43648a628f7b53e1ab7e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "success", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_6f83609c3ac24043b8deb38f8891186c", "max": 50.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_0c9ba8686ef7488a82d20d813b955259", "value": 50.0}}, "c232b7e7b60c4f8081af9b0cd487dac8": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e96cd6f0827947de97510f71e8175ef4": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}}, "version_major": 2, "version_minor": 0}
+{"state": {"144f93ebc3c54fd7b13e7afc88fb5e52": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "3085015977644dadb2defd621a7ed50b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_d74d7bd99cb6430fa0cce6098375e965", "placeholder": "\u200b", "style": "IPY_MODEL_dd7e8eb58bb34fc6ac0fe47a609d6848", "value": " 50/50 [03:00&lt;00:00,  3.97s/it]"}}, "6c4d81a050594a8cb468199a596b0697": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7467af6e3fd44a5c99600d54711ded83": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_7faaf84bd8a248659ea3cef6dc978fdd", "IPY_MODEL_e6f27d5097524246b807ca87f8aca063", "IPY_MODEL_3085015977644dadb2defd621a7ed50b"], "layout": "IPY_MODEL_6c4d81a050594a8cb468199a596b0697"}}, "7833945bee2a47cbb01c1acc549af95d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "7faaf84bd8a248659ea3cef6dc978fdd": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_bcb02e0abc8c46a18fae95d71fa3b564", "placeholder": "\u200b", "style": "IPY_MODEL_7833945bee2a47cbb01c1acc549af95d", "value": "100%"}}, "a2bf7c93462d459bb30f13b3d19d25d8": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "bcb02e0abc8c46a18fae95d71fa3b564": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "d74d7bd99cb6430fa0cce6098375e965": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "dd7e8eb58bb34fc6ac0fe47a609d6848": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "e6f27d5097524246b807ca87f8aca063": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_a2bf7c93462d459bb30f13b3d19d25d8", "max": 50.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_144f93ebc3c54fd7b13e7afc88fb5e52", "value": 50.0}}}, "version_major": 2, "version_minor": 0}
 </script>
 <script type="text/x-thebe-config">
     {
