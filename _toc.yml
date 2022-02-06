@@ -22,7 +22,7 @@ chapters:
   sections:
   - file: content/EvolutionaryComputingAlgorithms/GeneratingInitialPopulations
   - file: content/EvolutionaryComputingAlgorithms/GeneticAlgorithms
-  - file: content/EvolutionaryComputingAlgorithms/DifferentialEvolution
+  #- file: content/EvolutionaryComputingAlgorithms/DifferentialEvolution
 - file: content/SwarmIntelligenceAlgorithms/index
   sections:
   - file: content/SwarmIntelligenceAlgorithms/ParticleSwarmOptimization
