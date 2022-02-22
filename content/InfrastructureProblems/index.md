@@ -13,6 +13,4 @@ Just as the arrival of the first automobiles fundamentally changed our society i
 - micromobility station placement. 
 
 The following examples will be covered in this section to showcase some ill-structured infrastructure problems:
-- Sensor Placement
-- Optimal placement of EV charging stations
-- Smart Parking
+- [Emergency Vehicle Dispatch and Routing](emergency_vehicle/emergency_vehicle.ipynb)

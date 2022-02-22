@@ -46,6 +46,8 @@ chapters:
     - file: content/LogisticsProblems/delivery_GA
     - file: content/LogisticsProblems/eco_routing
 - file: content/InfrastructureProblems/index
+  sections:
+    - file: content/InfrastructureProblems/emergency_vehicle/emergency_vehicle
 - file: content/ToolsAndPythonLibraries/index
 - file: content/Datasets
 - file: References
