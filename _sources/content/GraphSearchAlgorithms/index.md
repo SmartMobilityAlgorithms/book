@@ -7,7 +7,7 @@
     - [Breadth-first Search \(BFS\)](BlindSearch.html#breadth-first-search-bfs)
     - [Depth-first Search \(DFS\)](BlindSearch.html#depth-first-search-dfs)
     - [Dijkstra Search](BlindSearch.html#dijkstra-search)
-    - [Uniform-Cost Search \(UCS\)](BlindSearch.html.html#ucs)
+    - [Uniform-Cost Search \(UCS\)](BlindSearch.html.html#uniform-cost-search-ucs)
 4. [Informed Search Algorithms](InformedSearch.ipynb)
     - [Minimum Spanning Tree](InformedSearch.html#minimum-spanning-tree)
     - [Hill Climbing](InformedSearch.html#hill-climbing)
