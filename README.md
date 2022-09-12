@@ -6,10 +6,10 @@ The book provides a wealth of examples and in-depth case studies for both novice
 
 If you use this software, please cite it as below
 ```
-@book{KhamisWang2022,
+@book{KhamisWang2023,
   author = {Alaa Khamis and Yinan Wang},
-  title = {AI Search Algorithms for Smart Mobility},
-  year = {2022},
+  title = {Search and Optimization Algoirthms in Action},
+  year = {2023},
   publisher = {Manning Publications},
   howpublished = {\url{https://smartmobilityalgorithms.github.io/book/index.html}}
 }
