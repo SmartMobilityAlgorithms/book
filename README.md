@@ -6,7 +6,7 @@ If you use this software, please cite it as below
 ```
 @book{KhamisWang2022,
   author = {Alaa Khamis and Yinan Wang},
-  title = {Search and Optimization Algorithms in Action},
+  title = {AI Search Algorithms for Smart Mobility},
   year = {2022},
   howpublished = {\url{https://smartmobilityalgorithms.github.io/book/index.html}}
 }
