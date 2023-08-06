@@ -1,0 +1,159 @@
+Traceback (most recent call last):
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\client.py", line 1269, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\util.py", line 85, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\util.py", line 60, in just_run
+    return loop.run_until_complete(coro)
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\asyncio\base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\client.py", line 707, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\client.py", line 1025, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\client.py", line 919, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+m = folium.Map(location=[58.4052172,-109.6062729],zoom_start=3)
+
+# Setup binning for legend
+bins = list(dataset['Injuries per 100,000 population'].quantile([0,0.25,0.5,0.75,1]))
+
+# Main map init
+folium.Choropleth(
+    geo_data=dataset,
+    name='chloropleth',
+    data=dataset,
+    columns=['name','Injuries per 100,000 population'],
+    key_on='feature.properties.name',
+    fill_color='BuPu',
+    fill_opacity=0.7,
+    line_opacity=0.5,
+    legend_name='Injuries per 100,000 population',
+    bins=bins,
+    reset=True
+).add_to(m)
+folium.LayerControl().add_to(m)
+
+# Tooltip styling
+style_function = lambda x: {'fillColor': '#ffffff', 
+                            'color':'#000000', 
+                            'fillOpacity': 0.1, 
+                            'weight': 0.1}
+highlight_function = lambda x: {'fillColor': '#000000', 
+                                'color':'#000000', 
+                                'fillOpacity': 0.50, 
+                                'weight': 0.1}
+
+# Tooltip
+NIL = folium.features.GeoJson(
+    dataset,
+    style_function=style_function, 
+    control=False,
+    highlight_function=highlight_function, 
+    tooltip=folium.features.GeoJsonTooltip(
+        fields=['name','Fatalities per 100,000 population','Injuries per 100,000 population','Fatalities per Billion vehicles-kilometres','Injuries per Billion vehicles-kilometres','Fatalities per 100,000 licensed drivers','Injuries per 100,000 licensed drivers'],
+        aliases=['Province','Fatalities per 100,000 population','Injuries per 100,000 population','Fatalities per Billion vehicles-kilometres','Injuries per Billion vehicles-kilometres','Fatalities per 100,000 licensed drivers','Injuries per 100,000 licensed drivers'],
+        style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;") 
+    )
+)
+m.add_child(NIL)
+m.keep_in_front(NIL)
+m
+------------------
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mTypeError[0m                                 Traceback (most recent call last)
+Input [1;32mIn [11][0m, in [0;36m<cell line: 7>[1;34m()[0m
+[0;32m      4[0m bins [38;5;241m=[39m [38;5;28mlist[39m(dataset[[38;5;124m'[39m[38;5;124mInjuries per 100,000 population[39m[38;5;124m'[39m][38;5;241m.[39mquantile([[38;5;241m0[39m,[38;5;241m0.25[39m,[38;5;241m0.5[39m,[38;5;241m0.75[39m,[38;5;241m1[39m]))
+[0;32m      6[0m [38;5;66;03m# Main map init[39;00m
+[1;32m----> 7[0m [43mfolium[49m[38;5;241;43m.[39;49m[43mChoropleth[49m[43m([49m
+[0;32m      8[0m [43m    [49m[43mgeo_data[49m[38;5;241;43m=[39;49m[43mdataset[49m[43m,[49m
+[0;32m      9[0m [43m    [49m[43mname[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mchloropleth[39;49m[38;5;124;43m'[39;49m[43m,[49m
+[0;32m     10[0m [43m    [49m[43mdata[49m[38;5;241;43m=[39;49m[43mdataset[49m[43m,[49m
+[0;32m     11[0m [43m    [49m[43mcolumns[49m[38;5;241;43m=[39;49m[43m[[49m[38;5;124;43m'[39;49m[38;5;124;43mname[39;49m[38;5;124;43m'[39;49m[43m,[49m[38;5;124;43m'[39;49m[38;5;124;43mInjuries per 100,000 population[39;49m[38;5;124;43m'[39;49m[43m][49m[43m,[49m
+[0;32m     12[0m [43m    [49m[43mkey_on[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mfeature.properties.name[39;49m[38;5;124;43m'[39;49m[43m,[49m
+[0;32m     13[0m [43m    [49m[43mfill_color[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mBuPu[39;49m[38;5;124;43m'[39;49m[43m,[49m
+[0;32m     14[0m [43m    [49m[43mfill_opacity[49m[38;5;241;43m=[39;49m[38;5;241;43m0.7[39;49m[43m,[49m
+[0;32m     15[0m [43m    [49m[43mline_opacity[49m[38;5;241;43m=[39;49m[38;5;241;43m0.5[39;49m[43m,[49m
+[0;32m     16[0m [43m    [49m[43mlegend_name[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mInjuries per 100,000 population[39;49m[38;5;124;43m'[39;49m[43m,[49m
+[0;32m     17[0m [43m    [49m[43mbins[49m[38;5;241;43m=[39;49m[43mbins[49m[43m,[49m
+[0;32m     18[0m [43m    [49m[43mreset[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m
+[0;32m     19[0m [43m)[49m[38;5;241m.[39madd_to(m)
+[0;32m     20[0m folium[38;5;241m.[39mLayerControl()[38;5;241m.[39madd_to(m)
+[0;32m     22[0m [38;5;66;03m# Tooltip styling[39;00m
+
+File [1;32m~\.conda\envs\uoft\lib\site-packages\folium\features.py:1289[0m, in [0;36mChoropleth.__init__[1;34m(self, geo_data, data, columns, key_on, bins, fill_color, nan_fill_color, fill_opacity, nan_fill_opacity, line_color, line_weight, line_opacity, name, legend_name, overlay, control, show, topojson, smooth_factor, highlight, **kwargs)[0m
+[0;32m   1283[0m     [38;5;28mself[39m[38;5;241m.[39mgeojson [38;5;241m=[39m TopoJson(
+[0;32m   1284[0m         geo_data,
+[0;32m   1285[0m         topojson,
+[0;32m   1286[0m         style_function[38;5;241m=[39mstyle_function,
+[0;32m   1287[0m         smooth_factor[38;5;241m=[39msmooth_factor)
+[0;32m   1288[0m [38;5;28;01melse[39;00m:
+[1;32m-> 1289[0m     [38;5;28mself[39m[38;5;241m.[39mgeojson [38;5;241m=[39m [43mGeoJson[49m[43m([49m
+[0;32m   1290[0m [43m        [49m[43mgeo_data[49m[43m,[49m
+[0;32m   1291[0m [43m        [49m[43mstyle_function[49m[38;5;241;43m=[39;49m[43mstyle_function[49m[43m,[49m
+[0;32m   1292[0m [43m        [49m[43msmooth_factor[49m[38;5;241;43m=[39;49m[43msmooth_factor[49m[43m,[49m
+[0;32m   1293[0m [43m        [49m[43mhighlight_function[49m[38;5;241;43m=[39;49m[43mhighlight_function[49m[43m [49m[38;5;28;43;01mif[39;49;00m[43m [49m[43mhighlight[49m[43m [49m[38;5;28;43;01melse[39;49;00m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m
+[0;32m   1295[0m [38;5;28mself[39m[38;5;241m.[39madd_child([38;5;28mself[39m[38;5;241m.[39mgeojson)
+[0;32m   1296[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mcolor_scale:
+
+File [1;32m~\.conda\envs\uoft\lib\site-packages\folium\features.py:499[0m, in [0;36mGeoJson.__init__[1;34m(self, data, style_function, highlight_function, name, overlay, control, show, smooth_factor, tooltip, embed, popup, zoom_on_click, marker)[0m
+[0;32m    496[0m         [38;5;28;01mraise[39;00m [38;5;167;01mTypeError[39;00m([38;5;124m"[39m[38;5;124mOnly Marker, Circle, and CircleMarker are supported as GeoJson marker types.[39m[38;5;124m"[39m)
+[0;32m    497[0m [38;5;28mself[39m[38;5;241m.[39mmarker [38;5;241m=[39m marker
+[1;32m--> 499[0m [38;5;28mself[39m[38;5;241m.[39mdata [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mprocess_data[49m[43m([49m[43mdata[49m[43m)[49m
+[0;32m    501[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mstyle [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39mhighlight:
+[0;32m    502[0m     [38;5;28mself[39m[38;5;241m.[39mconvert_to_feature_collection()
+
+File [1;32m~\.conda\envs\uoft\lib\site-packages\folium\features.py:542[0m, in [0;36mGeoJson.process_data[1;34m(self, data)[0m
+[0;32m    540[0m     [38;5;28;01mif[39;00m [38;5;28mhasattr[39m(data, [38;5;124m'[39m[38;5;124mto_crs[39m[38;5;124m'[39m):
+[0;32m    541[0m         data [38;5;241m=[39m data[38;5;241m.[39mto_crs([38;5;124m'[39m[38;5;124mEPSG:4326[39m[38;5;124m'[39m)
+[1;32m--> 542[0m     [38;5;28;01mreturn[39;00m json[38;5;241m.[39mloads([43mjson[49m[38;5;241;43m.[39;49m[43mdumps[49m[43m([49m[43mdata[49m[38;5;241;43m.[39;49m[43m__geo_interface__[49m[43m)[49m)
+[0;32m    543[0m [38;5;28;01melse[39;00m:
+[0;32m    544[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([38;5;124m'[39m[38;5;124mCannot render objects with any missing geometries[39m[38;5;124m'[39m
+[0;32m    545[0m                      [38;5;124m'[39m[38;5;124m: [39m[38;5;132;01m{!r}[39;00m[38;5;124m'[39m[38;5;241m.[39mformat(data))
+
+File [1;32m~\.conda\envs\uoft\lib\json\__init__.py:231[0m, in [0;36mdumps[1;34m(obj, skipkeys, ensure_ascii, check_circular, allow_nan, cls, indent, separators, default, sort_keys, **kw)[0m
+[0;32m    226[0m [38;5;66;03m# cached encoder[39;00m
+[0;32m    227[0m [38;5;28;01mif[39;00m ([38;5;129;01mnot[39;00m skipkeys [38;5;129;01mand[39;00m ensure_ascii [38;5;129;01mand[39;00m
+[0;32m    228[0m     check_circular [38;5;129;01mand[39;00m allow_nan [38;5;129;01mand[39;00m
+[0;32m    229[0m     [38;5;28mcls[39m [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m indent [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m separators [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m
+[0;32m    230[0m     default [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m sort_keys [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m kw):
+[1;32m--> 231[0m     [38;5;28;01mreturn[39;00m [43m_default_encoder[49m[38;5;241;43m.[39;49m[43mencode[49m[43m([49m[43mobj[49m[43m)[49m
+[0;32m    232[0m [38;5;28;01mif[39;00m [38;5;28mcls[39m [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[0;32m    233[0m     [38;5;28mcls[39m [38;5;241m=[39m JSONEncoder
+
+File [1;32m~\.conda\envs\uoft\lib\json\encoder.py:199[0m, in [0;36mJSONEncoder.encode[1;34m(self, o)[0m
+[0;32m    195[0m         [38;5;28;01mreturn[39;00m encode_basestring(o)
+[0;32m    196[0m [38;5;66;03m# This doesn't pass the iterator directly to ''.join() because the[39;00m
+[0;32m    197[0m [38;5;66;03m# exceptions aren't as detailed.  The list call should be roughly[39;00m
+[0;32m    198[0m [38;5;66;03m# equivalent to the PySequence_Fast that ''.join() would do.[39;00m
+[1;32m--> 199[0m chunks [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43miterencode[49m[43m([49m[43mo[49m[43m,[49m[43m [49m[43m_one_shot[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m)[49m
+[0;32m    200[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28misinstance[39m(chunks, ([38;5;28mlist[39m, [38;5;28mtuple[39m)):
+[0;32m    201[0m     chunks [38;5;241m=[39m [38;5;28mlist[39m(chunks)
+
+File [1;32m~\.conda\envs\uoft\lib\json\encoder.py:257[0m, in [0;36mJSONEncoder.iterencode[1;34m(self, o, _one_shot)[0m
+[0;32m    252[0m [38;5;28;01melse[39;00m:
+[0;32m    253[0m     _iterencode [38;5;241m=[39m _make_iterencode(
+[0;32m    254[0m         markers, [38;5;28mself[39m[38;5;241m.[39mdefault, _encoder, [38;5;28mself[39m[38;5;241m.[39mindent, floatstr,
+[0;32m    255[0m         [38;5;28mself[39m[38;5;241m.[39mkey_separator, [38;5;28mself[39m[38;5;241m.[39mitem_separator, [38;5;28mself[39m[38;5;241m.[39msort_keys,
+[0;32m    256[0m         [38;5;28mself[39m[38;5;241m.[39mskipkeys, _one_shot)
+[1;32m--> 257[0m [38;5;28;01mreturn[39;00m [43m_iterencode[49m[43m([49m[43mo[49m[43m,[49m[43m [49m[38;5;241;43m0[39;49m[43m)[49m
+
+File [1;32m~\.conda\envs\uoft\lib\json\encoder.py:179[0m, in [0;36mJSONEncoder.default[1;34m(self, o)[0m
+[0;32m    160[0m [38;5;28;01mdef[39;00m [38;5;21mdefault[39m([38;5;28mself[39m, o):
+[0;32m    161[0m     [38;5;124;03m"""Implement this method in a subclass such that it returns[39;00m
+[0;32m    162[0m [38;5;124;03m    a serializable object for ``o``, or calls the base implementation[39;00m
+[0;32m    163[0m [38;5;124;03m    (to raise a ``TypeError``).[39;00m
+[1;32m   (...)[0m
+[0;32m    177[0m 
+[0;32m    178[0m [38;5;124;03m    """[39;00m
+[1;32m--> 179[0m     [38;5;28;01mraise[39;00m [38;5;167;01mTypeError[39;00m([38;5;124mf[39m[38;5;124m'[39m[38;5;124mObject of type [39m[38;5;132;01m{[39;00mo[38;5;241m.[39m[38;5;18m__class__[39m[38;5;241m.[39m[38;5;18m__name__[39m[38;5;132;01m}[39;00m[38;5;124m [39m[38;5;124m'[39m
+[0;32m    180[0m                     [38;5;124mf[39m[38;5;124m'[39m[38;5;124mis not JSON serializable[39m[38;5;124m'[39m)
+
+[1;31mTypeError[0m: Object of type Timestamp is not JSON serializable
+TypeError: Object of type Timestamp is not JSON serializable
+

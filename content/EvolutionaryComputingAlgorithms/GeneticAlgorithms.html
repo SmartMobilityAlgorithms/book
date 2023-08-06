@@ -1,534 +1,442 @@
+
+
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Genetic Algorithms — AI Search Algorithms for Smart Mobility</title>
-<link href="../../_static/css/theme.css" rel="stylesheet"/>
-<link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet"/>
-<link href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
-<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
-<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
-<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/togglebutton.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/mystnb.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/sphinx-thebe.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/tabs.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" rel="stylesheet" type="text/css"/>
-<link as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js" rel="preload"/>
-<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-<script src="../../_static/jquery.js"></script>
-<script src="../../_static/underscore.js"></script>
-<script src="../../_static/doctools.js"></script>
-<script src="../../_static/togglebutton.js"></script>
-<script src="../../_static/clipboard.min.js"></script>
-<script src="../../_static/copybutton.js"></script>
-<script src="../../_static/tabs.js"></script>
-<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-<script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-<script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
-<script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-<script async="async" src="../../_static/sphinx-thebe.js"></script>
-<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-<link href="../../genindex.html" rel="index" title="Index"/>
-<link href="../../search.html" rel="search" title="Search"/>
-<link href="../SwarmIntelligenceAlgorithms/index.html" rel="next" title="Swarm Intelligence Algorithms"/>
-<link href="GeneratingInitialPopulations.html" rel="prev" title="Generating Initial Populations"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="en" name="docsearch:language"/>
-</head>
-<body data-offset="80" data-spy="scroll" data-target="#bd-toc-nav">
-<div class="container-fluid" id="banner"></div>
-<div class="container-xl">
-<div class="row">
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-<div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../../index.html">
-<img alt="logo" class="logo" src="../../_static/sm.png"/>
-<h1 class="site-logo" id="site-title">AI Search Algorithms for Smart Mobility</h1>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Genetic Algorithms &#8212; AI Search Algorithms for Smart Mobility</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/EvolutionaryComputingAlgorithms/GeneticAlgorithms';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Swarm Intelligence Algorithms" href="../SwarmIntelligenceAlgorithms/index.html" />
+    <link rel="prev" title="Generating Initial Populations" href="GeneratingInitialPopulations.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/sm.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/sm.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    AI Search Algorithms for Smart Mobility - ECE1724
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted/index.html">Getting Started</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../IntroGeoScience/index.html">Introduction to Geospatial Data Science</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../IntroGeoScience/SpatialData.html">Spatial Data and Geographic Information System (GIS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../IntroGeoScience/Projection.html">Projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../IntroGeoScience/Visualization.html">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../GraphSearchAlgorithms/index.html">Graph Search Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../GraphSearchAlgorithms/RoadGraph.html">From Road Network to Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GraphSearchAlgorithms/GraphSearch.html">Graph Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GraphSearchAlgorithms/BlindSearch.html">Blind Search Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GraphSearchAlgorithms/InformedSearch.html">Informed Search Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GraphSearchAlgorithms/SearchComparison.html">Search Algorithm Comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TrajectoryAlgorithms/index.html">Trajectory-based Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../TrajectoryAlgorithms/TabuSearch.html">Tabu Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../TrajectoryAlgorithms/SimulatedAnnealing.html">Simulated Annealing</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Evolutionary Computing Algorithms</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="GeneratingInitialPopulations.html">Generating Initial Populations</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Genetic Algorithms</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../SwarmIntelligenceAlgorithms/index.html">Swarm Intelligence Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../SwarmIntelligenceAlgorithms/ParticleSwarmOptimization.html">Particle Swarm Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SwarmIntelligenceAlgorithms/AntColonyOptimization.html">Ant Colony Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SwarmIntelligenceAlgorithms/ArtificialBeeColony.html">Artificial Bee Colony</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SwarmIntelligenceAlgorithms/FireflyAlgorithm.html">Firefly Algorithm</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../LearnToSearch/index.html">Learn to Search</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../LearnToSearch/GeometricDeepLearning.html">Geometric Deep Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LearnToSearch/GraphNeuralNetworks.html">Graph Neural Networks (GNN)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LearnToSearch/AttentionMechanisms.html">Attention Mechanisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LearnToSearch/ReinforcementLearning.html">Reinforcement Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PeopleMobilityProblems/index.html">People Mobility Problems</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PeopleMobilityProblems/carsharing/CarSharing.html">Car-Sharing Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PeopleMobilityProblems/trip_itinerary_planning/TIP.html">Trip Itinerary Planning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PeopleMobilityProblems/multicriteriarouting/MultiCriteriaRouting.html">Multi-Criteria Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PeopleMobilityProblems/deadheading/Deadheading.html">Deadheading in Ride-Hailing</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../LogisticsProblems/index.html">Logistics Problems</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../LogisticsProblems/delivery_GA.html">Delivery Vehicle Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LogisticsProblems/eco_routing.html">Eco-efficient Delivery</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../InfrastructureProblems/index.html">Infrastructure Problems</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../InfrastructureProblems/emergency_vehicle/emergency_vehicle.html">Emergency Dispatch and Routing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ToolsAndPythonLibraries/index.html">Tools and Python Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/SmartMobilityAlgorithms/book" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
 </a>
-</div><form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
-<i class="icon fas fa-search"></i>
-<input aria-label="Search this book..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search this book..." type="search"/>
-</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
-<div class="bd-toc-item active">
-<ul class="nav bd-sidenav">
-<li class="toctree-l1">
-<a class="reference internal" href="../../index.html">
-   AI Search Algorithms for Smart Mobility
-  </a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/EvolutionaryComputingAlgorithms/GeneticAlgorithms.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
 </li>
-</ul>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1">
-<a class="reference internal" href="../GettingStarted/index.html">
-   Getting Started
-  </a>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../IntroGeoScience/index.html">
-   Introduction to Geospatial Data Science
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-<label for="toctree-checkbox-1">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../IntroGeoScience/SpatialData.html">
-     Spatial Data and Geographic Information System (GIS)
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../IntroGeoScience/Projection.html">
-     Projection
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../IntroGeoScience/Visualization.html">
-     Visualization
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../GraphSearchAlgorithms/index.html">
-   Graph Search Algorithms
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-<label for="toctree-checkbox-2">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../GraphSearchAlgorithms/RoadGraph.html">
-     From Road Network to Graph
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../GraphSearchAlgorithms/GraphSearch.html">
-     Graph Search
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../GraphSearchAlgorithms/BlindSearch.html">
-     Blind Search Algorithms
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../GraphSearchAlgorithms/InformedSearch.html">
-     Informed Search Algorithms
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../GraphSearchAlgorithms/SearchComparison.html">
-     Search Algorithm Comparison
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../TrajectoryAlgorithms/index.html">
-   Trajectory-based Algorithms
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-<label for="toctree-checkbox-3">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../TrajectoryAlgorithms/TabuSearch.html">
-     Tabu Search
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../TrajectoryAlgorithms/SimulatedAnnealing.html">
-     Simulated Annealing
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 current active has-children">
-<a class="reference internal" href="index.html">
-   Evolutionary Computing Algorithms
-  </a>
-<input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-<label for="toctree-checkbox-4">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul class="current">
-<li class="toctree-l2">
-<a class="reference internal" href="GeneratingInitialPopulations.html">
-     Generating Initial Populations
-    </a>
-</li>
-<li class="toctree-l2 current active">
-<a class="current reference internal" href="#">
-     Genetic Algorithms
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../SwarmIntelligenceAlgorithms/index.html">
-   Swarm Intelligence Algorithms
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-<label for="toctree-checkbox-5">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../SwarmIntelligenceAlgorithms/ParticleSwarmOptimization.html">
-     Particle Swarm Optimization
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../SwarmIntelligenceAlgorithms/AntColonyOptimization.html">
-     Ant Colony Optimization
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../SwarmIntelligenceAlgorithms/ArtificialBeeColony.html">
-     Artificial Bee Colony
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../SwarmIntelligenceAlgorithms/FireflyAlgorithm.html">
-     Firefly Algorithm
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../LearnToSearch/index.html">
-   Learn to Search
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-<label for="toctree-checkbox-6">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../LearnToSearch/GeometricDeepLearning.html">
-     Geometric Deep Learning
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../LearnToSearch/GraphNeuralNetworks.html">
-     Graph Neural Networks (GNN)
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../LearnToSearch/AttentionMechanisms.html">
-     Attention Mechanisms
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../LearnToSearch/ReinforcementLearning.html">
-     Reinforcement Learning
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../PeopleMobilityProblems/index.html">
-   People Mobility Problems
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-<label for="toctree-checkbox-7">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../PeopleMobilityProblems/carsharing/CarSharing.html">
-     Car-Sharing Service
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../PeopleMobilityProblems/trip_itinerary_planning/TIP.html">
-     Trip Itinerary Planning
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../PeopleMobilityProblems/multicriteriarouting/MultiCriteriaRouting.html">
-     Multi-Criteria Routing
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../PeopleMobilityProblems/deadheading/Deadheading.html">
-     Deadheading in Ride-Hailing
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../LogisticsProblems/index.html">
-   Logistics Problems
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-<label for="toctree-checkbox-8">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../LogisticsProblems/delivery_GA.html">
-     Delivery Vehicle Routing
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../LogisticsProblems/eco_routing.html">
-     Eco-efficient Delivery
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../InfrastructureProblems/index.html">
-   Infrastructure Problems
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-<label for="toctree-checkbox-9">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../InfrastructureProblems/emergency_vehicle/emergency_vehicle.html">
-     Emergency Dispatch and Routing
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1">
-<a class="reference internal" href="../ToolsAndPythonLibraries/index.html">
-   Tools and Python Libraries
-  </a>
-</li>
-<li class="toctree-l1">
-<a class="reference internal" href="../Datasets.html">
-   Datasets
-  </a>
-</li>
-<li class="toctree-l1">
-<a class="reference internal" href="../../References.html">
-   References
-  </a>
-</li>
-</ul>
-</div>
-</nav> <!-- To handle the deprecated key -->
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-</div>
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-<div class="topbar container-xl fixed-top">
-<div class="topbar-contents row">
-<div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-<div class="col pl-md-4 topbar-main">
-<button aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" class="navbar-toggler ml-0" data-placement="bottom" data-target=".site-navigation" data-toggle="collapse" id="navbar-toggler" title="Toggle navigation" type="button">
-<i class="fas fa-bars"></i>
-<i class="fas fa-arrow-left"></i>
-<i class="fas fa-arrow-up"></i>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
 </button>
-<div class="dropdown-buttons-trigger">
-<button aria-label="Download this page" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-download"></i></button>
-<div class="dropdown-buttons">
-<!-- ipynb file if we had a myst markdown file -->
-<!-- Download raw file -->
-<a class="dropdown-buttons" href="../../_sources/content/EvolutionaryComputingAlgorithms/GeneticAlgorithms.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.ipynb</button></a>
-<!-- Download PDF via print -->
-<button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="window.print()" title="Print to PDF" type="button">.pdf</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
 </div>
 </div>
-<!-- Source interaction buttons -->
-<div class="dropdown-buttons-trigger">
-<button aria-label="Connect with source repository" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fab fa-github"></i></button>
-<div class="dropdown-buttons sourcebuttons">
-<a class="repository-button" href="https://github.com/SmartMobilityAlgorithms/book"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Source repository" type="button"><i class="fab fa-github"></i>repository</button></a>
-</div>
-</div>
-<!-- Full screen (wrap in <a> to have style consistency -->
-<a class="full-screen-button"><button aria-label="Fullscreen mode" class="btn btn-secondary topbarbtn" data-placement="bottom" data-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode" type="button"><i class="fas fa-expand"></i></button></a>
-<!-- Launch buttons -->
-<div class="dropdown-buttons-trigger">
-<button aria-label="Launch interactive content" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-rocket"></i></button>
-<div class="dropdown-buttons">
-<a class="binder-button" href="https://mybinder.org/v2/gh/SmartMobilityAlgorithms/book/main?urlpath=tree/content/EvolutionaryComputingAlgorithms/GeneticAlgorithms.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Launch Binder" type="button"><img alt="Interact on binder" class="binder-button-logo" src="../../_static/images/logo_binder.svg"/>Binder</button></a>
-</div>
-</div>
-</div>
-<!-- Table of contents -->
-<div class="d-none d-md-block col-md-2 bd-toc show">
-<div class="tocsection onthispage pt-5 pb-3">
-<i class="fas fa-list"></i> Contents
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Genetic Algorithms</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-<nav id="bd-toc-nav">
-<ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry">
-<a class="reference internal nav-link" href="#example-bike-pricing-using-simple-genetic-algorithm">
-   Example: Bike pricing using Simple Genetic Algorithm
-  </a>
-<ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#initial-population">
-     Initial Population
-    </a>
-</li>
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#fitness-function">
-     Fitness Function
-    </a>
-</li>
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#parent-selection-crossover-and-mutation">
-     Parent Selection, Crossover, and Mutation
-    </a>
-</li>
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#solution-function">
-     Solution Function
-    </a>
-</li>
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#parameters">
-     Parameters
-    </a>
-</li>
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#results-and-visualization">
-     Results and Visualization
-    </a>
-</li>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-bike-pricing-using-simple-genetic-algorithm">Example: Bike pricing using Simple Genetic Algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-population">Initial Population</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitness-function">Fitness Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parent-selection-crossover-and-mutation">Parent Selection, Crossover, and Mutation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-function">Solution Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results-and-visualization">Results and Visualization</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry">
-<a class="reference internal nav-link" href="#example-bike-pricing-using-real-valued-genetic-algorithm">
-   Example: Bike pricing using Real-valued Genetic Algorithm
-  </a>
-</li>
-<li class="toc-h2 nav-item toc-entry">
-<a class="reference internal nav-link" href="#example-permutation-genetic-algorithm-for-tsp">
-   Example: Permutation Genetic Algorithm for TSP
-  </a>
-<ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#crossover-operators">
-     Crossover operators
-    </a>
-</li>
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#mutation-operators">
-     Mutation Operators
-    </a>
-</li>
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#partially-mapped-crossover">
-     Partially-mapped crossover
-    </a>
-</li>
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#edge-recombination-crossover">
-     Edge recombination crossover
-    </a>
-</li>
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#order-1-crossover">
-     Order 1 crossover
-    </a>
-</li>
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#insert-mutation">
-     Insert Mutation
-    </a>
-</li>
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#swap-mutation">
-     Swap Mutation
-    </a>
-</li>
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#implementation">
-     Implementation
-    </a>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-bike-pricing-using-real-valued-genetic-algorithm">Example: Bike pricing using Real-valued Genetic Algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-permutation-genetic-algorithm-for-tsp">Example: Permutation Genetic Algorithm for TSP</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crossover-operators">Crossover operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mutation-operators">Mutation Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partially-mapped-crossover">Partially-mapped crossover</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-recombination-crossover">Edge recombination crossover</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#order-1-crossover">Order 1 crossover</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insert-mutation">Insert Mutation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swap-mutation">Swap Mutation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry">
-<a class="reference internal nav-link" href="#example-permutation-genetic-algorithm-for-routing-problem">
-   Example: Permutation Genetic Algorithm for Routing Problem
-  </a>
-<ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#the-algorithm">
-     The Algorithm
-    </a>
-<ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry">
-<a class="reference internal nav-link" href="#mutation">
-       Mutation
-      </a>
-</li>
-<li class="toc-h4 nav-item toc-entry">
-<a class="reference internal nav-link" href="#crossover">
-       Crossover
-      </a>
-</li>
-<li class="toc-h4 nav-item toc-entry">
-<a class="reference internal nav-link" href="#duplicates">
-       Duplicates
-      </a>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-permutation-genetic-algorithm-for-routing-problem">Example: Permutation Genetic Algorithm for Routing Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-algorithm">The Algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mutation">Mutation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#crossover">Crossover</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicates">Duplicates</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#the-code">
-     The code
-    </a>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-code">The code</a></li>
 </ul>
 </li>
 </ul>
-</nav>
+            </nav>
+        </div>
+    </div>
 </div>
-</div>
-</div>
-<div class="row" id="main-content">
-<div class="col-12 col-md-9 pl-md-3 pr-md-0">
-<div>
-<div class="section" id="genetic-algorithms">
-<h1>Genetic Algorithms<a class="headerlink" href="#genetic-algorithms" title="Permalink to this headline">¶</a></h1>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="genetic-algorithms">
+<h1>Genetic Algorithms<a class="headerlink" href="#genetic-algorithms" title="Permalink to this heading">#</a></h1>
 <p>The genetic algorithm is a probabilistic search algorithm that iteratively transforms a set (called a population) of mathematical objects (typically fixed-length binary character strings), each with an associated fitness value, into a new population of offspring objects using the Darwinian principle of natural selection and using operations that are patterned after naturally occurring genetic operations, such as crossover (sexual recombination) and mutation.)</p>
 <p>In this section, we will demonstrate some basic implementations of Simple Genetic Algorithms (SGA), Real-valued GA, as well as the use of GA to generate permutations. At the end, we’ll show how real-valued GA can be applied to a shortest-path search.</p>
-<div class="section" id="example-bike-pricing-using-simple-genetic-algorithm">
-<h2>Example: Bike pricing using Simple Genetic Algorithm<a class="headerlink" href="#example-bike-pricing-using-simple-genetic-algorithm" title="Permalink to this headline">¶</a></h2>
+<section id="example-bike-pricing-using-simple-genetic-algorithm">
+<h2>Example: Bike pricing using Simple Genetic Algorithm<a class="headerlink" href="#example-bike-pricing-using-simple-genetic-algorithm" title="Permalink to this heading">#</a></h2>
 <p>Assume that a company wants to design a new bicycle, and needs to consider the following costs:</p>
 <ul class="simple">
 <li><p>$700,000 for manufacturing setup, marketing, etc.</p></li>
 <li><p>$110 for each bike produced</p></li>
 </ul>
 <p>Based on similar bikes, the company expects sales to follow this demand curve:</p>
-<p><span class="math notranslate nohighlight">\(Q= 70,000 - 200P\)</span>,<br/>
+<p><span class="math notranslate nohighlight">\(Q= 70,000 - 200P\)</span>,<br>
 where <span class="math notranslate nohighlight">\(P\)</span> is the price, and <span class="math notranslate nohighlight">\(Q\)</span> is the number of units sold at that price</p>
 <p>For example:</p>
 <ul class="simple">
@@ -537,8 +445,8 @@ where <span class="math notranslate nohighlight">\(P\)</span> is the price, and 
 <li><p>At $350, the company wouldn’t sell at anything at all.</p></li>
 </ul>
 <p>Profit would be calculated as following:</p>
-<p><span class="math notranslate nohighlight">\(Profit=Sales-Costs\)</span><br/>
-<span class="math notranslate nohighlight">\(Profit=P(70,000-200P)-(700,000+110(70,000-200P))\)</span><br/>
+<p><span class="math notranslate nohighlight">\(Profit=Sales-Costs\)</span><br>
+<span class="math notranslate nohighlight">\(Profit=P(70,000-200P)-(700,000+110(70,000-200P))\)</span><br>
 <span class="math notranslate nohighlight">\(Profit=-200P^2+92,000P-8,400,000\)</span></p>
 <p>Simple Genetic Algorithms represent genes as binary values, and mutates those genes through binary operations. Essentially, they replicate the behaviour of genotypes in genetics, where genotypes (actual DNA coding) produce phenotypes (genetic traits).</p>
 <div class="cell docutils container">
@@ -552,8 +460,8 @@ where <span class="math notranslate nohighlight">\(P\)</span> is the price, and 
 </div>
 </div>
 </div>
-<div class="section" id="initial-population">
-<h3>Initial Population<a class="headerlink" href="#initial-population" title="Permalink to this headline">¶</a></h3>
+<section id="initial-population">
+<h3>Initial Population<a class="headerlink" href="#initial-population" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate an initial random population</span>
@@ -566,9 +474,9 @@ where <span class="math notranslate nohighlight">\(P\)</span> is the price, and 
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="fitness-function">
-<h3>Fitness Function<a class="headerlink" href="#fitness-function" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="fitness-function">
+<h3>Fitness Function<a class="headerlink" href="#fitness-function" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For a given population, calculate the fitness of each element in the population</span>
@@ -576,7 +484,7 @@ where <span class="math notranslate nohighlight">\(P\)</span> is the price, and 
     <span class="n">fitness_values</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">num</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="p">)):</span>
-        <span class="n">num</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">population</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">base</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>  <span class="c1"># convert binary to decimal</span>
+        <span class="n">num</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">population</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">base</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>  <span class="c1"># convert binary to decimal</span>
         <span class="n">fitness_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mi">200</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">92000</span> <span class="o">*</span> <span class="n">num</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="mi">8400000</span><span class="p">)</span>
     <span class="n">tuples</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">fitness_values</span><span class="p">,</span><span class="n">population</span><span class="p">),</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
     <span class="n">fitness_values</span><span class="p">,</span> <span class="n">population</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tuples</span><span class="p">]</span>
@@ -586,9 +494,9 @@ where <span class="math notranslate nohighlight">\(P\)</span> is the price, and 
 </div>
 </div>
 <p>This fitness function essentially determines how “good” a particular offspring is. It first converts each unit in the population to a binary number (the genotype), and then returns the “best” offspring.</p>
-</div>
-<div class="section" id="parent-selection-crossover-and-mutation">
-<h3>Parent Selection, Crossover, and Mutation<a class="headerlink" href="#parent-selection-crossover-and-mutation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="parent-selection-crossover-and-mutation">
+<h3>Parent Selection, Crossover, and Mutation<a class="headerlink" href="#parent-selection-crossover-and-mutation" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Random parent selection</span>
@@ -631,9 +539,9 @@ where <span class="math notranslate nohighlight">\(P\)</span> is the price, and 
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="solution-function">
-<h3>Solution Function<a class="headerlink" href="#solution-function" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="solution-function">
+<h3>Solution Function<a class="headerlink" href="#solution-function" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">SGA</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="n">num_gen</span><span class="p">,</span> <span class="n">num_parents</span><span class="p">,</span> <span class="n">crossover_prob</span><span class="p">,</span> <span class="n">mutation_prob</span><span class="p">,</span> <span class="n">use_tqdm</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
@@ -650,7 +558,7 @@ where <span class="math notranslate nohighlight">\(P\)</span> is the price, and 
         <span class="n">states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_best_score</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">current_best_score</span> <span class="o">&gt;</span> <span class="n">best_score</span><span class="p">:</span> 
             <span class="n">best_score</span> <span class="o">=</span> <span class="n">current_best_score</span>
-            <span class="n">best_solution</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">copy</span><span class="p">(</span><span class="n">current_best_solution</span><span class="p">)),</span> <span class="n">base</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">best_solution</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">copy</span><span class="p">(</span><span class="n">current_best_solution</span><span class="p">)),</span> <span class="n">base</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
         <span class="n">parents</span> <span class="o">=</span> <span class="n">select_parent</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="n">num_parents</span><span class="p">)</span>
         <span class="n">parents</span> <span class="o">=</span> <span class="n">crossover</span><span class="p">(</span><span class="n">parents</span><span class="p">,</span> <span class="n">crossover_prob</span><span class="p">)</span>
         <span class="n">population</span> <span class="o">=</span> <span class="n">mutation</span><span class="p">(</span><span class="n">population</span><span class="p">,</span><span class="n">mutation_prob</span><span class="p">)</span>
@@ -659,9 +567,9 @@ where <span class="math notranslate nohighlight">\(P\)</span> is the price, and 
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SGA Parameters</span>
@@ -675,50 +583,48 @@ where <span class="math notranslate nohighlight">\(P\)</span> is the price, and 
 <span class="n">chromosome_length</span> <span class="o">=</span> <span class="mi">9</span>
 <span class="n">best_score</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100000</span> 
 
-<span class="c1"># Initialize the "best solution"</span>
+<span class="c1"># Initialize the &quot;best solution&quot;</span>
 <span class="n">population</span> <span class="o">=</span> <span class="n">init_pop</span><span class="p">(</span><span class="n">pop_size</span><span class="p">,</span> <span class="n">chromosome_length</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="results-and-visualization">
-<h3>Results and Visualization<a class="headerlink" href="#results-and-visualization" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="results-and-visualization">
+<h3>Results and Visualization<a class="headerlink" href="#results-and-visualization" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">best_solution</span><span class="p">,</span> <span class="n">best_score</span><span class="p">,</span> <span class="n">states</span> <span class="o">=</span> <span class="n">SGA</span><span class="p">(</span>
     <span class="n">population</span><span class="p">,</span> <span class="n">num_gen</span><span class="p">,</span> <span class="n">num_parents</span><span class="p">,</span> <span class="n">crossover_prob</span><span class="p">,</span> <span class="n">mutation_prob</span><span class="p">,</span> <span class="n">use_tqdm</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Best Solution: </span><span class="si">{</span><span class="n">best_solution</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Best Score: </span><span class="si">{</span><span class="n">best_score</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best Solution: </span><span class="si">{</span><span class="n">best_solution</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best Score: </span><span class="si">{</span><span class="n">best_score</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">states</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Generations"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Cost"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Generations&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cost&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "c8faa833be7342f9ac1aee269c0f569a", "version_major": 2, "version_minor": 0}
-</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best Solution: 230
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "548090acf7a247ecb65813560a31c53a"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best Solution: 230
 Best Score: 2180000.0
 </pre></div>
 </div>
-<img alt="../../_images/GeneticAlgorithms_21_2.png" src="../../_images/GeneticAlgorithms_21_2.png"/>
+<img alt="../../_images/43e5d2e74dc9608931feaec6bd116957d72cf5c0dbfd3de4e18e918ce7af42a4.png" src="../../_images/43e5d2e74dc9608931feaec6bd116957d72cf5c0dbfd3de4e18e918ce7af42a4.png" />
 </div>
 </div>
 <p>We can also easily verify that the solution is indeed <strong>230</strong>, as the maximum of the profit function (solution to the derivative) is 230:</p>
-<p><span class="math notranslate nohighlight">\(Profit=-200P^2+92,000P-8,400,000\)</span><br/>
-<span class="math notranslate nohighlight">\(\frac{dP}{dProfit}=-400P + 92000\)</span><br/>
-Set <span class="math notranslate nohighlight">\(\frac{dP}{dProfit}=0\)</span><br/>
-<span class="math notranslate nohighlight">\(400P = 92000\)</span><br/>
+<p><span class="math notranslate nohighlight">\(Profit=-200P^2+92,000P-8,400,000\)</span><br>
+<span class="math notranslate nohighlight">\(\frac{dP}{dProfit}=-400P + 92000\)</span><br>
+Set <span class="math notranslate nohighlight">\(\frac{dP}{dProfit}=0\)</span><br>
+<span class="math notranslate nohighlight">\(400P = 92000\)</span><br>
 <span class="math notranslate nohighlight">\(P=230\)</span></p>
-</div>
-</div>
-<div class="section" id="example-bike-pricing-using-real-valued-genetic-algorithm">
-<h2>Example: Bike pricing using Real-valued Genetic Algorithm<a class="headerlink" href="#example-bike-pricing-using-real-valued-genetic-algorithm" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="example-bike-pricing-using-real-valued-genetic-algorithm">
+<h2>Example: Bike pricing using Real-valued Genetic Algorithm<a class="headerlink" href="#example-bike-pricing-using-real-valued-genetic-algorithm" title="Permalink to this heading">#</a></h2>
 <p>We can also run the above example using real-values instead. For this example, we’ll use a solver to handle the population generation, mutation, and child creation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -727,6 +633,19 @@ Set <span class="math notranslate nohighlight">\(\frac{dP}{dProfit}=0\)</span><b
 <span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [10],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">ypstruct</span> <span class="kn">import</span> <span class="n">structure</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">math</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;ypstruct&#39;
 </pre></div>
 </div>
 </div>
@@ -831,7 +750,7 @@ Set <span class="math notranslate nohighlight">\(\frac{dP}{dProfit}=0\)</span><b
     <span class="n">out</span> <span class="o">=</span> <span class="n">structure</span><span class="p">()</span>
     <span class="n">out</span><span class="o">.</span><span class="n">pop</span> <span class="o">=</span> <span class="n">pop</span>
     <span class="n">out</span><span class="o">.</span><span class="n">bestsol</span> <span class="o">=</span> <span class="n">bestsol</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"Best solution: "</span><span class="p">,</span> <span class="n">bestsol</span><span class="o">.</span><span class="n">position</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best solution: &quot;</span><span class="p">,</span> <span class="n">bestsol</span><span class="o">.</span><span class="n">position</span><span class="p">)</span>
     <span class="n">out</span><span class="o">.</span><span class="n">bestcost</span> <span class="o">=</span> <span class="n">bestcost</span>
     <span class="k">return</span> <span class="n">out</span>
 </pre></div>
@@ -926,9 +845,7 @@ Set <span class="math notranslate nohighlight">\(\frac{dP}{dProfit}=0\)</span><b
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "6c2e1078adf64f8c8be7eea2a39e9088", "version_major": 2, "version_minor": 0}
-</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best solution:  [212.35900406]
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "cdfda69459a84df4bdbc83b149d3bd56", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best solution:  [219.49875272]
 </pre></div>
 </div>
 </div>
@@ -939,25 +856,25 @@ Set <span class="math notranslate nohighlight">\(\frac{dP}{dProfit}=0\)</span><b
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">bestcost</span><span class="p">)</span>
 <span class="c1"># plt.semilogy(out.bestcost)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">params</span><span class="o">.</span><span class="n">maxit</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Iterations'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Best Cost'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Genetic Algorithm (GA)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Iterations&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Best Cost&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Genetic Algorithm (GA)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/GeneticAlgorithms_33_0.png" src="../../_images/GeneticAlgorithms_33_0.png"/>
+<img alt="../../_images/776fb1208c2aa8a99a3316b47f97cea85a37f667c0efd4ed20f6cd1dd1824230.png" src="../../_images/776fb1208c2aa8a99a3316b47f97cea85a37f667c0efd4ed20f6cd1dd1824230.png" />
 </div>
 </div>
-</div>
-<div class="section" id="example-permutation-genetic-algorithm-for-tsp">
-<h2>Example: Permutation Genetic Algorithm for TSP<a class="headerlink" href="#example-permutation-genetic-algorithm-for-tsp" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="example-permutation-genetic-algorithm-for-tsp">
+<h2>Example: Permutation Genetic Algorithm for TSP<a class="headerlink" href="#example-permutation-genetic-algorithm-for-tsp" title="Permalink to this heading">#</a></h2>
 <p>As you know by now, the Travelling Salesman Problem is essentially about generating the least costly permutation of all vertices in a graph. Assuming the graph is fully connected (every permutation is feasible), we can consider the following set of operators:</p>
-<div class="section" id="crossover-operators">
-<h3>Crossover operators<a class="headerlink" href="#crossover-operators" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
+<section id="crossover-operators">
+<h3>Crossover operators<a class="headerlink" href="#crossover-operators" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
 <li><p>Adjacency-based operators</p>
 <ul class="simple">
 <li><p>Partially mapped crossover</p></li>
@@ -971,10 +888,10 @@ Set <span class="math notranslate nohighlight">\(\frac{dP}{dProfit}=0\)</span><b
 </ul>
 </li>
 </ol>
-</div>
-<div class="section" id="mutation-operators">
-<h3>Mutation Operators<a class="headerlink" href="#mutation-operators" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
+</section>
+<section id="mutation-operators">
+<h3>Mutation Operators<a class="headerlink" href="#mutation-operators" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
 <li><p>Insert mutation</p></li>
 <li><p>Swap mutation</p></li>
 <li><p>Inversion mutation</p></li>
@@ -996,7 +913,7 @@ Set <span class="math notranslate nohighlight">\(\frac{dP}{dProfit}=0\)</span><b
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">complete_graph</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
 <span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">():</span>
-    <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">][</span><span class="s1">'weight'</span><span class="p">]</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">40</span><span class="p">)</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">][</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">40</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">25</span><span class="p">))</span> 
 <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1005,13 +922,13 @@ Set <span class="math notranslate nohighlight">\(\frac{dP}{dProfit}=0\)</span><b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/GeneticAlgorithms_37_0.png" src="../../_images/GeneticAlgorithms_37_0.png"/>
+<img alt="../../_images/fab1ef1663b04d86ff1f05c72a4ad3b0c5a4a52b797e1d1825f75cd7214b4b2c.png" src="../../_images/fab1ef1663b04d86ff1f05c72a4ad3b0c5a4a52b797e1d1825f75cd7214b4b2c.png" />
 </div>
 </div>
 <p>Let’s assume we can generate two random tours of the graph, and we now want to generate another permutation from these two parents. We can’t simply cut and paste or swap randomly, as that will likely generate a set that is not an actual and admissible permutation. For this reason, we need to consider the following crossover types that guarantee an acceptable permutation:</p>
-</div>
-<div class="section" id="partially-mapped-crossover">
-<h3>Partially-mapped crossover<a class="headerlink" href="#partially-mapped-crossover" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="partially-mapped-crossover">
+<h3>Partially-mapped crossover<a class="headerlink" href="#partially-mapped-crossover" title="Permalink to this heading">#</a></h3>
 <p>This algorithm is lightweight and disrupts a lot of the genes, which is a desirable effect for GA.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1047,7 +964,7 @@ Set <span class="math notranslate nohighlight">\(\frac{dP}{dProfit}=0\)</span><b
     
     <span class="c1"># (5) copying into the child all the elements in the segment</span>
     <span class="c1">#.    that are present in the first permutation segment but</span>
-    <span class="c1">#.    aren't present in the second permutation segment.</span>
+    <span class="c1">#.    aren&#39;t present in the second permutation segment.</span>
     <span class="c1">#.    if not we need to copy that element in place outside</span>
     <span class="c1">#     the segment in a place where we are sure that would</span>
     <span class="c1">#.    result into inadmissible permutations.</span>
@@ -1079,9 +996,9 @@ Set <span class="math notranslate nohighlight">\(\frac{dP}{dProfit}=0\)</span><b
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="edge-recombination-crossover">
-<h3>Edge recombination crossover<a class="headerlink" href="#edge-recombination-crossover" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="edge-recombination-crossover">
+<h3>Edge recombination crossover<a class="headerlink" href="#edge-recombination-crossover" title="Permalink to this heading">#</a></h3>
 <p>The offspring of this crossover depends on the edges and connections between nodes in each permutation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1129,9 +1046,9 @@ Set <span class="math notranslate nohighlight">\(\frac{dP}{dProfit}=0\)</span><b
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="order-1-crossover">
-<h3>Order 1 crossover<a class="headerlink" href="#order-1-crossover" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="order-1-crossover">
+<h3>Order 1 crossover<a class="headerlink" href="#order-1-crossover" title="Permalink to this heading">#</a></h3>
 <p>This is much simpler crossover technique. It involves copying a random segement of nodes from the first parent, and completes the child with any nodes in the second parent not already present in the child.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1149,7 +1066,7 @@ Set <span class="math notranslate nohighlight">\(\frac{dP}{dProfit}=0\)</span><b
     <span class="c1"># add the randomaly selected segment from the first parent</span>
     <span class="n">child</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">firstPermutation</span><span class="p">[</span><span class="n">start_Segment</span><span class="p">:</span> <span class="n">end_Segment</span><span class="p">])</span>
     
-    <span class="c1"># add what is left from the second parent that wasn't added from the first parent</span>
+    <span class="c1"># add what is left from the second parent that wasn&#39;t added from the first parent</span>
     <span class="n">residueFromSegment</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">secondPermutation</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">firstPermutation</span><span class="p">[</span><span class="n">start_Segment</span><span class="p">:</span> <span class="n">end_Segment</span><span class="p">]))</span>
     <span class="n">child</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">residueFromSegment</span><span class="p">)</span>
     
@@ -1158,14 +1075,14 @@ Set <span class="math notranslate nohighlight">\(\frac{dP}{dProfit}=0\)</span><b
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="insert-mutation">
-<h3>Insert Mutation<a class="headerlink" href="#insert-mutation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="insert-mutation">
+<h3>Insert Mutation<a class="headerlink" href="#insert-mutation" title="Permalink to this heading">#</a></h3>
 <p>This mutation selects two random genes and moves the second to follow the first directly. This ensures a valid permutation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">insert_mutation</span><span class="p">(</span><span class="n">permutation</span><span class="p">):</span>
-    <span class="c1"># copying the list so we don't mess with the original</span>
+    <span class="c1"># copying the list so we don&#39;t mess with the original</span>
     <span class="n">child</span> <span class="o">=</span> <span class="n">permutation</span><span class="p">[:]</span>
     
     <span class="c1"># choose two random genes and make sure that they are different</span>
@@ -1184,14 +1101,14 @@ Set <span class="math notranslate nohighlight">\(\frac{dP}{dProfit}=0\)</span><b
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="swap-mutation">
-<h3>Swap Mutation<a class="headerlink" href="#swap-mutation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="swap-mutation">
+<h3>Swap Mutation<a class="headerlink" href="#swap-mutation" title="Permalink to this heading">#</a></h3>
 <p>This mutation simply exchanges the positions of two nodes in a permutation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">swap_mutation</span><span class="p">(</span><span class="n">permutation</span><span class="p">):</span>
-    <span class="c1"># copying the list so we don't mess with the original</span>
+    <span class="c1"># copying the list so we don&#39;t mess with the original</span>
     <span class="n">child</span> <span class="o">=</span> <span class="n">permutation</span><span class="p">[:]</span>
 
     <span class="n">length</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">child</span><span class="p">))</span>
@@ -1208,9 +1125,9 @@ Set <span class="math notranslate nohighlight">\(\frac{dP}{dProfit}=0\)</span><b
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="implementation">
-<h3>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="implementation">
+<h3>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading">#</a></h3>
 <p>For this example, we’ll use Partially-mapped crossovers and Insert mutations, but others could be substituted as well.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1257,59 +1174,57 @@ Set <span class="math notranslate nohighlight">\(\frac{dP}{dProfit}=0\)</span><b
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "ea61005c36e04bc299a2c4c375f95f78", "version_major": 2, "version_minor": 0}
-</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f75f0e9342ab48719e918afc86428db9", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tour</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">pool</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">route</span> <span class="p">:</span> <span class="n">cost_tour</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">))</span> <span class="c1"># result</span>
 <span class="n">tour_cost</span> <span class="o">=</span> <span class="n">cost_tour</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">tour</span><span class="p">)</span> <span class="c1">#result cost</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"number of generation"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"cost of the shortest tour (meters)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;number of generation&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;cost of the shortest tour (meters)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">best_at_gen</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/GeneticAlgorithms_51_0.png" src="../../_images/GeneticAlgorithms_51_0.png"/>
+<img alt="../../_images/3b8c4f65bbb1b878b7452afa2d799d1164671c6f7386abbe058da58be457958a.png" src="../../_images/3b8c4f65bbb1b878b7452afa2d799d1164671c6f7386abbe058da58be457958a.png" />
 </div>
 </div>
 <p>As you may notice, there is not much convergence in the costs of the tours in this GA implementation. This is largely because the solutions of the problem are very close to each other (there is only a limited range of edge weights).</p>
-</div>
-</div>
-<div class="section" id="example-permutation-genetic-algorithm-for-routing-problem">
-<h2>Example: Permutation Genetic Algorithm for Routing Problem<a class="headerlink" href="#example-permutation-genetic-algorithm-for-routing-problem" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="example-permutation-genetic-algorithm-for-routing-problem">
+<h2>Example: Permutation Genetic Algorithm for Routing Problem<a class="headerlink" href="#example-permutation-genetic-algorithm-for-routing-problem" title="Permalink to this heading">#</a></h2>
 <p>For the examples in this section, we will move past our University of Toronto search space in the previous section in favour of a more complex environment. This is the kind of network which really benefits from Genetic Search Algorithms.</p>
 <p>Let’s consider the road network in Vaughan, a municipality to the north of Toronto:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">osmnx</span>
 
-<span class="n">G</span> <span class="o">=</span> <span class="n">osmnx</span><span class="o">.</span><span class="n">graph_from_address</span><span class="p">(</span><span class="s1">'vaughan'</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mi">1400</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">osmnx</span><span class="o">.</span><span class="n">graph_from_address</span><span class="p">(</span><span class="s1">&#39;vaughan&#39;</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mi">1400</span><span class="p">)</span>
 
 <span class="n">origin</span> <span class="o">=</span> <span class="mi">29658954</span>
 <span class="n">destination</span> <span class="o">=</span> <span class="mi">701446851</span>
 
 <span class="n">highlighted</span> <span class="o">=</span> <span class="p">[</span><span class="n">origin</span><span class="p">,</span> <span class="n">destination</span><span class="p">]</span>
 
-<span class="n">nc</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'r'</span> <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">highlighted</span> <span class="k">else</span> <span class="s1">'#336699'</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()]</span>
+<span class="n">nc</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span> <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">highlighted</span> <span class="k">else</span> <span class="s1">&#39;#336699&#39;</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()]</span>
 <span class="n">ns</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span> <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">highlighted</span> <span class="k">else</span> <span class="mi">8</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()]</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">osmnx</span><span class="o">.</span><span class="n">plot_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="n">ns</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">nc</span><span class="p">,</span> <span class="n">node_zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/GeneticAlgorithms_54_0.png" src="../../_images/GeneticAlgorithms_54_0.png"/>
+<img alt="../../_images/de0d647b536d7070aa29a0699e85a7b4880ec6dc11d491187b2c5669dfd0b5c7.png" src="../../_images/de0d647b536d7070aa29a0699e85a7b4880ec6dc11d491187b2c5669dfd0b5c7.png" />
 </div>
 </div>
 <p>For this example, we’ll be attempting to search for the shortest route between two points highlighted in red.</p>
-<div class="section" id="the-algorithm">
-<h3>The Algorithm<a class="headerlink" href="#the-algorithm" title="Permalink to this headline">¶</a></h3>
+<section id="the-algorithm">
+<h3>The Algorithm<a class="headerlink" href="#the-algorithm" title="Permalink to this heading">#</a></h3>
 <p>There are many ways to design a genetic algorithm; the below is only one of them.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>We will need a fitness function to determine which offspring to keep in each generation. This will be the length of the route generated (we want to minimize this).</p></li>
 <li><p>As we will be doing a real-value (non-binary) GA, out phenotype is the same as our genotype.</p></li>
 <li><p>Our GA implementation is “kind of” steady state: we probabilistically choose the best routes to be the parents of the next generation. More on this later.</p></li>
@@ -1323,23 +1238,23 @@ i {font-weight:normal}
 span {font-weight:normal}
 </style>
 <div style="background-color: rgba(0,0,0,0.0470588);padding:10px;font-family:monospace;">
-<b>GENETIC_ALGORITHM</b>(<i>source</i>,<i>destination</i>, <i>num_of_generations</i>. <i>pool_size</i>) <b>return</b> a <i>route</i>
-<div style="padding-left:20px;">
-<i><font color="green">pool</font></i> ← <span>random-routes between <i>source</i> and <i>destination</i></span><br/><br/>
-        for <i>num_of_generations</i> do<br/>
-<div style="padding-left:20px;">
-<i><font color="orange">parents_first_gen</font></i> ← <span>select number of best routes from <i><font color="green">pool</font></i></span><br/>
-<i><font color="blue">parents_second_gen</font></i> ← <span>crossover <i><font color="orange">parents_first_gen</font></i></span><br/>
-<i><font color="purple">parents</font></i> ← <span>mutate <i><font color="blue">parents_second_gen</font></i></span><br/>
-<i><font color="green">pool</font></i> ← <span>offspring of <i><font color="purple">parents</font></i></span><br/>
-            remove duplicates from <i><font color="green">pool</font></i> and add random routes to compensate any removal<br/>
-</div>
-        endfor<br/>
-<i>route</i> ← best <i>route</i> in <i><font color="green">pool</font></i><br/>
+    <b>GENETIC_ALGORITHM</b>(<i>source</i>,<i>destination</i>, <i>num_of_generations</i>. <i>pool_size</i>) <b>return</b> a <i>route</i>
+    <div style='padding-left:20px;'>
+        <i><font color="green">pool</font></i> &larr; <span>random-routes between <i>source</i> and <i>destination</i></span><br><br>
+        for <i>num_of_generations</i> do<br>
+        <div style='padding-left:20px;'>
+            <i><font color="orange">parents_first_gen</font></i> &larr; <span>select number of best routes from <i><font color="green">pool</font></i></span><br>
+            <i><font color="blue">parents_second_gen</font></i> &larr; <span>crossover <i><font color="orange">parents_first_gen</font></i></span><br>
+            <i><font color="purple">parents</font></i> &larr; <span>mutate <i><font color="blue">parents_second_gen</font></i></span><br>
+            <i><font color="green">pool</font></i> &larr; <span>offspring of <i><font color="purple">parents</font></i></span><br>
+            remove duplicates from <i><font color="green">pool</font></i> and add random routes to compensate any removal<br>
+        </div>
+        endfor<br>
+        <i>route</i> &larr; best <i>route</i> in <i><font color="green">pool</font></i><br>
         return <i>route</i>
-</div>
-</div><div class="section" id="mutation">
-<h4>Mutation<a class="headerlink" href="#mutation" title="Permalink to this headline">¶</a></h4>
+    </div>
+</div><section id="mutation">
+<h4>Mutation<a class="headerlink" href="#mutation" title="Permalink to this heading">#</a></h4>
 <p>Our algorithm “mutates” a child (route) by deleting a node between two nodes in the child, and attempting to fill in the gap with alternate nodes. If you recall the way we generated “children” for Beam Search and Hill climbing in previous sections, this uses the same idea.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1366,9 +1281,9 @@ span {font-weight:normal}
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="crossover">
-<h4>Crossover<a class="headerlink" href="#crossover" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="crossover">
+<h4>Crossover<a class="headerlink" href="#crossover" title="Permalink to this heading">#</a></h4>
 <p>Rather than selecting a random point to “crossover”, we look for a common node between the two routes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1397,14 +1312,14 @@ span {font-weight:normal}
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="duplicates">
-<h4>Duplicates<a class="headerlink" href="#duplicates" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="duplicates">
+<h4>Duplicates<a class="headerlink" href="#duplicates" title="Permalink to this heading">#</a></h4>
 <p>Our offspring will likely result in many duplicates, as most routes will closely ressemble each other. To account for this, we remove any duplicates and replace them with new randomly generated routes. This also ensures population diversity.</p>
-</div>
-</div>
-<div class="section" id="the-code">
-<h3>The code<a class="headerlink" href="#the-code" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="the-code">
+<h3>The code<a class="headerlink" href="#the-code" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">smart_mobility_utilities.common</span> <span class="kn">import</span> <span class="n">randomized_search</span>
@@ -1419,13 +1334,13 @@ span {font-weight:normal}
 
 <span class="c1"># Plot the pool on a map</span>
 <span class="n">random_hexa</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">)</span> <span class="c1"># generate random hexadecimal color</span>
-<span class="n">rc</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'#</span><span class="si">%02X%02X%02X</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">random_hexa</span><span class="p">(),</span><span class="n">random_hexa</span><span class="p">(),</span><span class="n">random_hexa</span><span class="p">())</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">pool_size</span><span class="p">)]</span>
+<span class="n">rc</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#</span><span class="si">%02X%02X%02X</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">random_hexa</span><span class="p">(),</span><span class="n">random_hexa</span><span class="p">(),</span><span class="n">random_hexa</span><span class="p">())</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">pool_size</span><span class="p">)]</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">osmnx</span><span class="o">.</span><span class="n">plot_graph_routes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pool</span><span class="p">,</span> <span class="n">route_colors</span><span class="o">=</span><span class="n">rc</span><span class="p">,</span> <span class="n">route_linewidth</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/GeneticAlgorithms_64_0.png" src="../../_images/GeneticAlgorithms_64_0.png"/>
+<img alt="../../_images/8617e0a3f9b40f9fa0c84eb76f64b826806db8ae81ac6415b60acc2e3afed794.png" src="../../_images/8617e0a3f9b40f9fa0c84eb76f64b826806db8ae81ac6415b60acc2e3afed794.png" />
 </div>
 </div>
 <p>The following code will take quite a bit of time to run.</p>
@@ -1460,24 +1375,70 @@ span {font-weight:normal}
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "88bb12276caa41c899796185613b7c60", "version_major": 2, "version_minor": 0}
-</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "618b4027b0fa46f784b3598b964cba71", "version_major": 2, "version_minor": 0}</script><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_9506</span><span class="o">/</span><span class="mf">2180043652.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">parents_1</span> <span class="o">=</span> <span class="n">select_best</span><span class="p">(</span><span class="n">pool</span><span class="p">,</span> <span class="n">parents_num</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="n">parents_2</span> <span class="o">=</span> <span class="p">[</span><span class="n">cross_over</span><span class="p">(</span><span class="n">route_1</span><span class="p">,</span> <span class="n">route_2</span><span class="p">)</span> <span class="k">for</span> <span class="n">route_1</span><span class="p">,</span> <span class="n">route_2</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">parents_1</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="ne">---&gt; </span><span class="mi">16</span>     <span class="n">pool</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">mutate</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">)</span> <span class="k">for</span> <span class="n">route</span> <span class="ow">in</span> <span class="n">parents_2</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="n">pool</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="n">pool</span><span class="p">))))]</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span>     <span class="n">num_removed</span> <span class="o">=</span> <span class="n">pool_size</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">pool</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="nn">/tmp/ipykernel_9506/2180043652.py</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">parents_1</span> <span class="o">=</span> <span class="n">select_best</span><span class="p">(</span><span class="n">pool</span><span class="p">,</span> <span class="n">parents_num</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="n">parents_2</span> <span class="o">=</span> <span class="p">[</span><span class="n">cross_over</span><span class="p">(</span><span class="n">route_1</span><span class="p">,</span> <span class="n">route_2</span><span class="p">)</span> <span class="k">for</span> <span class="n">route_1</span><span class="p">,</span> <span class="n">route_2</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">parents_1</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="ne">---&gt; </span><span class="mi">16</span>     <span class="n">pool</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">mutate</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">)</span> <span class="k">for</span> <span class="n">route</span> <span class="ow">in</span> <span class="n">parents_2</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="n">pool</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="n">pool</span><span class="p">))))]</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span>     <span class="n">num_removed</span> <span class="o">=</span> <span class="n">pool_size</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">pool</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="nn">/tmp/ipykernel_9506/672098679.py</span> in <span class="ni">mutate</span><span class="nt">(G, route)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">failed</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">route</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> 
+<span class="ne">---&gt; </span><span class="mi">11</span>     <span class="n">path</span> <span class="o">=</span> <span class="n">shortest_path_with_failed_nodes_single</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="p">[</span><span class="n">failed</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> 
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="c1"># This method could fail because of a lot of factors relating to the graph structure</span>
+
+<span class="nn">~/book-env/smart_mobility_utilities/smart_mobility_utilities/children.py</span> in <span class="ni">shortest_path_with_failed_nodes_single</span><span class="nt">(G, route, failed)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">j</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">route</span><span class="p">)</span> <span class="o">-</span><span class="mi">2</span>
+<span class="ne">---&gt; </span><span class="mi">11</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">shortest_path_with_failed_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">route</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">failed</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span><span class="p">:</span> <span class="k">return</span> <span class="n">result</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">path</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">result</span>
+
+<span class="nn">~/book-env/smart_mobility_utilities/smart_mobility_utilities/children.py</span> in <span class="ni">shortest_path_with_failed_nodes</span><span class="nt">(G, route, i, j, failed)</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span> 
+<span class="g g-Whitespace">     </span><span class="mi">48</span>     <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">unrelaxed_nodes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">49</span>         <span class="n">node</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">unrelaxed_nodes</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">node</span> <span class="p">:</span> <span class="n">shortest_dist</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">50</span> 
+<span class="g g-Whitespace">     </span><span class="mi">51</span>         <span class="c1"># if we have relaxed articulation nodes in our graph</span>
+
+<span class="nn">~/book-env/smart_mobility_utilities/smart_mobility_utilities/children.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(node)</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span> 
+<span class="g g-Whitespace">     </span><span class="mi">48</span>     <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">unrelaxed_nodes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">49</span>         <span class="n">node</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">unrelaxed_nodes</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">node</span> <span class="p">:</span> <span class="n">shortest_dist</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">50</span> 
+<span class="g g-Whitespace">     </span><span class="mi">51</span>         <span class="c1"># if we have relaxed articulation nodes in our graph</span>
+
+<span class="nn">~/book-env/smart_mobility_utilities/smart_mobility_utilities/common.py</span> in <span class="ni">__eq__</span><span class="nt">(self, other)</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">osmid</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">osmid</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span>         <span class="k">except</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">59</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">osmid</span> <span class="o">==</span> <span class="n">other</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span> 
+<span class="g g-Whitespace">     </span><span class="mi">61</span> 
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">smart_mobility_utilities.viz</span> <span class="kn">import</span> <span class="n">draw_route</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Cost of the route:"</span><span class="p">,</span><span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">route</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cost of the route:&quot;</span><span class="p">,</span><span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">route</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">states</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cost of the route: 2765.76
-</pre></div>
-</div>
-<img alt="../../_images/GeneticAlgorithms_67_1.png" src="../../_images/GeneticAlgorithms_67_1.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1486,18 +1447,12 @@ span {font-weight:normal}
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "018b0ebbd265409aac871d56a588b60a", "version_major": 2, "version_minor": 0}
-</script></div>
 </div>
-</div>
-</div>
-</div>
-<script type="application/vnd.jupyter.widget-state+json">
-{"state": {"018b0ebbd265409aac871d56a588b60a": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletMapModel", "state": {"_dom_classes": [], "_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletMapModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletMapView", "bottom": 0.0, "bounce_at_zoom_limits": true, "box_zoom": true, "center": [43.7907708, -79.5414667], "close_popup_on_click": true, "controls": ["IPY_MODEL_7d3b402827ce4b94a51a143bb6920fda", "IPY_MODEL_7fbc02783f42478180cf7f030fc57c9b"], "crs": {"custom": false, "name": "EPSG3857"}, "default_style": "IPY_MODEL_27fd4a819f324eb79018caff846bca00", "double_click_zoom": true, "dragging": true, "dragging_style": "IPY_MODEL_2652a8f8e2774ae3815fcb45ffacfee8", "east": 0.0, "fullscreen": false, "inertia": true, "inertia_deceleration": 3000, "inertia_max_speed": 1500, "interpolation": "bilinear", "keyboard": true, "keyboard_pan_offset": 80, "keyboard_zoom_offset": 1, "layers": ["IPY_MODEL_e225152cf879423eb79f04dc60c4db11", "IPY_MODEL_d979e5f90b4947b6af75dc1aa25a5c83", "IPY_MODEL_9f37ce9070a645edade82de1fd19bea8", "IPY_MODEL_27f3153f893447999752d59a12194b72", "IPY_MODEL_30a3a0aebb6d49c1bd58a2620519841f", "IPY_MODEL_ca8a1e9f718145b78b821493c0e74a57", "IPY_MODEL_d781b691bb5144afadc25415c2b9b9da", "IPY_MODEL_97dd1fece2644087b66041a1ad0f07c7", "IPY_MODEL_25816d7e0e30434eae6bcae1bfc53dba", "IPY_MODEL_7afe971fed7149e89d271f45310f2ee1", "IPY_MODEL_11bf2c70cbef43ebaa91188bc2fcea44", "IPY_MODEL_2a81d3703ad145fba7a93f81c576729a", "IPY_MODEL_9604530276e449c0a4eac3ef185bf834", "IPY_MODEL_127d761d23764b12b510829ff8c041e5", "IPY_MODEL_c1b8f636b9684baf8d5eca12729a6721", "IPY_MODEL_936d98a3a6c743fd8a95b6b8ee2978cd", "IPY_MODEL_01e88693c08e40218889f1509eb36717", "IPY_MODEL_5da73e672b8e4d06afee5912a16f6d97", "IPY_MODEL_fe7e7a3845df4da6b02290f3d275ab4e", "IPY_MODEL_1a47f9ffbebc4971bcf5958a38227acd", "IPY_MODEL_fedd39e6abc0423fa7c5cc417d268622", "IPY_MODEL_2596b056a45d4c2ea14ddb0a2157beb2", "IPY_MODEL_ee0ce7ae9e164277bbdde726bb4f36d6", "IPY_MODEL_c050722a09504256a5d034abe51b38d9", "IPY_MODEL_3a7367071ff64f6b86d838ccfe437e34", "IPY_MODEL_27580342300d42d9aaae39992f3fd54c", "IPY_MODEL_268930f2bb144a48a0d21e19e3d8b4dd", "IPY_MODEL_1086e1f7063445519b2e891595ce6a60", "IPY_MODEL_4e95038a83f244499905e001755d7362", "IPY_MODEL_39ff5e4dcd7e46f0b84d84fc0ef63675", "IPY_MODEL_a0c561688fb64cd8abe7ee316a326333", "IPY_MODEL_65f58473c9a040219b1a6b1092e8709d", "IPY_MODEL_1010da615db64d1dbd71ce0a3c1473ed", "IPY_MODEL_2b55c9b2865641e8a49b8c2a6cba711c", "IPY_MODEL_bb3a0161cd674995af3e688cf30b7edb", "IPY_MODEL_2ccfcea430234c73b8ad72dbbbe0f215", "IPY_MODEL_b812a69f58d942fc9f221738e0f85eb2", "IPY_MODEL_dbf0bfdad0f54aea98a28bdb43a00fc8", "IPY_MODEL_0b9fefcd424f4d618127d9529eb858e0", "IPY_MODEL_7c7b5d18d7fb4eb2b16289ea90f3ba62"], "layout": "IPY_MODEL_7aacd960505b477aae0e98202d8a44dc", "left": 9007199254740991.0, "max_zoom": 18.0, "min_zoom": 1.0, "modisdate": "yesterday", "north": 0.0, "options": ["bounce_at_zoom_limits", "box_zoom", "center", "close_popup_on_click", "double_click_zoom", "dragging", "fullscreen", "inertia", "inertia_deceleration", "inertia_max_speed", "interpolation", "keyboard", "keyboard_pan_offset", "keyboard_zoom_offset", "max_zoom", "min_zoom", "scroll_wheel_zoom", "tap", "tap_tolerance", "touch_zoom", "world_copy_jump", "zoom", "zoom_animation_threshold", "zoom_delta", "zoom_snap", "zoom_start"], "right": 0.0, "scroll_wheel_zoom": false, "south": 0.0, "style": "IPY_MODEL_12b12a17ad6b40db9f0ef91013a0dfac", "tap": true, "tap_tolerance": 15, "top": 9007199254740991.0, "touch_zoom": true, "west": 0.0, "window_url": "", "world_copy_jump": false, "zoom": 13.0, "zoom_animation_threshold": 4, "zoom_delta": 1.0, "zoom_snap": 1.0, "zoom_start": 12.0}}, "01e88693c08e40218889f1509eb36717": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7918886, -79.5241642], [43.7924562, -79.5242794], [43.7925982, -79.5243323], [43.7928015, -79.5243733], [43.7930138, -79.5244502], [43.7932979, -79.524512], [43.7937741, -79.5246228], [43.7938093, -79.5246375]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "0b68b80feed646ecbf999baececd5b0b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "0b9fefcd424f4d618127d9529eb858e0": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.8003817, -79.5310995], [43.8006227, -79.5311893]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "0ec776f34c8b4eec874a707e0c9f3888": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_145c46c9b72544de849e957b23195bce", "placeholder": "\u200b", "style": "IPY_MODEL_e998050b6ebb498e84fd6777c355eeac", "value": " 500/500 [00:05&lt;00:00, 85.07it/s]"}}, "1010da615db64d1dbd71ce0a3c1473ed": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7975414, -79.5274785], [43.7977157, -79.5275456], [43.7980058, -79.5276555]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "1086e1f7063445519b2e891595ce6a60": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7948505, -79.5272451], [43.7950859, -79.5273049], [43.7953758, -79.5273821], [43.79557, -79.5274006]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "1155188f0dee49a89e36eb91a75a2019": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "1172d4a5ab6d4655b51fcd6053a608a9": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "11bf2c70cbef43ebaa91188bc2fcea44": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7895126, -79.523811], [43.7895327, -79.5239827]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "127d761d23764b12b510829ff8c041e5": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7896428, -79.5241644], [43.7897057, -79.5241907], [43.7897427, -79.5241899], [43.7897666, -79.5241865], [43.7901745, -79.5241282], [43.7907457, -79.524088], [43.7908735, -79.5240826], [43.7910438, -79.5240965], [43.7910921, -79.5241002]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "12b12a17ad6b40db9f0ef91013a0dfac": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "cursor": "grab"}}, "145c46c9b72544de849e957b23195bce": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "18875a102b6940448528174d2317d829": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "1a1ce22abee749d689500684342cf25e": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "1a47f9ffbebc4971bcf5958a38227acd": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7937187, -79.5250378], [43.7933788, -79.526474]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "25816d7e0e30434eae6bcae1bfc53dba": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7892991, -79.5238305], [43.7894256, -79.5238173]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "2596b056a45d4c2ea14ddb0a2157beb2": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.793497, -79.5265205], [43.7936482, -79.5265801]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "2652a8f8e2774ae3815fcb45ffacfee8": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "cursor": "move"}}, "268930f2bb144a48a0d21e19e3d8b4dd": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7938532, -79.5269433], [43.7948505, -79.5272451]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "27580342300d42d9aaae39992f3fd54c": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7937505, -79.5268955], [43.7938532, -79.5269433]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "27f3153f893447999752d59a12194b72": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7828374, -79.521695], [43.7830593, -79.5217741], [43.7835929, -79.5219598], [43.7840025, -79.5221531], [43.784489, -79.5223826]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "27fd4a819f324eb79018caff846bca00": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "cursor": "grab"}}, "289c9d08044347a780b24352cd0b5fd0": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "2a81d3703ad145fba7a93f81c576729a": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7895327, -79.5239827], [43.7895438, -79.5241234]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "2b55c9b2865641e8a49b8c2a6cba711c": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7980058, -79.5276555], [43.7980887, -79.5277645]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "2ccfcea430234c73b8ad72dbbbe0f215": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7980452, -79.5279847], [43.7978689, -79.5288777]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "2e04f1cb1f884bc58047fc462c7c5103": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "30a3a0aebb6d49c1bd58a2620519841f": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.784489, -79.5223826], [43.7845758, -79.5224274]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "343260a2079e48adb23a1013cd991edb": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "success", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_8dc61d02a8ab446db99bf4ad2d24e7a4", "max": 6000.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_a0eda52a87ea4a309235ffb4ac3d5a71", "value": 6000.0}}, "39ff5e4dcd7e46f0b84d84fc0ef63675": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.795756, -79.5273819], [43.795918, -79.5273602]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "3a7367071ff64f6b86d838ccfe437e34": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7937995, -79.5266396], [43.7937505, -79.5268955]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "3d25aa1f51cb404f91eeb285d6e36c9d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_a02739acb39b4e03bf5a932131b92929", "max": 10000.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_e38aaa5c179d4e85b62f5af047fc07ed", "value": 10000.0}}, "498f26b169f548bb93db7f9461e1bbdc": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_4f34e2a05a424e1cbb449e525754ac52", "placeholder": "\u200b", "style": "IPY_MODEL_4ad4f3410dcd49798e124afbbb9b0590", "value": "100%"}}, "4a58bb86174e44a7b13f463b8ed33328": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "4ad4f3410dcd49798e124afbbb9b0590": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "4c75e7d8fb284eb1a8979609544c5d25": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "4e95038a83f244499905e001755d7362": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.79557, -79.5274006], [43.795756, -79.5273819]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "4f34e2a05a424e1cbb449e525754ac52": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "4f381d5a63264207b935e6965bfd2899": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "5da73e672b8e4d06afee5912a16f6d97": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7938093, -79.5246375], [43.7937926, -79.5247001]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "5e8cd6111c0341e4a05eb872b87dd96f": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "6047123c5d194fb9a54d3f7c4d957468": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "60f3fd448a3e4500b8189c2ab621f052": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_7afe650c71684fc9897a14dc5f004619", "placeholder": "\u200b", "style": "IPY_MODEL_1172d4a5ab6d4655b51fcd6053a608a9", "value": " 6000/6000 [00:03&lt;00:00, 1533.16it/s]"}}, "65f58473c9a040219b1a6b1092e8709d": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7969469, -79.5272573], [43.7970613, -79.5272908], [43.7973362, -79.5273927], [43.7975414, -79.5274785]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "68c3b2b98d6c4f2590c7a1361d3d5264": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "6c2e1078adf64f8c8be7eea2a39e9088": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_d9e8e903b6d94c48bfcf2297273f1160", "IPY_MODEL_343260a2079e48adb23a1013cd991edb", "IPY_MODEL_60f3fd448a3e4500b8189c2ab621f052"], "layout": "IPY_MODEL_cfddeb038af04ca6a96b7cce4627d44a"}}, "7aacd960505b477aae0e98202d8a44dc": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7afe650c71684fc9897a14dc5f004619": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7afe971fed7149e89d271f45310f2ee1": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7894256, -79.5238173], [43.7895126, -79.523811]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "7c7b5d18d7fb4eb2b16289ea90f3ba62": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.8006227, -79.5311893], [43.8013356, -79.5314549], [43.8020683, -79.5317229], [43.8026491, -79.5319309]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "7d3b402827ce4b94a51a143bb6920fda": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletZoomControlModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletZoomControlModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletZoomControlView", "options": ["position", "zoom_in_text", "zoom_in_title", "zoom_out_text", "zoom_out_title"], "position": "topleft", "zoom_in_text": "+", "zoom_in_title": "Zoom in", "zoom_out_text": "-", "zoom_out_title": "Zoom out"}}, "7fbc02783f42478180cf7f030fc57c9b": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAttributionControlModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAttributionControlModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAttributionControlView", "options": ["position", "prefix"], "position": "bottomright", "prefix": "ipyleaflet"}}, "88bb12276caa41c899796185613b7c60": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_a1957f24db1a4028bc5352f1302303a6", "IPY_MODEL_9ff6598695764bf98218ed0672967cc3", "IPY_MODEL_a450684c79864eb1b1873cb5eaad115a"], "layout": "IPY_MODEL_2e04f1cb1f884bc58047fc462c7c5103"}}, "8dc61d02a8ab446db99bf4ad2d24e7a4": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "913a288c71604d569a822afb62e5926d": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "936d98a3a6c743fd8a95b6b8ee2978cd": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.791254, -79.5241124], [43.7912776, -79.5241141], [43.7913386, -79.5240649], [43.7913996, -79.5240649], [43.7918886, -79.5241642]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "9604530276e449c0a4eac3ef185bf834": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7895438, -79.5241234], [43.78961, -79.5241168], [43.7896428, -79.5241644]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "979b16458b8f4ed38bc98f57ccb2c798": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "97dd1fece2644087b66041a1ad0f07c7": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7870219, -79.5235895], [43.7875685, -79.5237385], [43.7878752, -79.5237807], [43.7881346, -79.5238265], [43.7882452, -79.5238461], [43.7887212, -79.523887], [43.7892991, -79.5238305]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "9f37ce9070a645edade82de1fd19bea8": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletMarkerModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletMarkerModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletMarkerView", "alt": "", "base": false, "bottom": false, "draggable": false, "icon": null, "keyboard": true, "location": [43.8026491, -79.5319309], "name": "", "opacity": 1.0, "options": ["alt", "draggable", "keyboard", "rise_offset", "rise_on_hover", "rotation_angle", "rotation_origin", "title", "z_index_offset"], "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "rise_offset": 250, "rise_on_hover": false, "rotation_angle": 0.0, "rotation_origin": "", "title": "", "visible": true, "z_index_offset": 0}}, "9ff6598695764bf98218ed0672967cc3": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "success", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_1155188f0dee49a89e36eb91a75a2019", "max": 100.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_6047123c5d194fb9a54d3f7c4d957468", "value": 100.0}}, "a02739acb39b4e03bf5a932131b92929": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a0c561688fb64cd8abe7ee316a326333": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.795918, -79.5273602], [43.7962579, -79.5272693], [43.7964863, -79.5272237], [43.7967961, -79.5272291], [43.7969469, -79.5272573]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "a0eda52a87ea4a309235ffb4ac3d5a71": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "a1957f24db1a4028bc5352f1302303a6": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_289c9d08044347a780b24352cd0b5fd0", "placeholder": "\u200b", "style": "IPY_MODEL_a9613496e2f7432ab1774002d10ddf78", "value": "100%"}}, "a36b6b013cee4816bb52dd07c85b8b17": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a450684c79864eb1b1873cb5eaad115a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_5e8cd6111c0341e4a05eb872b87dd96f", "placeholder": "\u200b", "style": "IPY_MODEL_18875a102b6940448528174d2317d829", "value": " 100/100 [07:42&lt;00:00,  4.58s/it]"}}, "a4f11ac83a0e45d7b3d11b46743a9c53": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_913a288c71604d569a822afb62e5926d", "placeholder": "\u200b", "style": "IPY_MODEL_0b68b80feed646ecbf999baececd5b0b", "value": "100%"}}, "a9613496e2f7432ab1774002d10ddf78": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "adcaa96a03e44eb88fed472d2a92f1cd": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_4f381d5a63264207b935e6965bfd2899", "placeholder": "\u200b", "style": "IPY_MODEL_979b16458b8f4ed38bc98f57ccb2c798", "value": " 10000/10000 [00:20&lt;00:00, 52678.79it/s]"}}, "b0751160d0f742dc8cd25f7da163989f": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "success", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_a36b6b013cee4816bb52dd07c85b8b17", "max": 500.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_4a58bb86174e44a7b13f463b8ed33328", "value": 500.0}}, "b812a69f58d942fc9f221738e0f85eb2": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7978689, -79.5288777], [43.7977706, -79.5293756], [43.7976295, -79.5300531]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "bb3a0161cd674995af3e688cf30b7edb": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7980887, -79.5277645], [43.7980452, -79.5279847]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "c050722a09504256a5d034abe51b38d9": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.793709, -79.526604], [43.7937995, -79.5266396]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "c1b8f636b9684baf8d5eca12729a6721": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7910921, -79.5241002], [43.791254, -79.5241124]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "c8faa833be7342f9ac1aee269c0f569a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_a4f11ac83a0e45d7b3d11b46743a9c53", "IPY_MODEL_3d25aa1f51cb404f91eeb285d6e36c9d", "IPY_MODEL_adcaa96a03e44eb88fed472d2a92f1cd"], "layout": "IPY_MODEL_1a1ce22abee749d689500684342cf25e"}}, "ca8a1e9f718145b78b821493c0e74a57": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7845758, -79.5224274], [43.7846923, -79.5224882], [43.7856319, -79.5229784], [43.7857497, -79.5230376], [43.7858675, -79.5230968], [43.7859763, -79.5231563], [43.7862575, -79.5233109], [43.7864386, -79.5233935], [43.7866376, -79.5234631], [43.7868999, -79.5235561]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "cfddeb038af04ca6a96b7cce4627d44a": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "d781b691bb5144afadc25415c2b9b9da": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7868999, -79.5235561], [43.7870219, -79.5235895]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "d979e5f90b4947b6af75dc1aa25a5c83": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletMarkerModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletMarkerModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletMarkerView", "alt": "", "base": false, "bottom": false, "draggable": false, "icon": null, "keyboard": true, "location": [43.7828374, -79.521695], "name": "", "opacity": 1.0, "options": ["alt", "draggable", "keyboard", "rise_offset", "rise_on_hover", "rotation_angle", "rotation_origin", "title", "z_index_offset"], "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "rise_offset": 250, "rise_on_hover": false, "rotation_angle": 0.0, "rotation_origin": "", "title": "", "visible": true, "z_index_offset": 0}}, "d9e8e903b6d94c48bfcf2297273f1160": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_e9f04fade90945e8bc036cf91a59fae9", "placeholder": "\u200b", "style": "IPY_MODEL_68c3b2b98d6c4f2590c7a1361d3d5264", "value": "100%"}}, "dbf0bfdad0f54aea98a28bdb43a00fc8": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7976295, -79.5300531], [43.7977261, -79.5300921], [43.8001776, -79.5310234], [43.8003817, -79.5310995]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "e225152cf879423eb79f04dc60c4db11": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletTileLayerModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletTileLayerModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletTileLayerView", "attribution": "Map data (c) <a href=\"https://openstreetmap.org\">OpenStreetMap</a> contributors", "base": true, "bottom": true, "detect_retina": false, "loading": false, "max_native_zoom": 18, "max_zoom": 19, "min_native_zoom": 0, "min_zoom": 1, "name": "", "no_wrap": false, "opacity": 1.0, "options": ["attribution", "detect_retina", "max_native_zoom", "max_zoom", "min_native_zoom", "min_zoom", "no_wrap", "tile_size", "tms"], "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "show_loading": false, "tile_size": 256, "tms": false, "url": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", "visible": true}}, "e38aaa5c179d4e85b62f5af047fc07ed": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "e998050b6ebb498e84fd6777c355eeac": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "e9f04fade90945e8bc036cf91a59fae9": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ea61005c36e04bc299a2c4c375f95f78": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_498f26b169f548bb93db7f9461e1bbdc", "IPY_MODEL_b0751160d0f742dc8cd25f7da163989f", "IPY_MODEL_0ec776f34c8b4eec874a707e0c9f3888"], "layout": "IPY_MODEL_4c75e7d8fb284eb1a8979609544c5d25"}}, "ee0ce7ae9e164277bbdde726bb4f36d6": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7936482, -79.5265801], [43.793709, -79.526604]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "fe7e7a3845df4da6b02290f3d275ab4e": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7937926, -79.5247001], [43.7937187, -79.5250378]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "fedd39e6abc0423fa7c5cc417d268622": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.7933788, -79.526474], [43.7934431, -79.5264993], [43.793497, -79.5265205]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}}, "version_major": 2, "version_minor": 0}
-</script>
-<script type="text/x-thebe-config">
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
@@ -1509,33 +1464,143 @@ span {font-weight:normal}
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
-            path: "./content/EvolutionaryComputingAlgorithms"
+            name: "python3",
+            path: "./content\EvolutionaryComputingAlgorithms"
         },
         predefinedOutput: true
     }
     </script>
-<script>kernelName = 'python3'</script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="GeneratingInitialPopulations.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Generating Initial Populations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../SwarmIntelligenceAlgorithms/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Swarm Intelligence Algorithms</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
 </div>
-<div class="prev-next-bottom">
-<a class="left-prev" href="GeneratingInitialPopulations.html" id="prev-link" title="previous page">Generating Initial Populations</a>
-<a class="right-next" href="../SwarmIntelligenceAlgorithms/index.html" id="next-link" title="next page">Swarm Intelligence Algorithms</a>
-</div>
-</div>
-</div>
-<footer class="footer mt-5 mt-md-0">
-<div class="container">
-<p>
-        
-          By Alaa Khamis and Yinan Wang<br/>
-        
-            © Copyright 2021, Alaa Khamis and Yinan Wang.<br/>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-bike-pricing-using-simple-genetic-algorithm">Example: Bike pricing using Simple Genetic Algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-population">Initial Population</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitness-function">Fitness Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parent-selection-crossover-and-mutation">Parent Selection, Crossover, and Mutation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-function">Solution Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results-and-visualization">Results and Visualization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-bike-pricing-using-real-valued-genetic-algorithm">Example: Bike pricing using Real-valued Genetic Algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-permutation-genetic-algorithm-for-tsp">Example: Permutation Genetic Algorithm for TSP</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crossover-operators">Crossover operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mutation-operators">Mutation Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partially-mapped-crossover">Partially-mapped crossover</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-recombination-crossover">Edge recombination crossover</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#order-1-crossover">Order 1 crossover</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insert-mutation">Insert Mutation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swap-mutation">Swap Mutation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-permutation-genetic-algorithm-for-routing-problem">Example: Permutation Genetic Algorithm for Routing Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-algorithm">The Algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mutation">Mutation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#crossover">Crossover</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicates">Duplicates</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-code">The code</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alaa Khamis and Yinan Wang
 </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021, Alaa Khamis and Yinan Wang.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
-</footer>
-</main>
-</div>
-</div>
-<script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-</body>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
 </html>

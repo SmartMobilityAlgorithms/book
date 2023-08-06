@@ -1,0 +1,48 @@
+Traceback (most recent call last):
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\client.py", line 1269, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\util.py", line 85, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\util.py", line 60, in just_run
+    return loop.run_until_complete(coro)
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\asyncio\base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\client.py", line 707, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\client.py", line 1025, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\client.py", line 919, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from ipyleaflet import AntPath,Map,Marker
+from ipywidgets import HTML
+import osmnx as ox
+import pandas as pd
+import numpy as np
+import os
+import requests
+import json
+import random
+import time
+import folium
+import folium.plugins
+import matplotlib.pyplot as plt
+from tqdm.notebook import tqdm
+from collections import OrderedDict
+from itertools import combinations
+from smart_mobility_utilities.poi import number_DivIcon
+------------------
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Input [1;32mIn [1][0m, in [0;36m<cell line: 17>[1;34m()[0m
+[0;32m     15[0m [38;5;28;01mfrom[39;00m [38;5;21;01mcollections[39;00m [38;5;28;01mimport[39;00m OrderedDict
+[0;32m     16[0m [38;5;28;01mfrom[39;00m [38;5;21;01mitertools[39;00m [38;5;28;01mimport[39;00m combinations
+[1;32m---> 17[0m [38;5;28;01mfrom[39;00m [38;5;21;01msmart_mobility_utilities[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpoi[39;00m [38;5;28;01mimport[39;00m number_DivIcon
+
+[1;31mModuleNotFoundError[0m: No module named 'smart_mobility_utilities'
+ModuleNotFoundError: No module named 'smart_mobility_utilities'
+

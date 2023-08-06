@@ -1,4 +1,4 @@
-# AI Search Algorithms for Smart Mobility
+# AI Search Algorithms for Smart Mobility - ECE1724
 
 Smart mobility is the promotion of sustainable mobility that guarantees seamless access to different modes of mobility, and enables people or cargo to get from one place to another in a way that is safe, clean, and most efficient (fast, convenient, comfort, productive and affordable). This disruptive technology is people-centric, software-defined, connected, and electric {cite}`khamis2021smart`. There are several ill-structured optimization problems in smart mobility systems and services that cannot be solved using traditional search algorithms. These problems include, but are not limited to:<br><br>
 

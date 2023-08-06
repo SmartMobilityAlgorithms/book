@@ -1,420 +1,412 @@
+
+
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Particle Swarm Optimization — AI Search Algorithms for Smart Mobility</title>
-<link href="../../_static/css/theme.css" rel="stylesheet"/>
-<link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet"/>
-<link href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
-<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
-<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
-<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/togglebutton.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/mystnb.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/sphinx-thebe.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/tabs.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" rel="stylesheet" type="text/css"/>
-<link as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js" rel="preload"/>
-<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-<script src="../../_static/jquery.js"></script>
-<script src="../../_static/underscore.js"></script>
-<script src="../../_static/doctools.js"></script>
-<script src="../../_static/togglebutton.js"></script>
-<script src="../../_static/clipboard.min.js"></script>
-<script src="../../_static/copybutton.js"></script>
-<script src="../../_static/tabs.js"></script>
-<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-<script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-<script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
-<script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-<script async="async" src="../../_static/sphinx-thebe.js"></script>
-<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-<link href="../../genindex.html" rel="index" title="Index"/>
-<link href="../../search.html" rel="search" title="Search"/>
-<link href="AntColonyOptimization.html" rel="next" title="Ant Colony Optimization"/>
-<link href="index.html" rel="prev" title="Swarm Intelligence Algorithms"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="en" name="docsearch:language"/>
-</head>
-<body data-offset="80" data-spy="scroll" data-target="#bd-toc-nav">
-<div class="container-fluid" id="banner"></div>
-<div class="container-xl">
-<div class="row">
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-<div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../../index.html">
-<img alt="logo" class="logo" src="../../_static/sm.png"/>
-<h1 class="site-logo" id="site-title">AI Search Algorithms for Smart Mobility</h1>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Particle Swarm Optimization &#8212; AI Search Algorithms for Smart Mobility</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/SwarmIntelligenceAlgorithms/ParticleSwarmOptimization';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Ant Colony Optimization" href="AntColonyOptimization.html" />
+    <link rel="prev" title="Swarm Intelligence Algorithms" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/sm.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/sm.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    AI Search Algorithms for Smart Mobility - ECE1724
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted/index.html">Getting Started</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../IntroGeoScience/index.html">Introduction to Geospatial Data Science</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../IntroGeoScience/SpatialData.html">Spatial Data and Geographic Information System (GIS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../IntroGeoScience/Projection.html">Projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../IntroGeoScience/Visualization.html">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../GraphSearchAlgorithms/index.html">Graph Search Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../GraphSearchAlgorithms/RoadGraph.html">From Road Network to Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GraphSearchAlgorithms/GraphSearch.html">Graph Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GraphSearchAlgorithms/BlindSearch.html">Blind Search Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GraphSearchAlgorithms/InformedSearch.html">Informed Search Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GraphSearchAlgorithms/SearchComparison.html">Search Algorithm Comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TrajectoryAlgorithms/index.html">Trajectory-based Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../TrajectoryAlgorithms/TabuSearch.html">Tabu Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../TrajectoryAlgorithms/SimulatedAnnealing.html">Simulated Annealing</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../EvolutionaryComputingAlgorithms/index.html">Evolutionary Computing Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../EvolutionaryComputingAlgorithms/GeneratingInitialPopulations.html">Generating Initial Populations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../EvolutionaryComputingAlgorithms/GeneticAlgorithms.html">Genetic Algorithms</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Swarm Intelligence Algorithms</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Particle Swarm Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AntColonyOptimization.html">Ant Colony Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ArtificialBeeColony.html">Artificial Bee Colony</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FireflyAlgorithm.html">Firefly Algorithm</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../LearnToSearch/index.html">Learn to Search</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../LearnToSearch/GeometricDeepLearning.html">Geometric Deep Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LearnToSearch/GraphNeuralNetworks.html">Graph Neural Networks (GNN)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LearnToSearch/AttentionMechanisms.html">Attention Mechanisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LearnToSearch/ReinforcementLearning.html">Reinforcement Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PeopleMobilityProblems/index.html">People Mobility Problems</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PeopleMobilityProblems/carsharing/CarSharing.html">Car-Sharing Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PeopleMobilityProblems/trip_itinerary_planning/TIP.html">Trip Itinerary Planning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PeopleMobilityProblems/multicriteriarouting/MultiCriteriaRouting.html">Multi-Criteria Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PeopleMobilityProblems/deadheading/Deadheading.html">Deadheading in Ride-Hailing</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../LogisticsProblems/index.html">Logistics Problems</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../LogisticsProblems/delivery_GA.html">Delivery Vehicle Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LogisticsProblems/eco_routing.html">Eco-efficient Delivery</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../InfrastructureProblems/index.html">Infrastructure Problems</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../InfrastructureProblems/emergency_vehicle/emergency_vehicle.html">Emergency Dispatch and Routing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ToolsAndPythonLibraries/index.html">Tools and Python Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/SmartMobilityAlgorithms/book" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
 </a>
-</div><form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
-<i class="icon fas fa-search"></i>
-<input aria-label="Search this book..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search this book..." type="search"/>
-</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
-<div class="bd-toc-item active">
-<ul class="nav bd-sidenav">
-<li class="toctree-l1">
-<a class="reference internal" href="../../index.html">
-   AI Search Algorithms for Smart Mobility
-  </a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/SwarmIntelligenceAlgorithms/ParticleSwarmOptimization.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
 </li>
-</ul>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1">
-<a class="reference internal" href="../GettingStarted/index.html">
-   Getting Started
-  </a>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../IntroGeoScience/index.html">
-   Introduction to Geospatial Data Science
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-<label for="toctree-checkbox-1">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../IntroGeoScience/SpatialData.html">
-     Spatial Data and Geographic Information System (GIS)
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../IntroGeoScience/Projection.html">
-     Projection
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../IntroGeoScience/Visualization.html">
-     Visualization
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../GraphSearchAlgorithms/index.html">
-   Graph Search Algorithms
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-<label for="toctree-checkbox-2">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../GraphSearchAlgorithms/RoadGraph.html">
-     From Road Network to Graph
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../GraphSearchAlgorithms/GraphSearch.html">
-     Graph Search
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../GraphSearchAlgorithms/BlindSearch.html">
-     Blind Search Algorithms
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../GraphSearchAlgorithms/InformedSearch.html">
-     Informed Search Algorithms
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../GraphSearchAlgorithms/SearchComparison.html">
-     Search Algorithm Comparison
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../TrajectoryAlgorithms/index.html">
-   Trajectory-based Algorithms
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-<label for="toctree-checkbox-3">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../TrajectoryAlgorithms/TabuSearch.html">
-     Tabu Search
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../TrajectoryAlgorithms/SimulatedAnnealing.html">
-     Simulated Annealing
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../EvolutionaryComputingAlgorithms/index.html">
-   Evolutionary Computing Algorithms
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-<label for="toctree-checkbox-4">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../EvolutionaryComputingAlgorithms/GeneratingInitialPopulations.html">
-     Generating Initial Populations
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../EvolutionaryComputingAlgorithms/GeneticAlgorithms.html">
-     Genetic Algorithms
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 current active has-children">
-<a class="reference internal" href="index.html">
-   Swarm Intelligence Algorithms
-  </a>
-<input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-<label for="toctree-checkbox-5">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul class="current">
-<li class="toctree-l2 current active">
-<a class="current reference internal" href="#">
-     Particle Swarm Optimization
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="AntColonyOptimization.html">
-     Ant Colony Optimization
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="ArtificialBeeColony.html">
-     Artificial Bee Colony
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="FireflyAlgorithm.html">
-     Firefly Algorithm
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../LearnToSearch/index.html">
-   Learn to Search
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-<label for="toctree-checkbox-6">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../LearnToSearch/GeometricDeepLearning.html">
-     Geometric Deep Learning
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../LearnToSearch/GraphNeuralNetworks.html">
-     Graph Neural Networks (GNN)
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../LearnToSearch/AttentionMechanisms.html">
-     Attention Mechanisms
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../LearnToSearch/ReinforcementLearning.html">
-     Reinforcement Learning
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../PeopleMobilityProblems/index.html">
-   People Mobility Problems
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-<label for="toctree-checkbox-7">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../PeopleMobilityProblems/carsharing/CarSharing.html">
-     Car-Sharing Service
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../PeopleMobilityProblems/trip_itinerary_planning/TIP.html">
-     Trip Itinerary Planning
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../PeopleMobilityProblems/multicriteriarouting/MultiCriteriaRouting.html">
-     Multi-Criteria Routing
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../PeopleMobilityProblems/deadheading/Deadheading.html">
-     Deadheading in Ride-Hailing
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../LogisticsProblems/index.html">
-   Logistics Problems
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-<label for="toctree-checkbox-8">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../LogisticsProblems/delivery_GA.html">
-     Delivery Vehicle Routing
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../LogisticsProblems/eco_routing.html">
-     Eco-efficient Delivery
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../InfrastructureProblems/index.html">
-   Infrastructure Problems
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-<label for="toctree-checkbox-9">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../InfrastructureProblems/emergency_vehicle/emergency_vehicle.html">
-     Emergency Dispatch and Routing
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1">
-<a class="reference internal" href="../ToolsAndPythonLibraries/index.html">
-   Tools and Python Libraries
-  </a>
-</li>
-<li class="toctree-l1">
-<a class="reference internal" href="../Datasets.html">
-   Datasets
-  </a>
-</li>
-<li class="toctree-l1">
-<a class="reference internal" href="../../References.html">
-   References
-  </a>
-</li>
-</ul>
-</div>
-</nav> <!-- To handle the deprecated key -->
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-</div>
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-<div class="topbar container-xl fixed-top">
-<div class="topbar-contents row">
-<div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-<div class="col pl-md-4 topbar-main">
-<button aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" class="navbar-toggler ml-0" data-placement="bottom" data-target=".site-navigation" data-toggle="collapse" id="navbar-toggler" title="Toggle navigation" type="button">
-<i class="fas fa-bars"></i>
-<i class="fas fa-arrow-left"></i>
-<i class="fas fa-arrow-up"></i>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
 </button>
-<div class="dropdown-buttons-trigger">
-<button aria-label="Download this page" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-download"></i></button>
-<div class="dropdown-buttons">
-<!-- ipynb file if we had a myst markdown file -->
-<!-- Download raw file -->
-<a class="dropdown-buttons" href="../../_sources/content/SwarmIntelligenceAlgorithms/ParticleSwarmOptimization.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.ipynb</button></a>
-<!-- Download PDF via print -->
-<button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="window.print()" title="Print to PDF" type="button">.pdf</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
 </div>
 </div>
-<!-- Source interaction buttons -->
-<div class="dropdown-buttons-trigger">
-<button aria-label="Connect with source repository" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fab fa-github"></i></button>
-<div class="dropdown-buttons sourcebuttons">
-<a class="repository-button" href="https://github.com/SmartMobilityAlgorithms/book"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Source repository" type="button"><i class="fab fa-github"></i>repository</button></a>
-</div>
-</div>
-<!-- Full screen (wrap in <a> to have style consistency -->
-<a class="full-screen-button"><button aria-label="Fullscreen mode" class="btn btn-secondary topbarbtn" data-placement="bottom" data-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode" type="button"><i class="fas fa-expand"></i></button></a>
-<!-- Launch buttons -->
-<div class="dropdown-buttons-trigger">
-<button aria-label="Launch interactive content" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-rocket"></i></button>
-<div class="dropdown-buttons">
-<a class="binder-button" href="https://mybinder.org/v2/gh/SmartMobilityAlgorithms/book/main?urlpath=tree/content/SwarmIntelligenceAlgorithms/ParticleSwarmOptimization.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Launch Binder" type="button"><img alt="Interact on binder" class="binder-button-logo" src="../../_static/images/logo_binder.svg"/>Binder</button></a>
-</div>
-</div>
-</div>
-<!-- Table of contents -->
-<div class="d-none d-md-block col-md-2 bd-toc show">
-<div class="tocsection onthispage pt-5 pb-3">
-<i class="fas fa-list"></i> Contents
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Particle Swarm Optimization</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-<nav id="bd-toc-nav">
-<ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry">
-<a class="reference internal nav-link" href="#example-implementation">
-   Example implementation
-  </a>
-</li>
-<li class="toc-h2 nav-item toc-entry">
-<a class="reference internal nav-link" href="#example-pso-with-routing-problem">
-   Example: PSO with Routing Problem
-  </a>
-</li>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-implementation">Example implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-pso-with-routing-problem">Example: PSO with Routing Problem</a></li>
 </ul>
-</nav>
+            </nav>
+        </div>
+    </div>
 </div>
-</div>
-</div>
-<div class="row" id="main-content">
-<div class="col-12 col-md-9 pl-md-3 pr-md-0">
-<div>
-<div class="section" id="particle-swarm-optimization">
-<h1>Particle Swarm Optimization<a class="headerlink" href="#particle-swarm-optimization" title="Permalink to this headline">¶</a></h1>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="particle-swarm-optimization">
+<h1>Particle Swarm Optimization<a class="headerlink" href="#particle-swarm-optimization" title="Permalink to this heading">#</a></h1>
 <p>Particle Swarm Optimization (PSO) works by generating a number of candidates (or particles) and moving those candidates along the search space in search of the optimal solution. Each particle moves according to some predefined rules, which are influenced by the currently known best position, as well as the universally known best position.</p>
 <p>Essentially, each particle takes into account the following:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Predetermined rules for movement.</p></li>
 <li><p>What the particle knows about the best direction to move.</p></li>
 <li><p>What the system as a whole knows about the best direction to move.</p></li>
 </ol>
 <p>This mechanism allows the collective whole to “swarm” or congregate towards good solutions, and replicates the behaviours of natural swarms and flocks, such as those seen in birds, fish, or bees.</p>
-<div class="section" id="example-implementation">
-<h2>Example implementation<a class="headerlink" href="#example-implementation" title="Permalink to this headline">¶</a></h2>
+<section id="example-implementation">
+<h2>Example implementation<a class="headerlink" href="#example-implementation" title="Permalink to this heading">#</a></h2>
 <p>We can design a simple implementation of PSO to showcase its features.</p>
 <p>Consider a function as follows:</p>
 <p><span class="math notranslate nohighlight">\(f(x)=0.2\sqrt{(x-1)^2}+100(\cos(x)+\sin(x))\)</span></p>
@@ -480,27 +472,25 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "dbf5b642673b4de0b9441cf26d555f6a", "version_major": 2, "version_minor": 0}
-</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "fecd2268f3334e83ab95d2a8b5202622"}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">states</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Cost'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Iterations'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cost&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Iterations&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ParticleSwarmOptimization_5_0.png" src="../../_images/ParticleSwarmOptimization_5_0.png"/>
+<img alt="../../_images/bb9aefab37d7be2b0ec40e7d71f40def01a250d4af547a963273ceafd63d887e.png" src="../../_images/bb9aefab37d7be2b0ec40e7d71f40def01a250d4af547a963273ceafd63d887e.png" />
 </div>
 </div>
-</div>
-<div class="section" id="example-pso-with-routing-problem">
-<h2>Example: PSO with Routing Problem<a class="headerlink" href="#example-pso-with-routing-problem" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="example-pso-with-routing-problem">
+<h2>Example: PSO with Routing Problem<a class="headerlink" href="#example-pso-with-routing-problem" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">osmnx</span>
@@ -523,14 +513,24 @@
 
 <span class="c1"># marking both the source and destination node</span>
 
-<span class="n">nc</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'red'</span> <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">highlighted</span> <span class="k">else</span> <span class="s1">'#336699'</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()]</span>
+<span class="n">nc</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span> <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">highlighted</span> <span class="k">else</span> <span class="s1">&#39;#336699&#39;</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()]</span>
 <span class="n">ns</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span> <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">highlighted</span> <span class="k">else</span> <span class="mi">8</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()]</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">osmnx</span><span class="o">.</span><span class="n">plot_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="n">ns</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">nc</span><span class="p">,</span> <span class="n">node_zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ParticleSwarmOptimization_7_0.png" src="../../_images/ParticleSwarmOptimization_7_0.png"/>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [5],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">osmnx</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">smart_mobility_utilities.common</span> <span class="kn">import</span> <span class="n">Node</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">randomized_search</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">smart_mobility_utilities.viz</span> <span class="kn">import</span> <span class="n">draw_route</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">smart_mobility_utilities.problem</span> <span class="kn">import</span> <span class="n">cross_over</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;smart_mobility_utilities&#39;
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -598,45 +598,39 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "e66893e6aa234a36b3fb10ccfb5f5317", "version_major": 2, "version_minor": 0}
-</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "33242bad2179414d9631fa0d9f3c966a", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">route</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">particles</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">p</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Cost:"</span><span class="p">,</span><span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">route</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cost:&quot;</span><span class="p">,</span><span class="n">cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">route</span><span class="p">))</span>
 <span class="n">draw_route</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cost: 801.718
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cost: 801.235
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "fb716b5137f24b77a9243d17d20285f9", "version_major": 2, "version_minor": 0}
-</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "2ff1449c55494078b17c1c8858a00007", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">swarm_costs</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Iterations'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Cost (m)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Iterations&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cost (m)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ParticleSwarmOptimization_11_0.png" src="../../_images/ParticleSwarmOptimization_11_0.png"/>
+<img alt="../../_images/4e19c07d2fc1fc1ea04225b8a858eb9f8659a91b8c507ca06ed911d03f62361a.png" src="../../_images/4e19c07d2fc1fc1ea04225b8a858eb9f8659a91b8c507ca06ed911d03f62361a.png" />
 </div>
 </div>
-</div>
-</div>
-<script type="application/vnd.jupyter.widget-state+json">
-{"state": {"01451eb740584454941d5868a8f261f8": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.6624313, -79.3928644], [43.6621106, -79.3926178], [43.66192, -79.3924788], [43.661867, -79.3924469]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "02a996bcc99f4be39e81a542917b2937": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.660313, -79.3961194], [43.6601495, -79.3967135]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "0319bfbc84854526b93f4d628f70bed6": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "06533182f3754ddeb04048fc042a68e0": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.6613929, -79.393976], [43.6612467, -79.3939383]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "097d7fdddfce422e874d950769460104": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "cursor": "grab"}}, "1124e5f6b95549a6b6ae17f7a605139a": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "cursor": "move"}}, "16dd38384834496886b31dc71a0fa13d": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.6616327, -79.3929621], [43.6615557, -79.3932334]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "17f0a54de0b649208b47f8f05d87f3a0": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "2923438c933c420f91a33c543e2d6f7d": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "2c48cab41912420f95b6ce3f63a7a8ba": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "2f36202fbf134341af94867e532de0b5": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "cursor": "grab"}}, "31d1176ab3594a27ad0892872c596981": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.6615557, -79.3932334], [43.6615144, -79.3933788], [43.6614567, -79.393646], [43.6614163, -79.3938334], [43.6613929, -79.393976]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "33423bb17b4747faa4d576959e666438": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.6632463, -79.3926236], [43.6632227, -79.3927047], [43.6632023, -79.3927802]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "33d241fd2ea7461da6c09b2039a825d8": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletZoomControlModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletZoomControlModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletZoomControlView", "options": ["position", "zoom_in_text", "zoom_in_title", "zoom_out_text", "zoom_out_title"], "position": "topleft", "zoom_in_text": "+", "zoom_in_title": "Zoom in", "zoom_out_text": "-", "zoom_out_title": "Zoom out"}}, "340cc6819b144031b348311a09610503": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "371274ef756f4fb8819f2e8de70c9968": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "39996fa0225d493bb3a534b36186ce03": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.6632625, -79.392568], [43.6632557, -79.3925913], [43.6632501, -79.3926105], [43.6632463, -79.3926236]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "53233d2285f34791bf36a076bb41e0f1": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "54e9a125b64349aa87132469ef5d6e79": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletMarkerModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletMarkerModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletMarkerView", "alt": "", "base": false, "bottom": false, "draggable": false, "icon": null, "keyboard": true, "location": [43.6595177, -79.3964275], "name": "", "opacity": 1.0, "options": ["alt", "draggable", "keyboard", "rise_offset", "rise_on_hover", "rotation_angle", "rotation_origin", "title", "z_index_offset"], "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "rise_offset": 250, "rise_on_hover": false, "rotation_angle": 0.0, "rotation_origin": "", "title": "", "visible": true, "z_index_offset": 0}}, "55f34e43d57946c3886e4fad39188ee0": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletTileLayerModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletTileLayerModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletTileLayerView", "attribution": "Map data (c) <a href=\"https://openstreetmap.org\">OpenStreetMap</a> contributors", "base": true, "bottom": true, "detect_retina": false, "loading": false, "max_native_zoom": 18, "max_zoom": 19, "min_native_zoom": 0, "min_zoom": 1, "name": "", "no_wrap": false, "opacity": 1.0, "options": ["attribution", "detect_retina", "max_native_zoom", "max_zoom", "min_native_zoom", "min_zoom", "no_wrap", "tile_size", "tms"], "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "show_loading": false, "tile_size": 256, "tms": false, "url": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", "visible": true}}, "576876dd582645fcaba350d5108e5bbc": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "5b5b5623cbd8426c88e34510762291d8": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "5c3fa42cdb5a4f0ebc3165b2b8bbaea8": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_8c890204edd34295a0465c45a96c6ff4", "placeholder": "\u200b", "style": "IPY_MODEL_e08eddc7e97040e4b148a30db80b30a7", "value": "100%"}}, "5d1f8d1723b94bc09fc9e7b5bdc248f7": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.6612111, -79.3940025], [43.6611449, -79.3943081], [43.6610814, -79.3946625], [43.6610599, -79.3947038]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "5f73f62824a64a7aa158d42b57745f0f": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.6607787, -79.3947724], [43.6607508, -79.3948913]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "61d605a6f26e4ed59a17cea1a149e4ff": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletMarkerModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletMarkerModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletMarkerView", "alt": "", "base": false, "bottom": false, "draggable": false, "icon": null, "keyboard": true, "location": [43.6639415, -79.3922841], "name": "", "opacity": 1.0, "options": ["alt", "draggable", "keyboard", "rise_offset", "rise_on_hover", "rotation_angle", "rotation_origin", "title", "z_index_offset"], "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "rise_offset": 250, "rise_on_hover": false, "rotation_angle": 0.0, "rotation_origin": "", "title": "", "visible": true, "z_index_offset": 0}}, "789777e4b4854fea92391bf65fcc2564": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.6634092, -79.3920226], [43.6633829, -79.3920092]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "7b46e9606f224f8883806442e91d1b5a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "success", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_17f0a54de0b649208b47f8f05d87f3a0", "max": 10.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_371274ef756f4fb8819f2e8de70c9968", "value": 10.0}}, "7e6b62d2cdc742c7ad1eeda8d96673c9": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.6601495, -79.3967135], [43.6597664, -79.3965449]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "83b80ced3b7f42f5979a22083a8527c4": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.661867, -79.3924469], [43.6618428, -79.3925482]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "8c890204edd34295a0465c45a96c6ff4": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "8cdb083d6aa9414c8b55545a871319e1": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.6618428, -79.3925482], [43.6618246, -79.3926128], [43.6617661, -79.3926592], [43.6616931, -79.392749], [43.6616327, -79.3929621]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "951f67ea1aa14e0f9e69cf98a29aa788": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.663141, -79.3927677], [43.6630658, -79.392818]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "99107468d648472baa260efb4f56ba93": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "9945f6c8baa24b5d8d920a0913f13a03": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.6639415, -79.3922841], [43.6636807, -79.3921313]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "a0ba8afe1bf246939c5b0ee81f25f46b": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.6630658, -79.392818], [43.6627379, -79.3928908], [43.6626945, -79.3929021], [43.6625914, -79.3929068], [43.6625116, -79.3929015], [43.6624313, -79.3928644]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "a33d13c0a8db433abe54ffc242bb3365": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a470b7f90614424f93f35d289b1ca589": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.6612467, -79.3939383], [43.6612111, -79.3940025]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "a4afbe19d9914a2dbe1cab4f14e3f3c5": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.6633829, -79.3920092], [43.6632625, -79.392568]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "a542990e338a4729993865db70ff20cd": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.6607508, -79.3948913], [43.6607376, -79.394962], [43.6607148, -79.3950183], [43.6606788, -79.3950719], [43.6606258, -79.3951167], [43.6605766, -79.3951692], [43.6605272, -79.3952356], [43.660484, -79.3953096], [43.6603861, -79.3957901], [43.6603256, -79.3960542]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "a5a6ac9182a844c2a9651eda607e9207": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.6597664, -79.3965449], [43.6595177, -79.3964275]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "b94c2d74304b4d3bb26100e59e26740d": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.6610599, -79.3947038], [43.6610542, -79.3947605], [43.6610249, -79.3948788]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "c75a9eabe2784e49b69aabac3d5a3fbb": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_de6be4730c27414296febe0fd99f010e", "placeholder": "\u200b", "style": "IPY_MODEL_2c48cab41912420f95b6ce3f63a7a8ba", "value": "100%"}}, "ce9d24663f7c4c4c9fac61a5496c2d89": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_576876dd582645fcaba350d5108e5bbc", "placeholder": "\u200b", "style": "IPY_MODEL_340cc6819b144031b348311a09610503", "value": " 10/10 [00:00&lt;00:00, 127.44it/s]"}}, "d40ec60070154516a581d99ce6f30f92": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.6603256, -79.3960542], [43.660313, -79.3961194]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "d472abf9ebdf4b37bbce8dc88033d8ac": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_2923438c933c420f91a33c543e2d6f7d", "placeholder": "\u200b", "style": "IPY_MODEL_0319bfbc84854526b93f4d628f70bed6", "value": " 100/100 [00:02&lt;00:00, 41.08it/s]"}}, "dbf5b642673b4de0b9441cf26d555f6a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_5c3fa42cdb5a4f0ebc3165b2b8bbaea8", "IPY_MODEL_7b46e9606f224f8883806442e91d1b5a", "IPY_MODEL_ce9d24663f7c4c4c9fac61a5496c2d89"], "layout": "IPY_MODEL_5b5b5623cbd8426c88e34510762291d8"}}, "de6be4730c27414296febe0fd99f010e": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e08eddc7e97040e4b148a30db80b30a7": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "e66893e6aa234a36b3fb10ccfb5f5317": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_c75a9eabe2784e49b69aabac3d5a3fbb", "IPY_MODEL_fb4ed6d5385644ada048e0e9504897f3", "IPY_MODEL_d472abf9ebdf4b37bbce8dc88033d8ac"], "layout": "IPY_MODEL_fd8bd1a7f3fb42608ce40a40d8d392d7"}}, "eb34b8691d3b4e0abcfdb4a39887c72a": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.6610249, -79.3948788], [43.6607787, -79.3947724]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "eb4c45d5da8e4328b6c121a0e0acea73": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.6632023, -79.3927802], [43.6631695, -79.3927716], [43.663141, -79.3927677]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "edcdf0fabab2416da7fc918fa89cf555": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAntPathModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAntPathModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAntPathView", "base": false, "bottom": false, "color": "red", "dash_array": [1, 10], "delay": 1000, "hardware_accelerated": false, "locations": [[43.6636807, -79.3921313], [43.6634092, -79.3920226]], "name": "", "options": ["color", "dash_array", "delay", "hardware_accelerated", "paused", "pulse_color", "radius", "reverse", "use", "weight"], "paused": false, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "pulse_color": "black", "radius": 10, "reverse": false, "use": "polyline", "weight": 5}}, "f45339a67347447fa298efbf7cd4ebaa": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAttributionControlModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAttributionControlModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAttributionControlView", "options": ["position", "prefix"], "position": "bottomright", "prefix": "ipyleaflet"}}, "fb4ed6d5385644ada048e0e9504897f3": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "success", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_53233d2285f34791bf36a076bb41e0f1", "max": 100.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_99107468d648472baa260efb4f56ba93", "value": 100.0}}, "fb716b5137f24b77a9243d17d20285f9": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletMapModel", "state": {"_dom_classes": [], "_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletMapModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletMapView", "bottom": 0.0, "bounce_at_zoom_limits": true, "box_zoom": true, "center": [43.6609405, -79.3951948], "close_popup_on_click": true, "controls": ["IPY_MODEL_33d241fd2ea7461da6c09b2039a825d8", "IPY_MODEL_f45339a67347447fa298efbf7cd4ebaa"], "crs": {"custom": false, "name": "EPSG3857"}, "default_style": "IPY_MODEL_097d7fdddfce422e874d950769460104", "double_click_zoom": true, "dragging": true, "dragging_style": "IPY_MODEL_1124e5f6b95549a6b6ae17f7a605139a", "east": 0.0, "fullscreen": false, "inertia": true, "inertia_deceleration": 3000, "inertia_max_speed": 1500, "interpolation": "bilinear", "keyboard": true, "keyboard_pan_offset": 80, "keyboard_zoom_offset": 1, "layers": ["IPY_MODEL_55f34e43d57946c3886e4fad39188ee0", "IPY_MODEL_61d605a6f26e4ed59a17cea1a149e4ff", "IPY_MODEL_54e9a125b64349aa87132469ef5d6e79", "IPY_MODEL_9945f6c8baa24b5d8d920a0913f13a03", "IPY_MODEL_edcdf0fabab2416da7fc918fa89cf555", "IPY_MODEL_789777e4b4854fea92391bf65fcc2564", "IPY_MODEL_a4afbe19d9914a2dbe1cab4f14e3f3c5", "IPY_MODEL_39996fa0225d493bb3a534b36186ce03", "IPY_MODEL_33423bb17b4747faa4d576959e666438", "IPY_MODEL_eb4c45d5da8e4328b6c121a0e0acea73", "IPY_MODEL_951f67ea1aa14e0f9e69cf98a29aa788", "IPY_MODEL_a0ba8afe1bf246939c5b0ee81f25f46b", "IPY_MODEL_01451eb740584454941d5868a8f261f8", "IPY_MODEL_83b80ced3b7f42f5979a22083a8527c4", "IPY_MODEL_8cdb083d6aa9414c8b55545a871319e1", "IPY_MODEL_16dd38384834496886b31dc71a0fa13d", "IPY_MODEL_31d1176ab3594a27ad0892872c596981", "IPY_MODEL_06533182f3754ddeb04048fc042a68e0", "IPY_MODEL_a470b7f90614424f93f35d289b1ca589", "IPY_MODEL_5d1f8d1723b94bc09fc9e7b5bdc248f7", "IPY_MODEL_b94c2d74304b4d3bb26100e59e26740d", "IPY_MODEL_eb34b8691d3b4e0abcfdb4a39887c72a", "IPY_MODEL_5f73f62824a64a7aa158d42b57745f0f", "IPY_MODEL_a542990e338a4729993865db70ff20cd", "IPY_MODEL_d40ec60070154516a581d99ce6f30f92", "IPY_MODEL_02a996bcc99f4be39e81a542917b2937", "IPY_MODEL_7e6b62d2cdc742c7ad1eeda8d96673c9", "IPY_MODEL_a5a6ac9182a844c2a9651eda607e9207"], "layout": "IPY_MODEL_a33d13c0a8db433abe54ffc242bb3365", "left": 9007199254740991.0, "max_zoom": 18.0, "min_zoom": 1.0, "modisdate": "yesterday", "north": 0.0, "options": ["bounce_at_zoom_limits", "box_zoom", "center", "close_popup_on_click", "double_click_zoom", "dragging", "fullscreen", "inertia", "inertia_deceleration", "inertia_max_speed", "interpolation", "keyboard", "keyboard_pan_offset", "keyboard_zoom_offset", "max_zoom", "min_zoom", "scroll_wheel_zoom", "tap", "tap_tolerance", "touch_zoom", "world_copy_jump", "zoom", "zoom_animation_threshold", "zoom_delta", "zoom_snap", "zoom_start"], "right": 0.0, "scroll_wheel_zoom": false, "south": 0.0, "style": "IPY_MODEL_2f36202fbf134341af94867e532de0b5", "tap": true, "tap_tolerance": 15, "top": 9007199254740991.0, "touch_zoom": true, "west": 0.0, "window_url": "", "world_copy_jump": false, "zoom": 15.0, "zoom_animation_threshold": 4, "zoom_delta": 1.0, "zoom_snap": 1.0, "zoom_start": 12.0}}, "fd8bd1a7f3fb42608ce40a40d8d392d7": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}}, "version_major": 2, "version_minor": 0}
-</script>
-<script type="text/x-thebe-config">
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
@@ -648,33 +642,114 @@
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
-            path: "./content/SwarmIntelligenceAlgorithms"
+            name: "python3",
+            path: "./content\SwarmIntelligenceAlgorithms"
         },
         predefinedOutput: true
     }
     </script>
-<script>kernelName = 'python3'</script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Swarm Intelligence Algorithms</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="AntColonyOptimization.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Ant Colony Optimization</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
 </div>
-<div class="prev-next-bottom">
-<a class="left-prev" href="index.html" id="prev-link" title="previous page">Swarm Intelligence Algorithms</a>
-<a class="right-next" href="AntColonyOptimization.html" id="next-link" title="next page">Ant Colony Optimization</a>
-</div>
-</div>
-</div>
-<footer class="footer mt-5 mt-md-0">
-<div class="container">
-<p>
-        
-          By Alaa Khamis and Yinan Wang<br/>
-        
-            © Copyright 2021, Alaa Khamis and Yinan Wang.<br/>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-implementation">Example implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-pso-with-routing-problem">Example: PSO with Routing Problem</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alaa Khamis and Yinan Wang
 </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021, Alaa Khamis and Yinan Wang.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
-</footer>
-</main>
-</div>
-</div>
-<script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-</body>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
 </html>

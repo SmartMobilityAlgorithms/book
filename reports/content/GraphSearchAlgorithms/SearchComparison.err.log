@@ -1,0 +1,76 @@
+Traceback (most recent call last):
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\client.py", line 1269, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\util.py", line 85, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\util.py", line 60, in just_run
+    return loop.run_until_complete(coro)
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\asyncio\base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\client.py", line 707, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\client.py", line 1025, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\client.py", line 919, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Setup the Graph
+import osmnx
+import pandas
+from smart_mobility_utilities.common import Node
+from smart_mobility_utilities.search import *
+
+stats = []
+reference = (43.661667, -79.395)
+G = osmnx.graph_from_point(reference, dist=300, clean_periphery=True, simplify=True)
+origin = Node(graph=G, osmid=55808290)
+destination = Node(graph=G, osmid=389677909)
+
+# Benchmark Blind Search Algorithms
+stats.append(benchmark(BFS,use_G=False, G=G,origin=origin, destination=destination)) # BFS
+stats.append(benchmark(DFS,use_G=False, G=G,origin=origin, destination=destination)) # DFS
+stats.append(benchmark(dijkstra, G=G,origin=origin, destination=destination)) # Dijkstra
+
+# Benchmark Informed Search Algorithms
+stats.append(benchmark(hill_climbing, G=G, origin=origin, destination=destination))
+stats.append(benchmark(beam, G=G, origin=origin, destination=destination))
+stats.append(benchmark(astar,G=G,origin=origin, destination=destination))
+
+# Handle special case for bidirectional A*
+name, rtime, rcost = benchmark(bidirectional_astar,include_cost=False,G=G,origin=origin, destination=destination)
+rcost = 827.505 # (from previous section)
+stats.append((name,rtime,rcost))
+
+# Benchmark both the contraction generation as well as the search
+G = osmnx.graph_from_point(reference, dist=300, clean_periphery=True, simplify=True, network_type='drive_service')
+start = 36603405
+end = 24959560
+c_gen = process_time()
+G, hierarchy = contraction_hierarchy_generate(G)
+c_gen = process_time() - c_gen
+ch_time = process_time()
+route, ch_cost = bidirectional_dijkstra_with_contraction(G,start,end,hierarchy, cost=True)
+ch_time = process_time() - ch_time
+
+stats.append(('Graph Contraction',c_gen,''))
+stats.append(('Bidirectional-Dijkstra (contracted graph)',ch_time,ch_cost))
+df = pandas.DataFrame(stats, columns=['Algorithm','Time','Cost (m)'])
+df.style.hide_index() # Hide the index for display purposes
+df.round(5)
+------------------
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Input [1;32mIn [1][0m, in [0;36m<cell line: 4>[1;34m()[0m
+[0;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mosmnx[39;00m
+[0;32m      3[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m
+[1;32m----> 4[0m [38;5;28;01mfrom[39;00m [38;5;21;01msmart_mobility_utilities[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcommon[39;00m [38;5;28;01mimport[39;00m Node
+[0;32m      5[0m [38;5;28;01mfrom[39;00m [38;5;21;01msmart_mobility_utilities[39;00m[38;5;21;01m.[39;00m[38;5;21;01msearch[39;00m [38;5;28;01mimport[39;00m [38;5;241m*[39m
+[0;32m      7[0m stats [38;5;241m=[39m []
+
+[1;31mModuleNotFoundError[0m: No module named 'smart_mobility_utilities'
+ModuleNotFoundError: No module named 'smart_mobility_utilities'
+

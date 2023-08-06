@@ -1,0 +1,41 @@
+Traceback (most recent call last):
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\client.py", line 1269, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\util.py", line 85, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\util.py", line 60, in just_run
+    return loop.run_until_complete(coro)
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\asyncio\base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\client.py", line 707, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\client.py", line 1025, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\Alaa\.conda\envs\uoft\lib\site-packages\nbclient\client.py", line 919, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import pandas
+area = convex_hull.area
+stats = osmnx.basic_stats(graph, area=area)
+extended_stats = osmnx.extended_stats(graph,ecc=True,cc=True)
+stats.update(extended_stats)
+
+# Show the data in a pandas Series for better formatting
+pandas.Series(stats)
+------------------
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mAttributeError[0m                            Traceback (most recent call last)
+Input [1;32mIn [15][0m, in [0;36m<cell line: 4>[1;34m()[0m
+[0;32m      2[0m area [38;5;241m=[39m convex_hull[38;5;241m.[39marea
+[0;32m      3[0m stats [38;5;241m=[39m osmnx[38;5;241m.[39mbasic_stats(graph, area[38;5;241m=[39marea)
+[1;32m----> 4[0m extended_stats [38;5;241m=[39m [43mosmnx[49m[38;5;241;43m.[39;49m[43mextended_stats[49m(graph,ecc[38;5;241m=[39m[38;5;28;01mTrue[39;00m,cc[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
+[0;32m      5[0m stats[38;5;241m.[39mupdate(extended_stats)
+[0;32m      7[0m [38;5;66;03m# Show the data in a pandas Series for better formatting[39;00m
+
+[1;31mAttributeError[0m: module 'osmnx' has no attribute 'extended_stats'
+AttributeError: module 'osmnx' has no attribute 'extended_stats'
+

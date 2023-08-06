@@ -1,469 +1,502 @@
+
+
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>References — AI Search Algorithms for Smart Mobility</title>
-<link href="_static/css/theme.css" rel="stylesheet"/>
-<link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet"/>
-<link href="_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
-<link as="font" crossorigin="" href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
-<link as="font" crossorigin="" href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
-<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" rel="stylesheet" type="text/css"/>
-<link href="_static/togglebutton.css" rel="stylesheet" type="text/css"/>
-<link href="_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="_static/mystnb.css" rel="stylesheet" type="text/css"/>
-<link href="_static/sphinx-thebe.css" rel="stylesheet" type="text/css"/>
-<link href="_static/tabs.css" rel="stylesheet" type="text/css"/>
-<link href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" rel="stylesheet" type="text/css"/>
-<link href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" rel="stylesheet" type="text/css"/>
-<link as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js" rel="preload"/>
-<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-<script src="_static/jquery.js"></script>
-<script src="_static/underscore.js"></script>
-<script src="_static/doctools.js"></script>
-<script src="_static/togglebutton.js"></script>
-<script src="_static/clipboard.min.js"></script>
-<script src="_static/copybutton.js"></script>
-<script src="_static/tabs.js"></script>
-<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-<script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-<script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
-<script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-<script async="async" src="_static/sphinx-thebe.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-<link href="genindex.html" rel="index" title="Index"/>
-<link href="search.html" rel="search" title="Search"/>
-<link href="content/Datasets.html" rel="prev" title="Datasets"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="en" name="docsearch:language"/>
-</head>
-<body data-offset="80" data-spy="scroll" data-target="#bd-toc-nav">
-<div class="container-fluid" id="banner"></div>
-<div class="container-xl">
-<div class="row">
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-<div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
-<img alt="logo" class="logo" src="_static/sm.png"/>
-<h1 class="site-logo" id="site-title">AI Search Algorithms for Smart Mobility</h1>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>References &#8212; AI Search Algorithms for Smart Mobility</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'References';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Datasets" href="content/Datasets.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/sm.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/sm.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    AI Search Algorithms for Smart Mobility - ECE1724
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="content/GettingStarted/index.html">Getting Started</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="content/IntroGeoScience/index.html">Introduction to Geospatial Data Science</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/IntroGeoScience/SpatialData.html">Spatial Data and Geographic Information System (GIS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/IntroGeoScience/Projection.html">Projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/IntroGeoScience/Visualization.html">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="content/GraphSearchAlgorithms/index.html">Graph Search Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/GraphSearchAlgorithms/RoadGraph.html">From Road Network to Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/GraphSearchAlgorithms/GraphSearch.html">Graph Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/GraphSearchAlgorithms/BlindSearch.html">Blind Search Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/GraphSearchAlgorithms/InformedSearch.html">Informed Search Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/GraphSearchAlgorithms/SearchComparison.html">Search Algorithm Comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="content/TrajectoryAlgorithms/index.html">Trajectory-based Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/TrajectoryAlgorithms/TabuSearch.html">Tabu Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/TrajectoryAlgorithms/SimulatedAnnealing.html">Simulated Annealing</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="content/EvolutionaryComputingAlgorithms/index.html">Evolutionary Computing Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/EvolutionaryComputingAlgorithms/GeneratingInitialPopulations.html">Generating Initial Populations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/EvolutionaryComputingAlgorithms/GeneticAlgorithms.html">Genetic Algorithms</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="content/SwarmIntelligenceAlgorithms/index.html">Swarm Intelligence Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/SwarmIntelligenceAlgorithms/ParticleSwarmOptimization.html">Particle Swarm Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/SwarmIntelligenceAlgorithms/AntColonyOptimization.html">Ant Colony Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/SwarmIntelligenceAlgorithms/ArtificialBeeColony.html">Artificial Bee Colony</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/SwarmIntelligenceAlgorithms/FireflyAlgorithm.html">Firefly Algorithm</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="content/LearnToSearch/index.html">Learn to Search</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/LearnToSearch/GeometricDeepLearning.html">Geometric Deep Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/LearnToSearch/GraphNeuralNetworks.html">Graph Neural Networks (GNN)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/LearnToSearch/AttentionMechanisms.html">Attention Mechanisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/LearnToSearch/ReinforcementLearning.html">Reinforcement Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="content/PeopleMobilityProblems/index.html">People Mobility Problems</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/PeopleMobilityProblems/carsharing/CarSharing.html">Car-Sharing Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/PeopleMobilityProblems/trip_itinerary_planning/TIP.html">Trip Itinerary Planning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/PeopleMobilityProblems/multicriteriarouting/MultiCriteriaRouting.html">Multi-Criteria Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/PeopleMobilityProblems/deadheading/Deadheading.html">Deadheading in Ride-Hailing</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="content/LogisticsProblems/index.html">Logistics Problems</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/LogisticsProblems/delivery_GA.html">Delivery Vehicle Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content/LogisticsProblems/eco_routing.html">Eco-efficient Delivery</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="content/InfrastructureProblems/index.html">Infrastructure Problems</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="content/InfrastructureProblems/emergency_vehicle/emergency_vehicle.html">Emergency Dispatch and Routing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="content/ToolsAndPythonLibraries/index.html">Tools and Python Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/Datasets.html">Datasets</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/SmartMobilityAlgorithms/book" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
 </a>
-</div><form action="search.html" class="bd-search d-flex align-items-center" method="get">
-<i class="icon fas fa-search"></i>
-<input aria-label="Search this book..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search this book..." type="search"/>
-</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
-<div class="bd-toc-item active">
-<ul class="nav bd-sidenav">
-<li class="toctree-l1">
-<a class="reference internal" href="index.html">
-   AI Search Algorithms for Smart Mobility
-  </a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/References.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
 </li>
-</ul>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1">
-<a class="reference internal" href="content/GettingStarted/index.html">
-   Getting Started
-  </a>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="content/IntroGeoScience/index.html">
-   Introduction to Geospatial Data Science
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-<label for="toctree-checkbox-1">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="content/IntroGeoScience/SpatialData.html">
-     Spatial Data and Geographic Information System (GIS)
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="content/IntroGeoScience/Projection.html">
-     Projection
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="content/IntroGeoScience/Visualization.html">
-     Visualization
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="content/GraphSearchAlgorithms/index.html">
-   Graph Search Algorithms
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-<label for="toctree-checkbox-2">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="content/GraphSearchAlgorithms/RoadGraph.html">
-     From Road Network to Graph
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="content/GraphSearchAlgorithms/GraphSearch.html">
-     Graph Search
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="content/GraphSearchAlgorithms/BlindSearch.html">
-     Blind Search Algorithms
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="content/GraphSearchAlgorithms/InformedSearch.html">
-     Informed Search Algorithms
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="content/GraphSearchAlgorithms/SearchComparison.html">
-     Search Algorithm Comparison
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="content/TrajectoryAlgorithms/index.html">
-   Trajectory-based Algorithms
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-<label for="toctree-checkbox-3">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="content/TrajectoryAlgorithms/TabuSearch.html">
-     Tabu Search
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="content/TrajectoryAlgorithms/SimulatedAnnealing.html">
-     Simulated Annealing
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="content/EvolutionaryComputingAlgorithms/index.html">
-   Evolutionary Computing Algorithms
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-<label for="toctree-checkbox-4">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="content/EvolutionaryComputingAlgorithms/GeneratingInitialPopulations.html">
-     Generating Initial Populations
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="content/EvolutionaryComputingAlgorithms/GeneticAlgorithms.html">
-     Genetic Algorithms
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="content/SwarmIntelligenceAlgorithms/index.html">
-   Swarm Intelligence Algorithms
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-<label for="toctree-checkbox-5">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="content/SwarmIntelligenceAlgorithms/ParticleSwarmOptimization.html">
-     Particle Swarm Optimization
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="content/SwarmIntelligenceAlgorithms/AntColonyOptimization.html">
-     Ant Colony Optimization
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="content/SwarmIntelligenceAlgorithms/ArtificialBeeColony.html">
-     Artificial Bee Colony
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="content/SwarmIntelligenceAlgorithms/FireflyAlgorithm.html">
-     Firefly Algorithm
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="content/LearnToSearch/index.html">
-   Learn to Search
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-<label for="toctree-checkbox-6">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="content/LearnToSearch/GeometricDeepLearning.html">
-     Geometric Deep Learning
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="content/LearnToSearch/GraphNeuralNetworks.html">
-     Graph Neural Networks (GNN)
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="content/LearnToSearch/AttentionMechanisms.html">
-     Attention Mechanisms
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="content/LearnToSearch/ReinforcementLearning.html">
-     Reinforcement Learning
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="content/PeopleMobilityProblems/index.html">
-   People Mobility Problems
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-<label for="toctree-checkbox-7">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="content/PeopleMobilityProblems/carsharing/CarSharing.html">
-     Car-Sharing Service
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="content/PeopleMobilityProblems/trip_itinerary_planning/TIP.html">
-     Trip Itinerary Planning
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="content/PeopleMobilityProblems/multicriteriarouting/MultiCriteriaRouting.html">
-     Multi-Criteria Routing
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="content/PeopleMobilityProblems/deadheading/Deadheading.html">
-     Deadheading in Ride-Hailing
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="content/LogisticsProblems/index.html">
-   Logistics Problems
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-<label for="toctree-checkbox-8">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="content/LogisticsProblems/delivery_GA.html">
-     Delivery Vehicle Routing
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="content/LogisticsProblems/eco_routing.html">
-     Eco-efficient Delivery
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="content/InfrastructureProblems/index.html">
-   Infrastructure Problems
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-<label for="toctree-checkbox-9">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="content/InfrastructureProblems/emergency_vehicle/emergency_vehicle.html">
-     Emergency Dispatch and Routing
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1">
-<a class="reference internal" href="content/ToolsAndPythonLibraries/index.html">
-   Tools and Python Libraries
-  </a>
-</li>
-<li class="toctree-l1">
-<a class="reference internal" href="content/Datasets.html">
-   Datasets
-  </a>
-</li>
-<li class="toctree-l1 current active">
-<a class="current reference internal" href="#">
-   References
-  </a>
-</li>
-</ul>
-</div>
-</nav> <!-- To handle the deprecated key -->
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-</div>
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-<div class="topbar container-xl fixed-top">
-<div class="topbar-contents row">
-<div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-<div class="col pl-md-4 topbar-main">
-<button aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" class="navbar-toggler ml-0" data-placement="bottom" data-target=".site-navigation" data-toggle="collapse" id="navbar-toggler" title="Toggle navigation" type="button">
-<i class="fas fa-bars"></i>
-<i class="fas fa-arrow-left"></i>
-<i class="fas fa-arrow-up"></i>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
 </button>
-<div class="dropdown-buttons-trigger">
-<button aria-label="Download this page" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-download"></i></button>
-<div class="dropdown-buttons">
-<!-- ipynb file if we had a myst markdown file -->
-<!-- Download raw file -->
-<a class="dropdown-buttons" href="_sources/References.md"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.md</button></a>
-<!-- Download PDF via print -->
-<button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="window.print()" title="Print to PDF" type="button">.pdf</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
 </div>
 </div>
-<!-- Source interaction buttons -->
-<div class="dropdown-buttons-trigger">
-<button aria-label="Connect with source repository" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fab fa-github"></i></button>
-<div class="dropdown-buttons sourcebuttons">
-<a class="repository-button" href="https://github.com/SmartMobilityAlgorithms/book"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Source repository" type="button"><i class="fab fa-github"></i>repository</button></a>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>References</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h1>
+<div class="docutils container" id="id1">
+<div class="citation" id="id13" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>Alaa Khamis. <em>Smart Mobility: Exploring Foundational Technologies and Wider Impacts</em>. Apress (Springer Nature), 2021. ISBN 9781484271001. URL: <a class="reference external" href="https://link.springer.com/book/10.1007/978-1-4842-7101-8">https://link.springer.com/book/10.1007/978-1-4842-7101-8</a>.</p>
+</div>
+<div class="citation" id="id7" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p>Paul Bolstad. <em>GIS fundamentals : a first text on geographic information systems</em>. Eider (PressMinnesota), 2016.</p>
+</div>
+<div class="citation" id="id8" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<p>Ontario Government. Ontario health region boundaries | frontières des régions sanitaires de l’ontario. URL: <a class="reference external" href="https://data.ontario.ca/dataset/ontario-s-health-region-geographic-data">https://data.ontario.ca/dataset/ontario-s-health-region-geographic-data</a>.</p>
+</div>
+<div class="citation" id="id9" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
+<p>Geopandas developers. Geopandas documentation. URL: <a class="reference external" href="https://geopandas.org/getting_started/introduction.html">https://geopandas.org/getting_started/introduction.html</a>.</p>
+</div>
+<div class="citation" id="id10" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
+<p>MapTiler Team. Epsg:3857. URL: <a class="reference external" href="https://epsg.io/3857">https://epsg.io/3857</a>.</p>
+</div>
+<div class="citation" id="id14" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></span>
+<p>Transport Canada. Canadian motor vehicle traffic collision statistics: 2018. URL: <a class="reference external" href="https://tc.canada.ca/en/road-transportation/motor-vehicle-safety/canadian-motor-vehicle-traffic-collision-statistics-2018">https://tc.canada.ca/en/road-transportation/motor-vehicle-safety/canadian-motor-vehicle-traffic-collision-statistics-2018</a>.</p>
+</div>
+<div class="citation" id="id15" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></span>
+<p>Toronto Police Service. Traffic collisions - killed or seriously injured (ksi) data. URL: <a class="reference external" href="https://data.torontopolice.on.ca/datasets/ksi/explore">https://data.torontopolice.on.ca/datasets/ksi/explore</a>.</p>
+</div>
+<div class="citation" id="id16" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></span>
+<p>Alaa M. Khamis, Mohamed S. Kamel, and Miguel A. Salichs. Cooperation: concepts and general typology. <em>2006 IEEE International Conference on Systems, Man and Cybernetics</em>, 2006. <a class="reference external" href="https://doi.org/10.1109/icsmc.2006.384929">doi:10.1109/icsmc.2006.384929</a>.</p>
+</div>
+<div class="citation" id="id17" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></span>
+<p>Eric Bonabeau, Marco Dorigo, and Guy Theraulaz. <em>Swarm intelligence: from natural to artificial systems</em>. Oxford Univ. Press, 1999.</p>
+</div>
+<div class="citation" id="id20" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>10<span class="fn-bracket">]</span></span>
+<p>André Hottung, Shunji Tanaka, and Kevin Tierney. Deep learning assisted heuristic tree search for the container pre-marshalling problem. <em>Computers &amp; Operations Research</em>, 2020. <a class="reference external" href="https://doi.org/10.1016/j.cor.2019.104781">doi:10.1016/j.cor.2019.104781</a>.</p>
+</div>
+<div class="citation" id="id21" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></span>
+<p>Jie Zhou, Ganqu Cui, Shengding Hu, Zhengyan Zhang, Cheng Yang, Zhiyuan Liu, Lifeng Wang, Changcheng Li, and Maosong Sun. Graph neural networks: a review of methods and applications. <em>AI Open</em>, 1:57–81, 2020. <a class="reference external" href="https://doi.org/10.1016/j.aiopen.2021.01.001">doi:10.1016/j.aiopen.2021.01.001</a>.</p>
+</div>
+<div class="citation" id="id22" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>12<span class="fn-bracket">]</span></span>
+<p>William L. Hamilton, Rex Ying, and Jure Leskovec. Representation learning on graphs: methods and applications. <em>CoRR</em>, 2017. URL: <a class="reference external" href="http://arxiv.org/abs/1709.05584">http://arxiv.org/abs/1709.05584</a>, <a class="reference external" href="https://arxiv.org/abs/1709.05584">arXiv:1709.05584</a>.</p>
+</div>
+<div class="citation" id="id23" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>13<span class="fn-bracket">]</span></span>
+<p>F. Scarselli, M. Gori, Ah Chung Tsoi, M. Hagenbuchner, and G. Monfardini. The graph neural network model. <em>IEEE Transactions on Neural Networks</em>, 20(1):61–80, 2009. <a class="reference external" href="https://doi.org/10.1109/tnn.2008.2005605">doi:10.1109/tnn.2008.2005605</a>.</p>
+</div>
+<div class="citation" id="id24" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>14<span class="fn-bracket">]</span></span>
+<p>Chaitanya K. Joshi, Thomas Laurent, and Xavier Bresson. An efficient graph convolutional network technique for the travelling salesman problem. <em>CoRR</em>, 2019. URL: <a class="reference external" href="http://arxiv.org/abs/1906.01227">http://arxiv.org/abs/1906.01227</a>, <a class="reference external" href="https://arxiv.org/abs/1906.01227">arXiv:1906.01227</a>.</p>
+</div>
+<div class="citation" id="id25" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>15<span class="fn-bracket">]</span></span>
+<p>Colin R. Reeves. <em>Modern Heuristic Techniques for Combinatorial Problems</em>. McGraw-Hill, 1995.</p>
+</div>
+<div class="citation" id="id26" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>16<span class="fn-bracket">]</span></span>
+<p>Dzmitry Bahdanau, Kyunghyun Cho, and Yoshua Bengio. Neural machine translation by jointly learning to align and translate. 2016. <a class="reference external" href="https://arxiv.org/abs/1409.0473">arXiv:1409.0473</a>.</p>
+</div>
+<div class="citation" id="id27" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>17<span class="fn-bracket">]</span></span>
+<p>Oriol Vinyals, Meire Fortunato, and Navdeep Jaitly. Pointer networks. 2017. <a class="reference external" href="https://arxiv.org/abs/1506.03134">arXiv:1506.03134</a>.</p>
+</div>
+<div class="citation" id="id28" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>18<span class="fn-bracket">]</span></span>
+<p>Richard S. Sutton, Francis Bach, and Andrew G. Barto. <em>Reinforcement Learning: An Introduction</em>. MIT Press Ltd, 2018.</p>
+</div>
+<div class="citation" id="id29" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>19<span class="fn-bracket">]</span></span>
+<p>Ahmad Taher Azar, Anis Koubaa, Nada Ali Mohamed, Habiba A. Ibrahim, Zahra Fathy Ibrahim, Muhammad Kazim, Adel Ammar, Bilel Benjdira, Alaa M. Khamis, Ibrahim A. Hameed, and Gabriella Casalino. Drone deep reinforcement learning: a review. <em>Electronics</em>, 2021. URL: <a class="reference external" href="https://www.mdpi.com/2079-9292/10/9/999">https://www.mdpi.com/2079-9292/10/9/999</a>, <a class="reference external" href="https://doi.org/10.3390/electronics10090999">doi:10.3390/electronics10090999</a>.</p>
+</div>
+<div class="citation" id="id30" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>20<span class="fn-bracket">]</span></span>
+<p>Sahil Manchanda, Akash Mittal, Anuj Dhawan, Sourav Medya, Sayan Ranu, and Ambuj Singh. Learning heuristics over large graphs via deep reinforcement learning. 2020. <a class="reference external" href="https://arxiv.org/abs/1903.03332">arXiv:1903.03332</a>.</p>
+</div>
+<div class="citation" id="id31" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>21<span class="fn-bracket">]</span></span>
+<p>Irwan Bello, Hieu Pham, Quoc V. Le, Mohammad Norouzi, and Samy Bengio. Neural combinatorial optimization with reinforcement learning. 2017. <a class="reference external" href="https://arxiv.org/abs/1611.09940">arXiv:1611.09940</a>.</p>
+</div>
+<div class="citation" id="id32" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>22<span class="fn-bracket">]</span></span>
+<p>Paulo R. de O. da Costa, Jason Rhuggenaath, Yingqian Zhang, and Alp Akcay. Learning 2-opt heuristics for the traveling salesman problem via deep reinforcement learning. 2020. <a class="reference external" href="https://arxiv.org/abs/2004.01608">arXiv:2004.01608</a>.</p>
+</div>
+<div class="citation" id="id33" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>23<span class="fn-bracket">]</span></span>
+<p>Mohammadreza Nazari, Afshin Oroojlooy, Lawrence V. Snyder, and Martin Takáč. Reinforcement learning for solving the vehicle routing problem. 2018. <a class="reference external" href="https://arxiv.org/abs/1802.04240">arXiv:1802.04240</a>.</p>
+</div>
+<div class="citation" id="id34" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>24<span class="fn-bracket">]</span></span>
+<p>Arthur Delarue, Ross Anderson, and Christian Tjandraatmadja. Reinforcement learning with combinatorial actions: an application to vehicle routing. 2020. <a class="reference external" href="https://arxiv.org/abs/2010.12001">arXiv:2010.12001</a>.</p>
+</div>
+<div class="citation" id="id35" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>25<span class="fn-bracket">]</span></span>
+<p>Abubakr O. Al-Abbasi, Arnob Ghosh, and Vaneet Aggarwal. Deeppool: distributed model-free algorithm for ride-sharing using deep reinforcement learning. <em>IEEE Transactions on Intelligent Transportation Systems</em>, 20(12):4714–4727, 2019. <a class="reference external" href="https://doi.org/10.1109/tits.2019.2931830">doi:10.1109/tits.2019.2931830</a>.</p>
+</div>
+<div class="citation" id="id36" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>26<span class="fn-bracket">]</span></span>
+<p>Takuma Oda and Carlee Joe-Wong. Movi: a model-free approach to dynamic fleet management. 2018. <a class="reference external" href="https://arxiv.org/abs/1804.04758">arXiv:1804.04758</a>.</p>
+</div>
+<div class="citation" id="id37" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>27<span class="fn-bracket">]</span></span>
+<p>Jiayu Chen, Abhishek K. Umrawal, Tian Lan, and Vaneet Aggarwal. Deepfreight: a model-free deep-reinforcement-learning-based algorithm for multi-transfer freight delivery. 2021. <a class="reference external" href="https://arxiv.org/abs/2103.03450">arXiv:2103.03450</a>.</p>
 </div>
 </div>
-<!-- Full screen (wrap in <a> to have style consistency -->
-<a class="full-screen-button"><button aria-label="Fullscreen mode" class="btn btn-secondary topbarbtn" data-placement="bottom" data-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode" type="button"><i class="fas fa-expand"></i></button></a>
-<!-- Launch buttons -->
 </div>
-<!-- Table of contents -->
-<div class="d-none d-md-block col-md-2 bd-toc show">
-</div>
-</div>
-</div>
-<div class="row" id="main-content">
-<div class="col-12 col-md-9 pl-md-3 pr-md-0">
-<div>
-<div class="section" id="references">
-<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
-<p id="id1"></p><dl class="citation">
-<dt class="label" id="id13"><span class="brackets">1</span></dt>
-<dd><p>Alaa Khamis. <em>Smart Mobility: Exploring Foundational Technologies and Wider Impacts</em>. Apress (Springer Nature), 2021. ISBN 9781484271001. URL: <a class="reference external" href="https://link.springer.com/book/10.1007/978-1-4842-7101-8">https://link.springer.com/book/10.1007/978-1-4842-7101-8</a>.</p>
-</dd>
-<dt class="label" id="id7"><span class="brackets">2</span></dt>
-<dd><p>Paul Bolstad. <em>GIS fundamentals : a first text on geographic information systems</em>. Eider (PressMinnesota), 2016.</p>
-</dd>
-<dt class="label" id="id8"><span class="brackets">3</span></dt>
-<dd><p>Ontario Government. Ontario health region boundaries | frontières des régions sanitaires de l’ontario. URL: <a class="reference external" href="https://data.ontario.ca/dataset/ontario-s-health-region-geographic-data">https://data.ontario.ca/dataset/ontario-s-health-region-geographic-data</a>.</p>
-</dd>
-<dt class="label" id="id9"><span class="brackets">4</span></dt>
-<dd><p>Geopandas developers. Geopandas documentation. URL: <a class="reference external" href="https://geopandas.org/getting_started/introduction.html">https://geopandas.org/getting_started/introduction.html</a>.</p>
-</dd>
-<dt class="label" id="id10"><span class="brackets">5</span></dt>
-<dd><p>MapTiler Team. Epsg:3857. URL: <a class="reference external" href="https://epsg.io/3857">https://epsg.io/3857</a>.</p>
-</dd>
-<dt class="label" id="id14"><span class="brackets">6</span></dt>
-<dd><p>Transport Canada. Canadian motor vehicle traffic collision statistics: 2018. URL: <a class="reference external" href="https://tc.canada.ca/en/road-transportation/motor-vehicle-safety/canadian-motor-vehicle-traffic-collision-statistics-2018">https://tc.canada.ca/en/road-transportation/motor-vehicle-safety/canadian-motor-vehicle-traffic-collision-statistics-2018</a>.</p>
-</dd>
-<dt class="label" id="id15"><span class="brackets">7</span></dt>
-<dd><p>Toronto Police Service. Traffic collisions - killed or seriously injured (ksi) data. URL: <a class="reference external" href="https://data.torontopolice.on.ca/datasets/ksi/explore">https://data.torontopolice.on.ca/datasets/ksi/explore</a>.</p>
-</dd>
-<dt class="label" id="id16"><span class="brackets">8</span></dt>
-<dd><p>Alaa M. Khamis, Mohamed S. Kamel, and Miguel A. Salichs. Cooperation: concepts and general typology. <em>2006 IEEE International Conference on Systems, Man and Cybernetics</em>, 2006. <a class="reference external" href="https://doi.org/10.1109/icsmc.2006.384929">doi:10.1109/icsmc.2006.384929</a>.</p>
-</dd>
-<dt class="label" id="id17"><span class="brackets">9</span></dt>
-<dd><p>Eric Bonabeau, Marco Dorigo, and Guy Theraulaz. <em>Swarm intelligence: from natural to artificial systems</em>. Oxford Univ. Press, 1999.</p>
-</dd>
-<dt class="label" id="id20"><span class="brackets">10</span></dt>
-<dd><p>André Hottung, Shunji Tanaka, and Kevin Tierney. Deep learning assisted heuristic tree search for the container pre-marshalling problem. <em>Computers &amp; Operations Research</em>, 2020. <a class="reference external" href="https://doi.org/10.1016/j.cor.2019.104781">doi:10.1016/j.cor.2019.104781</a>.</p>
-</dd>
-<dt class="label" id="id21"><span class="brackets">11</span></dt>
-<dd><p>Jie Zhou, Ganqu Cui, Shengding Hu, Zhengyan Zhang, Cheng Yang, Zhiyuan Liu, Lifeng Wang, Changcheng Li, and Maosong Sun. Graph neural networks: a review of methods and applications. <em>AI Open</em>, 1:57–81, 2020. <a class="reference external" href="https://doi.org/10.1016/j.aiopen.2021.01.001">doi:10.1016/j.aiopen.2021.01.001</a>.</p>
-</dd>
-<dt class="label" id="id22"><span class="brackets">12</span></dt>
-<dd><p>William L. Hamilton, Rex Ying, and Jure Leskovec. Representation learning on graphs: methods and applications. <em>CoRR</em>, 2017. URL: <a class="reference external" href="http://arxiv.org/abs/1709.05584">http://arxiv.org/abs/1709.05584</a>, <a class="reference external" href="https://arxiv.org/abs/1709.05584">arXiv:1709.05584</a>.</p>
-</dd>
-<dt class="label" id="id23"><span class="brackets">13</span></dt>
-<dd><p>F. Scarselli, M. Gori, Ah Chung Tsoi, M. Hagenbuchner, and G. Monfardini. The graph neural network model. <em>IEEE Transactions on Neural Networks</em>, 20(1):61–80, 2009. <a class="reference external" href="https://doi.org/10.1109/tnn.2008.2005605">doi:10.1109/tnn.2008.2005605</a>.</p>
-</dd>
-<dt class="label" id="id24"><span class="brackets">14</span></dt>
-<dd><p>Chaitanya K. Joshi, Thomas Laurent, and Xavier Bresson. An efficient graph convolutional network technique for the travelling salesman problem. <em>CoRR</em>, 2019. URL: <a class="reference external" href="http://arxiv.org/abs/1906.01227">http://arxiv.org/abs/1906.01227</a>, <a class="reference external" href="https://arxiv.org/abs/1906.01227">arXiv:1906.01227</a>.</p>
-</dd>
-<dt class="label" id="id25"><span class="brackets">15</span></dt>
-<dd><p>Colin R. Reeves. <em>Modern Heuristic Techniques for Combinatorial Problems</em>. McGraw-Hill, 1995.</p>
-</dd>
-<dt class="label" id="id26"><span class="brackets">16</span></dt>
-<dd><p>Dzmitry Bahdanau, Kyunghyun Cho, and Yoshua Bengio. Neural machine translation by jointly learning to align and translate. 2016. <a class="reference external" href="https://arxiv.org/abs/1409.0473">arXiv:1409.0473</a>.</p>
-</dd>
-<dt class="label" id="id27"><span class="brackets">17</span></dt>
-<dd><p>Oriol Vinyals, Meire Fortunato, and Navdeep Jaitly. Pointer networks. 2017. <a class="reference external" href="https://arxiv.org/abs/1506.03134">arXiv:1506.03134</a>.</p>
-</dd>
-<dt class="label" id="id28"><span class="brackets">18</span></dt>
-<dd><p>Richard S. Sutton, Francis Bach, and Andrew G. Barto. <em>Reinforcement Learning: An Introduction</em>. MIT Press Ltd, 2018.</p>
-</dd>
-<dt class="label" id="id29"><span class="brackets">19</span></dt>
-<dd><p>Ahmad Taher Azar, Anis Koubaa, Nada Ali Mohamed, Habiba A. Ibrahim, Zahra Fathy Ibrahim, Muhammad Kazim, Adel Ammar, Bilel Benjdira, Alaa M. Khamis, Ibrahim A. Hameed, and Gabriella Casalino. Drone deep reinforcement learning: a review. <em>Electronics</em>, 2021. URL: <a class="reference external" href="https://www.mdpi.com/2079-9292/10/9/999">https://www.mdpi.com/2079-9292/10/9/999</a>, <a class="reference external" href="https://doi.org/10.3390/electronics10090999">doi:10.3390/electronics10090999</a>.</p>
-</dd>
-<dt class="label" id="id30"><span class="brackets">20</span></dt>
-<dd><p>Sahil Manchanda, Akash Mittal, Anuj Dhawan, Sourav Medya, Sayan Ranu, and Ambuj Singh. Learning heuristics over large graphs via deep reinforcement learning. 2020. <a class="reference external" href="https://arxiv.org/abs/1903.03332">arXiv:1903.03332</a>.</p>
-</dd>
-<dt class="label" id="id31"><span class="brackets">21</span></dt>
-<dd><p>Irwan Bello, Hieu Pham, Quoc V. Le, Mohammad Norouzi, and Samy Bengio. Neural combinatorial optimization with reinforcement learning. 2017. <a class="reference external" href="https://arxiv.org/abs/1611.09940">arXiv:1611.09940</a>.</p>
-</dd>
-<dt class="label" id="id32"><span class="brackets">22</span></dt>
-<dd><p>Paulo R. de O. da Costa, Jason Rhuggenaath, Yingqian Zhang, and Alp Akcay. Learning 2-opt heuristics for the traveling salesman problem via deep reinforcement learning. 2020. <a class="reference external" href="https://arxiv.org/abs/2004.01608">arXiv:2004.01608</a>.</p>
-</dd>
-<dt class="label" id="id33"><span class="brackets">23</span></dt>
-<dd><p>Mohammadreza Nazari, Afshin Oroojlooy, Lawrence V. Snyder, and Martin Takáč. Reinforcement learning for solving the vehicle routing problem. 2018. <a class="reference external" href="https://arxiv.org/abs/1802.04240">arXiv:1802.04240</a>.</p>
-</dd>
-<dt class="label" id="id34"><span class="brackets">24</span></dt>
-<dd><p>Arthur Delarue, Ross Anderson, and Christian Tjandraatmadja. Reinforcement learning with combinatorial actions: an application to vehicle routing. 2020. <a class="reference external" href="https://arxiv.org/abs/2010.12001">arXiv:2010.12001</a>.</p>
-</dd>
-<dt class="label" id="id35"><span class="brackets">25</span></dt>
-<dd><p>Abubakr O. Al-Abbasi, Arnob Ghosh, and Vaneet Aggarwal. Deeppool: distributed model-free algorithm for ride-sharing using deep reinforcement learning. <em>IEEE Transactions on Intelligent Transportation Systems</em>, 20(12):4714–4727, 2019. <a class="reference external" href="https://doi.org/10.1109/tits.2019.2931830">doi:10.1109/tits.2019.2931830</a>.</p>
-</dd>
-<dt class="label" id="id36"><span class="brackets">26</span></dt>
-<dd><p>Takuma Oda and Carlee Joe-Wong. Movi: a model-free approach to dynamic fleet management. 2018. <a class="reference external" href="https://arxiv.org/abs/1804.04758">arXiv:1804.04758</a>.</p>
-</dd>
-<dt class="label" id="id37"><span class="brackets">27</span></dt>
-<dd><p>Jiayu Chen, Abhishek K. Umrawal, Tian Lan, and Vaneet Aggarwal. Deepfreight: a model-free deep-reinforcement-learning-based algorithm for multi-transfer freight delivery. 2021. <a class="reference external" href="https://arxiv.org/abs/2103.03450">arXiv:2103.03450</a>.</p>
-</dd>
-</dl>
-</div>
-<script type="text/x-thebe-config">
+</section>
+
+    <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
@@ -475,32 +508,90 @@
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-<script>kernelName = 'python3'</script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="content/Datasets.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Datasets</p>
+      </div>
+    </a>
+</div></div>
+  
 </div>
-<div class="prev-next-bottom">
-<a class="left-prev" href="content/Datasets.html" id="prev-link" title="previous page">Datasets</a>
-</div>
-</div>
-</div>
-<footer class="footer mt-5 mt-md-0">
-<div class="container">
-<p>
-        
-          By Alaa Khamis and Yinan Wang<br/>
-        
-            © Copyright 2021, Alaa Khamis and Yinan Wang.<br/>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alaa Khamis and Yinan Wang
 </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021, Alaa Khamis and Yinan Wang.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
-</footer>
-</main>
-</div>
-</div>
-<script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-</body>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
 </html>

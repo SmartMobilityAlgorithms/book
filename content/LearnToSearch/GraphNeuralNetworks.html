@@ -1,488 +1,440 @@
+
+
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Graph Neural Networks (GNN) — AI Search Algorithms for Smart Mobility</title>
-<link href="../../_static/css/theme.css" rel="stylesheet"/>
-<link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet"/>
-<link href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css" rel="stylesheet"/>
-<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
-<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
-<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/togglebutton.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/mystnb.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/sphinx-thebe.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/tabs.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" rel="stylesheet" type="text/css"/>
-<link as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js" rel="preload"/>
-<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-<script src="../../_static/jquery.js"></script>
-<script src="../../_static/underscore.js"></script>
-<script src="../../_static/doctools.js"></script>
-<script src="../../_static/togglebutton.js"></script>
-<script src="../../_static/clipboard.min.js"></script>
-<script src="../../_static/copybutton.js"></script>
-<script src="../../_static/tabs.js"></script>
-<script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-<script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-<script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
-<script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-<script async="async" src="../../_static/sphinx-thebe.js"></script>
-<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-<link href="../../genindex.html" rel="index" title="Index"/>
-<link href="../../search.html" rel="search" title="Search"/>
-<link href="AttentionMechanisms.html" rel="next" title="Attention Mechanisms"/>
-<link href="GeometricDeepLearning.html" rel="prev" title="Geometric Deep Learning"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="en" name="docsearch:language"/>
-</head>
-<body data-offset="80" data-spy="scroll" data-target="#bd-toc-nav">
-<div class="container-fluid" id="banner"></div>
-<div class="container-xl">
-<div class="row">
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-<div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../../index.html">
-<img alt="logo" class="logo" src="../../_static/sm.png"/>
-<h1 class="site-logo" id="site-title">AI Search Algorithms for Smart Mobility</h1>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Graph Neural Networks (GNN) &#8212; AI Search Algorithms for Smart Mobility</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/LearnToSearch/GraphNeuralNetworks';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Attention Mechanisms" href="AttentionMechanisms.html" />
+    <link rel="prev" title="Geometric Deep Learning" href="GeometricDeepLearning.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/sm.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/sm.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    AI Search Algorithms for Smart Mobility - ECE1724
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted/index.html">Getting Started</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../IntroGeoScience/index.html">Introduction to Geospatial Data Science</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../IntroGeoScience/SpatialData.html">Spatial Data and Geographic Information System (GIS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../IntroGeoScience/Projection.html">Projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../IntroGeoScience/Visualization.html">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../GraphSearchAlgorithms/index.html">Graph Search Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../GraphSearchAlgorithms/RoadGraph.html">From Road Network to Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GraphSearchAlgorithms/GraphSearch.html">Graph Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GraphSearchAlgorithms/BlindSearch.html">Blind Search Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GraphSearchAlgorithms/InformedSearch.html">Informed Search Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GraphSearchAlgorithms/SearchComparison.html">Search Algorithm Comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TrajectoryAlgorithms/index.html">Trajectory-based Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../TrajectoryAlgorithms/TabuSearch.html">Tabu Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../TrajectoryAlgorithms/SimulatedAnnealing.html">Simulated Annealing</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../EvolutionaryComputingAlgorithms/index.html">Evolutionary Computing Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../EvolutionaryComputingAlgorithms/GeneratingInitialPopulations.html">Generating Initial Populations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../EvolutionaryComputingAlgorithms/GeneticAlgorithms.html">Genetic Algorithms</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../SwarmIntelligenceAlgorithms/index.html">Swarm Intelligence Algorithms</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../SwarmIntelligenceAlgorithms/ParticleSwarmOptimization.html">Particle Swarm Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SwarmIntelligenceAlgorithms/AntColonyOptimization.html">Ant Colony Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SwarmIntelligenceAlgorithms/ArtificialBeeColony.html">Artificial Bee Colony</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SwarmIntelligenceAlgorithms/FireflyAlgorithm.html">Firefly Algorithm</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Learn to Search</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="GeometricDeepLearning.html">Geometric Deep Learning</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Graph Neural Networks (GNN)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AttentionMechanisms.html">Attention Mechanisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ReinforcementLearning.html">Reinforcement Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PeopleMobilityProblems/index.html">People Mobility Problems</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PeopleMobilityProblems/carsharing/CarSharing.html">Car-Sharing Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PeopleMobilityProblems/trip_itinerary_planning/TIP.html">Trip Itinerary Planning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PeopleMobilityProblems/multicriteriarouting/MultiCriteriaRouting.html">Multi-Criteria Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PeopleMobilityProblems/deadheading/Deadheading.html">Deadheading in Ride-Hailing</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../LogisticsProblems/index.html">Logistics Problems</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../LogisticsProblems/delivery_GA.html">Delivery Vehicle Routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LogisticsProblems/eco_routing.html">Eco-efficient Delivery</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../InfrastructureProblems/index.html">Infrastructure Problems</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../InfrastructureProblems/emergency_vehicle/emergency_vehicle.html">Emergency Dispatch and Routing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ToolsAndPythonLibraries/index.html">Tools and Python Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/SmartMobilityAlgorithms/book" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
 </a>
-</div><form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
-<i class="icon fas fa-search"></i>
-<input aria-label="Search this book..." autocomplete="off" class="form-control" id="search-input" name="q" placeholder="Search this book..." type="search"/>
-</form><nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
-<div class="bd-toc-item active">
-<ul class="nav bd-sidenav">
-<li class="toctree-l1">
-<a class="reference internal" href="../../index.html">
-   AI Search Algorithms for Smart Mobility
-  </a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/LearnToSearch/GraphNeuralNetworks.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
 </li>
-</ul>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1">
-<a class="reference internal" href="../GettingStarted/index.html">
-   Getting Started
-  </a>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../IntroGeoScience/index.html">
-   Introduction to Geospatial Data Science
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-<label for="toctree-checkbox-1">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../IntroGeoScience/SpatialData.html">
-     Spatial Data and Geographic Information System (GIS)
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../IntroGeoScience/Projection.html">
-     Projection
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../IntroGeoScience/Visualization.html">
-     Visualization
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../GraphSearchAlgorithms/index.html">
-   Graph Search Algorithms
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-<label for="toctree-checkbox-2">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../GraphSearchAlgorithms/RoadGraph.html">
-     From Road Network to Graph
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../GraphSearchAlgorithms/GraphSearch.html">
-     Graph Search
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../GraphSearchAlgorithms/BlindSearch.html">
-     Blind Search Algorithms
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../GraphSearchAlgorithms/InformedSearch.html">
-     Informed Search Algorithms
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../GraphSearchAlgorithms/SearchComparison.html">
-     Search Algorithm Comparison
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../TrajectoryAlgorithms/index.html">
-   Trajectory-based Algorithms
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-<label for="toctree-checkbox-3">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../TrajectoryAlgorithms/TabuSearch.html">
-     Tabu Search
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../TrajectoryAlgorithms/SimulatedAnnealing.html">
-     Simulated Annealing
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../EvolutionaryComputingAlgorithms/index.html">
-   Evolutionary Computing Algorithms
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-<label for="toctree-checkbox-4">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../EvolutionaryComputingAlgorithms/GeneratingInitialPopulations.html">
-     Generating Initial Populations
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../EvolutionaryComputingAlgorithms/GeneticAlgorithms.html">
-     Genetic Algorithms
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../SwarmIntelligenceAlgorithms/index.html">
-   Swarm Intelligence Algorithms
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-<label for="toctree-checkbox-5">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../SwarmIntelligenceAlgorithms/ParticleSwarmOptimization.html">
-     Particle Swarm Optimization
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../SwarmIntelligenceAlgorithms/AntColonyOptimization.html">
-     Ant Colony Optimization
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../SwarmIntelligenceAlgorithms/ArtificialBeeColony.html">
-     Artificial Bee Colony
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../SwarmIntelligenceAlgorithms/FireflyAlgorithm.html">
-     Firefly Algorithm
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 current active has-children">
-<a class="reference internal" href="index.html">
-   Learn to Search
-  </a>
-<input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-<label for="toctree-checkbox-6">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul class="current">
-<li class="toctree-l2">
-<a class="reference internal" href="GeometricDeepLearning.html">
-     Geometric Deep Learning
-    </a>
-</li>
-<li class="toctree-l2 current active">
-<a class="current reference internal" href="#">
-     Graph Neural Networks (GNN)
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="AttentionMechanisms.html">
-     Attention Mechanisms
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="ReinforcementLearning.html">
-     Reinforcement Learning
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../PeopleMobilityProblems/index.html">
-   People Mobility Problems
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-<label for="toctree-checkbox-7">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../PeopleMobilityProblems/carsharing/CarSharing.html">
-     Car-Sharing Service
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../PeopleMobilityProblems/trip_itinerary_planning/TIP.html">
-     Trip Itinerary Planning
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../PeopleMobilityProblems/multicriteriarouting/MultiCriteriaRouting.html">
-     Multi-Criteria Routing
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../PeopleMobilityProblems/deadheading/Deadheading.html">
-     Deadheading in Ride-Hailing
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../LogisticsProblems/index.html">
-   Logistics Problems
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-<label for="toctree-checkbox-8">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../LogisticsProblems/delivery_GA.html">
-     Delivery Vehicle Routing
-    </a>
-</li>
-<li class="toctree-l2">
-<a class="reference internal" href="../LogisticsProblems/eco_routing.html">
-     Eco-efficient Delivery
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children">
-<a class="reference internal" href="../InfrastructureProblems/index.html">
-   Infrastructure Problems
-  </a>
-<input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-<label for="toctree-checkbox-9">
-<i class="fas fa-chevron-down">
-</i>
-</label>
-<ul>
-<li class="toctree-l2">
-<a class="reference internal" href="../InfrastructureProblems/emergency_vehicle/emergency_vehicle.html">
-     Emergency Dispatch and Routing
-    </a>
-</li>
-</ul>
-</li>
-<li class="toctree-l1">
-<a class="reference internal" href="../ToolsAndPythonLibraries/index.html">
-   Tools and Python Libraries
-  </a>
-</li>
-<li class="toctree-l1">
-<a class="reference internal" href="../Datasets.html">
-   Datasets
-  </a>
-</li>
-<li class="toctree-l1">
-<a class="reference internal" href="../../References.html">
-   References
-  </a>
-</li>
-</ul>
-</div>
-</nav> <!-- To handle the deprecated key -->
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-</div>
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-<div class="topbar container-xl fixed-top">
-<div class="topbar-contents row">
-<div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-<div class="col pl-md-4 topbar-main">
-<button aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" class="navbar-toggler ml-0" data-placement="bottom" data-target=".site-navigation" data-toggle="collapse" id="navbar-toggler" title="Toggle navigation" type="button">
-<i class="fas fa-bars"></i>
-<i class="fas fa-arrow-left"></i>
-<i class="fas fa-arrow-up"></i>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
 </button>
-<div class="dropdown-buttons-trigger">
-<button aria-label="Download this page" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-download"></i></button>
-<div class="dropdown-buttons">
-<!-- ipynb file if we had a myst markdown file -->
-<!-- Download raw file -->
-<a class="dropdown-buttons" href="../../_sources/content/LearnToSearch/GraphNeuralNetworks.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Download source file" type="button">.ipynb</button></a>
-<!-- Download PDF via print -->
-<button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" id="download-print" onclick="window.print()" title="Print to PDF" type="button">.pdf</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
 </div>
 </div>
-<!-- Source interaction buttons -->
-<div class="dropdown-buttons-trigger">
-<button aria-label="Connect with source repository" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fab fa-github"></i></button>
-<div class="dropdown-buttons sourcebuttons">
-<a class="repository-button" href="https://github.com/SmartMobilityAlgorithms/book"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Source repository" type="button"><i class="fab fa-github"></i>repository</button></a>
-</div>
-</div>
-<!-- Full screen (wrap in <a> to have style consistency -->
-<a class="full-screen-button"><button aria-label="Fullscreen mode" class="btn btn-secondary topbarbtn" data-placement="bottom" data-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode" type="button"><i class="fas fa-expand"></i></button></a>
-<!-- Launch buttons -->
-<div class="dropdown-buttons-trigger">
-<button aria-label="Launch interactive content" class="btn btn-secondary topbarbtn" id="dropdown-buttons-trigger"><i class="fas fa-rocket"></i></button>
-<div class="dropdown-buttons">
-<a class="binder-button" href="https://mybinder.org/v2/gh/SmartMobilityAlgorithms/book/main?urlpath=tree/content/LearnToSearch/GraphNeuralNetworks.ipynb"><button class="btn btn-secondary topbarbtn" data-placement="left" data-toggle="tooltip" title="Launch Binder" type="button"><img alt="Interact on binder" class="binder-button-logo" src="../../_static/images/logo_binder.svg"/>Binder</button></a>
-</div>
-</div>
-</div>
-<!-- Table of contents -->
-<div class="d-none d-md-block col-md-2 bd-toc show">
-<div class="tocsection onthispage pt-5 pb-3">
-<i class="fas fa-list"></i> Contents
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Graph Neural Networks (GNN)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-<nav id="bd-toc-nav">
-<ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry">
-<a class="reference internal nav-link" href="#graph-convolutional-neural-network-gcns">
-   Graph Convolutional Neural Network (GCNs)
-  </a>
-</li>
-<li class="toc-h2 nav-item toc-entry">
-<a class="reference internal nav-link" href="#using-gcn-to-solve-tsp">
-   Using GCN to solve TSP
-  </a>
-<ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#import-dependencies">
-     Import dependencies
-    </a>
-</li>
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#enable-notebook-mode-for-jupyter-notebook">
-     Enable Notebook mode for Jupyter Notebook
-    </a>
-</li>
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#load-tsp20-configuration-files">
-     Load TSP20 Configuration Files
-    </a>
-</li>
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#setup-gpu-and-cuda">
-     Setup GPU and CUDA
-    </a>
-</li>
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#setup-network-and-parameters">
-     Setup Network and parameters
-    </a>
-</li>
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#load-previous-training-checkpoint">
-     Load Previous Training Checkpoint
-    </a>
-<ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry">
-<a class="reference internal nav-link" href="#function-to-convert-metrics-to-text">
-       Function to convert metrics to text
-      </a>
-</li>
-<li class="toc-h4 nav-item toc-entry">
-<a class="reference internal nav-link" href="#function-to-run-test-data">
-       Function to run test data
-      </a>
-</li>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-convolutional-neural-network-gcns">Graph Convolutional Neural Network (GCNs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-gcn-to-solve-tsp">Using GCN to solve TSP</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-dependencies">Import dependencies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-notebook-mode-for-jupyter-notebook">Enable Notebook mode for Jupyter Notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-tsp20-configuration-files">Load TSP20 Configuration Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-gpu-and-cuda">Setup GPU and CUDA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-network-and-parameters">Setup Network and parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-previous-training-checkpoint">Load Previous Training Checkpoint</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#function-to-convert-metrics-to-text">Function to convert metrics to text</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#function-to-run-test-data">Function to run test data</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry">
-<a class="reference internal nav-link" href="#test-model-on-randomly-generated-graphs">
-     Test model on randomly generated graphs
-    </a>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-model-on-randomly-generated-graphs">Test model on randomly generated graphs</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry">
-<a class="reference internal nav-link" href="#resources">
-   Resources:
-  </a>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources:</a></li>
 </ul>
-</nav>
+            </nav>
+        </div>
+    </div>
 </div>
-</div>
-</div>
-<div class="row" id="main-content">
-<div class="col-12 col-md-9 pl-md-3 pr-md-0">
-<div>
-<div class="section" id="graph-neural-networks-gnn">
-<h1>Graph Neural Networks (GNN)<a class="headerlink" href="#graph-neural-networks-gnn" title="Permalink to this headline">¶</a></h1>
-<p>Graph Neural Network <span id="id1">[<a class="reference internal" href="../../References.html#id23">13</a>]</span> is a type of neural Network which directly operates on the graph structure. In GNN, graph nodes represent objects or concepts, and edges represent their relationships. Each concept is naturally defined by its features and the related concepts. Thus, we can attach a hidden <strong>state</strong> <span class="math notranslate nohighlight">\(x_n \in R^s\)</span> to each node <span class="math notranslate nohighlight">\(n\)</span> that is based on the information contained in the neighborhood of <span class="math notranslate nohighlight">\(n\)</span>. The following figure illustrated the embedding process of each node using local transition and local output functions.</p>
-<p><img alt="" src="../../_images/GNN_1.png"/></p>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="graph-neural-networks-gnn">
+<h1>Graph Neural Networks (GNN)<a class="headerlink" href="#graph-neural-networks-gnn" title="Permalink to this heading">#</a></h1>
+<p>Graph Neural Network <span id="id1">[<a class="reference internal" href="../../References.html#id23" title="F. Scarselli, M. Gori, Ah Chung Tsoi, M. Hagenbuchner, and G. Monfardini. The graph neural network model. IEEE Transactions on Neural Networks, 20(1):61–80, 2009. doi:10.1109/tnn.2008.2005605.">13</a>]</span> is a type of neural Network which directly operates on the graph structure. In GNN, graph nodes represent objects or concepts, and edges represent their relationships. Each concept is naturally defined by its features and the related concepts. Thus, we can attach a hidden <strong>state</strong> <span class="math notranslate nohighlight">\(x_n \in R^s\)</span> to each node <span class="math notranslate nohighlight">\(n\)</span> that is based on the information contained in the neighborhood of <span class="math notranslate nohighlight">\(n\)</span>. The following figure illustrated the embedding process of each node using local transition and local output functions.</p>
+<p><img alt="" src="../../_images/GNN_1.png" /></p>
 <p>where <span class="math notranslate nohighlight">\(l_n,l_{co[n]},x_{ne[n]}\)</span> and <span class="math notranslate nohighlight">\(l_{ne[n]}\)</span> are the label of <span class="math notranslate nohighlight">\(n\)</span>, the labels of its edges, the states, and the labels of the nodes in the neighborhood of <span class="math notranslate nohighlight">\(n\)</span>, respectively.
 <span class="math notranslate nohighlight">\(x,o,l\)</span> and <span class="math notranslate nohighlight">\(l_N\)</span> are the vectors constructed by stacking all the states, all the outputs, all the labels, and all the node labels, respectively as illustrated below.</p>
-<p><img alt="" src="../../_images/GNN_2.png"/></p>
-<p>The following figure summarizes the GNN-based embedding process <span id="id2">[<a class="reference internal" href="../../References.html#id24">14</a>]</span>.</p>
-<p><img alt="" src="../../_images/GNN_3.png"/></p>
+<p><img alt="" src="../../_images/GNN_2.png" /></p>
+<p>The following figure summarizes the GNN-based embedding process <span id="id2">[<a class="reference internal" href="../../References.html#id24" title="Chaitanya K. Joshi, Thomas Laurent, and Xavier Bresson. An efficient graph convolutional network technique for the travelling salesman problem. CoRR, 2019. URL: http://arxiv.org/abs/1906.01227, arXiv:1906.01227.">14</a>]</span>.</p>
+<p><img alt="" src="../../_images/GNN_3.png" /></p>
 <p>GNN is used in several smart mobility applications. For example, the accuracy of real time ETAs was improved by up to 50% in places like Berlin, Jakarta, São Paulo, Sydney, Tokyo, and Washington D.C. by using advanced machine learning techniques including Graph Neural Networks, such as <a class="reference external" href="https://deepmind.com/blog/article/traffic-prediction-with-advanced-graph-neural-networks">DeepMind</a>.</p>
-<div class="section" id="graph-convolutional-neural-network-gcns">
-<h2>Graph Convolutional Neural Network (GCNs)<a class="headerlink" href="#graph-convolutional-neural-network-gcns" title="Permalink to this headline">¶</a></h2>
-<p>In a graph convolutional neural network, embedding can take the following form:<br/><br/>
-<span class="math notranslate nohighlight">\(h^k_v=f(W_k \sum\limits_{u \in N(j)} \frac{1}{|N(v)|} h^{k-1}_u + B_k h^{k-1}_v), \forall k \in \{1,...,K\}\)</span> <br/><br/>
-where<br/><br/>
-<span class="math notranslate nohighlight">\(h_v^k\)</span> is node <span class="math notranslate nohighlight">\(v\)</span> embedding after <span class="math notranslate nohighlight">\(k\)</span> layers of neighbourhood aggregation<br/><br/>
-<span class="math notranslate nohighlight">\(\sum\limits_{u \in N(j)} \frac{1}{|N(v)|} h^{k-1}_u\)</span> are neighbors’ representations (average of neighbor’s previous layer embeddings)<br/><br/>
-<span class="math notranslate nohighlight">\(B_k h^{k-1}_v\)</span> represent own representation of node <span class="math notranslate nohighlight">\(v\)</span> in previous layer <span class="math notranslate nohighlight">\(k-1\)</span><br/><br/>
+<section id="graph-convolutional-neural-network-gcns">
+<h2>Graph Convolutional Neural Network (GCNs)<a class="headerlink" href="#graph-convolutional-neural-network-gcns" title="Permalink to this heading">#</a></h2>
+<p>In a graph convolutional neural network, embedding can take the following form:<br><br>
+<span class="math notranslate nohighlight">\(h^k_v=f(W_k \sum\limits_{u \in N(j)} \frac{1}{|N(v)|} h^{k-1}_u + B_k h^{k-1}_v), \forall k \in \{1,...,K\}\)</span> <br><br>
+where<br><br>
+<span class="math notranslate nohighlight">\(h_v^k\)</span> is node <span class="math notranslate nohighlight">\(v\)</span> embedding after <span class="math notranslate nohighlight">\(k\)</span> layers of neighbourhood aggregation<br><br>
+<span class="math notranslate nohighlight">\(\sum\limits_{u \in N(j)} \frac{1}{|N(v)|} h^{k-1}_u\)</span> are neighbors’ representations (average of neighbor’s previous layer embeddings)<br><br>
+<span class="math notranslate nohighlight">\(B_k h^{k-1}_v\)</span> represent own representation of node <span class="math notranslate nohighlight">\(v\)</span> in previous layer <span class="math notranslate nohighlight">\(k-1\)</span><br><br>
 <span class="math notranslate nohighlight">\(f\)</span> is a non-linearity function such as ReLU.</p>
-</div>
-<div class="section" id="using-gcn-to-solve-tsp">
-<h2>Using GCN to solve TSP<a class="headerlink" href="#using-gcn-to-solve-tsp" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="using-gcn-to-solve-tsp">
+<h2>Using GCN to solve TSP<a class="headerlink" href="#using-gcn-to-solve-tsp" title="Permalink to this heading">#</a></h2>
 <p>GCNs can also be used to predict “likely” edges that would appear in a solution to TSP. These likely edges can then be run through a beam search to look for near-optimal solutions.</p>
 <p>This example will use code adapted from <a class="reference external" href="https://arxiv.org/abs/1906.01227">this paper</a>.</p>
-<div class="section" id="import-dependencies">
-<h3>Import dependencies<a class="headerlink" href="#import-dependencies" title="Permalink to this headline">¶</a></h3>
+<section id="import-dependencies">
+<h3>Import dependencies<a class="headerlink" href="#import-dependencies" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some initial setup</span>
@@ -508,9 +460,9 @@ where<br/><br/>
 
 <span class="c1"># Remove warning</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">"ignore"</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">UserWarning</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">UserWarning</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">SparseEfficiencyWarning</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">,</span> <span class="n">SparseEfficiencyWarning</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">SparseEfficiencyWarning</span><span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">graph_convnet.config</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">graph_convnet.utils.graph_utils</span> <span class="kn">import</span> <span class="o">*</span>
@@ -521,10 +473,24 @@ where<br/><br/>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 19&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">sklearn.utils.class_weight</span> <span class="kn">import</span> <span class="n">compute_class_weight</span>
+<span class="ne">---&gt; </span><span class="mi">19</span> <span class="kn">from</span> <span class="nn">tensorboardX</span> <span class="kn">import</span> <span class="n">SummaryWriter</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="kn">from</span> <span class="nn">fastprogress</span> <span class="kn">import</span> <span class="n">master_bar</span><span class="p">,</span> <span class="n">progress_bar</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="c1"># Remove warning</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;tensorboardX&#39;
+</pre></div>
 </div>
 </div>
-<div class="section" id="enable-notebook-mode-for-jupyter-notebook">
-<h3>Enable Notebook mode for Jupyter Notebook<a class="headerlink" href="#enable-notebook-mode-for-jupyter-notebook" title="Permalink to this headline">¶</a></h3>
+</div>
+</section>
+<section id="enable-notebook-mode-for-jupyter-notebook">
+<h3>Enable Notebook mode for Jupyter Notebook<a class="headerlink" href="#enable-notebook-mode-for-jupyter-notebook" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">notebook_mode</span> <span class="o">=</span> <span class="kc">True</span>
@@ -535,50 +501,50 @@ where<br/><br/>
     <span class="o">%</span><span class="k">autoreload</span> 2
     <span class="o">%</span><span class="k">matplotlib</span> inline
     <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">set_matplotlib_formats</span>
-    <span class="n">set_matplotlib_formats</span><span class="p">(</span><span class="s1">'png'</span><span class="p">)</span>
+    <span class="n">set_matplotlib_formats</span><span class="p">(</span><span class="s1">&#39;png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_47282/2361144546.py:9: DeprecationWarning: `set_matplotlib_formats` is deprecated since IPython 7.23, directly use `matplotlib_inline.backend_inline.set_matplotlib_formats()`
-  set_matplotlib_formats('png')
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_13516/2361144546.py:9: DeprecationWarning: `set_matplotlib_formats` is deprecated since IPython 7.23, directly use `matplotlib_inline.backend_inline.set_matplotlib_formats()`
+  set_matplotlib_formats(&#39;png&#39;)
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="load-tsp20-configuration-files">
-<h3>Load TSP20 Configuration Files<a class="headerlink" href="#load-tsp20-configuration-files" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="load-tsp20-configuration-files">
+<h3>Load TSP20 Configuration Files<a class="headerlink" href="#load-tsp20-configuration-files" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">config_path</span> <span class="o">=</span> <span class="s2">"graph_convnet/configs/tsp20.json"</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">config_path</span> <span class="o">=</span> <span class="s2">&quot;graph_convnet/configs/tsp20.json&quot;</span>
 <span class="n">config</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">(</span><span class="n">config_path</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Loaded </span><span class="si">{}</span><span class="s2">:</span><span class="se">\n</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">config_path</span><span class="p">,</span> <span class="n">config</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loaded </span><span class="si">{}</span><span class="s2">:</span><span class="se">\n</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">config_path</span><span class="p">,</span> <span class="n">config</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded graph_convnet/configs/tsp20.json:
-{'expt_name': 'tsp20', 'gpu_id': '1', 'train_filepath': 'graph_convnet/data/tsp20_test_concorde.txt', 'val_filepath': 'graph_convnet/data/tsp20_val_concorde.txt', 'test_filepath': 'graph_convnet/data/tsp20_test_concorde.txt', 'num_nodes': 20, 'num_neighbors': -1, 'node_dim': 2, 'voc_nodes_in': 2, 'voc_nodes_out': 2, 'voc_edges_in': 3, 'voc_edges_out': 2, 'beam_size': 1280, 'hidden_dim': 300, 'num_layers': 30, 'mlp_layers': 3, 'aggregation': 'mean', 'max_epochs': 1500, 'val_every': 5, 'test_every': 100, 'batch_size': 20, 'batches_per_epoch': 500, 'accumulation_steps': 1, 'learning_rate': 0.001, 'decay_rate': 1.01}
+{&#39;expt_name&#39;: &#39;tsp20&#39;, &#39;gpu_id&#39;: &#39;1&#39;, &#39;train_filepath&#39;: &#39;graph_convnet/data/tsp20_test_concorde.txt&#39;, &#39;val_filepath&#39;: &#39;graph_convnet/data/tsp20_val_concorde.txt&#39;, &#39;test_filepath&#39;: &#39;graph_convnet/data/tsp20_test_concorde.txt&#39;, &#39;num_nodes&#39;: 20, &#39;num_neighbors&#39;: -1, &#39;node_dim&#39;: 2, &#39;voc_nodes_in&#39;: 2, &#39;voc_nodes_out&#39;: 2, &#39;voc_edges_in&#39;: 3, &#39;voc_edges_out&#39;: 2, &#39;beam_size&#39;: 1280, &#39;hidden_dim&#39;: 300, &#39;num_layers&#39;: 30, &#39;mlp_layers&#39;: 3, &#39;aggregation&#39;: &#39;mean&#39;, &#39;max_epochs&#39;: 1500, &#39;val_every&#39;: 5, &#39;test_every&#39;: 100, &#39;batch_size&#39;: 20, &#39;batches_per_epoch&#39;: 500, &#39;accumulation_steps&#39;: 1, &#39;learning_rate&#39;: 0.001, &#39;decay_rate&#39;: 1.01}
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="setup-gpu-and-cuda">
-<h3>Setup GPU and CUDA<a class="headerlink" href="#setup-gpu-and-cuda" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="setup-gpu-and-cuda">
+<h3>Setup GPU and CUDA<a class="headerlink" href="#setup-gpu-and-cuda" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"CUDA_DEVICE_ORDER"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"PCI_BUS_ID"</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"CUDA_VISIBLE_DEVICES"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">gpu_id</span><span class="p">)</span>  
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CUDA_DEVICE_ORDER&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;PCI_BUS_ID&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CUDA_VISIBLE_DEVICES&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">gpu_id</span><span class="p">)</span>  
 
 <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"CUDA available, using GPU ID </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">gpu_id</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CUDA available, using GPU ID </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">gpu_id</span><span class="p">))</span>
     <span class="n">dtypeFloat</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">FloatTensor</span>
     <span class="n">dtypeLong</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">LongTensor</span>
     <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"CUDA not available"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CUDA not available&quot;</span><span class="p">)</span>
     <span class="n">dtypeFloat</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span>
     <span class="n">dtypeLong</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span>
     <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -591,9 +557,9 @@ where<br/><br/>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="setup-network-and-parameters">
-<h3>Setup Network and parameters<a class="headerlink" href="#setup-network-and-parameters" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="setup-network-and-parameters">
+<h3>Setup Network and parameters<a class="headerlink" href="#setup-network-and-parameters" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">notebook_mode</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
@@ -606,7 +572,7 @@ where<br/><br/>
     <span class="n">nb_param</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
         <span class="n">nb_param</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">size</span><span class="p">()))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">'Number of parameters:'</span><span class="p">,</span> <span class="n">nb_param</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of parameters:&#39;</span><span class="p">,</span> <span class="n">nb_param</span><span class="p">)</span>
     
     <span class="c1"># Define optimizer</span>
     <span class="n">learning_rate</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">learning_rate</span>
@@ -629,29 +595,29 @@ Parameter Group 0
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="load-previous-training-checkpoint">
-<h3>Load Previous Training Checkpoint<a class="headerlink" href="#load-previous-training-checkpoint" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="load-previous-training-checkpoint">
+<h3>Load Previous Training Checkpoint<a class="headerlink" href="#load-previous-training-checkpoint" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">notebook_mode</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
     <span class="c1"># Load checkpoint</span>
-    <span class="n">log_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"graph_convnet/logs/</span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">expt_name</span><span class="si">}</span><span class="s2">/"</span>
+    <span class="n">log_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;graph_convnet/logs/</span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">expt_name</span><span class="si">}</span><span class="s2">/&quot;</span>
     <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
-        <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">log_dir</span><span class="o">+</span><span class="s2">"best_val_checkpoint.tar"</span><span class="p">)</span>
+        <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">log_dir</span><span class="o">+</span><span class="s2">&quot;best_val_checkpoint.tar&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">log_dir</span><span class="o">+</span><span class="s2">"best_val_checkpoint.tar"</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="s1">'cpu'</span><span class="p">)</span>
+        <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">log_dir</span><span class="o">+</span><span class="s2">&quot;best_val_checkpoint.tar&quot;</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
     <span class="c1"># Load network state</span>
-    <span class="n">net</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s1">'model_state_dict'</span><span class="p">])</span>
+    <span class="n">net</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s1">&#39;model_state_dict&#39;</span><span class="p">])</span>
     <span class="c1"># Load optimizer state</span>
-    <span class="n">optimizer</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s1">'optimizer_state_dict'</span><span class="p">])</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s1">&#39;optimizer_state_dict&#39;</span><span class="p">])</span>
     <span class="c1"># Load other training parameters</span>
-    <span class="n">epoch</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">[</span><span class="s1">'epoch'</span><span class="p">]</span>
-    <span class="n">train_loss</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">[</span><span class="s1">'train_loss'</span><span class="p">]</span>
-    <span class="n">val_loss</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">[</span><span class="s1">'val_loss'</span><span class="p">]</span>
+    <span class="n">epoch</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">[</span><span class="s1">&#39;epoch&#39;</span><span class="p">]</span>
+    <span class="n">train_loss</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">[</span><span class="s1">&#39;train_loss&#39;</span><span class="p">]</span>
+    <span class="n">val_loss</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">param_group</span> <span class="ow">in</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">param_groups</span><span class="p">:</span>
-        <span class="n">learning_rate</span> <span class="o">=</span> <span class="n">param_group</span><span class="p">[</span><span class="s1">'lr'</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Loaded checkpoint from epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>    
+        <span class="n">learning_rate</span> <span class="o">=</span> <span class="n">param_group</span><span class="p">[</span><span class="s1">&#39;lr&#39;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loaded checkpoint from epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>    
 </pre></div>
 </div>
 </div>
@@ -661,20 +627,20 @@ Parameter Group 0
 </div>
 </div>
 </div>
-<div class="section" id="function-to-convert-metrics-to-text">
-<h4>Function to convert metrics to text<a class="headerlink" href="#function-to-convert-metrics-to-text" title="Permalink to this headline">¶</a></h4>
+<section id="function-to-convert-metrics-to-text">
+<h4>Function to convert metrics to text<a class="headerlink" href="#function-to-convert-metrics-to-text" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">metrics_to_str</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">learning_rate</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">err_edges</span><span class="p">,</span> <span class="n">err_tour</span><span class="p">,</span> <span class="n">err_tsp</span><span class="p">,</span> <span class="n">pred_tour_len</span><span class="p">,</span> <span class="n">gt_tour_len</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="p">(</span> <span class="s1">'epoch:</span><span class="si">{epoch:0&gt;2d}</span><span class="se">\t</span><span class="s1">'</span>
-               <span class="s1">'time:</span><span class="si">{time:.1f}</span><span class="s1">h</span><span class="se">\t</span><span class="s1">'</span>
-               <span class="s1">'lr:</span><span class="si">{learning_rate:.2e}</span><span class="se">\t</span><span class="s1">'</span>
-               <span class="s1">'loss:</span><span class="si">{loss:.4f}</span><span class="se">\t</span><span class="s1">'</span>
-               <span class="c1"># 'err_edges:{err_edges:.2f}\t'</span>
-               <span class="c1"># 'err_tour:{err_tour:.2f}\t'</span>
-               <span class="c1"># 'err_tsp:{err_tsp:.2f}\t'</span>
-               <span class="s1">'pred_tour_len:</span><span class="si">{pred_tour_len:.3f}</span><span class="se">\t</span><span class="s1">'</span>
-               <span class="s1">'gt_tour_len:</span><span class="si">{gt_tour_len:.3f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">(</span> <span class="s1">&#39;epoch:</span><span class="si">{epoch:0&gt;2d}</span><span class="se">\t</span><span class="s1">&#39;</span>
+               <span class="s1">&#39;time:</span><span class="si">{time:.1f}</span><span class="s1">h</span><span class="se">\t</span><span class="s1">&#39;</span>
+               <span class="s1">&#39;lr:</span><span class="si">{learning_rate:.2e}</span><span class="se">\t</span><span class="s1">&#39;</span>
+               <span class="s1">&#39;loss:</span><span class="si">{loss:.4f}</span><span class="se">\t</span><span class="s1">&#39;</span>
+               <span class="c1"># &#39;err_edges:{err_edges:.2f}\t&#39;</span>
+               <span class="c1"># &#39;err_tour:{err_tour:.2f}\t&#39;</span>
+               <span class="c1"># &#39;err_tsp:{err_tsp:.2f}\t&#39;</span>
+               <span class="s1">&#39;pred_tour_len:</span><span class="si">{pred_tour_len:.3f}</span><span class="se">\t</span><span class="s1">&#39;</span>
+               <span class="s1">&#39;gt_tour_len:</span><span class="si">{gt_tour_len:.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                    <span class="n">epoch</span><span class="o">=</span><span class="n">epoch</span><span class="p">,</span>
                    <span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="o">/</span><span class="mi">3600</span><span class="p">,</span>
                    <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span>
@@ -689,12 +655,12 @@ Parameter Group 0
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="function-to-run-test-data">
-<h4>Function to run test data<a class="headerlink" href="#function-to-run-test-data" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="function-to-run-test-data">
+<h4>Function to run test data<a class="headerlink" href="#function-to-run-test-data" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">master_bar</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'test'</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">master_bar</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">):</span>
     <span class="c1"># Set evaluation mode</span>
     <span class="n">net</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
 
@@ -708,9 +674,9 @@ Parameter Group 0
     <span class="n">test_filepath</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">test_filepath</span>
 
     <span class="c1"># Load TSP data</span>
-    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">'val'</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;val&#39;</span><span class="p">:</span>
         <span class="n">dataset</span> <span class="o">=</span> <span class="n">GoogleTSPReader</span><span class="p">(</span><span class="n">num_nodes</span><span class="p">,</span> <span class="n">num_neighbors</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">filepath</span><span class="o">=</span><span class="n">val_filepath</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">'test'</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;test&#39;</span><span class="p">:</span>
         <span class="n">dataset</span> <span class="o">=</span> <span class="n">GoogleTSPReader</span><span class="p">(</span><span class="n">num_nodes</span><span class="p">,</span> <span class="n">num_neighbors</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">filepath</span><span class="o">=</span><span class="n">test_filepath</span><span class="p">)</span>
     <span class="n">batches_per_epoch</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">max_iter</span>
 
@@ -750,7 +716,7 @@ Parameter Group 0
             <span class="c1"># Compute class weights (if uncomputed)</span>
             <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">edge_cw</span><span class="p">)</span> <span class="o">!=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
                 <span class="n">edge_labels</span> <span class="o">=</span> <span class="n">y_edges</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-                <span class="n">edge_cw</span> <span class="o">=</span> <span class="n">compute_class_weight</span><span class="p">(</span><span class="s2">"balanced"</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">edge_labels</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="n">edge_labels</span><span class="p">)</span>
+                <span class="n">edge_cw</span> <span class="o">=</span> <span class="n">compute_class_weight</span><span class="p">(</span><span class="s2">&quot;balanced&quot;</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">edge_labels</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="n">edge_labels</span><span class="p">)</span>
 
             <span class="c1"># Forward pass</span>
             <span class="n">y_preds</span><span class="p">,</span> <span class="n">loss</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x_edges</span><span class="p">,</span> <span class="n">x_edges_values</span><span class="p">,</span> <span class="n">x_nodes</span><span class="p">,</span> <span class="n">x_nodes_coord</span><span class="p">,</span> <span class="n">y_edges</span><span class="p">,</span> <span class="n">edge_cw</span><span class="p">)</span>
@@ -760,12 +726,12 @@ Parameter Group 0
             <span class="c1"># err_edges, err_tour, err_tsp, tour_err_idx, tsp_err_idx = edge_error(y_preds, y_edges, x_edges)</span>
 
             <span class="c1"># Get batch beamsearch tour prediction</span>
-            <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">'val'</span><span class="p">:</span>  <span class="c1"># Validation: faster 'vanilla' beamsearch</span>
+            <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;val&#39;</span><span class="p">:</span>  <span class="c1"># Validation: faster &#39;vanilla&#39; beamsearch</span>
                 <span class="n">bs_nodes</span> <span class="o">=</span> <span class="n">beamsearch_tour_nodes</span><span class="p">(</span>
-                    <span class="n">y_preds</span><span class="p">,</span> <span class="n">beam_size</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">num_nodes</span><span class="p">,</span> <span class="n">dtypeFloat</span><span class="p">,</span> <span class="n">dtypeLong</span><span class="p">,</span> <span class="n">probs_type</span><span class="o">=</span><span class="s1">'logits'</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">'test'</span><span class="p">:</span>  <span class="c1"># Testing: beamsearch with shortest tour heuristic </span>
+                    <span class="n">y_preds</span><span class="p">,</span> <span class="n">beam_size</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">num_nodes</span><span class="p">,</span> <span class="n">dtypeFloat</span><span class="p">,</span> <span class="n">dtypeLong</span><span class="p">,</span> <span class="n">probs_type</span><span class="o">=</span><span class="s1">&#39;logits&#39;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;test&#39;</span><span class="p">:</span>  <span class="c1"># Testing: beamsearch with shortest tour heuristic </span>
                 <span class="n">bs_nodes</span> <span class="o">=</span> <span class="n">beamsearch_tour_nodes_shortest</span><span class="p">(</span>
-                    <span class="n">y_preds</span><span class="p">,</span> <span class="n">x_edges_values</span><span class="p">,</span> <span class="n">beam_size</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">num_nodes</span><span class="p">,</span> <span class="n">dtypeFloat</span><span class="p">,</span> <span class="n">dtypeLong</span><span class="p">,</span> <span class="n">probs_type</span><span class="o">=</span><span class="s1">'logits'</span><span class="p">)</span>
+                    <span class="n">y_preds</span><span class="p">,</span> <span class="n">x_edges_values</span><span class="p">,</span> <span class="n">beam_size</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">num_nodes</span><span class="p">,</span> <span class="n">dtypeFloat</span><span class="p">,</span> <span class="n">dtypeLong</span><span class="p">,</span> <span class="n">probs_type</span><span class="o">=</span><span class="s1">&#39;logits&#39;</span><span class="p">)</span>
             
             <span class="c1"># Compute mean tour length</span>
             <span class="n">pred_tour_len</span> <span class="o">=</span> <span class="n">mean_tour_len_nodes</span><span class="p">(</span><span class="n">x_edges_values</span><span class="p">,</span> <span class="n">bs_nodes</span><span class="p">)</span>
@@ -782,7 +748,7 @@ Parameter Group 0
             <span class="n">running_nb_batch</span> <span class="o">+=</span> <span class="mi">1</span>
 
             <span class="c1"># Log intermediate statistics</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'loss:</span><span class="si">{loss:.4f}</span><span class="s1"> pred_tour_len:</span><span class="si">{pred_tour_len:.3f}</span><span class="s1"> gt_tour_len:</span><span class="si">{gt_tour_len:.3f}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;loss:</span><span class="si">{loss:.4f}</span><span class="s1"> pred_tour_len:</span><span class="si">{pred_tour_len:.3f}</span><span class="s1"> gt_tour_len:</span><span class="si">{gt_tour_len:.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="n">loss</span><span class="o">=</span><span class="n">running_loss</span><span class="o">/</span><span class="n">running_nb_data</span><span class="p">,</span>
                 <span class="n">pred_tour_len</span><span class="o">=</span><span class="n">running_pred_tour_len</span><span class="o">/</span><span class="n">running_nb_data</span><span class="p">,</span>
                 <span class="n">gt_tour_len</span><span class="o">=</span><span class="n">running_gt_tour_len</span><span class="o">/</span><span class="n">running_nb_data</span><span class="p">))</span>
@@ -801,10 +767,10 @@ Parameter Group 0
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="test-model-on-randomly-generated-graphs">
-<h3>Test model on randomly generated graphs<a class="headerlink" href="#test-model-on-randomly-generated-graphs" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="test-model-on-randomly-generated-graphs">
+<h3>Test model on randomly generated graphs<a class="headerlink" href="#test-model-on-randomly-generated-graphs" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">notebook_mode</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
@@ -830,8 +796,8 @@ Parameter Group 0
         
         <span class="c1"># Compute class weights</span>
         <span class="n">edge_labels</span> <span class="o">=</span> <span class="n">y_edges</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-        <span class="n">edge_cw</span> <span class="o">=</span> <span class="n">compute_class_weight</span><span class="p">(</span><span class="s2">"balanced"</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">edge_labels</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="n">edge_labels</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"Class weights: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">edge_cw</span><span class="p">))</span>
+        <span class="n">edge_cw</span> <span class="o">=</span> <span class="n">compute_class_weight</span><span class="p">(</span><span class="s2">&quot;balanced&quot;</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">edge_labels</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="n">edge_labels</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Class weights: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">edge_cw</span><span class="p">))</span>
         
         <span class="c1"># Forward pass</span>
         <span class="n">y_preds</span><span class="p">,</span> <span class="n">loss</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x_edges</span><span class="p">,</span> <span class="n">x_edges_values</span><span class="p">,</span> <span class="n">x_nodes</span><span class="p">,</span> <span class="n">x_nodes_coord</span><span class="p">,</span> <span class="n">y_edges</span><span class="p">,</span> <span class="n">edge_cw</span><span class="p">)</span>
@@ -839,19 +805,19 @@ Parameter Group 0
         
         <span class="c1"># Get batch beamsearch tour prediction</span>
         <span class="n">bs_nodes</span> <span class="o">=</span> <span class="n">beamsearch_tour_nodes_shortest</span><span class="p">(</span>
-            <span class="n">y_preds</span><span class="p">,</span> <span class="n">x_edges_values</span><span class="p">,</span> <span class="n">beam_size</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">num_nodes</span><span class="p">,</span> <span class="n">dtypeFloat</span><span class="p">,</span> <span class="n">dtypeLong</span><span class="p">,</span> <span class="n">probs_type</span><span class="o">=</span><span class="s1">'logits'</span><span class="p">)</span>
+            <span class="n">y_preds</span><span class="p">,</span> <span class="n">x_edges_values</span><span class="p">,</span> <span class="n">beam_size</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">num_nodes</span><span class="p">,</span> <span class="n">dtypeFloat</span><span class="p">,</span> <span class="n">dtypeLong</span><span class="p">,</span> <span class="n">probs_type</span><span class="o">=</span><span class="s1">&#39;logits&#39;</span><span class="p">)</span>
         <span class="c1">#bs_nodes = beamsearch_tour_nodes(</span>
-        <span class="c1">#    y_preds, beam_size, batch_size, num_nodes, dtypeFloat, dtypeLong, probs_type='logits')</span>
+        <span class="c1">#    y_preds, beam_size, batch_size, num_nodes, dtypeFloat, dtypeLong, probs_type=&#39;logits&#39;)</span>
 
         <span class="c1"># Compute mean tour length</span>
         <span class="n">pred_tour_len</span> <span class="o">=</span> <span class="n">mean_tour_len_nodes</span><span class="p">(</span><span class="n">x_edges_values</span><span class="p">,</span> <span class="n">bs_nodes</span><span class="p">)</span>
         <span class="n">gt_tour_len</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">batch</span><span class="o">.</span><span class="n">tour_len</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"Predicted tour length: </span><span class="si">{:.3f}</span><span class="s2"> (mean)</span><span class="se">\n</span><span class="s2">Groundtruth tour length: </span><span class="si">{:.3f}</span><span class="s2"> (mean)"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pred_tour_len</span><span class="p">,</span> <span class="n">gt_tour_len</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicted tour length: </span><span class="si">{:.3f}</span><span class="s2"> (mean)</span><span class="se">\n</span><span class="s2">Groundtruth tour length: </span><span class="si">{:.3f}</span><span class="s2"> (mean)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pred_tour_len</span><span class="p">,</span> <span class="n">gt_tour_len</span><span class="p">))</span>
 
         <span class="c1"># Sanity check</span>
         <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">nodes</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bs_nodes</span><span class="p">):</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">is_valid_tour</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">num_nodes</span><span class="p">):</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="s2">" Invalid tour: "</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="s2">&quot; Invalid tour: &quot;</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span>
 
         <span class="c1"># Plot prediction visualizations</span>
         <span class="n">plot_predictions_beamsearch</span><span class="p">(</span><span class="n">x_nodes_coord</span><span class="p">,</span> <span class="n">x_edges</span><span class="p">,</span> <span class="n">x_edges_values</span><span class="p">,</span> <span class="n">y_edges</span><span class="p">,</span> <span class="n">y_preds</span><span class="p">,</span> <span class="n">bs_nodes</span><span class="p">,</span> <span class="n">num_plots</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
@@ -860,21 +826,19 @@ Parameter Group 0
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Class weights: [0.55555556 5.        ]
+Predicted tour length: 3.938 (mean)
+Groundtruth tour length: 3.938 (mean)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicted tour length: 3.939 (mean)
-Groundtruth tour length: 3.940 (mean)
-</pre></div>
-</div>
-<img alt="../../_images/GraphNeuralNetworks_20_2.png" src="../../_images/GraphNeuralNetworks_20_2.png"/>
-<img alt="../../_images/GraphNeuralNetworks_20_3.png" src="../../_images/GraphNeuralNetworks_20_3.png"/>
-<img alt="../../_images/GraphNeuralNetworks_20_4.png" src="../../_images/GraphNeuralNetworks_20_4.png"/>
+<img alt="../../_images/7f05acdb3cbde072527d9c3bedcce5cef78093a0f1645c95ceae9cd6c828aada.png" src="../../_images/7f05acdb3cbde072527d9c3bedcce5cef78093a0f1645c95ceae9cd6c828aada.png" />
+<img alt="../../_images/dad597b8a1876d4b8cea1be0a70d8f3e43bbfd068d244abbba42a9f410b1c957.png" src="../../_images/dad597b8a1876d4b8cea1be0a70d8f3e43bbfd068d244abbba42a9f410b1c957.png" />
+<img alt="../../_images/4c7c20ad08c5cd91149e8237aad4c66d3126991aad4566e231e50f219a020dbd.png" src="../../_images/4c7c20ad08c5cd91149e8237aad4c66d3126991aad4566e231e50f219a020dbd.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="resources">
-<h2>Resources:<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="resources">
+<h2>Resources:<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/chaitjo/graph-convnet-tsp">Graph Convolutional Network Technique for the Travelling Salesman Problem</a></p></li>
 <li><p>A library for graph neural networks in jax (<a class="reference external" href="https://github.com/deepmind/jraph">Jraph</a>)</p></li>
@@ -883,9 +847,10 @@ Groundtruth tour length: 3.940 (mean)
 <li><p>PyTorch Geometric Library (<a class="reference external" href="https://pytorch-geometric.readthedocs.io/en/latest/">PyTorch Geometric</a>)</p></li>
 <li><p>Stanford Network Analysis Platform (<a class="reference external" href="https://github.com/snap-stanford/snap-python">SNAP</a>)</p></li>
 </ul>
-</div>
-</div>
-<script type="text/x-thebe-config">
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
@@ -897,33 +862,128 @@ Groundtruth tour length: 3.940 (mean)
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
-            path: "./content/LearnToSearch"
+            name: "python3",
+            path: "./content\LearnToSearch"
         },
         predefinedOutput: true
     }
     </script>
-<script>kernelName = 'python3'</script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="GeometricDeepLearning.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Geometric Deep Learning</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="AttentionMechanisms.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Attention Mechanisms</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
 </div>
-<div class="prev-next-bottom">
-<a class="left-prev" href="GeometricDeepLearning.html" id="prev-link" title="previous page">Geometric Deep Learning</a>
-<a class="right-next" href="AttentionMechanisms.html" id="next-link" title="next page">Attention Mechanisms</a>
-</div>
-</div>
-</div>
-<footer class="footer mt-5 mt-md-0">
-<div class="container">
-<p>
-        
-          By Alaa Khamis and Yinan Wang<br/>
-        
-            © Copyright 2021, Alaa Khamis and Yinan Wang.<br/>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-convolutional-neural-network-gcns">Graph Convolutional Neural Network (GCNs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-gcn-to-solve-tsp">Using GCN to solve TSP</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-dependencies">Import dependencies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-notebook-mode-for-jupyter-notebook">Enable Notebook mode for Jupyter Notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-tsp20-configuration-files">Load TSP20 Configuration Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-gpu-and-cuda">Setup GPU and CUDA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-network-and-parameters">Setup Network and parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-previous-training-checkpoint">Load Previous Training Checkpoint</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#function-to-convert-metrics-to-text">Function to convert metrics to text</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#function-to-run-test-data">Function to run test data</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-model-on-randomly-generated-graphs">Test model on randomly generated graphs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources:</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alaa Khamis and Yinan Wang
 </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021, Alaa Khamis and Yinan Wang.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
-</footer>
-</main>
-</div>
-</div>
-<script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-</body>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
 </html>
