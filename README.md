@@ -5,7 +5,7 @@ This is the GitHub repo of the UofT grad course ECE1724H: Bio-inspired Algorithm
 If you use this software, please cite it as below
 ```
 @misc{Khamis2022,
-  title = {ECE1724H: Bio-inspired Algorithms for Smart Mobility, Uoft, Course instructor: Dr. Alaa Khamis},
+  title = {ECE1724H: Bio-inspired Algorithms for Smart Mobility. University of Toronto, Course instructor: Dr. Alaa Khamis},
   year = {2022},
   howpublished = {\url{https://smartmobilityalgorithms.github.io/book/index.html}}
 }
