@@ -1,5 +1,7 @@
 # AI Search Algorithms for Smart Mobility
 
+<b>This Jupyter book is no longer actively maintained. For updated and more extended version of these materials, please check [Optimization Algorithms](https://github.com/Optimization-Algorithms-Book/Code-Listings) </b>
+
 Smart mobility is the promotion of sustainable mobility that guarantees seamless access to different modes of mobility, and enables people or cargo to get from one place to another in a way that is safe, clean, and most efficient (fast, convenient, comfort, productive and affordable). This disruptive technology is people-centric, software-defined, connected, and electric {cite}`khamis2021smart`. There are several ill-structured optimization problems in smart mobility systems and services that cannot be solved using traditional search algorithms. These problems include, but are not limited to:<br><br>
 
 - multi-criteria optimal routing
