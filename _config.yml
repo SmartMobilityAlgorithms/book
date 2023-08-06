@@ -26,7 +26,7 @@ bibtex_bibfiles:
   
 #Interactive Settings
 repository:
-  url:  https://github.com/SmartMobilityAlgorithms/ECE1724
+  url:  https://github.com/SmartMobilityAlgorithms/book
   branch: main
 
 html:
